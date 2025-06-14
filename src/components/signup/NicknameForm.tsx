@@ -3,11 +3,14 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { FaArrowRight } from 'react-icons/fa'
+import { useNicknameStore } from '@/stores/nicknameStore' 
 
 const NicknameForm = () => {
   const router = useRouter()
   const [nickname, setNickname] = useState('')
   const [agreed, setAgreed] = useState(false)
+
+  const { setNickname: saveNickname } = useNicknameStore() //
 
   const nicknameValid = /^[a-zA-Z0-9가-힣]{2,10}$/.test(nickname)
   const formReady = nicknameValid && agreed
@@ -15,9 +18,8 @@ const NicknameForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!formReady) return
-    console.log('닉네임:', nickname)
-    // TODO: 다음 페이지 이동
-    router.push('/signup/investment')
+    saveNickname(nickname) //
+    router.push('/signup/investment') // 다음 페이지로 이동
   }
 
   return (
@@ -27,8 +29,8 @@ const NicknameForm = () => {
     >
       {/* 제목 */}
       <h1 className="text-[40px] text-brown-primary font-normal mb-6 drop-shadow-[0_0_2px_white]">
-  닉네임을 입력해주세요
-</h1>
+        닉네임을 입력해주세요
+      </h1>
 
       {/* 입력창 + 중복확인 버튼 */}
       <div className="flex items-center gap-2 mb-2">
