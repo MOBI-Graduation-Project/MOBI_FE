@@ -3,23 +3,37 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { FaArrowRight } from 'react-icons/fa'
-import { useNicknameStore } from '@/stores/nicknameStore' 
+import { useNicknameStore } from '@/stores/nicknameStore'
 
 const NicknameForm = () => {
   const router = useRouter()
   const [nickname, setNickname] = useState('')
   const [agreed, setAgreed] = useState(false)
+  const [isInvalid, setIsInvalid] = useState(false)
 
-  const { setNickname: saveNickname } = useNicknameStore() //
+  const { setNickname: saveNickname } = useNicknameStore()
 
   const nicknameValid = /^[a-zA-Z0-9가-힣]{2,10}$/.test(nickname)
   const formReady = nicknameValid && agreed
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.target.value
+
+    // 특수문자 포함 여부 확인
+    const hasInvalidChar = /[^a-zA-Z0-9가-힣]/.test(input)
+    setIsInvalid(hasInvalidChar)
+
+    // 10자까지만 입력 가능
+    if (input.length <= 10) {
+      setNickname(input)
+    }
+  }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!formReady) return
-    saveNickname(nickname) //
-    router.push('/signup/investment') // 다음 페이지로 이동
+    saveNickname(nickname)
+    router.push('/signup/investment')
   }
 
   return (
@@ -39,8 +53,10 @@ const NicknameForm = () => {
           name="nickname"
           placeholder="한글/영어/숫자만 2~10자 입력해주세요"
           value={nickname}
-          onChange={e => setNickname(e.target.value)}
-          className="flex-1 h-[50px] px-4 text-sm border border-[#FFD288] rounded-xl bg-[#FFF4D8] focus:outline-none"
+          onChange={handleChange}
+          className={`flex-1 h-[50px] px-4 text-sm border rounded-xl bg-[#FFF4D8] focus:outline-none transition ${
+            isInvalid ? 'border-red-500 placeholder:text-red-500' : 'border-[#FFD288]'
+          }`}
         />
         <button
           type="button"
