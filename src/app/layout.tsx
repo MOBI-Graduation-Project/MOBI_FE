@@ -1,10 +1,10 @@
-import localFont from "next/font/local";
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 
 import "@/styles/globals.css";
 
 const geekble = localFont({
-  src:"../../public/fonts/GeekbleMalang2WOFF2.woff2",
+  src: "../../public/fonts/GeekbleMalang2WOFF2.woff2",
   display: "swap",
   style: "normal",
   weight: "45 920",
@@ -15,19 +15,21 @@ const pretendard = localFont({
   src: "../../public/fonts/PretendardVariable.woff2",
   display: "swap",
   weight: "45 920",
-  variable: "--font-pretendard"
+  variable: "--font-pretendard",
 });
- 
+
 export const metadata: Metadata = {
   title: "MOBI",
-  description: "메타버스 기반 커뮤니티와 AI 주식차트 예측 및 분석 기능을 갖춘 서비스",
+  description:
+    "메타버스 기반 커뮤니티와 AI 주식차트 예측 및 분석 기능을 갖춘 서비스",
   robots: "index, follow",
   icons: {
     icon: "/svgs/favicons.svg",
   },
   openGraph: {
     title: "MOBI",
-    description: "메타버스 기반 커뮤니티와 AI 주식차트 예측 및 분석 기능을 갖춘 웹 플랫폼입니다.",
+    description:
+      "메타버스 기반 커뮤니티와 AI 주식차트 예측 및 분석 기능을 갖춘 웹 플랫폼입니다.",
     siteName: "MOBI",
     type: "website",
   },
@@ -41,9 +43,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${geekble.variable} ${pretendard.variable}`}>
       <body>
-        <div className="flex h-screen w-screen">
-          {children}
-        </div>
+        <div className="flex h-screen w-screen">{children}</div>
       </body>
     </html>
   );

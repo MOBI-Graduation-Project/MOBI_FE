@@ -1,4 +1,2 @@
-const Onboarding=()=>{
-  
-}
+const Onboarding = () => {};
 export default Onboarding;
