@@ -22,7 +22,7 @@ const NotFound = () => {
         </div>
         <button
           onClick={handleClick}
-          className="bg-yellow text-heading1 text-brown text-stroke-white button-shadow h-[81px] w-[265px] cursor-pointer rounded-[20px] font-[geekble]"
+          className="bg-yellow text-heading1 text-brown text-stroke-white button-shadow h-[81px] w-[265px] cursor-pointer rounded-[20px] font-[geekble] hover:bg-yellow-10t"
         >
           이동지도로
         </button>

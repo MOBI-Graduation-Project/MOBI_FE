@@ -31,13 +31,13 @@ const Onboarding = () => {
       <div className="flex gap-[61.5px]">
         <button
           onClick={handleLoginClick}
-          className="bg-yellow text-heading1 text-stroke-white button-shadow h-[87px] w-[199px] cursor-pointer rounded-[20px] font-[geekble]"
+          className="bg-yellow text-heading1 text-stroke-white button-shadow hover:bg-yellow-10t h-[87px] w-[199px] cursor-pointer rounded-[20px] font-[geekble]"
         >
           로그인
         </button>
         <button
           onClick={handleSignUpClick}
-          className="bg-yellow text-heading1 text-stroke-white button-shadow flex h-[87px] w-[392px] cursor-pointer items-center justify-center rounded-[20px] font-[geekble]"
+          className="bg-yellow text-heading1 text-stroke-white button-shadow hover:bg-yellow-10t flex h-[87px] w-[392px] cursor-pointer items-center justify-center rounded-[20px] font-[geekble]"
         >
           <GoogleIcon />
           구글로 회원가입
