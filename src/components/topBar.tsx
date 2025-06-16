@@ -5,12 +5,17 @@ import ProfileIcon from "@/assets/header/profileIcon.svg";
 
 const Topbar = () => {
   return (
-
-      <div className="grid grid-cols-3 h-[127px] w-[375px] justify-items-center items-center overflow-visible bg-white/66 rounded-b-[30px]">
+    <div className="grid h-[127px] w-[375px] grid-cols-3 items-center justify-items-center overflow-visible rounded-b-[30px] bg-white/66">
+      <button className="cursor-pointer">
         <AlarmIcon />
+      </button>
+      <button className="cursor-pointer">
         <FriendListIcon />
+      </button>
+      <button className="cursor-pointer">
         <ProfileIcon />
-      </div>
+      </button>
+    </div>
   );
 };
 export default Topbar;
