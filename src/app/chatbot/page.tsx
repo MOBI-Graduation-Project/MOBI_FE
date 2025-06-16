@@ -46,7 +46,7 @@ const Chatbot = () => {
   return (
     <div className="h-screen w-full bg-[#ffeebd]">
       {/*상단바*/}
-      <div className="sticky flex h-[100px] flex-row items-center gap-5 pl-[30px]">
+      <div className="fixed flex h-[100px] flex-row items-center gap-5 pl-[30px]  w-full bg-[#ffeebd]">
         <button onClick={() => router.back()} className="cursor-pointer">
           <Backbtn />
         </button>
@@ -57,8 +57,11 @@ const Chatbot = () => {
       </div>
 
       {/*채팅영역 */}
-      <div className="flex flex-col px-5 pt-[100px]">
-        <div className="flex-1 space-y-3 overflow-y-auto">
+      <div className="flex flex-col pt-[100px] pb-[230px]">
+        <div
+          className="flex-1 space-y-3 overflow-y-auto pr-2 scrollbar-hide"
+          style={{ maxHeight: "calc(100vh - 110px - 230px)" }} // 100px 상단바 + 230px 하단바
+        >
           {messages.map(msg => (
             <div
               key={msg.id}
@@ -67,11 +70,9 @@ const Chatbot = () => {
               <div className="flex max-w-[80%] items-end gap-2">
                 {msg.sender === "user" ? (
                   <>
-                    {/* 시간 왼쪽 */}
                     <div className="text-cap1-med whitespace-nowrap text-gray-500">
                       {msg.time}
                     </div>
-                    {/* 말풍선 */}
                     <div
                       className="text-cap1-sb rounded-xl px-4 py-2"
                       style={{ backgroundColor: "#ffc414" }}
@@ -84,14 +85,12 @@ const Chatbot = () => {
                     <div className="text-lab1 text-brown flex h-[50px] w-[50px] items-center justify-center rounded-full bg-[#D9D9D9] font-[geekble]">
                       모비
                     </div>
-                    {/* 말풍선 */}
                     <div
                       className="text-cap1-sb rounded-xl px-5 py-2"
                       style={{ backgroundColor: "#ffffff" }}
                     >
                       {msg.text}
                     </div>
-                    {/* 시간 오른쪽 */}
                     <div className="text-cap1-med whitespace-nowrap text-gray-500">
                       {msg.time}
                     </div>
