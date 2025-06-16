@@ -67,6 +67,10 @@
     -webkit-text-stroke-width: 7px;
     -webkit-text-stroke-color: var(--Brown, #4d2700);
   }
+  .text-stroke-brown-m {
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: var(--Brown, #4d2700);
+  }
   .text-stroke-brown-s {
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: var(--Brown, #4d2700);
