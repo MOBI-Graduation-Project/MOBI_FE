@@ -48,4 +48,9 @@
   --text-cap1-med--font-style: normal;
   --text-cap1-med--font-weight: 500;
   --text-cap1-med--line-height: normal;
+
+  --text-cap2: 3.2rem;
+  --text-cap2--font-style: normal;
+  --text-cap2--font-weight: 700;
+  --text-cap2--line-height: normal;
 }
