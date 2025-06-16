@@ -7,7 +7,7 @@ const geekble = localFont({
   src: "../../public/fonts/GeekbleMalang2WOFF2.woff2",
   display: "swap",
   style: "normal",
-  weight: "45 920",
+  weight: "400",
   variable: "--font-geekble",
 });
 

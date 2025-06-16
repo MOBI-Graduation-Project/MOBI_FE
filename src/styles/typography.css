@@ -1,55 +1,51 @@
 @theme {
+  --text-title: 12.8rem;
+  --text-title--font-style: normal;
+  --text-title--font-weight: 400;
+  --text-title--line-height: normal;
+
   --text-heading1: 4rem;
-  --text-heading1--font-family: var(--font-geekble);
   --text-heading1--font-style: normal;
   --text-heading1--font-weight: 400;
   --text-heading1--line-height: normal;
 
   --text-heading2: 3.6rem;
-  --text-heading2--font-family: var(--font-geekble);
   --text-heading2--font-style: normal;
   --text-heading2--font-weight: 400;
   --text-heading2--line-height: normal;
 
   --text-body: 3.2rem;
-  --text-body--font-family: var(--font-geekble);
   --text-body--font-style: normal;
   --text-body--font-weight: 400;
   --text-body--line-height: normal;
 
-  --text-lap1: 2.4rem;
-  --text-lap1--font-family: var(--font-geekble);
-  --text-lab1--font-sytle: normal;
+  --text-lab1: 2.4rem;
+  --text-lab1--font-style: normal;
   --text-lab1--font-weight: 400;
   --text-lab1--line-height: normal;
 
-  --text-lap2: 2rem;
-  --text-lap2--font-family: var(--font-geekble);
-  --text-lab2--font-sytle: normal;
+  --text-lab2: 2rem;
+  --text-lab2--font-style: normal;
   --text-lab2--font-weight: 400;
   --text-lab2--line-height: normal;
 
   --text-cap1-sb: 2rem;
-  --text-cap1-sb--font-family: var(--font-pretendard);
-  --text-cab1-sb--font-sytle: normal;
-  --text-cab1-sb--font-weight: 600;
-  --text-cab1-sb--line-height: normal;
+  --text-cap1-sb--font-style: normal;
+  --text-cap1-sb--font-weight: 600;
+  --text-cap1-sb--line-height: normal;
 
   --text-cap1: 1.4rem;
-  --text-cap1--font-family: var(--font-pretendard);
-  --text-cab1--font-sytle: normal;
-  --text-cab1--font-weight: 400;
-  --text-cab1--line-height: normal;
+  --text-cap1--font-style: normal;
+  --text-cap1--font-weight: 400;
+  --text-cap1--line-height: normal;
 
   --text-cap1-med: 2rem;
-  --text-cap1-med--font-family: var(--font-pretendard);
-  --text-cab1-med--font-sytle: normal;
-  --text-cab1-med--font-weight: 500;
-  --text-cab1-med--line-height: normal;
+  --text-cap1-med--font-style: normal;
+  --text-cap1-med--font-weight: 500;
+  --text-cap1-med--line-height: normal;
 
-  -text-cap2: 3.2rem;
-  --text-cap2--font-family: var(--font-pretendard);
-  --text-cab2--font-sytle: normal;
-  --text-cab2--font-weight: 400;
-  --text-cab2--line-height: normal;
+  --text-cap2: 3.2rem;
+  --text-cap2--font-style: normal;
+  --text-cap2--font-weight: 400;
+  --text-cap2--line-height: normal;
 }
