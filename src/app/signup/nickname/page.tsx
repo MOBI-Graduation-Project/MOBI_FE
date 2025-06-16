@@ -15,7 +15,7 @@ const SignUp = () => {
   const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     // 10자 제한
-    if (value.length <= 10) {
+    if (value.length <= 10 ) {
       setNickname(value);
       setIsDuplicateChecked(false);
       setDuplicateMessage("");
@@ -31,10 +31,10 @@ const SignUp = () => {
   };
 
   const handleNextClick = () => {
-    if (nickname.trim() && isAgreed && isDuplicateChecked) {
+    if ( nickname.trim() && isAgreed && isDuplicateChecked) {
       // TODO: 다음 페이지로 이동
       console.log("닉네임:", nickname);
-      // router.push("/next-page");
+      router.push("/signup/purpose");
     }
   };
 

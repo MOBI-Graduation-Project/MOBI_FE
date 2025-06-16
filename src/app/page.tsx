@@ -12,7 +12,7 @@ const Onboarding = () => {
     router.push("/login");
   };
   const handleSignUpClick = () => {
-    router.push("/signup");
+    router.push("/signup/nickname");
   };
   return (
     <div
