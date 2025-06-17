@@ -9,7 +9,7 @@ import GoogleIcon from "@/assets/googleIcon.svg";
 const Onboarding = () => {
   const router = useRouter();
   const handleLoginClick = () => {
-    router.push("/login");
+    router.push("/map");
   };
   const handleSignUpClick = () => {
     router.push("/signup/nickname");
