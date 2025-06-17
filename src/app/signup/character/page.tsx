@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import Lottie from "react-lottie-player";
 
 import LeftArrow from "@/assets/leftArrow.svg";
+import { useSignupStore } from "src/store/signupStore";
 
 interface CharacterInfo {
   name: string;
@@ -27,6 +28,7 @@ const characterMap: Record<string, CharacterInfo> = {
 const CharacterPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const nickname = useSignupStore((state) => state.nickname);
   const [characterType, setCharacterType] = useState<string>("");
   const [animationData, setAnimationData] = useState<any>(null);
   const [showNameInput, setShowNameInput] = useState(false);
@@ -79,7 +81,7 @@ const CharacterPage = () => {
         <h2 className="text-heading1 text-brown text-stroke-white mb-[40px] text-center font-[geekble]">
           당신의 투자 유형에 맞는 캐릭터가 생성되었어요!
           <br />
-          nickname님, 마음에 드시나요?
+          {nickname}님, 마음에 드시나요?
         </h2>
 
         {/* 캐릭터 애니메이션 */}
