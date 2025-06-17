@@ -1,5 +1,5 @@
 // store/signupStore.ts
-import { create } from 'zustand';
+import { create } from "zustand";
 
 interface SignupStore {
   nickname: string;
@@ -17,17 +17,17 @@ interface SignupStore {
   setCharacter: (type: string, name: string) => void;
 }
 
-export const useSignupStore = create<SignupStore>((set) => ({
-  nickname: '',
+export const useSignupStore = create<SignupStore>(set => ({
+  nickname: "",
   purposes: {
     step1: null,
     step2: null,
     step3: null,
   },
   character: null,
-  setNickname: (nickname) => set({ nickname }),
-  setPurpose: (step, value) => 
-    set((state) => ({
+  setNickname: nickname => set({ nickname }),
+  setPurpose: (step, value) =>
+    set(state => ({
       purposes: {
         ...state.purposes,
         [`step${step}`]: value,
