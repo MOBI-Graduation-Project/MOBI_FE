@@ -57,7 +57,7 @@ const Chatbot = () => {
       </div>
 
       {/*채팅영역 */}
-      <div className="flex flex-col pt-[100px] pb-[230px]">
+      <div className="flex flex-col pt-[100px] pb-[230px] px-[20px]">
         <div
           className="flex-1 space-y-3 overflow-y-auto pr-2 scrollbar-hide"
           style={{ maxHeight: "calc(100vh - 110px - 230px)" }} // 100px 상단바 + 230px 하단바
