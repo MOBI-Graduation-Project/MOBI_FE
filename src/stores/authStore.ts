@@ -1,5 +1,5 @@
 // src/store/authStore.ts
-import { create } from 'zustand';
+import { create } from "zustand";
 
 interface AuthStore {
   isAuthenticated: boolean;
@@ -13,11 +13,11 @@ interface AuthStore {
   logout: () => void;
 }
 
-export const useAuthStore = create<AuthStore>((set) => ({
+export const useAuthStore = create<AuthStore>(set => ({
   isAuthenticated: false,
   isNewUser: false,
   user: null,
   setAuth: (isAuthenticated, user = null) => set({ isAuthenticated, user }),
-  setNewUser: (isNewUser) => set({ isNewUser }),
+  setNewUser: isNewUser => set({ isNewUser }),
   logout: () => set({ isAuthenticated: false, user: null }),
 }));
