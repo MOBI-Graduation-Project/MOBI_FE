@@ -4,6 +4,10 @@ import { useRouter } from "next/navigation";
 
 import React, { useState } from "react";
 
+import { authService } from "@/services/auth.service";
+import { useAuthStore } from "@/stores/authStore";
+import { useSignupStore } from "@/stores/signupStore";
+
 import RightArrow from "@/assets/rightArrow.svg";
 
 const SignUp = () => {
@@ -12,7 +16,9 @@ const SignUp = () => {
   const [isAgreed, setIsAgreed] = useState(false);
   const [isDuplicateChecked, setIsDuplicateChecked] = useState(false);
   const [duplicateMessage, setDuplicateMessage] = useState("");
-  const [isHovered, setIsHovered] = useState(false);
+
+  const setNicknameStore = useSignupStore(state => state.setNickname);
+  const setAuth = useAuthStore(state => state.setAuth);
 
   const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -33,14 +39,24 @@ const SignUp = () => {
   };
 
   const handleNextClick = () => {
-    if (nickname.trim() && isAgreed && isDuplicateChecked) {
-      // TODO: 다음 페이지로 이동
+    if (
+      nickname.trim().length >= 2 &&
+      nickname.trim() &&
+      isAgreed &&
+      isDuplicateChecked
+    ) {
+      // store에 닉네임 저장
+      setNicknameStore(nickname);
       console.log("닉네임:", nickname);
       router.push("/signup/purpose");
     }
   };
 
-  const isButtonEnabled = nickname.trim() && isAgreed && isDuplicateChecked;
+  const isButtonEnabled =
+    nickname.trim().length >= 2 &&
+    nickname.trim() &&
+    isAgreed &&
+    isDuplicateChecked;
 
   return (
     <div
@@ -49,7 +65,7 @@ const SignUp = () => {
     >
       <div className="relative flex h-[450px] w-[1000px] flex-col items-center justify-center rounded-[30px] bg-[#FFFAEA]">
         {/* 닉네임 입력해주세요 텍스트 */}
-        <h1 className="text-brown mb-[50px] font-[geekble] text-heading1">
+        <h1 className="text-brown text-heading1 mb-[50px] font-[geekble]">
           닉네임을 입력해주세요
         </h1>
 
@@ -61,12 +77,12 @@ const SignUp = () => {
               value={nickname}
               onChange={handleNicknameChange}
               placeholder="한글/영어/숫자만 2~10자 입력해주세요"
-              className="text-brown-20 placeholder:text-brown-20/70 h-[70px] w-[550px] rounded-[20px] border border-black bg-[#FFEEBD] px-[25px] font-[pretendard] text-lab2 focus:outline-none"
+              className="text-brown-20 placeholder:text-brown-20/70 text-lab2 h-[70px] w-[550px] rounded-[20px] border border-black bg-[#FFEEBD] px-[25px] font-[pretendard] focus:outline-none"
             />
           </div>
           <button
             onClick={handleDuplicateCheck}
-            className="cursor-pointer hover:scale-110 button-shadow text-stroke-white bg-yellow text-lab1 text-brown inline-flex h-[50px] shrink-0 items-center justify-center gap-[10px] rounded-[20px] px-[18px] py-[10px] font-[geekble]"
+            className="button-shadow text-stroke-white bg-yellow text-lab1 text-brown inline-flex h-[50px] shrink-0 cursor-pointer items-center justify-center gap-[10px] rounded-[20px] px-[18px] py-[10px] font-[geekble] hover:scale-110"
           >
             중복확인
           </button>
@@ -76,7 +92,7 @@ const SignUp = () => {
         <div className="flex items-start gap-[15px]">
           <button
             onClick={() => setIsAgreed(!isAgreed)}
-            className={`mt-[3px] h-[30px] w-[30px] rounded-full border border-black transition-all cursor-pointer ${
+            className={`mt-[3px] h-[30px] w-[30px] cursor-pointer rounded-full border border-black transition-all ${
               isAgreed ? "bg-brown-20 button-shadow" : "bg-white/20"
             }`}
           />

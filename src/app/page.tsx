@@ -4,16 +4,24 @@ import { useRouter } from "next/navigation";
 
 import React from "react";
 
+import { authService } from "@/services/auth.service";
+
 import GoogleIcon from "@/assets/googleIcon.svg";
 
 const Onboarding = () => {
   const router = useRouter();
+
   const handleLoginClick = () => {
     router.push("/map");
+    // Google OAuth 로그인
+    authService.googleLogin();
   };
+
   const handleSignUpClick = () => {
-    router.push("/signup/nickname");
+    // Google OAuth 회원가입
+    authService.googleSignup();
   };
+
   return (
     <div
       className="flex h-screen w-full flex-col items-center justify-center gap-[91.27px] bg-cover bg-center bg-no-repeat"
