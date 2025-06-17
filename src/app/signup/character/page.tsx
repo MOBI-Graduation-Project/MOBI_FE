@@ -6,10 +6,11 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Lottie from "react-lottie-player";
 
-import LeftArrow from "@/assets/leftArrow.svg";
-import { useSignupStore } from "@/stores/signupStore";
 import { authService } from "@/services/auth.service";
 import { useAuthStore } from "@/stores/authStore";
+import { useSignupStore } from "@/stores/signupStore";
+
+import LeftArrow from "@/assets/leftArrow.svg";
 
 interface CharacterInfo {
   name: string;
@@ -30,8 +31,8 @@ const characterMap: Record<string, CharacterInfo> = {
 const CharacterPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const nickname = useSignupStore((state) => state.nickname);
-  const setAuth = useAuthStore((state) => state.setAuth);
+  const nickname = useSignupStore(state => state.nickname);
+  const setAuth = useAuthStore(state => state.setAuth);
   const [characterType, setCharacterType] = useState<string>("");
   const [animationData, setAnimationData] = useState<any>(null);
   const [showNameInput, setShowNameInput] = useState(false);
@@ -54,6 +55,12 @@ const CharacterPage = () => {
   };
 
   const handleNext = async () => {
+    // 임시로 바로 맵으로 이동
+    router.push("/map");
+    return;
+
+    // 백엔드 연결 시 아래 주석 해제
+    /*
     try {
       // purpose 페이지에서 받은 답변들을 조합 (예: "1-2-2")
       const purposes = useSignupStore((state) => state.purposes);
@@ -71,6 +78,7 @@ const CharacterPage = () => {
       console.error('회원가입 완료 실패:', error);
       alert('회원가입 완료에 실패했습니다. 다시 시도해주세요.');
     }
+    */
   };
 
   const currentCharacter = characterType ? characterMap[characterType] : null;
