@@ -30,7 +30,7 @@ const PurposePage = () => {
   const stepContent = {
     1: {
       title: "",
-      leftText: "나는 지금 당장 눈앞에\n치킨 사먹을 돈이 떨어지도 왱복하다.",
+      leftText: "나는 지금 당장 눈앞에\n치킨 사먹을 돈이 떨어지도 행복하다.",
       rightText: "나는 기다려서라도\n건물 정도는 사야지 행복하다.",
     },
     2: {
@@ -94,7 +94,7 @@ const PurposePage = () => {
           onClick={() => handleCardClick("left")}
           onMouseEnter={() => setHoveredCard("left")}
           onMouseLeave={() => setHoveredCard(null)}
-          className={`flex h-[314px] w-[532px] items-center justify-center rounded-[40px] p-[10px] transition-all ${
+          className={`flex h-[314px] w-[532px] items-center justify-center rounded-[40px] p-[10px] cursor-pointer transition-all ${
             currentSelection === "1" || hoveredCard === "left"
               ? "bg-[#FFCA16]"
               : "bg-[#FFF4D0]"
@@ -116,9 +116,9 @@ const PurposePage = () => {
           onClick={() => handleCardClick("right")}
           onMouseEnter={() => setHoveredCard("right")}
           onMouseLeave={() => setHoveredCard(null)}
-          className={`flex h-[314px] w-[532px] items-center justify-center rounded-[4rem] p-[1rem] transition-all ${
+          className={`flex h-[314px] w-[532px] items-center justify-center rounded-[4rem] p-[1rem] cursor-pointer transition-all  ${
             currentSelection === "2" || hoveredCard === "right"
-              ? "bg-[#FFCA16]"
+              ? "bg-[#FFCA16]" 
               : "bg-[#FFF4D0]"
           }`}
           style={{

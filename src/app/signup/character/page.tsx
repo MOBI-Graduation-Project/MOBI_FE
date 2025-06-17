@@ -7,6 +7,10 @@ import React, { useEffect, useState } from "react";
 import Lottie from "react-lottie-player";
 
 import LeftArrow from "@/assets/leftArrow.svg";
+import { useSignupStore } from "@/stores/signupStore";
+import { authService } from "@/services/auth.service";
+import { useAuthStore } from "@/stores/authStore";
+
 
 interface CharacterInfo {
   name: string;
@@ -27,6 +31,8 @@ const characterMap: Record<string, CharacterInfo> = {
 const CharacterPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const nickname = useSignupStore((state) => state.nickname);
+  const setAuth = useAuthStore((state) => state.setAuth);
   const [characterType, setCharacterType] = useState<string>("");
   const [animationData, setAnimationData] = useState<any>(null);
   const [showNameInput, setShowNameInput] = useState(false);
@@ -48,16 +54,31 @@ const CharacterPage = () => {
     router.push("/signup/purpose");
   };
 
-  const handleNext = () => {
-    if (characterName.trim()) {
-      // 캐릭터 정보 저장 (Zustand store에 저장하는 로직 추가 필요)
-      console.log("Character saved:", {
-        type: characterType,
-        name: characterName,
-      });
-      // 다음 페이지로 이동
+  const handleNext = async () => {
+    // 임시로 바로 맵으로 이동
+    router.push("/map");
+    return;
+    
+    // 백엔드 연결 시 아래 주석 해제
+    /*
+    try {
+      // purpose 페이지에서 받은 답변들을 조합 (예: "1-2-2")
+      const purposes = useSignupStore((state) => state.purposes);
+      const investmentAnswers = `${purposes.step1}-${purposes.step2}-${purposes.step3}`;
+      
+      // 회원가입 완료 API 호출
+      await authService.completeProfile(nickname, investmentAnswers);
+      
+      // 인증 상태 업데이트
+      setAuth(true, { nickname });
+      
+      // 맵 페이지로 이동
       router.push("/map");
+    } catch (error) {
+      console.error('회원가입 완료 실패:', error);
+      alert('회원가입 완료에 실패했습니다. 다시 시도해주세요.');
     }
+    */
   };
 
   const currentCharacter = characterType ? characterMap[characterType] : null;
@@ -79,7 +100,7 @@ const CharacterPage = () => {
         <h2 className="text-heading1 text-brown text-stroke-white mb-[40px] text-center font-[geekble]">
           당신의 투자 유형에 맞는 캐릭터가 생성되었어요!
           <br />
-          nickname님, 마음에 드시나요?
+          {nickname}님, 마음에 드시나요?
         </h2>
 
         {/* 캐릭터 애니메이션 */}
