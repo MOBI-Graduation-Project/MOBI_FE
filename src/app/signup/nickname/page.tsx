@@ -4,22 +4,21 @@ import { useRouter } from "next/navigation";
 
 import React, { useState } from "react";
 
-import { authService } from "@/services/auth.service";
+// import { authService } from "@/services/auth.service";
 import { useAuthStore } from "@/stores/authStore";
 import { useSignupStore } from "@/stores/signupStore";
 
 import RightArrow from "@/assets/rightArrow.svg";
-import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const router = useRouter();
   const [nickname, setNickname] = useState("");
   const [isAgreed, setIsAgreed] = useState(false);
   const [isDuplicateChecked, setIsDuplicateChecked] = useState(false);
-  const [duplicateMessage, setDuplicateMessage] = useState("");
+  const [, setDuplicateMessage] = useState("");
 
   const setNicknameStore = useSignupStore(state => state.setNickname);
-  const setAuth = useAuthStore(state => state.setAuth);
+ // const setAuth = useAuthStore(state => state.setAuth);
 
   const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -97,7 +96,10 @@ const SignUp = () => {
               isAgreed ? "bg-brown-20 button-shadow" : "bg-white/20"
             }`}
           />
-          <a href="https://fir-earl-dd1.notion.site/215c9deec31b804d9f67cc457878ec26?source=copy_link" className="text-lab2 text-brown font-[geekble] whitespace-nowrap">
+          <a
+            href="https://fir-earl-dd1.notion.site/215c9deec31b804d9f67cc457878ec26?source=copy_link"
+            className="text-lab2 text-brown font-[geekble] whitespace-nowrap"
+          >
             이용약관 동의 (투자는 본인의 책임이므로, 투자로 인한 손실은 투자자
             본인에게 책임이 있습니다)
           </a>
