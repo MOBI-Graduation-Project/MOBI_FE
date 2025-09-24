@@ -1,4 +1,4 @@
-export const getButtonLog = (label: string) => {
+export const getButtonLog = () => {
   const now = new Date();
 
   const year = now.getFullYear();

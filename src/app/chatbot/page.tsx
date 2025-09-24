@@ -46,7 +46,7 @@ const Chatbot = () => {
   return (
     <div className="h-screen w-full bg-[#ffeebd]">
       {/*상단바*/}
-      <div className="fixed flex h-[100px] flex-row items-center gap-5 pl-[30px]  w-full bg-[#ffeebd]">
+      <div className="fixed flex h-[100px] w-full flex-row items-center gap-5 bg-[#ffeebd] pl-[30px]">
         <button onClick={() => router.back()} className="cursor-pointer">
           <Backbtn />
         </button>
@@ -57,9 +57,9 @@ const Chatbot = () => {
       </div>
 
       {/*채팅영역 */}
-      <div className="flex flex-col pt-[100px] pb-[230px] px-[20px]">
+      <div className="flex flex-col px-[20px] pt-[100px] pb-[230px]">
         <div
-          className="flex-1 space-y-3 overflow-y-auto pr-2 scrollbar-hide"
+          className="scrollbar-hide flex-1 space-y-3 overflow-y-auto pr-2"
           style={{ maxHeight: "calc(100vh - 110px - 230px)" }} // 100px 상단바 + 230px 하단바
         >
           {messages.map(msg => (
