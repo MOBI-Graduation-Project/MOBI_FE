@@ -11,7 +11,7 @@ const getCurrentTime = () => {
   return new Date().toLocaleTimeString("ko-KR", {
     hour: "2-digit",
     minute: "2-digit",
-    hour12: false
+    hour12: false,
   });
 };
 
