@@ -94,7 +94,7 @@ const PurposePage = () => {
           onClick={() => handleCardClick("left")}
           onMouseEnter={() => setHoveredCard("left")}
           onMouseLeave={() => setHoveredCard(null)}
-          className={`flex h-[314px] w-[532px] items-center justify-center rounded-[40px] p-[10px] cursor-pointer transition-all ${
+          className={`flex h-[314px] w-[532px] cursor-pointer items-center justify-center rounded-[40px] p-[10px] transition-all ${
             currentSelection === "1" || hoveredCard === "left"
               ? "bg-[#FFCA16]"
               : "bg-[#FFF4D0]"
@@ -116,9 +116,9 @@ const PurposePage = () => {
           onClick={() => handleCardClick("right")}
           onMouseEnter={() => setHoveredCard("right")}
           onMouseLeave={() => setHoveredCard(null)}
-          className={`flex h-[314px] w-[532px] items-center justify-center rounded-[4rem] p-[1rem] cursor-pointer transition-all  ${
+          className={`flex h-[314px] w-[532px] cursor-pointer items-center justify-center rounded-[4rem] p-[1rem] transition-all ${
             currentSelection === "2" || hoveredCard === "right"
-              ? "bg-[#FFCA16]" 
+              ? "bg-[#FFCA16]"
               : "bg-[#FFF4D0]"
           }`}
           style={{
