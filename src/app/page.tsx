@@ -4,8 +4,6 @@ import { useRouter } from "next/navigation";
 
 import React from "react";
 
-import { authService } from "@/services/auth.service";
-
 import GoogleIcon from "@/assets/googleIcon.svg";
 
 const Onboarding = () => {
@@ -13,13 +11,10 @@ const Onboarding = () => {
 
   const handleLoginClick = () => {
     router.push("/map");
-    // Google OAuth 로그인
-    authService.googleLogin();
   };
 
   const handleSignUpClick = () => {
-    // Google OAuth 회원가입
-    authService.googleSignup();
+    router.push("/signup/purpose");
   };
 
   return (
