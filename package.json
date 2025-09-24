@@ -7,7 +7,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write --cache ."
+    "format": "prettier --write --cache .",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
   },
   "dependencies": {
     "@react-three/drei": "^10.2.0",
@@ -15,6 +23,7 @@
     "next": "^15.5.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-lottie-player": "^2.1.0",
     "react-router-dom": "^7.6.2",
     "three": "^0.177.0"
   },
@@ -29,6 +38,8 @@
     "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.6",
     "postcss": "^8.5.5",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.12",
