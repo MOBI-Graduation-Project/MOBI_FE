@@ -6,7 +6,7 @@ import FortuneTellerIcon from "@/assets/map/fortuneTellerIcon.svg";
 import MyPageIcon from "@/assets/map/mypageIcon.svg";
 import SquareIcon from "@/assets/map/squareIcon.svg";
 
-import BottomBar from "@/components/bottomBar";
+import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/header";
 
 const Map = () => {

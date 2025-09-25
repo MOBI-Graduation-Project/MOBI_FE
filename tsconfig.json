@@ -21,6 +21,7 @@
     "baseUrl": ".",
     "paths": {
       "@/apis/*": ["src/apis/*"],
+      "@/app/*" : ["src/app/*"],
       "@/components/*": ["src/components/*"],
       "@/constants/*": ["src/constants/*"],
       "@/hooks/*": ["src/hooks/*"],

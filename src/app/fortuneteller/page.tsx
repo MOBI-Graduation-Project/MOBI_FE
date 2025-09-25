@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-import BottomBar from "@/components/bottomBar";
+import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/header";
 
 const FortuneTeller = () => {

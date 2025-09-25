@@ -17,6 +17,7 @@
     "^react",
     "<THIRD_PARTY_MODULES>",
     "^@/apis/(.*)$",
+    "^@/app/(.*)$",
     "^@/assets/(.*)$",
     "^@/hooks/(.*)$",
     "^@/utils/(.*)$",
