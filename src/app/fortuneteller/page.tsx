@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 
 import BottomBar from "@/components/common/bottomBar";
-import Header from "@/components/header";
+import Header from "@/components/common/header";
 
 const FortuneTeller = () => {
   const router = useRouter();
