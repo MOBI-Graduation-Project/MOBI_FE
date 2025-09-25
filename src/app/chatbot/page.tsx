@@ -14,7 +14,7 @@ import {
   createUserMessage,
 } from "@/utils/chatbot/handleChatInput";
 
-import ChatbotButton from "@/components/chatbotButton";
+import ChatbotButton from "@/components/chatbot/chatbotButton";
 
 const Chatbot = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
