@@ -1,10 +1,10 @@
 import CharacterPage from "./CharacterPage";
 
-export default function Page({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
+interface SignupCharacterPageProps {
+  searchParams: Record<string, string | string[] | undefined>;
+}
+
+export default function Page({ searchParams }: SignupCharacterPageProps) {
   const typeParam = Array.isArray(searchParams.type)
     ? searchParams.type[0]
     : searchParams.type;
