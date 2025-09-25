@@ -7,7 +7,7 @@ import MyPageIcon from "@/assets/map/mypageIcon.svg";
 import SquareIcon from "@/assets/map/squareIcon.svg";
 
 import BottomBar from "@/components/common/bottomBar";
-import Header from "@/components/header";
+import Header from "@/components/common/header";
 
 const Map = () => {
   const router = useRouter();
