@@ -1,9 +1,13 @@
-import CharacterPage from "@/app/signup/character/CharaterPage";
+import CharacterPage from "./CharaterPage";
 
 export default function Page({
   searchParams,
 }: {
-  searchParams: { type?: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  return <CharacterPage type={searchParams.type} />;
+  const typeParam = Array.isArray(searchParams?.type)
+    ? searchParams?.type[0]
+    : searchParams?.type;
+
+  return <CharacterPage type={typeParam} />;
 }
