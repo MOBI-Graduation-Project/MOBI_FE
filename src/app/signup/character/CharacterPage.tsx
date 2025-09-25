@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import React, { useEffect, useState } from "react";
 import Lottie from "react-lottie-player";
@@ -26,17 +26,17 @@ const characterMap: Record<string, CharacterInfo> = {
   "221": { name: "221", jsonPath: "/animations/221.json" },
   "222": { name: "222", jsonPath: "/animations/222.json" },
 };
-interface CharacterPageProps {
-  type?: string;
-}
 
-const CharacterPage = ({ type }: CharacterPageProps) => {
+const CharacterPage = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const nickname = useSignupStore(state => state.nickname);
   const [, setCharacterType] = useState<string>("");
   const [animationData, setAnimationData] =
     useState<AnimationConfigWithData | null>(null);
   const [showNameInput] = useState(false);
+
+  const type = searchParams.get("type") ?? "";
 
   useEffect(() => {
     if (type && characterMap[type]) {

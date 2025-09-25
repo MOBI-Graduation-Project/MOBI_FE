@@ -1,13 +1,12 @@
+import { Suspense } from "react";
+
 import CharacterPage from "./CharacterPage";
 
-interface SignupCharacterPageProps {
-  searchParams: Record<string, string | string[] | undefined>;
-}
-
-export default function Page({ searchParams }: SignupCharacterPageProps) {
-  const typeParam = Array.isArray(searchParams.type)
-    ? searchParams.type[0]
-    : searchParams.type;
-
-  return <CharacterPage type={typeParam} />;
-}
+const Character = () => {
+  return (
+    <Suspense fallback="로딩 중">
+      <CharacterPage />
+    </Suspense>
+  );
+};
+export default Character;
