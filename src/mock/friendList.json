@@ -5,27 +5,27 @@
         {
           "memeberId": 1,
           "nickname": "신수진",
-          "profileUrl": "../assets/profileImages/image1",
+          "profileUrl": "/svgs/profileImages/image1.jpeg",
           "profileDescribe": "상태메세지"
         }, {
           "memeberId": 2,
           "nickname": "최희주",
-          "profileUrl": "../assets/profileImages/image2",
+          "profileUrl": "",
           "profileDescribe": "상태메세지"
         }, {
           "memeberId": 3,
           "nickname": "김형준",
-          "profileUrl": "../assets/profileImages/image3",
+          "profileUrl": "/svgs/profileImages/image3.jpeg",
           "profileDescribe": "상태메세지"
         }, {
           "memeberId": 4,
           "nickname": "추정은",
-          "profileUrl": "../assets/profileImages/image4",
+          "profileUrl": "/svgs/profileImages/image4.jpeg",
           "profileDescribe": "상태메세지"
         }, {
           "memeberId": 5,
           "nickname": "김민서",
-          "profileUrl": "../assets/profileImages/image5",
+          "profileUrl": "/svgs/profileImages/image5.jpeg",
           "profileDescribe": "상태메세지"
         }
       ],
@@ -33,31 +33,31 @@
         {
           "memeberId": 1,
           "nickname": "수진",
-          "profileUrl": "../assets/profileImages/image6",
+          "profileUrl": "/svgs/profileImages/image6.jpeg",
           "profileDescribe": "상태메세지"
         },
         {
           "memeberId": 2,
           "nickname": "희주",
-          "profileUrl": "../assets/profileImages/image7",
+          "profileUrl": "/svgs/profileImages/image7.jpeg",
           "profileDescribe": "상태메세지"
         },
         {
           "memeberId": 3,
           "nickname": "형준",
-          "profileUrl": "../assets/profileImages/image8",
+          "profileUrl": "/svgs/profileImages/image8.jpeg",
           "profileDescribe": "상태메세지"
         },
         {
           "memeberId": 4,
           "nickname": "정은",
-          "profileUrl": "../assets/profileImages/image9",
+          "profileUrl": "/svgs/profileImages/image9.jpg",
           "profileDescribe": "상태메세지"
         },
         {
           "memeberId": 5,
           "nickname": "민서",
-          "profileUrl": "../assets/profileImages/image10",
+          "profileUrl": "/svgs/profileImages/image10.jpeg",
           "profileDescribe": "상태메세지"
         }
       ]
