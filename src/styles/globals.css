@@ -23,6 +23,7 @@
   --color-brown-20: #715233;
   --color-brown-10t: #452300;
   --color-brown-20t: #3e1f00;
+  --color-brown-dark: #3D0303;
 
   /* Yellow scale */
   --color-yellow: #ffc414;
@@ -31,6 +32,7 @@
   --color-yellow-90: #f4e891;
   --color-yellow-10t: #e6b112;
   --color-yellow-20t: #cc9d10;
+  --color-yellow-light: #fff0c8;
 
   /* Accent */
   --color-red: #ff0000;
