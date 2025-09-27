@@ -13,7 +13,7 @@ const FortuneTeller = () => {
   return (
     <div
       className="flex h-screen w-full items-center justify-center bg-cover bg-center bg-no-repeat pt-[42.5px] pb-[99px]"
-      style={{ backgroundImage: "url('/svgs/backgroundImage.svg')" }}
+      style={{ backgroundImage: "url('/svgs/bgImage.jpg)" }}
     >
       <Header />
       <div className="flex flex-row items-center justify-center gap-[62px]">

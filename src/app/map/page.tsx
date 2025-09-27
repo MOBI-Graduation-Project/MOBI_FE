@@ -23,7 +23,7 @@ const Map = () => {
   return (
     <div
       className="flex h-screen w-full items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat pt-[42.5px] pb-[99px]"
-      style={{ backgroundImage: "url('/svgs/backgroundImage.svg')" }}
+      style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
     >
       <Header />
       <div className="flex w-full flex-row items-center justify-evenly p-[203.15px]">
