@@ -63,7 +63,7 @@ const CharacterPage = () => {
     <div className="relative flex h-screen w-full items-center justify-center overflow-hidden">
       {/* 배경 이미지 */}
       <Image
-        src="/svgs/backgroundImage.svg"
+        src="/svgs/bgImage.jpg"
         alt="forest background"
         fill
         className="object-cover"
