@@ -30,7 +30,7 @@ const PurposePage = () => {
   const stepContent = {
     1: {
       title: "",
-      leftText: "나는 지금 당장 눈앞에\n치킨 사먹을 돈이 떨어지도 행복하다.",
+      leftText: "나는 지금 당장 눈앞에\n치킨 사먹을 돈이 떨어져도 행복하다.",
       rightText: "나는 기다려서라도\n건물 정도는 사야지 행복하다.",
     },
     2: {
