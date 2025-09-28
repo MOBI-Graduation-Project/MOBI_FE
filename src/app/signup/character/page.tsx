@@ -9,7 +9,9 @@ import Lottie from "react-lottie-player";
 import { useSignupStore } from "@/stores/signupStore";
 import type { AnimationConfigWithData } from "lottie-web";
 
+
 import LeftArrow from "@/assets/leftArrow.svg";
+
 
 interface CharacterInfo {
   name: string;
@@ -53,9 +55,11 @@ const CharacterPage = () => {
   };
 
   const handleNext = async () => {
+
     // 임시로 바로 맵으로 이동
     router.push("/map");
     return;
+
   };
 
   return (
