@@ -100,13 +100,13 @@ const CharacterPage = () => {
           <div className="mt-[40px] flex gap-[50px]">
             <button
               onClick={handleNext}
-              className="button-shadow bg-yellow text-lab1 text-brown hover:bg-yellow-10t inline-flex h-[60px] cursor-pointer items-center justify-center rounded-[20px] px-[40px] font-[geekble] shadow-lg transition-all"
+              className="button-shadow-yellow bg-yellow text-lab1 text-brown hover:bg-yellow-10t inline-flex h-[60px] cursor-pointer items-center justify-center rounded-[20px] px-[40px] font-[geekble] shadow-lg transition-all"
             >
               네, 마음에 들어요
             </button>
             <button
               onClick={handleNext}
-              className="button-shadow bg-yellow text-lab1 text-brown hover:bg-yellow-10t inline-flex h-[60px] cursor-pointer items-center justify-center rounded-[20px] px-[40px] font-[geekble] shadow-lg transition-all"
+              className="button-shadow-yellow bg-yellow text-lab1 text-brown hover:bg-yellow-10t inline-flex h-[60px] cursor-pointer items-center justify-center rounded-[20px] px-[40px] font-[geekble] shadow-lg transition-all"
             >
               저와 잘맞는 캐릭터인거 같아요
             </button>
