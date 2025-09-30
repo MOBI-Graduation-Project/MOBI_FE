@@ -19,13 +19,13 @@ const FortuneTeller = () => {
       <div className="flex flex-row items-center justify-center gap-[62px]">
         <button
           onClick={() => handleClick("/fortune/name")}
-          className="bg-yellow-90 hover:bg-yellow text-title2 text-brown text-stroke-white button-shadow hover:button-shadow h-[94px] w-[532px] cursor-pointer rounded-[40px] font-[geekble]"
+          className="bg-yellow-90 hover:bg-yellow text-title2 text-brown text-stroke-white button-shadow-yellow hover:button-shadow-yellow h-[94px] w-[532px] cursor-pointer rounded-[40px] font-[geekble]"
         >
           이름점 보기
         </button>
         <button
           onClick={() => handleClick("/fortune/compatibility")}
-          className="bg-yellow-90 hover:bg-yellow text-title2 text-brown text-stroke-white button-shadow hover:button-shadow h-[94px] w-[532px] cursor-pointer rounded-[40px] font-[geekble]"
+          className="bg-yellow-90 hover:bg-yellow text-title2 text-brown text-stroke-white button-shadow-yellow hover:button-shadow-yellow h-[94px] w-[532px] cursor-pointer rounded-[40px] font-[geekble]"
         >
           궁합 보기
         </button>
