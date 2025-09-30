@@ -9,8 +9,8 @@ import { useSignupStore } from "@/stores/signupStore";
 
 import RetryIcon from "@/assets/fortuneteller/retryIcon.svg";
 
-import BottomBar from "@/components/bottomBar";
-import Header from "@/components/header";
+import BottomBar from "@/components/common/bottomBar";
+import Header from "@/components/common/header";
 
 const FortuneResult = () => {
   const router = useRouter();

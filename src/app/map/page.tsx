@@ -6,8 +6,8 @@ import FortuneTellerIcon from "@/assets/map/fortuneTellerIcon.svg";
 import MyPageIcon from "@/assets/map/mypageIcon.svg";
 import SquareIcon from "@/assets/map/squareIcon.svg";
 
-import BottomBar from "@/components/bottomBar";
-import Header from "@/components/header";
+import BottomBar from "@/components/common/bottomBar";
+import Header from "@/components/common/header";
 
 const Map = () => {
   const router = useRouter();
@@ -22,8 +22,8 @@ const Map = () => {
   };
   return (
     <div
-      className="flex h-screen w-full items-center justify-center bg-cover bg-center bg-no-repeat pt-[42.5px] pb-[99px]"
-      style={{ backgroundImage: "url('/svgs/backgroundImage.svg')" }}
+      className="flex h-screen w-full items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat pt-[42.5px] pb-[99px]"
+      style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
     >
       <Header />
       <div className="flex w-full flex-row items-center justify-evenly p-[203.15px]">

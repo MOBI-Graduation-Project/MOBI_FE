@@ -23,6 +23,7 @@
   --color-brown-20: #715233;
   --color-brown-10t: #452300;
   --color-brown-20t: #3e1f00;
+  --color-brown-dark: #3d0303;
 
   /* Yellow scale */
   --color-yellow: #ffc414;
@@ -31,9 +32,11 @@
   --color-yellow-90: #f4e891;
   --color-yellow-10t: #e6b112;
   --color-yellow-20t: #cc9d10;
+  --color-yellow-light: #fff0c8;
 
   /* Accent */
   --color-red: #ff0000;
+  --color-red-dark: #e60000;
   --color-blue: #3e3bff;
   --color-green: #02e819;
 }
@@ -79,7 +82,7 @@
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--Black, #000);
   }
-  .button-shadow {
+  .button-shadow-yellow {
     box-shadow:
       0px 0px 4px 0px #462611,
       0px 2px 0px 0px #fff inset,
@@ -87,6 +90,15 @@
       0px -4px 2.7px 0px rgba(206, 123, 0, 0.34) inset,
       0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
+  .button-shadow-gray {
+    box-shadow:
+      0px 0px 4px 0px #2c2c2c,
+      0px 2px 0px 0px #fff inset,
+      0px 27px 4.6px 0px rgba(128, 128, 128, 0.46) inset,
+      0px -4px 2.7px 0px rgba(80, 80, 80, 0.34) inset,
+      0px 4px 4px 0px rgba(0, 0, 0, 0.25); /* 그대로 */
+  }
+
   .hover\:buttombar-shadow {
     box-shadow:
       0px 1px 3.8px 0px #000,

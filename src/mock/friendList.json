@@ -1,0 +1,66 @@
+{
+  "friend": [
+    {
+      "friendList": [
+        {
+          "memeberId": 1,
+          "nickname": "신수진",
+          "profileUrl": "/svgs/profileImages/image1.jpeg",
+          "profileDescribe": "상태메세지"
+        }, {
+          "memeberId": 2,
+          "nickname": "최희주",
+          "profileUrl": "",
+          "profileDescribe": "상태메세지"
+        }, {
+          "memeberId": 3,
+          "nickname": "김형준",
+          "profileUrl": "/svgs/profileImages/image3.jpeg",
+          "profileDescribe": "상태메세지"
+        }, {
+          "memeberId": 4,
+          "nickname": "추정은",
+          "profileUrl": "/svgs/profileImages/image4.jpeg",
+          "profileDescribe": "상태메세지"
+        }, {
+          "memeberId": 5,
+          "nickname": "김민서",
+          "profileUrl": "/svgs/profileImages/image5.jpeg",
+          "profileDescribe": "상태메세지"
+        }
+      ],
+      "friendRequestList": [
+        {
+          "memeberId": 1,
+          "nickname": "수진",
+          "profileUrl": "/svgs/profileImages/image6.jpeg",
+          "profileDescribe": "상태메세지"
+        },
+        {
+          "memeberId": 2,
+          "nickname": "희주",
+          "profileUrl": "/svgs/profileImages/image7.jpeg",
+          "profileDescribe": "상태메세지"
+        },
+        {
+          "memeberId": 3,
+          "nickname": "형준",
+          "profileUrl": "/svgs/profileImages/image8.jpeg",
+          "profileDescribe": "상태메세지"
+        },
+        {
+          "memeberId": 4,
+          "nickname": "정은",
+          "profileUrl": "/svgs/profileImages/image9.jpg",
+          "profileDescribe": "상태메세지"
+        },
+        {
+          "memeberId": 5,
+          "nickname": "민서",
+          "profileUrl": "/svgs/profileImages/image10.jpeg",
+          "profileDescribe": "상태메세지"
+        }
+      ]
+    }
+  ]
+}
