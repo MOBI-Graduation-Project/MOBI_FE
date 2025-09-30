@@ -4,8 +4,6 @@ import { useRouter } from "next/navigation";
 
 import React, { useState } from "react";
 
-import { useSignupStore } from "@/stores/signupStore";
-
 import RightArrow from "@/assets/rightArrow.svg";
 
 const SignUp = () => {
@@ -14,9 +12,6 @@ const SignUp = () => {
   const [isAgreed, setIsAgreed] = useState(false);
   const [isDuplicateChecked, setIsDuplicateChecked] = useState(false);
   const [, setDuplicateMessage] = useState("");
-
-  const setNicknameStore = useSignupStore(state => state.setNickname);
-  // const setAuth = useAuthStore(state => state.setAuth);
 
   const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -43,9 +38,6 @@ const SignUp = () => {
       isAgreed &&
       isDuplicateChecked
     ) {
-      // store에 닉네임 저장
-      setNicknameStore(nickname);
-      console.log("닉네임:", nickname);
       router.push("/signup/purpose");
     }
   };
