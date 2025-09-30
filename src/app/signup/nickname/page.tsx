@@ -80,7 +80,7 @@ const SignUp = () => {
           </div>
           <button
             onClick={handleDuplicateCheck}
-            className="button-shadow text-stroke-white bg-yellow text-lab1 text-brown inline-flex h-[50px] shrink-0 cursor-pointer items-center justify-center gap-[10px] rounded-[20px] px-[18px] py-[10px] font-[geekble] hover:scale-110"
+            className="button-shadow-yellow text-stroke-white bg-yellow text-lab1 text-brown inline-flex h-[50px] shrink-0 cursor-pointer items-center justify-center gap-[10px] rounded-[20px] px-[18px] py-[10px] font-[geekble] hover:scale-110"
           >
             중복확인
           </button>
@@ -91,7 +91,7 @@ const SignUp = () => {
           <button
             onClick={() => setIsAgreed(!isAgreed)}
             className={`mt-[3px] h-[30px] w-[30px] cursor-pointer rounded-full border border-black transition-all ${
-              isAgreed ? "bg-brown-20 button-shadow" : "bg-white/20"
+              isAgreed ? "bg-brown-20 button-shadow-yellow" : "bg-white/20"
             }`}
           />
           <a

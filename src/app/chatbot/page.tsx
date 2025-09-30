@@ -14,7 +14,7 @@ import {
   createUserMessage,
 } from "@/utils/chatbot/handleChatInput";
 
-import ChatbotButton from "@/components/chatbotButton";
+import ChatbotButton from "@/components/chatbot/chatbotButton";
 
 const Chatbot = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -39,7 +39,7 @@ const Chatbot = () => {
 
   const handleButtonClick = (label: string) => {
     const userMsg = createUserMessage(label);
-    const botMsg = createBotMessage(`현재 ${getButtonLog(label)} ${label}는`);
+    const botMsg = createBotMessage(`현재 ${getButtonLog} ${label}는`);
     setMessages(prev => [...prev, userMsg, botMsg]);
   };
 
