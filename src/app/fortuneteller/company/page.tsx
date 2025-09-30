@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { useSajuStore } from "@/stores/sajuStore";
-import { useSignupStore } from "@/stores/signupStore";
 
 import LeftArrow from "@/assets/leftArrow.svg";
 import RightArrow from "@/assets/rightArrow.svg";
@@ -15,7 +14,7 @@ import Header from "@/components/common/header";
 
 const CompanyPage = () => {
   const router = useRouter();
-  const nickname = useSignupStore(s => s.nickname) || "사용자";
+  const nickname = "사용자";
   const { setCompany } = useSajuStore();
 
   const [companyName, setCompanyName] = useState("");

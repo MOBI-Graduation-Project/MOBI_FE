@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 import { useSajuStore } from "@/stores/sajuStore";
-import { useSignupStore } from "@/stores/signupStore";
 
 import RetryIcon from "@/assets/fortuneteller/retryIcon.svg";
 
@@ -15,8 +14,8 @@ import Header from "@/components/common/header";
 const FortuneResult = () => {
   const router = useRouter();
   const { company } = useSajuStore();
-  const nickname = useSignupStore(s => s.nickname) || "사용자";
-  const listingDate = "1975년 6월 12일"; //목데이터
+  const nickname = "사용자";
+  const listingDate = "1975년 6월 12일";
 
   const handleRetry = () => {
     router.push("/fortuneteller");

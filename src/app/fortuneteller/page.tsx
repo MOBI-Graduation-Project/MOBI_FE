@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
 import { useSajuStore } from "@/stores/sajuStore";
-import { useSignupStore } from "@/stores/signupStore";
 
 import DownArrowIcon from "@/assets/fortuneteller/downArrowIcon.svg";
 import LeftArrow from "@/assets/leftArrow.svg";
@@ -21,7 +20,7 @@ const daysInMonth = (y: number, m: number) =>
 
 const FortuneTellerPage = () => {
   const router = useRouter();
-  const nickname = useSignupStore(s => s.nickname) || "사용자";
+  const nickname = "사용자";
   const { setBirthday } = useSajuStore();
 
   // 오늘 날짜

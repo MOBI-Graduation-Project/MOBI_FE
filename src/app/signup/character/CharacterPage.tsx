@@ -4,7 +4,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 import React, { useEffect, useState } from "react";
 
-import { useSignupStore } from "@/stores/signupStore";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 
@@ -34,9 +33,8 @@ const CharacterModel = ({ path }: { path: string }) => {
 
 const CharacterPage = () => {
   const router = useRouter();
+  const nickname = "사용자";
   const searchParams = useSearchParams();
-  const nickname = useSignupStore(state => state.nickname);
-
   const [characterType, setCharacterType] = useState<string | null>(null);
   const [showNameInput] = useState(false);
 
