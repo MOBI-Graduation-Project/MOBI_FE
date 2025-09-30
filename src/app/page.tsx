@@ -1,28 +1,26 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+
 import React from "react";
-import { authService } from "@/services/auth.service";
+
 import GoogleIcon from "@/assets/googleIcon.svg";
 
 const Onboarding = () => {
   const router = useRouter();
-  
+
   const handleLoginClick = () => {
-    
-    // Google OAuth 로그인
-    authService.googleLogin();
+    router.push("/map");
   };
-  
+
   const handleSignUpClick = () => {
-    // Google OAuth 회원가입
-    authService.googleSignup();
+    router.push("/signup/purpose");
   };
-  
+
   return (
     <div
       className="flex h-screen w-full flex-col items-center justify-center gap-[91.27px] bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/svgs/backgroundImage.svg')" }}
+      style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
     >
       <div>
         <div className="text-title text-yellow text-stroke-brown font-[geekble]">
@@ -36,13 +34,13 @@ const Onboarding = () => {
       <div className="flex gap-[61.5px]">
         <button
           onClick={handleLoginClick}
-          className="bg-yellow text-heading1 text-stroke-white button-shadow hover:bg-yellow-10t h-[87px] w-[199px] cursor-pointer rounded-[20px] font-[geekble]"
+          className="bg-yellow text-heading1 text-stroke-white button-shadow-yellow hover:bg-yellow-10t h-[87px] w-[199px] cursor-pointer rounded-[20px] font-[geekble]"
         >
           로그인
         </button>
         <button
           onClick={handleSignUpClick}
-          className="bg-yellow text-heading1 text-stroke-white button-shadow hover:bg-yellow-10t flex h-[87px] w-[392px] cursor-pointer items-center justify-center rounded-[20px] font-[geekble]"
+          className="bg-yellow text-heading1 text-stroke-white button-shadow-yellow hover:bg-yellow-10t flex h-[87px] w-[392px] cursor-pointer items-center justify-center rounded-[20px] font-[geekble]"
         >
           <GoogleIcon />
           구글로 회원가입

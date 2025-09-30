@@ -10,7 +10,7 @@ const NotFound = () => {
   return (
     <div
       className="flex h-screen w-full items-center justify-center bg-cover bg-center bg-no-repeat pt-[42.5px] pb-[99px]"
-      style={{ backgroundImage: "url('/svgs/backgroundImage.svg')" }}
+      style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
     >
       <div>
         <div className="text-title text-brown text-stroke-white font-[geekble]">
@@ -22,7 +22,7 @@ const NotFound = () => {
         </div>
         <button
           onClick={handleClick}
-          className="bg-yellow text-heading1 text-brown text-stroke-white button-shadow hover:bg-yellow-10t h-[81px] w-[265px] cursor-pointer rounded-[20px] font-[geekble]"
+          className="bg-yellow text-heading1 text-brown text-stroke-white button-shadow-yellow hover:bg-yellow-10t h-[81px] w-[265px] cursor-pointer rounded-[20px] font-[geekble]"
         >
           이동지도로
         </button>

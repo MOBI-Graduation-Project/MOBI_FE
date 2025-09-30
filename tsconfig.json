@@ -21,10 +21,12 @@
     "baseUrl": ".",
     "paths": {
       "@/apis/*": ["src/apis/*"],
+      "@/app/*" : ["src/app/*"],
       "@/components/*": ["src/components/*"],
       "@/constants/*": ["src/constants/*"],
       "@/hooks/*": ["src/hooks/*"],
       "@/lib/*": ["src/lib/*"],
+      "@/mock/*": ["src/mock/*"],
       "@/schemas/*": ["src/schemas/*"],
       "@/services/*": ["src/services/*"],
       "@/stores/*": ["src/stores/*"],

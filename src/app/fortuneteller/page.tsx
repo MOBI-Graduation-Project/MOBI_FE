@@ -1,17 +1,18 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import Header from "@/components/header";
-import BottomBar from "@/components/bottomBar";
-import DownArrowIcon from "@/assets/fortuneteller/downArrowIcon.svg";
+import { useEffect, useMemo, useState } from "react";
 
 import { useSajuStore } from "@/stores/sajuStore";
 import { useSignupStore } from "@/stores/signupStore";
 
+import DownArrowIcon from "@/assets/fortuneteller/downArrowIcon.svg";
 import LeftArrow from "@/assets/leftArrow.svg";
 import RightArrow from "@/assets/rightArrow.svg";
+
+import BottomBar from "@/components/common/bottomBar";
+import Header from "@/components/common/header";
 
 // 윤년/말일 계산
 const isLeap = (y: number) => (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
@@ -20,7 +21,7 @@ const daysInMonth = (y: number, m: number) =>
 
 const FortuneTellerPage = () => {
   const router = useRouter();
-  const nickname = useSignupStore((s) => s.nickname) || "사용자";
+  const nickname = useSignupStore(s => s.nickname) || "사용자";
   const { setBirthday } = useSajuStore();
 
   // 오늘 날짜
@@ -31,7 +32,7 @@ const FortuneTellerPage = () => {
   const [month, setMonth] = useState(today.getMonth() + 1);
   const [day, setDay] = useState(today.getDate());
 
-  // 선택된 값 
+  // 선택된 값
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [selectedMonth, setSelectedMonth] = useState<number | null>(null);
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
@@ -47,25 +48,22 @@ const FortuneTellerPage = () => {
   }, [year, month, day]);
 
   const years = useMemo(
-  () => Array.from({ length: 96 }, (_, i) => new Date().getFullYear() - i),
-  []
-);
+    () => Array.from({ length: 96 }, (_, i) => new Date().getFullYear() - i),
+    [],
+  );
   const months = useMemo(() => Array.from({ length: 12 }, (_, i) => i + 1), []);
   const days = useMemo(
     () => Array.from({ length: daysInMonth(year, month) }, (_, i) => i + 1),
-    [year, month]
+    [year, month],
   );
 
   const isValid =
-    month >= 1 &&
-    month <= 12 &&
-    day >= 1 &&
-    day <= daysInMonth(year, month);
+    month >= 1 && month <= 12 && day >= 1 && day <= daysInMonth(year, month);
 
   const handlePrev = () => router.back();
   const handleNext = () => {
     if (!isValid) return;
-    setBirthday({ year, month, day }); 
+    setBirthday({ year, month, day });
     router.push("/fortuneteller/company");
   };
 
@@ -76,24 +74,23 @@ const FortuneTellerPage = () => {
     >
       <Header />
 
-
       <div className="flex flex-1 items-center justify-center px-4">
         <div className="relative flex w-full max-w-[980px] flex-col items-center gap-[31.71px]">
           {/* 안내문구 */}
-          <p className="text-center font-[geekble] text-heading1 pt-[5px] leading-tight text-brown text-stroke-white ">
+          <p className="text-heading1 text-brown text-stroke-white pt-[5px] text-center font-[geekble] leading-tight">
             {nickname} 님, 사주 궁합을 위해 당신의 생년월일을 입력해주세요.
           </p>
 
           {/* 입력박스 */}
-          <div className="flex items-center justify-center w-[948px] h-[135px] pl-[30px] gap-[90px] rounded-[30px] border-[30px] border-[#FFFAEA] bg-[#FFFAEA]">
+          <div className="flex h-[135px] w-[948px] items-center justify-center gap-[90px] rounded-[30px] border-[30px] border-[#FFFAEA] bg-[#FFFAEA] pl-[30px]">
             {/* 년 */}
             <div className="flex items-center gap-[15px]">
               <div className="relative">
                 <div
-                  className="flex h-[80px] w-[206px] items-center pr-[20px] justify-end gap-[10px] rounded-[18px] border-[3px] border-[#2F1F14] bg-[#FCE9B9] cursor-pointer"
+                  className="flex h-[80px] w-[206px] cursor-pointer items-center justify-end gap-[10px] rounded-[18px] border-[3px] border-[#2F1F14] bg-[#FCE9B9] pr-[20px]"
                   onClick={() => setYearOpen(!yearOpen)}
                 >
-                  <DownArrowIcon className="absolute left-[-40px] top-1/2 -translate-y-1/2 custom-shadow" />
+                  <DownArrowIcon className="custom-shadow absolute top-1/2 left-[-40px] -translate-y-1/2" />
 
                   <span
                     className={`font-[geekble] text-[48px] ${
@@ -106,7 +103,7 @@ const FortuneTellerPage = () => {
 
                 {yearOpen && (
                   <div className="absolute top-[70px] left-0 z-50 max-h-[200px] w-[170px] overflow-y-auto rounded-[18px] border-[3px] border-[#2F1F14] bg-[#FCE9B9] shadow-lg">
-                    {years.map((y) => (
+                    {years.map(y => (
                       <div
                         key={y}
                         onClick={() => {
@@ -114,7 +111,7 @@ const FortuneTellerPage = () => {
                           setSelectedYear(y);
                           setYearOpen(false);
                         }}
-                        className="cursor-pointer px-4 py-2 text-center font-pretendard text-[24px] hover:bg-yellow-60"
+                        className="font-pretendard hover:bg-yellow-60 cursor-pointer px-4 py-2 text-center text-[24px]"
                       >
                         {y}
                       </div>
@@ -122,17 +119,17 @@ const FortuneTellerPage = () => {
                   </div>
                 )}
               </div>
-              <span className="font-[geekble] text-[48px] text-brown">년</span>
+              <span className="text-brown font-[geekble] text-[48px]">년</span>
             </div>
 
             {/* 월 */}
             <div className="flex items-center gap-[15px]">
               <div className="relative">
                 <div
-                  className="flex h-[80px] w-[143px] items-center pr-[20px] justify-end gap-[10px] rounded-[18px] border-[3px] border-[#2F1F14] bg-[#FCE9B9] cursor-pointer"
+                  className="flex h-[80px] w-[143px] cursor-pointer items-center justify-end gap-[10px] rounded-[18px] border-[3px] border-[#2F1F14] bg-[#FCE9B9] pr-[20px]"
                   onClick={() => setMonthOpen(!monthOpen)}
                 >
-                  <DownArrowIcon className="absolute left-[-40px] top-1/2 -translate-y-1/2 custom-shadow" />
+                  <DownArrowIcon className="custom-shadow absolute top-1/2 left-[-40px] -translate-y-1/2" />
 
                   <span
                     className={`font-[geekble] text-[48px] ${
@@ -145,7 +142,7 @@ const FortuneTellerPage = () => {
 
                 {monthOpen && (
                   <div className="absolute top-[70px] left-0 z-50 max-h-[200px] w-[140px] overflow-y-auto rounded-[18px] border-[3px] border-[#2F1F14] bg-[#FCE9B9] shadow-lg">
-                    {months.map((m) => (
+                    {months.map(m => (
                       <div
                         key={m}
                         onClick={() => {
@@ -153,7 +150,7 @@ const FortuneTellerPage = () => {
                           setSelectedMonth(m);
                           setMonthOpen(false);
                         }}
-                        className="cursor-pointer px-4 py-2 text-center font-[geekble] text-[24px] hover:bg-yellow-60"
+                        className="hover:bg-yellow-60 cursor-pointer px-4 py-2 text-center font-[geekble] text-[24px]"
                       >
                         {String(m).padStart(2, "0")}
                       </div>
@@ -161,17 +158,17 @@ const FortuneTellerPage = () => {
                   </div>
                 )}
               </div>
-              <span className="font-[geekble] text-[48px] text-brown">월</span>
+              <span className="text-brown font-[geekble] text-[48px]">월</span>
             </div>
 
             {/* 일 */}
             <div className="flex items-center gap-[15px]">
               <div className="relative">
                 <div
-                  className="flex h-[80px] w-[143px] items-center pr-[20px] justify-end gap-[10px] rounded-[18px] border-[3px] border-[#2F1F14] bg-[#FCE9B9] cursor-pointer"
+                  className="flex h-[80px] w-[143px] cursor-pointer items-center justify-end gap-[10px] rounded-[18px] border-[3px] border-[#2F1F14] bg-[#FCE9B9] pr-[20px]"
                   onClick={() => setDayOpen(!dayOpen)}
                 >
-                  <DownArrowIcon className="absolute left-[-40px] top-1/2 -translate-y-1/2 custom-shadow" />
+                  <DownArrowIcon className="custom-shadow absolute top-1/2 left-[-40px] -translate-y-1/2" />
 
                   <span
                     className={`font-[geekble] text-[48px] ${
@@ -184,7 +181,7 @@ const FortuneTellerPage = () => {
 
                 {dayOpen && (
                   <div className="absolute top-[70px] left-0 z-50 max-h-[200px] w-[140px] overflow-y-auto rounded-[18px] border-[3px] border-[#2F1F14] bg-[#FCE9B9] shadow-lg">
-                    {days.map((d) => (
+                    {days.map(d => (
                       <div
                         key={d}
                         onClick={() => {
@@ -192,7 +189,7 @@ const FortuneTellerPage = () => {
                           setSelectedDay(d);
                           setDayOpen(false);
                         }}
-                        className="cursor-pointer px-4 py-2 text-center font-[geekble] text-[24px] hover:bg-yellow-60"
+                        className="hover:bg-yellow-60 cursor-pointer px-4 py-2 text-center font-[geekble] text-[24px]"
                       >
                         {String(d).padStart(2, "0")}
                       </div>
@@ -200,7 +197,7 @@ const FortuneTellerPage = () => {
                   </div>
                 )}
               </div>
-              <span className="font-[geekble] text-[48px] text-brown">일</span>
+              <span className="text-brown font-[geekble] text-[48px]">일</span>
             </div>
           </div>
 
