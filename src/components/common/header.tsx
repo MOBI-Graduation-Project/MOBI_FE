@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-import Topbar from "./topBar";
+import Topbar from "./HeaderButtons";
 
 const Header = () => {
   const router = useRouter();
