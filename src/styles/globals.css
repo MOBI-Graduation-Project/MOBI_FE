@@ -35,6 +35,10 @@
   --color-yellow-20t: #cc9d10;
   --color-yellow-light: #fff0c8;
 
+  --color-orange-light: #ffcc33;
+  --color-orange: #ffbf33;
+  --color-orange-dark: #ffb233;
+
   /* Accent */
   --color-red: #ff0000;
   --color-red-dark: #e60000;
@@ -116,5 +120,22 @@
       inset 0 3px 0 0 #fff,
       inset 0 62px 8.5px 0 rgba(46, 42, 40, 0.25),
       inset 0 -10px 4px 0 rgba(0, 0, 0, 0.25);
+  }
+  .yellow-3d {
+    background: linear-gradient(
+      to bottom,
+      var(--color-yellow-10),
+      var(--color-yellow-30),
+      var(--color-yellow)
+    );
+  }
+
+  .orange-3d:hover {
+    background: linear-gradient(
+      to bottom,
+      var(--color-orange-light),
+      var(--color-orange),
+      var(--color-orange-dark)
+    );
   }
 }
