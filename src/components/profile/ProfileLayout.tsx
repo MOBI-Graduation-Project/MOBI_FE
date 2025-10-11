@@ -28,7 +28,7 @@ const ProfileLayout = ({
       />
       {/*Background Component영역*/}
       {/* 노란 영역 */}
-      <div className="fixed bottom-0 flex h-[40%] w-full flex-col items-center bg-yellow-100 pt-[86px]">
+      <div className="yellow-3d fixed bottom-0 flex h-[40%] w-full flex-col items-center pt-[86px]">
         <div className="border-brown absolute top-0 left-1/2 h-[173px] w-[173px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] bg-white">
           {profileImg ? (
             <img
