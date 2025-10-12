@@ -96,7 +96,7 @@ function MyRoomScene({ controlsRef }: { controlsRef: React.MutableRefObject<Orbi
 
     return (
       <RigidBody type="fixed" colliders="trimesh">
-        <group position={[x, y, z]} rotation={[0, rotY, 0]} scale={scale}>
+        <group position={[x, y, z]} rotation={[0, rotY + Math.PI, 0]} scale={scale}>
           <primitive object={whiteboard} onClick={onClick} onPointerOver={onOver} onPointerOut={onOut} />
         </group>
       </RigidBody>
