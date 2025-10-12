@@ -15,7 +15,7 @@ const Map = () => {
     router.push("/mypage");
   };
   const squareClick = () => {
-    router.push("/square");
+  router.push("/metaverse/square");
   };
   const fortuneTellerClick = () => {
     router.push("/fortuneteller");
