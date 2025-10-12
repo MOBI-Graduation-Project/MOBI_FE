@@ -42,7 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={`${geekble.variable} ${pretendard.variable}`}>
-      <body suppressHydrationWarning>
+      <body>
         <div className="flex h-screen w-screen">{children}</div>
       </body>
     </html>

@@ -12,10 +12,10 @@ import Header from "@/components/common/header";
 const Map = () => {
   const router = useRouter();
   const mypageClick = () => {
-    router.push("/metaverse/myroom");
+    router.push("/mypage");
   };
   const squareClick = () => {
-  router.push("/metaverse/square");
+    router.push("/square");
   };
   const fortuneTellerClick = () => {
     router.push("/fortuneteller");
