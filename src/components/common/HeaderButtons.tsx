@@ -18,6 +18,9 @@ const Topbar = () => {
     router.push("/friendlist");
   };
   const profileClick = () => setIsOpen(prev => !prev);
+  const handleGoToMyProfile = () => {
+    router.push("/profile");
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -57,15 +60,15 @@ const Topbar = () => {
 
       {isOpen && (
         <div className="div absolute right-0 mt-2">
-          <div className="divide-brown grid h-[113px] w-[185px] grid-rows-2 divide-y rounded-[10px] bg-[#FFE6C1]">
-            <a
-              href="/profile"
-              className="flex w-full flex-row items-center justify-items-start gap-[10px] rounded-t-[10px] pl-[20px] transition hover:bg-[#ffdca8]"
+          <div className="divide-brown from-yellow-10 via-yellow-30 to-yellow grid h-[113px] w-[185px] grid-rows-2 divide-y rounded-[10px] bg-gradient-to-b">
+            <button
+              className="orange-3d flex w-full flex-row items-center justify-items-start gap-[10px] rounded-t-[10px] pl-[20px] transition"
+              onClick={handleGoToMyProfile}
             >
               <LogoutIcon />
-              <div className="text-lab1 font-[geekble]">프로필 수정</div>
-            </a>
-            <button className="flex w-full flex-row items-center justify-items-start gap-[10px] rounded-b-[10px] pl-[20px] transition hover:bg-[#ffdca8]">
+              <div className="text-lab1 font-[geekble]">내 프로필</div>
+            </button>
+            <button className="orange-3d flex w-full flex-row items-center justify-items-start gap-[10px] rounded-b-[10px] pl-[20px] transition">
               <LogoutIcon />
               <div className="text-lab1 font-[geekble]">로그아웃</div>
             </button>

@@ -1,6 +1,12 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
+import React from "react";
+
 interface FriendTagProps {
   friend: {
-    memeberId: number;
+    memberId: number;
     nickname: string;
     profileUrl: string;
     profileDescribe: string;
@@ -9,8 +15,15 @@ interface FriendTagProps {
 }
 
 const FriendTag = ({ friend, showButtons }: FriendTagProps) => {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push(`/profile/${friend.memberId}`);
+  };
   return (
-    <div className="bg-brown/80 relative flex h-[94px] w-full flex-row gap-[45px] px-10 py-[19px]">
+    <div
+      className="bg-brown/80 relative flex h-[94px] w-full flex-row gap-[45px] px-10 py-[19px]"
+      onClick={handleClick}
+    >
       {/* 프로필 */}
       <div className="flex items-center gap-5">
         {friend.profileUrl?.trim() ? (
