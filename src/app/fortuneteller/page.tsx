@@ -73,7 +73,7 @@ const FortuneTellerPage = () => {
     >
       <Header />
 
-      <div className="flex flex-1 items-center justify-center px-4">
+      <div className="flex flex-1 items-center justify-center p-4">
         <div className="relative flex w-full max-w-[980px] flex-col items-center gap-[31.71px]">
           {/* 안내문구 */}
           <p className="text-heading1 text-brown text-stroke-white pt-[5px] text-center font-[geekble] leading-tight">
