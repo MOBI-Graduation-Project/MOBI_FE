@@ -1,0 +1,10 @@
+export const formatTime = (utc: string | null) => {
+  if (!utc) return "";
+  const date = new Date(utc);
+  return date.toLocaleString("ko-KR", {
+    hour: "2-digit",
+    minute: "2-digit",
+    month: "2-digit",
+    day: "2-digit",
+  });
+};

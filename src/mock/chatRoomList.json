@@ -1,0 +1,42 @@
+[
+  {
+    "roomId": 1,
+    "roomName": "모비2",
+    "lastMessage": "안녕하세요! B입니다.",
+    "lastMessageSentAt": "2025-10-14T14:23:00Z",
+    "unreadCount": 1,
+    "otherMemberProfileImage": "svgs/profileImages/image1.jpeg"
+  },
+  {
+    "roomId": 2,
+    "roomName": "모비3",
+    "lastMessage": "오늘 점심 같이 먹을래요?",
+    "lastMessageSentAt": "2025-10-14T13:45:00Z",
+    "unreadCount": 0,
+    "otherMemberProfileImage": "svgs/profileImages/image2.jpeg"
+  },
+  {
+    "roomId": 3,
+    "roomName": "모비4",
+    "lastMessage": "프로젝트 회의는 내일 오전이에요!",
+    "lastMessageSentAt": "2025-10-13T23:18:00Z",
+    "unreadCount": 2,
+    "otherMemberProfileImage": "svgs/profileImages/image3.jpeg"
+  },
+  {
+    "roomId": 4,
+    "roomName": "모비5",
+    "lastMessage": "파일 전달드렸어요. 확인 부탁드립니다 :)",
+    "lastMessageSentAt": "2025-10-13T16:09:00Z",
+    "unreadCount": 0,
+    "otherMemberProfileImage": "svgs/profileImages/image4.jpeg"
+  },
+  {
+    "roomId": 5,
+    "roomName": "모비6",
+    "lastMessage": "이번 주말에 등산 어때요?",
+    "lastMessageSentAt": "2025-10-12T09:42:00Z",
+    "unreadCount": 3,
+    "otherMemberProfileImage": "svgs/profileImages/image5.jpeg"
+  }
+]
