@@ -39,7 +39,7 @@ const Chatbot = () => {
 
   const handleButtonClick = (label: string) => {
     const userMsg = createUserMessage(label);
-    const botMsg = createBotMessage(`현재 ${getButtonLog} ${label}는`);
+    const botMsg = createBotMessage(`현재 ${getButtonLog()} ${label}는`);
     setMessages(prev => [...prev, userMsg, botMsg]);
   };
 
