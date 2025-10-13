@@ -3,62 +3,66 @@
     {
       "friendList": [
         {
-          "memeberId": 1,
+          "memberId": 1,
           "nickname": "신수진",
           "profileUrl": "/svgs/profileImages/image1.jpeg",
-          "profileDescribe": "상태메세지"
-        }, {
-          "memeberId": 2,
+          "profileDescribe": "상태메세지1"
+        },
+        {
+          "memberId": 2,
           "nickname": "최희주",
           "profileUrl": "",
-          "profileDescribe": "상태메세지"
-        }, {
-          "memeberId": 3,
+          "profileDescribe": "상태메세지2"
+        },
+        {
+          "memberId": 3,
           "nickname": "김형준",
           "profileUrl": "/svgs/profileImages/image3.jpeg",
-          "profileDescribe": "상태메세지"
-        }, {
-          "memeberId": 4,
+          "profileDescribe": "상태메세지3"
+        },
+        {
+          "memberId": 4,
           "nickname": "추정은",
           "profileUrl": "/svgs/profileImages/image4.jpeg",
-          "profileDescribe": "상태메세지"
-        }, {
-          "memeberId": 5,
+          "profileDescribe": "상태메세지4"
+        },
+        {
+          "memberId": 5,
           "nickname": "김민서",
           "profileUrl": "/svgs/profileImages/image5.jpeg",
-          "profileDescribe": "상태메세지"
+          "profileDescribe": "상태메세지5"
         }
       ],
       "friendRequestList": [
         {
-          "memeberId": 1,
+          "memberId": 6,
           "nickname": "수진",
           "profileUrl": "/svgs/profileImages/image6.jpeg",
-          "profileDescribe": "상태메세지"
+          "profileDescribe": "상태메세지1"
         },
         {
-          "memeberId": 2,
+          "memberId": 7,
           "nickname": "희주",
           "profileUrl": "/svgs/profileImages/image7.jpeg",
-          "profileDescribe": "상태메세지"
+          "profileDescribe": "상태메세지2"
         },
         {
-          "memeberId": 3,
+          "memberId": 8,
           "nickname": "형준",
           "profileUrl": "/svgs/profileImages/image8.jpeg",
-          "profileDescribe": "상태메세지"
+          "profileDescribe": "상태메세지3"
         },
         {
-          "memeberId": 4,
+          "memberId": 9,
           "nickname": "정은",
           "profileUrl": "/svgs/profileImages/image9.jpg",
-          "profileDescribe": "상태메세지"
+          "profileDescribe": "상태메세지4"
         },
         {
-          "memeberId": 5,
+          "memberId": 10,
           "nickname": "민서",
           "profileUrl": "/svgs/profileImages/image10.jpeg",
-          "profileDescribe": "상태메세지"
+          "profileDescribe": "상태메세지5"
         }
       ]
     }
