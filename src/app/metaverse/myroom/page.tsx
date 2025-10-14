@@ -9,6 +9,8 @@ import { useRouter } from "next/navigation";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
 import Player from "@/components/metaverse/Player";
+import BottomBar from "@/components/common/bottomBar";
+import Header from "@/components/common/header";
 
 function MyRoomScene({ controlsRef }: { controlsRef: React.MutableRefObject<OrbitControlsImpl | null> }) {
   const roomGltf = useGLTF("/models/myroom.glb");
@@ -130,6 +132,7 @@ export default function MyRoomPage() {
           { name: "jump", keys: ["Space"] },
         ]}
       >
+        <Header />
         <Canvas camera={{ position: [0, 6, 10], fov: 60 }} shadows>
           {/* 조명 */}
           <ambientLight intensity={0.6} />
@@ -141,11 +144,19 @@ export default function MyRoomPage() {
           <Suspense fallback={null}>
             <Physics gravity={[0, -9.81, 0]} debug={false}>
               <MyRoomScene controlsRef={controlsRef} />
-              <Player controlsRef={controlsRef} visualScale={5} />
+              <Player controlsRef={controlsRef} visualScale={5} moveSpeed={40} /> 
             </Physics>
           </Suspense>
         </Canvas>
+        <BottomBar />
       </KeyboardControls>
+
+      {/* 컨트롤 안내 UI */}
+      <div className="absolute bottom-45 right-4 rounded-lg bg-[#FFEFBF] font-[geekble] p-4 text-brown">
+        <p className="text-cap1">이동: WASD 또는 화살표</p>
+        <p className="text-cap1">점프: Space</p>
+        <p className="text-cap1">카메라: 마우스 드래그</p>
+      </div>
     </div>
   );
 }
