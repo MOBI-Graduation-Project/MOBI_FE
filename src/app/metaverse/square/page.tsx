@@ -8,6 +8,8 @@ import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
 import Player from "@/components/metaverse/Player";
 import World from "@/components/metaverse/World";
+import BottomBar from "@/components/common/bottomBar";
+import Header from "@/components/common/header";
 
 const SquarePage = () => {
   const controlsRef = useRef<OrbitControlsImpl>(null);
@@ -23,6 +25,8 @@ const SquarePage = () => {
           { name: "jump", keys: ["Space"] },
         ]}
       >
+
+        <Header />
         <Canvas camera={{ position: [0, 5, 10], fov: 60 }} shadows>
           {/* 조명 */}
           <ambientLight intensity={0.5} />
@@ -58,10 +62,11 @@ const SquarePage = () => {
           {/* 안개 */}
           <fog attach="fog" args={["#ffffff", 10, 50]} />
         </Canvas>
+        <BottomBar />
       </KeyboardControls>
 
       {/* 컨트롤 안내 UI */}
-      <div className="absolute bottom-4 right-4 rounded-lg bg-[#FFEFBF] p-4 text-black">
+      <div className="absolute bottom-45 right-4 rounded-lg bg-[#FFEFBF] font-[geekble] p-4 text-brown">
         <p className="text-cap1">이동: WASD 또는 화살표</p>
         <p className="text-cap1">점프: Space</p>
         <p className="text-cap1">카메라: 마우스 드래그</p>
