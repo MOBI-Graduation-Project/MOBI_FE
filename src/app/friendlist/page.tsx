@@ -1,6 +1,6 @@
-import FriendTag from "@/components/chatting/FriendTag";
-import SearchField from "@/components/chatting/SearchField";
 import Header from "@/components/common/header";
+import FriendTag from "@/components/friendlist/FriendTag";
+import SearchField from "@/components/friendlist/SearchField";
 
 import friendData from "@/mock/friendList.json";
 
