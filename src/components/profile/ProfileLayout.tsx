@@ -8,9 +8,9 @@ import ProfileButtons from "./ProfileButtons";
 import StateMessage from "./StateMessage";
 
 interface ProfileLayoutProps {
-  profileImg: string | null;
+  profileImg?: string | null;
   nickname: string;
-  stateMessage: string;
+  stateMessage?: string | null;
   isMyProfile?: boolean;
   isFriend?: boolean;
 }
@@ -18,7 +18,7 @@ interface ProfileLayoutProps {
 const ProfileLayout = ({
   profileImg,
   nickname,
-  stateMessage,
+  stateMessage = null,
   isMyProfile = false,
   isFriend = false,
 }: ProfileLayoutProps) => {
