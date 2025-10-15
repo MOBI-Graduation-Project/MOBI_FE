@@ -5,7 +5,7 @@ import ProfileEdit from "@/assets/profile/profileEdit.svg";
 
 interface StateMessageProps {
   isMyProfile: boolean;
-  stateMessage: string;
+  stateMessage: string | null;
 }
 
 const MAX_MESSAGE_LENGTH = 50;
@@ -40,7 +40,7 @@ const StateMessage = ({
         {isEditMode ? (
           <input
             type="text"
-            value={tempMessage}
+            value={tempMessage || ""}
             onChange={e => setTempMessage(e.target.value)}
             onKeyDown={handleKeyDown}
             autoFocus
@@ -60,7 +60,7 @@ const StateMessage = ({
         )}
         {isEditMode && (
           <span className="text-cap3-med text-brown">
-            {tempMessage.length}/{MAX_MESSAGE_LENGTH}
+            {tempMessage ? tempMessage.length : 0}/{MAX_MESSAGE_LENGTH}
           </span>
         )}
         {isEditMode && (
