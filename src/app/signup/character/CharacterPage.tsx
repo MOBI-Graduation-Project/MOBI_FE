@@ -3,6 +3,8 @@
 import { useRouter, useSearchParams } from "next/navigation";
 
 import React, { useEffect, useState } from "react";
+import { useCharacterStore } from "@/stores/characterStore";
+
 
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
@@ -37,6 +39,7 @@ const CharacterPage = () => {
   const searchParams = useSearchParams();
   const [characterType, setCharacterType] = useState<string | null>(null);
   const [showNameInput] = useState(false);
+  const { setCharacterType: setCharacterStore } = useCharacterStore();
 
   useEffect(() => {
     const type = searchParams.get("type");
@@ -49,10 +52,11 @@ const CharacterPage = () => {
     router.push("/signup/purpose");
   };
 
-  const handleNext = async () => {
-    // 임시로 바로 맵으로 이동
-    router.push("/map");
-    return;
+  const handleSelect = () => {
+    if (characterType) {
+      setCharacterStore(characterType);
+      router.push("/map");
+    }
   };
 
   return (
@@ -91,13 +95,13 @@ const CharacterPage = () => {
         {!showNameInput ? (
           <div className="mt-[40px] flex gap-[50px]">
             <button
-              onClick={handleNext}
+              onClick={handleSelect}
               className="button-shadow-yellow bg-yellow text-lab1 text-brown hover:bg-yellow-10t inline-flex h-[60px] cursor-pointer items-center justify-center rounded-[20px] px-[40px] font-[geekble] shadow-lg transition-all"
             >
               네, 마음에 들어요
             </button>
             <button
-              onClick={handleNext}
+              onClick={handleSelect}
               className="button-shadow-yellow bg-yellow text-lab1 text-brown hover:bg-yellow-10t inline-flex h-[60px] cursor-pointer items-center justify-center rounded-[20px] px-[40px] font-[geekble] shadow-lg transition-all"
             >
               저와 잘맞는 캐릭터인거 같아요

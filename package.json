@@ -20,13 +20,14 @@
   "dependencies": {
     "@lottielab/lottie-player": "^1.1.3",
     "@react-three/drei": "^10.2.0",
-    "@react-three/fiber": "^9.1.2",
+    "@react-three/fiber": "^9.4.0",
+    "@react-three/rapier": "^2.1.0",
     "next": "^15.5.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-lottie-player": "^2.1.0",
     "react-router-dom": "^7.6.2",
-    "three": "^0.179.1"
+    "three": "^0.180.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
