@@ -1,12 +1,10 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-
 import { useEffect, useState } from "react";
 
-import Backbtn from "@/assets/chatbot/backbtn.svg";
 import EnterBtn from "@/assets/chatbot/enterbtn.svg";
 
+import ChatHeader from "@/components/chat/ChatHeader";
 import ChatbotButton from "@/components/chatbot/chatbotButton";
 
 import { getButtonLog } from "@/utils/chatbot/getButtonLog";
@@ -19,7 +17,6 @@ import {
 const Chatbot = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
-  const router = useRouter();
   useEffect(() => {
     // 첫 인사 메시지
     const welcome = createBotMessage("안녕하세요! 무엇을 도와드릴까요?");
@@ -39,23 +36,14 @@ const Chatbot = () => {
 
   const handleButtonClick = (label: string) => {
     const userMsg = createUserMessage(label);
-    const botMsg = createBotMessage(`현재 ${getButtonLog} ${label}는`);
+    const botMsg = createBotMessage(`현재 ${getButtonLog()} ${label}는`);
     setMessages(prev => [...prev, userMsg, botMsg]);
   };
 
   return (
-    <div className="h-screen w-full bg-[#ffeebd]">
+    <div className="bg-yellow-10 h-screen w-full">
       {/*상단바*/}
-      <div className="fixed flex h-[100px] w-full flex-row items-center gap-5 bg-[#ffeebd] pl-[30px]">
-        <button onClick={() => router.back()} className="cursor-pointer">
-          <Backbtn />
-        </button>
-
-        <div className="text-heading2 text-brown text-stroke-white font-[geekble]">
-          주식 챗봇 모비
-        </div>
-      </div>
-
+      <ChatHeader />
       {/*채팅영역 */}
       <div className="flex flex-col px-[20px] pt-[100px] pb-[230px]">
         <div
@@ -73,10 +61,7 @@ const Chatbot = () => {
                     <div className="text-cap1-med whitespace-nowrap text-gray-500">
                       {msg.time}
                     </div>
-                    <div
-                      className="text-cap1-sb rounded-xl px-4 py-2"
-                      style={{ backgroundColor: "#ffc414" }}
-                    >
+                    <div className="text-cap1-sb bg-yellow rounded-xl px-4 py-2">
                       {msg.text}
                     </div>
                   </>
@@ -85,10 +70,7 @@ const Chatbot = () => {
                     <div className="text-lab1 text-brown flex h-[50px] w-[50px] items-center justify-center rounded-full bg-[#D9D9D9] font-[geekble]">
                       모비
                     </div>
-                    <div
-                      className="text-cap1-sb rounded-xl px-5 py-2"
-                      style={{ backgroundColor: "#ffffff" }}
-                    >
+                    <div className="text-cap1-sb rounded-xl bg-white px-5 py-2">
                       {msg.text}
                     </div>
                     <div className="text-cap1-med whitespace-nowrap text-gray-500">
@@ -108,7 +90,7 @@ const Chatbot = () => {
       </div>
       {/*하단바*/}
       <div className="bg-brown fixed bottom-0 flex h-[116px] w-full items-center justify-center">
-        <div className="font-pretendard flex h-[58px] w-full max-w-[1185px] items-center rounded-[30px] bg-[#EFEFEF] px-10">
+        <div className="font-pretendard bg-gray-10 flex h-[58px] w-full max-w-[1185px] items-center rounded-[30px] px-10">
           <input
             value={input}
             onChange={e => setInput(e.target.value)}

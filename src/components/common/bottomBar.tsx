@@ -18,10 +18,16 @@ const BottomBar = () => {
         >
           이동지도
         </button>
-        <button className="text-body text-yellow text-stroke-black hover:bg-brown hover:buttombar-shadow h-full cursor-pointer font-[geekble]">
+        <button
+          className="text-body text-yellow text-stroke-black hover:bg-brown hover:buttombar-shadow h-full cursor-pointer font-[geekble]"
+          onClick={() => handleClick("/chat")}
+        >
           채팅
         </button>
-        <button className="text-body text-yellow text-stroke-black hover:bg-brown hover:buttombar-shadow h-full cursor-pointer font-[geekble]">
+        <button
+          className="text-body text-yellow text-stroke-black hover:bg-brown hover:buttombar-shadow h-full cursor-pointer font-[geekble]"
+          onClick={() => handleClick("/not-found")}
+        >
           주식
         </button>
         <button
