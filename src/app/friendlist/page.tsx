@@ -1,3 +1,4 @@
+import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
 import FriendTag from "@/components/friendlist/FriendTag";
 import SearchField from "@/components/friendlist/SearchField";
@@ -8,11 +9,11 @@ const FriendList = () => {
   const { friendList, friendRequestList } = friendData.friend[0];
   return (
     <div
-      className="min-h-screen w-full overflow-y-auto bg-cover bg-center bg-repeat-y"
+      className="scrollbar-hide min-h-screen w-full overflow-y-auto bg-cover bg-center bg-repeat-y"
       style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
     >
       <Header />
-      <main className="scrollbar-hide o mt-[129px] flex flex-1 flex-col gap-5">
+      <main className="mt-[129px] mb-[110px] flex flex-1 flex-col gap-5">
         {/* 친구 검색 */}
         <section className="flex flex-col gap-5">
           <div className="text-body flex h-25 w-[216px] rounded-r-[30px] bg-white/60 px-[40px] py-[10px] font-[geekble]">
@@ -33,7 +34,7 @@ const FriendList = () => {
         </section>
 
         {/* 친구목록 */}
-        <section>
+        <section className="flex flex-col gap-5">
           <div className="text-body flex h-25 w-[216px] rounded-r-[30px] bg-white/60 px-[40px] py-[10px] font-[geekble]">
             친구목록
           </div>
@@ -44,6 +45,7 @@ const FriendList = () => {
           </div>
         </section>
       </main>
+      <BottomBar />
     </div>
   );
 };

@@ -1,24 +1,33 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { Suspense, useEffect, useMemo, useRef } from "react";
-import { Canvas, useThree, ThreeEvent } from "@react-three/fiber";
+
 import { KeyboardControls, OrbitControls, useGLTF } from "@react-three/drei";
+import { Canvas, ThreeEvent, useThree } from "@react-three/fiber";
 import { Physics, RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
-import { useRouter } from "next/navigation";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
 import Player from "@/components/metaverse/Player";
 
-function MyRoomScene({ controlsRef }: { controlsRef: React.MutableRefObject<OrbitControlsImpl | null> }) {
+function MyRoomScene({
+  controlsRef,
+}: {
+  controlsRef: React.MutableRefObject<OrbitControlsImpl | null>;
+}) {
   const roomGltf = useGLTF("/models/myroom.glb");
   const whiteboardGltf = useGLTF("/models/whiteboard.glb");
 
   const room = useMemo(() => roomGltf.scene.clone(true), [roomGltf.scene]);
-  const whiteboard = useMemo(() => whiteboardGltf.scene.clone(true), [whiteboardGltf.scene]);
+  const whiteboard = useMemo(
+    () => whiteboardGltf.scene.clone(true),
+    [whiteboardGltf.scene],
+  );
 
-  // 
-  const camera = useThree((s) => s.camera as THREE.PerspectiveCamera);
+  //
+  const camera = useThree(s => s.camera as THREE.PerspectiveCamera);
   useEffect(() => {
     const box = new THREE.Box3().setFromObject(room);
     const center = box.getCenter(new THREE.Vector3());
@@ -59,23 +68,23 @@ function MyRoomScene({ controlsRef }: { controlsRef: React.MutableRefObject<Orbi
 
     // 기본 스케일
     const baseHeight = Math.max(wbSize.y, 0.001);
-    const baseScale = (roomSize.y * 0.6) / baseHeight; 
-    const scale = THREE.MathUtils.clamp(baseScale * 10, 0.1, 20); 
+    const baseScale = (roomSize.y * 0.6) / baseHeight;
+    const scale = THREE.MathUtils.clamp(baseScale * 10, 0.1, 20);
     const scaledW = wbSize.x * scale;
     const scaledH = wbSize.y * scale;
 
     // 오른쪽/아래로 더 이동시키는 오프셋
-    const deltaRight = Math.max(0.3, roomSize.x * 0.05);  
-    const deltaDown = -Math.max(0.2, roomSize.y * 0.05); 
+    const deltaRight = Math.max(0.3, roomSize.x * 0.05);
+    const deltaDown = -Math.max(0.2, roomSize.y * 0.05);
 
     // 벽/바닥 안쪽으로 안전하게 클램프
     const maxXInside = roomBox.max.x - scaledW * 0.05;
     const minXInside = roomBox.min.x + scaledW * 0.05;
     const minYInside = roomBox.min.y + scaledH * 0.05;
 
-    const baseX = 25//roomBox.max.x - Math.max(0.2, scaledW * 0.4);
-    const baseY = 0//minYInside + scaledH * 0.5;
-    const z = 12//(roomBox.min.z + roomBox.max.z) / 2;
+    const baseX = 25; //roomBox.max.x - Math.max(0.2, scaledW * 0.4);
+    const baseY = 0; //minYInside + scaledH * 0.5;
+    const z = 12; //(roomBox.min.z + roomBox.max.z) / 2;
 
     const desiredX = baseX + deltaRight;
     const desiredY = baseY + deltaDown;
@@ -96,8 +105,17 @@ function MyRoomScene({ controlsRef }: { controlsRef: React.MutableRefObject<Orbi
 
     return (
       <RigidBody type="fixed" colliders="trimesh">
-        <group position={[x, y, z]} rotation={[0, rotY + Math.PI, 0]} scale={scale}>
-          <primitive object={whiteboard} onClick={onClick} onPointerOver={onOver} onPointerOut={onOut} />
+        <group
+          position={[x, y, z]}
+          rotation={[0, rotY + Math.PI, 0]}
+          scale={scale}
+        >
+          <primitive
+            object={whiteboard}
+            onClick={onClick}
+            onPointerOver={onOver}
+            onPointerOut={onOut}
+          />
         </group>
       </RigidBody>
     );
@@ -133,10 +151,21 @@ export default function MyRoomPage() {
         <Canvas camera={{ position: [0, 6, 10], fov: 60 }} shadows>
           {/* 조명 */}
           <ambientLight intensity={0.6} />
-          <directionalLight position={[8, 14, 6]} intensity={1} castShadow shadow-mapSize={[1024, 1024]} />
+          <directionalLight
+            position={[8, 14, 6]}
+            intensity={1}
+            castShadow
+            shadow-mapSize={[1024, 1024]}
+          />
 
           {/* 카메라 컨트롤 */}
-          <OrbitControls ref={controlsRef} makeDefault enablePan enableDamping dampingFactor={0.08} />
+          <OrbitControls
+            ref={controlsRef}
+            makeDefault
+            enablePan
+            enableDamping
+            dampingFactor={0.08}
+          />
 
           <Suspense fallback={null}>
             <Physics gravity={[0, -9.81, 0]} debug={false}>
