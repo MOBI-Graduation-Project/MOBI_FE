@@ -1,17 +1,18 @@
 "use client";
 
 import { useMemo, useRef } from "react";
-import { useFrame } from "@react-three/fiber";
+
+import { useCharacterStore } from "@/stores/characterStore";
 import { useKeyboardControls } from "@react-three/drei";
-import { RigidBody, RapierRigidBody } from "@react-three/rapier";
 import { useGLTF } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { RapierRigidBody, RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
-import { useCharacterStore } from "@/stores/characterStore";
 
 type PlayerProps = {
-  controlsRef?: React.MutableRefObject<OrbitControlsImpl | null>; 
-  visualScale?: number;                                           
+  controlsRef?: React.MutableRefObject<OrbitControlsImpl | null>;
+  visualScale?: number;
 };
 
 const MOVE_SPEED = 5;
@@ -23,13 +24,13 @@ const Player = ({ controlsRef, visualScale = 0.3 }: PlayerProps) => {
   const modelRef = useRef<THREE.Group>(null);
 
   const { scene } = useGLTF(
-    characterType ? `/models/${characterType}.glb` : "/models/default.glb"
+    characterType ? `/models/${characterType}.glb` : "/models/default.glb",
   );
   const clonedScene = useMemo(() => scene.clone(), [scene]);
 
   const [, getKeys] = useKeyboardControls();
 
-  useFrame((state) => {
+  useFrame(state => {
     if (!bodyRef.current) return;
     const { forward, back, left, right, jump } = getKeys();
     const velocity = bodyRef.current.linvel();
@@ -51,10 +52,16 @@ const Player = ({ controlsRef, visualScale = 0.3 }: PlayerProps) => {
     if (left) moveDir.sub(camRight);
     if (moveDir.lengthSq() > 0) moveDir.normalize().multiplyScalar(MOVE_SPEED);
 
-    bodyRef.current.setLinvel({ x: moveDir.x, y: velocity.y, z: moveDir.z }, true);
+    bodyRef.current.setLinvel(
+      { x: moveDir.x, y: velocity.y, z: moveDir.z },
+      true,
+    );
 
     if (jump && Math.abs(velocity.y) < 0.05) {
-      bodyRef.current.setLinvel({ x: velocity.x, y: JUMP_FORCE, z: velocity.z }, true);
+      bodyRef.current.setLinvel(
+        { x: velocity.x, y: JUMP_FORCE, z: velocity.z },
+        true,
+      );
     }
 
     if (modelRef.current && moveDir.lengthSq() > 0.0001) {
