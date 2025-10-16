@@ -10,11 +10,11 @@ import { RapierRigidBody, RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
-type PlayerProps = {
+interface PlayerProps {
   controlsRef?: React.MutableRefObject<OrbitControlsImpl | null>;
   visualScale?: number;
   moveSpeed?: number;
-};
+}
 
 const MOVE_SPEED = 5;
 const JUMP_FORCE = 5;
