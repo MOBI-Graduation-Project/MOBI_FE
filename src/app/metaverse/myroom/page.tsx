@@ -10,6 +10,8 @@ import { Physics, RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
+import BottomBar from "@/components/common/bottomBar";
+import Header from "@/components/common/header";
 import Player from "@/components/metaverse/Player";
 
 function MyRoomScene({
@@ -148,6 +150,7 @@ export default function MyRoomPage() {
           { name: "jump", keys: ["Space"] },
         ]}
       >
+        <Header />
         <Canvas camera={{ position: [0, 6, 10], fov: 60 }} shadows>
           {/* 조명 */}
           <ambientLight intensity={0.6} />
@@ -170,11 +173,23 @@ export default function MyRoomPage() {
           <Suspense fallback={null}>
             <Physics gravity={[0, -9.81, 0]} debug={false}>
               <MyRoomScene controlsRef={controlsRef} />
-              <Player controlsRef={controlsRef} visualScale={5} />
+              <Player
+                controlsRef={controlsRef}
+                visualScale={5}
+                moveSpeed={40}
+              />
             </Physics>
           </Suspense>
         </Canvas>
+        <BottomBar />
       </KeyboardControls>
+
+      {/* 컨트롤 안내 UI */}
+      <div className="text-brown absolute right-4 bottom-45 rounded-lg bg-[#FFEFBF] p-4 font-[geekble]">
+        <p className="text-cap1">이동: WASD 또는 화살표</p>
+        <p className="text-cap1">점프: Space</p>
+        <p className="text-cap1">카메라: 마우스 드래그</p>
+      </div>
     </div>
   );
 }
