@@ -1,10 +1,11 @@
 "use client";
 
+import dynamic from "next/dynamic";
+
 import CloseButton from "@/assets/closeButton.svg";
 
 import useGoBack from "@/hooks/useGoBack";
 
-import AvatarPreview from "./AvartarPreview";
 import ProfileButtons from "./ProfileButtons";
 import StateMessage from "./StateMessage";
 
@@ -15,7 +16,12 @@ interface ProfileLayoutProps {
   isMyProfile?: boolean;
   isFriend?: boolean;
 }
-
+const AvatarPreview = dynamic(
+  () => import("@/components/profile/AvartarPreview"),
+  {
+    ssr: false,
+  },
+);
 const ProfileLayout = ({
   profileImg,
   nickname,
