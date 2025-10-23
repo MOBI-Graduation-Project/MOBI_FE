@@ -3,9 +3,8 @@
 import { useRouter, useSearchParams } from "next/navigation";
 
 import React, { useEffect, useState } from "react";
+
 import { useCharacterStore } from "@/stores/characterStore";
-
-
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 

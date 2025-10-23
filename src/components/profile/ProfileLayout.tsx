@@ -1,5 +1,7 @@
 "use client";
 
+import dynamic from "next/dynamic";
+
 import CloseButton from "@/assets/closeButton.svg";
 
 import useGoBack from "@/hooks/useGoBack";
@@ -8,17 +10,22 @@ import ProfileButtons from "./ProfileButtons";
 import StateMessage from "./StateMessage";
 
 interface ProfileLayoutProps {
-  profileImg: string | null;
+  profileImg?: string | null;
   nickname: string;
-  stateMessage: string;
+  stateMessage?: string | null;
   isMyProfile?: boolean;
   isFriend?: boolean;
 }
-
+const AvatarPreview = dynamic(
+  () => import("@/components/profile/AvartarPreview"),
+  {
+    ssr: false,
+  },
+);
 const ProfileLayout = ({
   profileImg,
   nickname,
-  stateMessage,
+  stateMessage = null,
   isMyProfile = false,
   isFriend = false,
 }: ProfileLayoutProps) => {
@@ -26,10 +33,13 @@ const ProfileLayout = ({
   return (
     <div>
       <CloseButton
-        className="fixed top-[19px] right-[22px] cursor-pointer"
+        className="fixed top-[19px] right-[22px] z-10 cursor-pointer"
         onClick={goBack}
       />
-      {/*Background Component영역*/}
+      <div className="absolute inset-x-0 top-0 h-[60%]">
+        <AvatarPreview />
+      </div>
+
       {/* 노란 영역 */}
       <div className="bg-yellow-10 fixed bottom-0 flex h-[40%] w-full flex-col items-center pt-[86px]">
         <div className="border-brown absolute top-0 left-1/2 h-[173px] w-[173px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] bg-white">
