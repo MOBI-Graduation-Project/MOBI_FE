@@ -2,26 +2,16 @@ import { useState } from "react";
 
 import EnterBtn from "@/assets/chatbot/enterbtn.svg";
 
-import {
-  ChatMessage,
-  createUserMessage,
-} from "@/utils/chatbot/handleChatInput";
-
 interface InputBottomBarProps {
+  onSend: (text: string) => void;
   isChatBot?: boolean;
 }
-const InputBottomBar = ({ isChatBot = false }: InputBottomBarProps) => {
+const InputBottomBar = ({ onSend, isChatBot = false }: InputBottomBarProps) => {
   const [input, setInput] = useState("");
-  const [, setMessages] = useState<ChatMessage[]>([]);
-
-  const handleSend = (text: string) => {
-    const userMsg = createUserMessage(text);
-    setMessages(prev => [...prev, userMsg]);
-  };
 
   const handleInputSend = () => {
     if (!input.trim()) return;
-    handleSend(input.trim());
+    onSend(input.trim());
     setInput("");
   };
   return (

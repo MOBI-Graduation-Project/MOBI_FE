@@ -2,17 +2,16 @@ import { useParams, useRouter } from "next/navigation";
 
 import Backbtn from "@/assets/chatbot/backbtn.svg";
 
-import chattingData from "@/mock/chatting.json";
+import { getOpponentNickname } from "@/utils/chat/getOpponentNickname";
 
 const ChatHeader = () => {
-  const MY_ID = 1; // 내 mock Id값
   const router = useRouter();
   const params = useParams();
   const targetRoomId = Number(params.roomId);
 
-  const opponentNickname = chattingData.chats.find(
-    chat => chat.roomId === targetRoomId && chat.senderId !== MY_ID,
-  )?.senderNickname;
+  const opponentNickname = getOpponentNickname({
+    roomId: targetRoomId,
+  });
 
   return (
     <div className="bg-yellow-10 fixed flex h-[100px] w-full flex-row items-center gap-5 pl-[30px]">
@@ -20,7 +19,7 @@ const ChatHeader = () => {
         <Backbtn />
       </button>
       <div className="text-heading2 text-brown text-stroke-white font-[geekble]">
-        {opponentNickname}
+        {opponentNickname ?? "주식 챗봇 모비"}
       </div>
     </div>
   );
