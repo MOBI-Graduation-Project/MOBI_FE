@@ -1,11 +1,14 @@
 "use client";
 
 import { Suspense, useRef } from "react";
+
 import { KeyboardControls, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/rapier";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
+import BottomBar from "@/components/common/bottomBar";
+import Header from "@/components/common/header";
 import Player from "@/components/metaverse/Player";
 import World from "@/components/metaverse/World";
 
@@ -23,6 +26,7 @@ const SquarePage = () => {
           { name: "jump", keys: ["Space"] },
         ]}
       >
+        <Header />
         <Canvas camera={{ position: [0, 5, 10], fov: 60 }} shadows>
           {/* 조명 */}
           <ambientLight intensity={0.5} />
@@ -41,8 +45,8 @@ const SquarePage = () => {
             enableZoom={false}
             enableDamping
             dampingFactor={0.08}
-            minPolarAngle={0}           
-            maxPolarAngle={0.99*Math.PI}       
+            minPolarAngle={0}
+            maxPolarAngle={0.99 * Math.PI}
             minDistance={8}
             maxDistance={8}
           />
@@ -58,10 +62,12 @@ const SquarePage = () => {
           {/* 안개 */}
           <fog attach="fog" args={["#ffffff", 10, 50]} />
         </Canvas>
+        <BottomBar />
       </KeyboardControls>
 
       {/* 컨트롤 안내 UI */}
-      <div className="absolute bottom-4 right-4 rounded-lg bg-[#FFEFBF] p-4 text-black">
+
+      <div className="text-brown absolute right-4 bottom-45 rounded-lg bg-[#FFEFBF] p-4 font-[geekble]">
         <p className="text-cap1">이동: WASD 또는 화살표</p>
         <p className="text-cap1">점프: Space</p>
         <p className="text-cap1">카메라: 마우스 드래그</p>
