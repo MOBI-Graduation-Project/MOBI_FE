@@ -1,10 +1,20 @@
 {
-  "chats": [
+  "chatData": [
     {
       "roomId": 1,
       "senderId": 1,
       "senderNickname": "모비1",
-      "content": "안녕하세요! 오늘 주식 어때?",
+      "profileUrl": "/svgs/profileImages/image1.jpeg",
+      "content": "ㅎㅇ?",
+      "sentAt": "2025-10-14T00:15:00Z",
+      "read": true
+    },
+    {
+      "roomId": 1,
+      "senderId": 1,
+      "senderNickname": "모비1",
+      "profileUrl": "/svgs/profileImages/image1.jpeg",
+      "content": "오늘 주식 어때?",
       "sentAt": "2025-10-14T00:15:00Z",
       "read": true
     },
@@ -12,7 +22,8 @@
       "roomId": 1,
       "senderId": 2,
       "senderNickname": "모비2",
-      "content": "좋아요! 삼성전자 올라가고 있어요.",
+      "profileUrl": "/svgs/profileImages/image2.jpeg",
+      "content": "좋아요! 삼성전자 올라가고 있어요.좋아요! 삼성전자 올라가고 있어요.좋아요! 삼성전자 올라가고 있어요.좋아요! 삼성전자 올라가고 있어요.좋아요! 삼성전자 올라가고 있어요.좋아요! 삼성전자 올라가고 있어요.좋아요! 삼성전자 올라가고 있어요.좋아요! 삼성전자 올라가고 있어요.좋아요! 삼성전자 올라가고 있어요.",
       "sentAt": "2025-10-14T00:16:00Z",
       "read": true
     },
@@ -20,6 +31,7 @@
       "roomId": 1,
       "senderId": 1,
       "senderNickname": "모비1",
+      "profileUrl": "/svgs/profileImages/image1.jpeg",
       "content": "그럼 나는 카카오 조금 살까?",
       "sentAt": "2025-10-14T00:17:00Z",
       "read": true
@@ -29,6 +41,7 @@
       "senderId": 2,
       "senderNickname": "모비2",
       "content": "카카오도 괜찮아요. 최근 실적이 좋더라구요.",
+      "profileUrl": "/svgs/profileImages/image2.jpeg",
       "sentAt": "2025-10-14T00:18:00Z",
       "read": true
     },
@@ -37,6 +50,7 @@
       "senderId": 1,
       "senderNickname": "모비1",
       "content": "그럼 오전에 조금 사고 오후에 더 살까 고민중이야.",
+      "profileUrl": "/svgs/profileImages/image1.jpeg",
       "sentAt": "2025-10-14T00:20:00Z",
       "read": false
     },
@@ -45,6 +59,7 @@
       "senderId": 2,
       "senderNickname": "모비2",
       "content": "좋은 전략 같아요. 오전에 시장 흐름 보고 결정하세요.",
+      "profileUrl": "/svgs/profileImages/image2.jpeg",
       "sentAt": "2025-10-14T00:21:00Z",
       "read": false
     },
@@ -53,6 +68,7 @@
       "senderId": 1,
       "senderNickname": "모비1",
       "content": "오늘 점심 뭐 먹을래?",
+      "profileUrl": "/svgs/profileImages/image1.jpeg",
       "sentAt": "2025-10-14T02:30:00Z",
       "read": true
     },
@@ -61,6 +77,7 @@
       "senderId": 3,
       "senderNickname": "모비3",
       "content": "나는 샐러드가 좋을 듯!",
+      "profileUrl": "/svgs/profileImages/image3.jpeg",
       "sentAt": "2025-10-14T02:31:00Z",
       "read": true
     },
@@ -69,6 +86,7 @@
       "senderId": 1,
       "senderNickname": "모비1",
       "content": "그럼 나는 샌드위치 먹을래. 근데 카페도 가고 싶어.",
+      "profileUrl": "/svgs/profileImages/image1.jpeg",
       "sentAt": "2025-10-14T02:32:00Z",
       "read": false
     },
@@ -77,6 +95,16 @@
       "senderId": 3,
       "senderNickname": "모비3",
       "content": "좋아, 점심 먹고 카페에서 만나자.",
+      "profileUrl": "/svgs/profileImages/image3.jpeg",
+      "sentAt": "2025-10-14T02:33:00Z",
+      "read": false
+    },
+    {
+      "roomId": 2,
+      "senderId": 3,
+      "senderNickname": "모비3",
+      "content": "어디 카페가지??",
+      "profileUrl": "/svgs/profileImages/image3.jpeg",
       "sentAt": "2025-10-14T02:33:00Z",
       "read": false
     },
@@ -84,7 +112,8 @@
       "roomId": 2,
       "senderId": 1,
       "senderNickname": "모비1",
-      "content": "좋아, 12시에 카페 앞에서 보자.",
+      "profileUrl": "/svgs/profileImages/image1.jpeg",
+      "content": "그러게...",
       "sentAt": "2025-10-14T02:34:00Z",
       "read": false
     },
@@ -92,7 +121,8 @@
       "roomId": 2,
       "senderId": 3,
       "senderNickname": "모비3",
-      "content": "알겠어! 기다릴게.",
+      "content": "일단, 홍문관 앞에서 보자",
+      "profileUrl": "/svgs/profileImages/image3.jpeg",
       "sentAt": "2025-10-14T02:35:00Z",
       "read": false
     }
