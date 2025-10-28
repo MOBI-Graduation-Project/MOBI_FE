@@ -2,7 +2,6 @@ import { useParams } from "next/navigation";
 
 import { Message } from "@/types/chatMessage";
 
-import { formatTime } from "@/utils/chat/formatTime";
 import { getOpponentNickname } from "@/utils/chat/getOpponentNickname";
 
 interface ChatSectionProps {
@@ -17,13 +16,13 @@ const ChatSection = ({ messages }: ChatSectionProps) => {
   return (
     <div className="flex-1 space-y-4 pr-2">
       {messages?.map(message => {
-        const sendAt = formatTime(message.sentAt);
+        const sendAt = message.sentAt;
         const key = `${message.senderId}-${message.sentAt}`;
 
         return (
           <div
             key={key}
-            className={`flex ${message.senderId === MY_ID ? "justify-end" : "justify-start"}`}
+            className={`flex ${message.senderId === MY_ID || message.isBot === false ? "justify-end" : "justify-start"}`}
           >
             <div className="flex max-w-[95%] items-end gap-2">
               {/* 내가 보낸 채팅 */}

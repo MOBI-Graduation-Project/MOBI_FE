@@ -7,15 +7,16 @@ import ChatSection from "@/components/chat/ChatSection";
 import InputBottomBar from "@/components/chat/InputBottomBar";
 import ChatbotButton from "@/components/chatbot/chatbotButton";
 
+import { Message } from "@/types/chatMessage";
+
 import { getButtonLog } from "@/utils/chatbot/getButtonLog";
 import {
-  ChatMessage,
   createBotMessage,
   createUserMessage,
 } from "@/utils/chatbot/handleChatInput";
 
 const Chatbot = () => {
-  const [, setMessages] = useState<ChatMessage[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
     // 첫 인사 메시지
@@ -39,7 +40,9 @@ const Chatbot = () => {
       {/*상단바*/}
       <ChatHeader />
       {/*채팅영역 */}
-      <ChatSection />
+      <div className="pt-[110px] pb-[220px]">
+        <ChatSection messages={messages} />
+      </div>
 
       {/*단축버튼 */}
       <div className="fixed bottom-[158px] left-1/2 -translate-x-1/2 transform">
