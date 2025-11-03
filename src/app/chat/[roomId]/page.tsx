@@ -29,7 +29,7 @@ const ChattingRoom = () => {
   return (
     <div className="bg-yellow-10 h-screen w-full">
       <ChatHeader />
-      <div className="bg-yellow-10 pt-[110px] pb-[150px]">
+      <div className="bg-yellow-10 px-[10px] pt-[110px] pb-[150px]">
         <ChatSection messages={messages} />
       </div>
       <InputBottomBar onSend={handleSend} />
