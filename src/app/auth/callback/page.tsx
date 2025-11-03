@@ -1,35 +1,42 @@
-import { useRouter } from "next/router";
+"use client";
+
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { useEffect } from "react";
 
 export default function GoogleCallback() {
   const router = useRouter();
-  const { code } = router.query;
+  const searchParams = useSearchParams();
+  const code = searchParams.get("code");
 
   useEffect(() => {
     if (!code) return;
-    (async () => {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/auth/google`,
-        {
+
+    const fetchGoogle = async () => {
+      try {
+        const res = await fetch("/api/auth", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            code,
-            redirectUri: process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI,
-          }),
-        },
-      );
+          body: JSON.stringify({ code }),
+        });
 
-      const data = await res.json();
+        if (!res.ok) throw new Error("서버 호출 실패");
 
-      if (data.isNewUser) {
-        router.replace("/signup/nickname");
-      } else {
-        router.replace("/map");
+        const data = await res.json();
+        console.log(data);
+
+        if (data.isNewUser) {
+          router.replace("/signup/nickname");
+        } else {
+          router.replace("/map");
+        }
+      } catch (error) {
+        console.error(error);
       }
-    })();
-  }, [code]);
+    };
+
+    fetchGoogle();
+  }, [code, router]);
 
   return <div>로그인 중...</div>;
 }
