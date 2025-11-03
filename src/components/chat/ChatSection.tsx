@@ -1,5 +1,7 @@
 import { useParams } from "next/navigation";
 
+import { useEffect, useRef } from "react";
+
 import { Message } from "@/types/chatMessage";
 
 import { formatTime } from "@/utils/chat/formatTime";
@@ -13,6 +15,11 @@ const ChatSection = ({ messages }: ChatSectionProps) => {
   const params = useParams();
   const targetRoomId = Number(params.roomId);
   const opponentNickname = getOpponentNickname({ roomId: targetRoomId });
+
+  const chatEndRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   return (
     <div className="flex-1 space-y-4 pr-2">
@@ -79,6 +86,7 @@ const ChatSection = ({ messages }: ChatSectionProps) => {
           </div>
         );
       })}
+      <div ref={chatEndRef} />
     </div>
   );
 };
