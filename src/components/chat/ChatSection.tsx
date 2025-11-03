@@ -2,6 +2,7 @@ import { useParams } from "next/navigation";
 
 import { Message } from "@/types/chatMessage";
 
+import { formatTime } from "@/utils/chat/formatTime";
 import { getOpponentNickname } from "@/utils/chat/getOpponentNickname";
 
 interface ChatSectionProps {
@@ -16,19 +17,19 @@ const ChatSection = ({ messages }: ChatSectionProps) => {
   return (
     <div className="flex-1 space-y-4 pr-2">
       {messages?.map(message => {
-        const sendAt = message.sentAt;
+        const sendAt = formatTime(message.sentAt);
         const key = `${message.senderId}-${message.sentAt}`;
 
         return (
           <div
             key={key}
-            className={`flex ${message.senderId === MY_ID || message.isBot === false ? "justify-end" : "justify-start"}`}
+            className={`flex w-full ${message.senderId === MY_ID || message.isBot === false ? "justify-end" : "justify-start"}`}
           >
-            <div className="flex max-w-[95%] items-end gap-2">
+            <div className="flex items-end gap-2">
               {/* 내가 보낸 채팅 */}
               {message.senderId === MY_ID || message.isBot === false ? (
                 <>
-                  <div className="flex flex-row items-end gap-2">
+                  <div className="flex flex-row items-end justify-end gap-2">
                     <div className="text-cap1 font-[pretendard] whitespace-nowrap text-gray-500">
                       {sendAt}
                     </div>
@@ -42,7 +43,7 @@ const ChatSection = ({ messages }: ChatSectionProps) => {
                   <div className="text-lab1 text-brown bg-gray-10 flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full font-[geekble]">
                     모비
                   </div>
-                  <div className="flex flex-row items-end gap-2">
+                  <div className="flex flex-row items-end justify-end gap-2">
                     <div className="text-cap1-med max-w-[80%] rounded-xl bg-white px-4 py-2 font-[pretendard] break-words">
                       {message.content}
                     </div>
