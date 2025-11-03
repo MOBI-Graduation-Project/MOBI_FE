@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import SearchIcon from "@/assets/chatting/searchIcon.svg";
 
-import userData from "@/mock/userData.json";
+import friendData from "@/mock/friendList.json";
 
 import { User } from "@/types/user";
 
@@ -12,21 +13,53 @@ import FilterResultByInput from "@/utils/profile/filterMemberByInput";
 
 import RecommendDropdown from "./RecommendDropdown";
 
+import type { Friend } from "@/types/friend";
+
 const SearchField = () => {
+  const router = useRouter();
+
   const [input, setInput] = useState("");
   const [searchResult, setSearchResult] = useState<User[]>([]);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInput(value);
     if (value.trim()) {
-      const result = FilterResultByInput(value, userData) as User[];
+      const allUsers = [
+        ...(friendData.friend[0].friendList || []),
+        ...(friendData.friend[0].friendRequestList || []),
+      ];
+      const result = FilterResultByInput(value, allUsers) as Friend[];
       setSearchResult(result);
     } else {
       setSearchResult([]);
     }
   };
+
+   const handleSelect = (user: User) => {
+    router.push(`/profile/${user.memberId}`);
+    setSearchResult([]);      // 드롭다운 닫기
+    setInput(user.nickname); 
+  };
+
+  // 컴포넌트 영역 밖 클릭 시 드롭다운 닫기
+  useEffect(() => {
+    const onMouseDown = (e: MouseEvent) => {
+      if (!containerRef.current) return;
+      if (!containerRef.current.contains(e.target as Node)) {
+        setSearchResult([]); 
+      }
+    };
+    document.addEventListener("mousedown", onMouseDown);
+    return () => document.removeEventListener("mousedown", onMouseDown);
+  }, []);
+
+
   return (
-    <section className="bg-brown/80 relative flex h-[94px] w-full flex-row gap-[45px] px-10 py-[19px]">
+    <section 
+      className="bg-brown/80 relative flex h-[94px] w-full flex-row gap-[45px] px-10 py-[19px]"
+      ref={containerRef}
+    >
       <input
         className="bg-yellow-light text-lab1 w-full rounded-[30px] px-[30px] text-[pretendard]"
         type="text"
@@ -41,7 +74,7 @@ const SearchField = () => {
         <ul className="divide-brown absolute top-[75px] left-10 z-10 flex w-[calc(100%-90px)] flex-col divide-y-1">
           {searchResult.map(user => (
             <li key={user.memberId}>
-              <RecommendDropdown searchResult={user} />
+              <RecommendDropdown searchResult={user} onSelect={handleSelect} />
             </li>
           ))}
         </ul>
