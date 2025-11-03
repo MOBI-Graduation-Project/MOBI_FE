@@ -17,11 +17,11 @@ const AvatarPreview = () => {
       className="absolute inset-0"
     >
       <ambientLight intensity={0.7} />
-      <directionalLight position={[4, 6, 4]} intensity={1} />
+      <directionalLight position={[4, 8, 4]} intensity={1} />
       <OrbitControls
         enableZoom={false}
         enablePan={false}
-        target={[0, 0.6, 0]}
+        target={[0, 0, 0]}
       />
       <Suspense fallback={null}>
         <Center>
