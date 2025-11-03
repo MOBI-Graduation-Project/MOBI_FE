@@ -16,7 +16,7 @@ const ChattingRoom = () => {
   return (
     <div className="bg-yellow-10 h-screen w-full">
       <ChatHeader />
-      <div className="pt-[110px]">
+      <div className="px-[10px] pt-[110px]">
         <ChatSection messages={roomMessages} />
       </div>
       {/* <InputBottomBar /> */}
