@@ -1,20 +1,18 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-
 import React from "react";
 
 import GoogleIcon from "@/assets/googleIcon.svg";
 
 const Onboarding = () => {
-  const router = useRouter();
+  const handleGoogleAuth = async (mode: "login" | "signup") => {
+    const redirectUri = process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI;
+    const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${
+      process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID
+    }&redirect_uri=${redirectUri}&response_type=code&scope=email profile openid&state=${mode}`;
 
-  const handleLoginClick = () => {
-    router.push("/map");
-  };
-
-  const handleSignUpClick = () => {
-    router.push("/signup/purpose");
+    window.location.href = authUrl;
+    console.log(redirectUri);
   };
 
   return (
@@ -33,13 +31,13 @@ const Onboarding = () => {
 
       <div className="flex gap-[61.5px]">
         <button
-          onClick={handleLoginClick}
+          onClick={() => handleGoogleAuth("login")}
           className="bg-yellow text-heading1 text-stroke-white button-shadow-yellow hover:bg-yellow-10t h-[87px] w-[199px] cursor-pointer rounded-[20px] font-[geekble]"
         >
           로그인
         </button>
         <button
-          onClick={handleSignUpClick}
+          onClick={() => handleGoogleAuth("signup")}
           className="bg-yellow text-heading1 text-stroke-white button-shadow-yellow hover:bg-yellow-10t flex h-[87px] w-[392px] cursor-pointer items-center justify-center rounded-[20px] font-[geekble]"
         >
           <GoogleIcon />
