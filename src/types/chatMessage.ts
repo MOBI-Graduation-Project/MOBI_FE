@@ -1,4 +1,5 @@
 export interface Message {
+  id?: string;
   roomId?: number; //채팅에서만 사용
   senderId?: number; //채팅에서만 사용
   senderNickname?: string; //채팅에서만 사용
