@@ -1,3 +1,5 @@
+"use client";
+
 import ProfileLayout from "@/components/profile/ProfileLayout";
 
 import MyProfileData from "@/mock/myProfileData.json";
