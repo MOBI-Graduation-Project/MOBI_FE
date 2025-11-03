@@ -1,11 +1,4 @@
-export type SenderType = "user" | "bot";
-
-export interface ChatMessage {
-  id: number;
-  sender: SenderType;
-  text: string;
-  time: string;
-}
+import { Message } from "@/types/chatMessage";
 
 const getCurrentTime = () => {
   return new Date().toLocaleTimeString("ko-KR", {
@@ -15,20 +8,18 @@ const getCurrentTime = () => {
   });
 };
 
-export const createUserMessage = (input: string): ChatMessage => {
+export const createUserMessage = (input: string): Message => {
   return {
-    id: Date.now(),
-    sender: "user",
-    text: `${input}`,
-    time: getCurrentTime(),
+    isBot: false,
+    content: `${input}`,
+    sentAt: getCurrentTime(),
   };
 };
 
-export const createBotMessage = (text: string): ChatMessage => {
+export const createBotMessage = (content: string): Message => {
   return {
-    id: Date.now() + 1,
-    sender: "bot",
-    text,
-    time: getCurrentTime(),
+    isBot: true,
+    content,
+    sentAt: getCurrentTime(),
   };
 };
