@@ -1,6 +1,7 @@
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
 import { StockTitle } from "@/components/investment/StockTitle";
+import { StocksList } from "@/components/investment/StocksList";
 
 const InvestmentPage = () => {
   return (
@@ -9,8 +10,9 @@ const InvestmentPage = () => {
       style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
     >
       <Header />
-      <div className="flex items-center justify-center gap-[41px]">
+      <div className="flex h-full flex-col items-center justify-center gap-[41px]">
         <StockTitle />
+        <StocksList />
       </div>
       <BottomBar />
     </div>
