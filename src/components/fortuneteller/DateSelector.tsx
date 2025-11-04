@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import DownArrowIcon from "@/assets/fortuneteller/downArrowIcon.svg";
+import DownArrowIcon from "@/assets/downArrowIcon.svg";
 
 interface DateSelectorProps {
   label: string;
