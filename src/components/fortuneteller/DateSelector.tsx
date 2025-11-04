@@ -30,7 +30,9 @@ const DateSelector = ({
           style={{ width }}
           onClick={() => setOpen(!open)}
         >
-          <DownArrowIcon className="custom-shadow absolute top-1/2 left-[-40px] -translate-y-1/2" />
+          <DownArrowIcon
+            className={`custom-shadow absolute top-1/2 left-[-40px] -translate-y-1/2 ${open ? "rotate-180" : ""}`}
+          />
           <span
             className={` ${dateIsEmpty ? "text-gray-50" : "text-brown"} font-[geekble] text-[48px]`}
           >
