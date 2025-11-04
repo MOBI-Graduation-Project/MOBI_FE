@@ -1,24 +1,18 @@
 interface YellowButtonProps {
-  canCheck?: boolean;
   text: string;
-  checkHandler?: () => void;
   width?: string;
+  onClick?: () => void;
 }
-const YellowButton = ({ canCheck = false, text, width }: YellowButtonProps) => {
+const YellowButton = ({ text, width, onClick }: YellowButtonProps) => {
   return (
-    <>
-      {canCheck ? (
-        <button></button>
-      ) : (
-        <button
-          className={`${width ?? "w-[216px]"} bg-yellow button-shadow-yellow cursor-pointer rounded-[20px]`}
-        >
-          <div className="text-stroke-white text-brown text-lab1 p-[10px] font-[geekble]">
-            {text}
-          </div>
-        </button>
-      )}
-    </>
+    <button
+      onClick={onClick}
+      className={`${width ?? "w-[216px]"} bg-yellow button-shadow-yellow flex cursor-pointer items-center justify-center rounded-[20px]`}
+    >
+      <div className="text-stroke-white text-brown text-lab1 cursor-pointer p-[10px] font-[geekble]">
+        {text}
+      </div>
+    </button>
   );
 };
 export default YellowButton;
