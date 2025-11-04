@@ -8,7 +8,7 @@ import YellowButton from "../common/YellowButton";
 
 export const StocksList = () => {
   const router = useRouter();
-  const myStocks = ["KAKAO", "SAMSUNG_ELECTRONIC"];
+  const myStocks = ["kakao", "samsung-electronic"];
 
   const handleButtonClick = (stock: string) => {
     router.push(`investment/${stock}`);
