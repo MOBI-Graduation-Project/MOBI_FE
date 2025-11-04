@@ -31,7 +31,7 @@ const DateSelector = ({
           onClick={() => setOpen(!open)}
         >
           <DownArrowIcon
-            className={`custom-shadow absolute top-1/2 left-[-40px] -translate-y-1/2 ${open ? "rotate-180" : ""}`}
+            className={`custom-shadow absolute top-1/2 left-[-40px] h-[80px] w-[80px] -translate-y-1/2 ${open ? "rotate-180" : "rotate-0"}`}
           />
           <span
             className={` ${dateIsEmpty ? "text-gray-50" : "text-brown"} font-[geekble] text-[48px]`}
@@ -42,7 +42,7 @@ const DateSelector = ({
 
         {/* 드롭다운 목록 */}
         {open && (
-          <div className="border-brown-dark bg-yellow-10 absolute top-[70px] left-0 z-50 max-h-[200px] w-full overflow-y-auto rounded-[18px] border-[3px] shadow-lg">
+          <div className="border-brown-dark bg-yellow-10 absolute top-[70px] left-0 z-50 max-h-[200px] w-full overflow-y-auto rounded-[18px] border-[3px] py-[10px] shadow-lg">
             {options.map(opt => (
               <div
                 key={opt}
