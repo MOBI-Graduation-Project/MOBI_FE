@@ -13,17 +13,13 @@ import RightArrow from "@/assets/rightArrow.svg";
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
 
-// 윤년/말일 계산
-const isLeap = (y: number) => (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
-const daysInMonth = (y: number, m: number) =>
-  [31, isLeap(y) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m - 1];
+import { daysInMonth } from "@/utils/fortunteller/getDaysInMonth";
 
 const FortuneTellerPage = () => {
   const router = useRouter();
   const nickname = "사용자";
   const { setBirthday } = useSajuStore();
 
-  // 오늘 날짜
   const today = new Date();
 
   // 상태값 (기본값 = 오늘)
