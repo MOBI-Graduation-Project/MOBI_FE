@@ -50,7 +50,7 @@ const ChatSection = ({ messages }: ChatSectionProps) => {
                   <div className="text-lab1 text-brown bg-gray-10 flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full font-[geekble]">
                     모비
                   </div>
-                  <div className="flex flex-row items-end justify-end gap-2">
+                  <div className="flex flex-row items-end gap-2">
                     <div className="text-cap1-med max-w-[80%] rounded-xl bg-white px-4 py-2 font-[pretendard] break-words">
                       {message.content}
                     </div>
