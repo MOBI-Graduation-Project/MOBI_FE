@@ -26,7 +26,7 @@ const BottomBar = () => {
         </button>
         <button
           className="text-body text-yellow text-stroke-black hover:bg-brown hover:buttombar-shadow h-full cursor-pointer font-[geekble]"
-          onClick={() => handleClick("/not-found")}
+          onClick={() => handleClick("/investment")}
         >
           주식
         </button>
