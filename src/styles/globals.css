@@ -24,6 +24,8 @@
   --color-brown-10t: #452300;
   --color-brown-20t: #3e1f00;
   --color-brown-dark: #3d0303;
+  
+  --color-cream: #fffaea; /* 컨테이너/배경용 크림색 */
 
   /* Yellow scale */
   --color-yellow: #ffc414;
