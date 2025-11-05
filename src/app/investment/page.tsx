@@ -1,8 +1,8 @@
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
-import { DropdownMenu } from "@/components/investment/DropdownMenu";
-import { StockTitle } from "@/components/investment/StockTitle";
-import { StocksList } from "@/components/investment/StocksList";
+import DropdownMenu from "@/components/investment/DropdownMenu";
+import StockTitle from "@/components/investment/StockTitle";
+import StocksList from "@/components/investment/StocksList";
 
 const InvestmentPage = () => {
   return (
@@ -11,7 +11,7 @@ const InvestmentPage = () => {
       style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
     >
       <Header />
-      <div className="fixed top-[200px] left-[30px]">
+      <div className="fixed top-[120px] left-[30px]">
         <DropdownMenu />
       </div>
 
