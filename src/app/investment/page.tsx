@@ -11,7 +11,7 @@ const InvestmentPage = () => {
       style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
     >
       <Header />
-      <div className="fixed top-[200px] left-[30px]">
+      <div className="fixed top-[120px] left-[30px]">
         <DropdownMenu />
       </div>
 
