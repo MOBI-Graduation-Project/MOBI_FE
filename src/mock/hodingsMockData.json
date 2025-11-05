@@ -1,0 +1,62 @@
+[
+  {
+    "symbol": "035720",
+    "name": "카카오",
+    "percentage": 25,
+    "lastUpdated": "2025-11-05T19:00:00+09:00"
+  },
+  {
+    "symbol": "005930",
+    "name": "삼성전자",
+    "percentage": 20,
+    "lastUpdated": "2025-11-05T19:00:00+09:00"
+  },
+  {
+    "symbol": "000660",
+    "name": "하이닉스",
+    "percentage": 10,
+    "lastUpdated": "2025-11-05T19:00:00+09:00"
+  },
+  {
+    "symbol": "051910",
+    "name": "LG화학",
+    "percentage": 8,
+    "lastUpdated": "2025-11-05T19:00:00+09:00"
+  },
+  {
+    "symbol": "035420",
+    "name": "NAVER",
+    "percentage": 7,
+    "lastUpdated": "2025-11-05T19:00:00+09:00"
+  },
+  {
+    "symbol": "005380",
+    "name": "현대차",
+    "percentage": 7,
+    "lastUpdated": "2025-11-05T19:00:00+09:00"
+  },
+  {
+    "symbol": "068270",
+    "name": "셀트리온",
+    "percentage": 6,
+    "lastUpdated": "2025-11-05T19:00:00+09:00"
+  },
+  {
+    "symbol": "000270",
+    "name": "기아",
+    "percentage": 5,
+    "lastUpdated": "2025-11-05T19:00:00+09:00"
+  },
+  {
+    "symbol": "028260",
+    "name": "삼성물산",
+    "percentage": 6,
+    "lastUpdated": "2025-11-05T19:00:00+09:00"
+  },
+  {
+    "symbol": "207940",
+    "name": "삼성바이오로직스",
+    "percentage": 6,
+    "lastUpdated": "2025-11-05T19:00:00+09:00"
+  }
+]
