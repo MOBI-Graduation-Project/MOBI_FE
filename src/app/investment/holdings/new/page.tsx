@@ -1,6 +1,6 @@
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
-import { DropdownMenu } from "@/components/investment/DropdownMenu";
+import DropdownMenu from "@/components/investment/DropdownMenu";
 
 const MyStock = () => {
   return (

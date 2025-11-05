@@ -8,7 +8,7 @@ import DownArrow from "@/assets/downArrowIcon.svg";
 
 import { STOCK_MENU_MAP } from "@/constants/STOCK_MENU_MAP";
 
-export const DropdownMenu = () => {
+const DropdownMenu = () => {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -75,3 +75,4 @@ export const DropdownMenu = () => {
     </div>
   );
 };
+export default DropdownMenu;

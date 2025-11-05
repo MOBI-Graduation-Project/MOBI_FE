@@ -1,8 +1,8 @@
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
-import { DropdownMenu } from "@/components/investment/DropdownMenu";
-import { StockTitle } from "@/components/investment/StockTitle";
-import { StocksList } from "@/components/investment/StocksList";
+import DropdownMenu from "@/components/investment/DropdownMenu";
+import StockTitle from "@/components/investment/StockTitle";
+import StocksList from "@/components/investment/StocksList";
 
 const InvestmentPage = () => {
   return (
