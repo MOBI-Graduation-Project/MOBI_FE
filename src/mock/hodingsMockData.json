@@ -1,62 +1,52 @@
 [
   {
-    "symbol": "035720",
-    "name": "카카오",
-    "percentage": 25,
-    "lastUpdated": "2025-11-05T19:00:00+09:00"
+    "stockCode": "035720",
+    "stockName": "카카오",
+    "holdingWeight": 25
   },
   {
-    "symbol": "005930",
-    "name": "삼성전자",
-    "percentage": 20,
-    "lastUpdated": "2025-11-05T19:00:00+09:00"
+    "stockCode": "005930",
+    "stockName": "삼성전자",
+    "holdingWeight": 20
   },
   {
-    "symbol": "000660",
-    "name": "하이닉스",
-    "percentage": 10,
-    "lastUpdated": "2025-11-05T19:00:00+09:00"
+    "stockCode": "000660",
+    "stockName": "하이닉스",
+    "holdingWeight": 10
   },
   {
-    "symbol": "051910",
-    "name": "LG화학",
-    "percentage": 8,
-    "lastUpdated": "2025-11-05T19:00:00+09:00"
+    "stockCode": "051910",
+    "stockName": "LG화학",
+    "holdingWeight": 8
   },
   {
-    "symbol": "035420",
-    "name": "NAVER",
-    "percentage": 7,
-    "lastUpdated": "2025-11-05T19:00:00+09:00"
+    "stockCode": "035420",
+    "stockName": "NAVER",
+    "holdingWeight": 7
   },
   {
-    "symbol": "005380",
-    "name": "현대차",
-    "percentage": 7,
-    "lastUpdated": "2025-11-05T19:00:00+09:00"
+    "stockCode": "005380",
+    "stockName": "현대차",
+    "holdingWeight": 7
   },
   {
-    "symbol": "068270",
-    "name": "셀트리온",
-    "percentage": 6,
-    "lastUpdated": "2025-11-05T19:00:00+09:00"
+    "stockCode": "068270",
+    "stockName": "셀트리온",
+    "holdingWeight": 6
   },
   {
-    "symbol": "000270",
-    "name": "기아",
-    "percentage": 5,
-    "lastUpdated": "2025-11-05T19:00:00+09:00"
+    "stockCode": "000270",
+    "stockName": "기아",
+    "holdingWeight": 5
   },
   {
-    "symbol": "028260",
-    "name": "삼성물산",
-    "percentage": 6,
-    "lastUpdated": "2025-11-05T19:00:00+09:00"
+    "stockCode": "028260",
+    "stockName": "삼성물산",
+    "holdingWeight": 6
   },
   {
-    "symbol": "207940",
-    "name": "삼성바이오로직스",
-    "percentage": 6,
-    "lastUpdated": "2025-11-05T19:00:00+09:00"
+    "stockCode": "207940",
+    "stockName": "삼성바이오로직스",
+    "holdingWeight": 6
   }
 ]
