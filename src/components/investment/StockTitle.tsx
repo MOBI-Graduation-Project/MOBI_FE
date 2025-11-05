@@ -2,7 +2,7 @@ interface StockTitleProps {
   userName?: string;
 }
 
-export const StockTitle = ({ userName = "사용자" }: StockTitleProps) => {
+const StockTitle = ({ userName = "사용자" }: StockTitleProps) => {
   return (
     <div className="flex flex-col gap-1">
       <p className="text-heading1 text-stroke-white text-brown font-[geekble]">
@@ -14,3 +14,4 @@ export const StockTitle = ({ userName = "사용자" }: StockTitleProps) => {
     </div>
   );
 };
+export default StockTitle;
