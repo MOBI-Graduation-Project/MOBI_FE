@@ -6,7 +6,7 @@ import { STOCK_NAME_MAP } from "@/constants/STOCK_NAME_MAP";
 
 import YellowButton from "../common/YellowButton";
 
-export const StocksList = () => {
+const StocksList = () => {
   const router = useRouter();
   const myStocks = ["kakao", "samsung-electronic"];
 
@@ -36,3 +36,4 @@ export const StocksList = () => {
     </div>
   );
 };
+export default StocksList;
