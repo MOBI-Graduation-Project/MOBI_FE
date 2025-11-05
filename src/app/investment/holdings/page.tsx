@@ -1,3 +1,4 @@
+import HeadingTitle from "@/components/common/HeadingTitle";
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
 import DropdownMenu from "@/components/investment/DropdownMenu";
@@ -15,7 +16,8 @@ const HoldingStocks = () => {
       <div className="fixed top-[120px] left-[30px]">
         <DropdownMenu />
       </div>
-      <div className="flex h-full w-full items-center justify-center">
+      <div className="flex h-full w-full flex-col items-center justify-center gap-[20px] pt-[100px] pb-[120px]">
+        <HeadingTitle texts={["{userName}님의 보유 종목 비율입니다."]} />
         <PieChart data={holdingsData} />
       </div>
 
