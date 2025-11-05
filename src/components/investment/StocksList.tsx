@@ -1,17 +1,26 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { STOCK_NAME_MAP } from "@/constants/STOCK_NAME_MAP";
+
+import myStockList from "@/mock/hodingsMockData.json";
 
 import YellowButton from "../common/YellowButton";
 
 const StocksList = () => {
   const router = useRouter();
-  const myStocks = ["kakao", "samsung-electronic"];
+  const pathname = usePathname();
+  const myStocks = pathname.includes("investment/holdings/new")
+    ? myStockList.map(stock => stock.stockName)
+    : ["kakao", "samsung-electronic"];
 
   const handleButtonClick = (stock: string) => {
-    router.push(`investment/${stock}`);
+    if (pathname.includes("investment/holdings/new")) {
+      router.push("/investment/holdings");
+    } else {
+      router.push(`/investment/${stock}`);
+    }
   };
 
   return (
