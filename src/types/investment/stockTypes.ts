@@ -1,4 +1,5 @@
 export interface Stock {
+  // 주식 이름으로 코드 조회
   stockCode: string; // 종목코드: A005930
   stockName: string; // 삼성전자
 }
@@ -14,7 +15,6 @@ export interface StockPrediction {
   stock: Stock;
   priceRecords: StockPriceRecord[];
   meta: {
-    modelAccuracy: number;
     predictionGeneratedAt: string;
   };
 }
@@ -40,7 +40,6 @@ export interface MyData {
 export interface MarketPrediction {
   marketName: "KOSPI" | "KOSDAQ";
   prediction: "상승" | "하락";
-  modelAccuracy: number;
   lastUpdated: string;
   predictionDate: string;
 }

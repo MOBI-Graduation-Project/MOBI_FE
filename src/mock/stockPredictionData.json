@@ -13,7 +13,6 @@
       { "date": "2025-11-07", "predictedPrice": 75450, "isPredicted": true }
     ],
     "meta": {
-      "modelAccuracy": 56.56,
       "predictionGeneratedAt": "2025-11-04T16:05:12.345678"
     }
   },
@@ -31,7 +30,6 @@
       { "date": "2025-11-07", "predictedPrice": 48000, "isPredicted": true }
     ],
     "meta": {
-      "modelAccuracy": 52.46,
       "predictionGeneratedAt": "2025-11-04T16:10:22.123456"
     }
   }
