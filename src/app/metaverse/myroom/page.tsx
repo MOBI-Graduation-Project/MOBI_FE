@@ -175,7 +175,7 @@ export default function MyRoomPage() {
               <MyRoomScene controlsRef={controlsRef} />
               <Player
                 controlsRef={controlsRef}
-                visualScale={5}
+                visualScale={1.4}
                 moveSpeed={40}
               />
             </Physics>

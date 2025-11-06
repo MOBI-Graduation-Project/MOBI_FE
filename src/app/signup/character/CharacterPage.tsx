@@ -2,11 +2,12 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 
 import { useCharacterStore } from "@/stores/characterStore";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import * as THREE from "three";
 
 import LeftArrow from "@/assets/leftArrow.svg";
 
@@ -29,7 +30,36 @@ const characterMap: Record<string, CharacterInfo> = {
 // 3D캐릭터들
 const CharacterModel = ({ path }: { path: string }) => {
   const { scene } = useGLTF(path);
-  return <primitive object={scene} scale={0.8} position={[0, -1.5, 0]} />;
+  const cloned = useMemo(() => scene.clone(true), [scene]);
+
+  // 정사각형 박스 기준으로가운데 + 꽉 차게 보이게 
+  const { scale, offset } = useMemo(() => {
+    cloned.updateMatrixWorld(true);
+    const box = new THREE.Box3().setFromObject(cloned);
+    const size = new THREE.Vector3();
+    const center = new THREE.Vector3();
+    box.getSize(size);
+    box.getCenter(center);
+
+    const FIT_SIZE = 2.8; // 카드 안에서 보이는 표준 한 변 길이(필요하면 2.6~3.2 사이로 미세조정)
+    const PADDING = 0.9;  
+
+    const major = Math.max(size.x, size.y);
+    const safeMajor = Math.max(major, 1e-6);
+    const scale = (FIT_SIZE * PADDING) / safeMajor;
+
+    const x = -center.x * scale;
+    const y = -center.y * scale;
+    const z = -center.z * scale;
+
+    return { scale, offset: new THREE.Vector3(x, y, z) };
+  }, [cloned]);
+
+  return (
+    <group position={offset} scale={scale}>
+      <primitive object={cloned} />
+    </group>
+  );
 };
 
 const CharacterPage = () => {
@@ -81,7 +111,12 @@ const CharacterPage = () => {
 
               <CharacterModel path={characterMap[characterType].modelPath} />
 
-              <OrbitControls enableZoom={false} />
+              <OrbitControls
+                enableZoom={false}
+                enablePan={false}
+                enableRotate={false}
+                target={[0, 0, 0]}
+              />
             </Canvas>
           ) : (
             <div className="flex h-full w-full items-center justify-center">
