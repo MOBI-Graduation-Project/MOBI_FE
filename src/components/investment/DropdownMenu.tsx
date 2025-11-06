@@ -2,34 +2,41 @@
 
 import { usePathname, useRouter } from "next/navigation";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 import DownArrow from "@/assets/downArrowIcon.svg";
 
 import { STOCK_MENU_MAP } from "@/constants/STOCK_MENU_MAP";
 
-export const DropdownMenu = () => {
+const DropdownMenu = () => {
   const router = useRouter();
   const pathname = usePathname();
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedKey, setSelectedKey] = useState<string>("");
 
-  // 현재 경로에서 key 추출
-  const currentKey = useMemo(() => {
-    const parts = pathname.split("/");
-    return parts[2] ?? ""; // 기본값: ""
+  useEffect(() => {
+    if (!pathname) return;
+
+    // ex) /investment/holdings/new → ["", "investment", "holdings", "new"]
+    const parts = pathname.split("/").filter(Boolean);
+
+    // investment 이후의 경로만 key로 사용
+    const key = parts.slice(1).join("/"); // holdings/new 또는 holdings
+
+    // holdings/new가 없으면 holdings로 fallback
+    if (STOCK_MENU_MAP[key]) {
+      setSelectedKey(key);
+    } else {
+      const fallbackKey = Object.keys(STOCK_MENU_MAP).find(k =>
+        pathname.includes(k),
+      );
+      setSelectedKey(fallbackKey ?? "");
+    }
   }, [pathname]);
 
-  // URL 변경될 때 selectedKey 동기화
-  useEffect(() => {
-    setSelectedKey(currentKey);
-  }, [currentKey]);
-
-  // 현재 페이지를 제외한 메뉴만 표시
-  const dropdownOptions = useMemo(
-    () => Object.entries(STOCK_MENU_MAP).filter(([key]) => key !== currentKey),
-    [currentKey],
+  const dropdownOptions = Object.entries(STOCK_MENU_MAP).filter(
+    ([key]) => key !== selectedKey,
   );
 
   const handleSelect = (key: string) => {
@@ -75,3 +82,4 @@ export const DropdownMenu = () => {
     </div>
   );
 };
+export default DropdownMenu;
