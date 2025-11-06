@@ -1,8 +1,8 @@
 [
   {
     "stock": {
-      "id": "A005930",
-      "name": "삼성전자"
+      "stockCode": "A005930",
+      "stockName": "삼성전자"
     },
     "priceRecords": [
       { "date": "2025-11-02", "closePrice": 74100, "isPredicted": false },
@@ -18,8 +18,8 @@
   },
   {
     "stock": {
-      "id": "A035720",
-      "name": "카카오"
+      "stockCode": "A035720",
+      "stockName": "카카오"
     },
     "priceRecords": [
       { "date": "2025-11-02", "closePrice": 46000, "isPredicted": false },
