@@ -1,0 +1,38 @@
+[
+  {
+    "stock": {
+      "id": "A005930",
+      "name": "삼성전자"
+    },
+    "priceRecords": [
+      { "date": "2025-11-02", "closePrice": 74100, "isPredicted": false },
+      { "date": "2025-11-03", "closePrice": 73800, "isPredicted": false },
+      { "date": "2025-11-04", "closePrice": 74200, "isPredicted": false },
+      { "date": "2025-11-05", "predictedPrice": 74900, "isPredicted": true },
+      { "date": "2025-11-06", "predictedPrice": 75200, "isPredicted": true },
+      { "date": "2025-11-07", "predictedPrice": 75450, "isPredicted": true }
+    ],
+    "meta": {
+      "modelAccuracy": 56.56,
+      "predictionGeneratedAt": "2025-11-04T16:05:12.345678"
+    }
+  },
+  {
+    "stock": {
+      "id": "A035720",
+      "name": "카카오"
+    },
+    "priceRecords": [
+      { "date": "2025-11-02", "closePrice": 46000, "isPredicted": false },
+      { "date": "2025-11-03", "closePrice": 46500, "isPredicted": false },
+      { "date": "2025-11-04", "closePrice": 46200, "isPredicted": false },
+      { "date": "2025-11-05", "predictedPrice": 47000, "isPredicted": true },
+      { "date": "2025-11-06", "predictedPrice": 47500, "isPredicted": true },
+      { "date": "2025-11-07", "predictedPrice": 48000, "isPredicted": true }
+    ],
+    "meta": {
+      "modelAccuracy": 52.46,
+      "predictionGeneratedAt": "2025-11-04T16:10:22.123456"
+    }
+  }
+]

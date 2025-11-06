@@ -1,0 +1,16 @@
+[
+  {
+    "marketName": "KOSPI",
+    "prediction": "상승",
+    "lastUpdated": "2025-11-04T16:05:12.345678",
+    "predictionDate": "2025-11-05",
+    "modelAccuracy": 56.56
+  },
+  {
+    "marketName": "KOSDAQ",
+    "prediction": "하락",
+    "lastUpdated": "2025-11-04T16:10:22.123456",
+    "predictionDate": "2025-11-05",
+    "modelAccuracy": 52.46
+  }
+]
