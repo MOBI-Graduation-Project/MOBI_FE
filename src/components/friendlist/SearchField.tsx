@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+
+import { useEffect, useRef, useState } from "react";
 
 import SearchIcon from "@/assets/chatting/searchIcon.svg";
 
@@ -12,8 +13,6 @@ import { User } from "@/types/user";
 import FilterResultByInput from "@/utils/profile/filterMemberByInput";
 
 import RecommendDropdown from "./RecommendDropdown";
-
-import type { Friend } from "@/types/friend";
 
 const SearchField = () => {
   const router = useRouter();
@@ -29,17 +28,17 @@ const SearchField = () => {
         ...(friendData.friend[0].friendList || []),
         ...(friendData.friend[0].friendRequestList || []),
       ];
-      const result = FilterResultByInput(value, allUsers) as Friend[];
+      const result = FilterResultByInput(value, allUsers) as User[];
       setSearchResult(result);
     } else {
       setSearchResult([]);
     }
   };
 
-   const handleSelect = (user: User) => {
+  const handleSelect = (user: User) => {
     router.push(`/profile/${user.memberId}`);
-    setSearchResult([]);      // 드롭다운 닫기
-    setInput(user.nickname); 
+    setSearchResult([]); // 드롭다운 닫기
+    setInput(user.nickname);
   };
 
   // 컴포넌트 영역 밖 클릭 시 드롭다운 닫기
@@ -47,16 +46,15 @@ const SearchField = () => {
     const onMouseDown = (e: MouseEvent) => {
       if (!containerRef.current) return;
       if (!containerRef.current.contains(e.target as Node)) {
-        setSearchResult([]); 
+        setSearchResult([]);
       }
     };
     document.addEventListener("mousedown", onMouseDown);
     return () => document.removeEventListener("mousedown", onMouseDown);
   }, []);
 
-
   return (
-    <section 
+    <section
       className="bg-brown/80 relative flex h-[94px] w-full flex-row gap-[45px] px-10 py-[19px]"
       ref={containerRef}
     >
