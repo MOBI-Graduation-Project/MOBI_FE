@@ -10,6 +10,7 @@ import RetryIcon from "@/assets/fortuneteller/retryIcon.svg";
 
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
+import HeadingTitle from "@/components/common/HeadingTitle";
 
 const FortuneResult = () => {
   const router = useRouter();
@@ -30,11 +31,16 @@ const FortuneResult = () => {
 
       <div className="flex flex-1 flex-col items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <p className="text-heading1 text-brown text-stroke-white pt-[180px] text-center font-[geekble] leading-tight">
-            {nickname}님과 {company}의 사주 궁합은?
-            <br />
-            {company}의 주식 상장일은 {listingDate}입니다.
-          </p>
+          <div className="pt-[213px]">
+            <HeadingTitle
+              userName={nickname}
+              stockName={company ?? ""}
+              texts={[
+                "{userName}님과 {stockName}의 사주 궁합은?",
+                "{stockName}의 주식 상장일은 " + listingDate + "입니다.",
+              ]}
+            />
+          </div>
 
           <div className="mr-[176px] ml-[176px] max-h-[360px] w-[calc(100%-352px)] items-center justify-center overflow-y-auto rounded-[20px] border-[2px] border-black bg-[#FFEEBD] px-[30px] py-[20px] shadow-lg">
             <p className="font-pretendard text-brown text-center text-[30px] leading-tight">
