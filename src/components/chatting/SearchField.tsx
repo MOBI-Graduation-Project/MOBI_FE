@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import SearchIcon from "@/assets/chatting/searchIcon.svg";
 
-import userData from "@/mock/userData.json";
+import friendList from "@/mock/friendList.json";
 
 import { User } from "@/types/user";
 
@@ -19,7 +19,10 @@ const SearchField = () => {
     const value = e.target.value;
     setInput(value);
     if (value.trim()) {
-      const result = FilterResultByInput(value, userData) as User[];
+      const result = FilterResultByInput(
+        value,
+        friendList.friend[0].friendList,
+      ) as User[];
       setSearchResult(result);
     } else {
       setSearchResult([]);

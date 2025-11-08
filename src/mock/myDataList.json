@@ -1,0 +1,26 @@
+{
+  "myDataList": [
+    {
+      "myDataId": 24,
+      "stockCode": "013580",
+      "stockName": "계룡건설",
+      "purchaseAmount": 100,
+      "avgPrice": 23000,
+      "currentPrice": 17810,
+      "valuationAmount": 1781000,
+      "returnAmount": -519000,
+      "returnRate": -22.57
+    },
+    {
+      "myDataId": 25,
+      "stockCode": "010120",
+      "stockName": "LS ELECTRIC",
+      "purchaseAmount": 100,
+      "avgPrice": 100000,
+      "currentPrice": 368500,
+      "valuationAmount": 36850000,
+      "returnAmount": 26850000,
+      "returnRate": 268.5
+    }
+  ]
+}

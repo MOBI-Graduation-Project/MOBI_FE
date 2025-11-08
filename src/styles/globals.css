@@ -25,6 +25,8 @@
   --color-brown-20t: #3e1f00;
   --color-brown-dark: #3d0303;
 
+  --color-cream: #fffaea; /* 컨테이너/배경용 크림색 */
+
   /* Yellow scale */
   --color-yellow: #ffc414;
   --color-yellow-10: #ffeebd;
@@ -34,6 +36,14 @@
   --color-yellow-10t: #e6b112;
   --color-yellow-20t: #cc9d10;
   --color-yellow-light: #fff0c8;
+
+  --color-yellow-40: #ffda70; /* 살짝 더 밝은 메인톤 */
+  --color-yellow-50: #ffed9f; /* 부드럽고 은은한 톤 */
+  --color-yellow-70: #f9d14b; /* 약간 오렌지 기운 추가 */
+  --color-yellow-80: #f2b400; /* 진한 골드톤 */
+  --color-yellow-100: #e8a200; /* 앰버계열 깊은 옐로우 */
+  --color-yellow-110: #d4a437; /* 골드 브라운 */
+  --color-yellow-120: #b58a00; /* 어두운 골드 */
 
   --color-orange-light: #ffcc33;
   --color-orange: #ffbf33;
