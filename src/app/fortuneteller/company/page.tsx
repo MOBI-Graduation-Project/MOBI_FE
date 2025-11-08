@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import useGoBack from "@/hooks/useGoBack";
 
 import { useState } from "react";
 
@@ -14,6 +15,7 @@ import Header from "@/components/common/header";
 
 const CompanyPage = () => {
   const router = useRouter();
+  const goBack = useGoBack();
   const nickname = "사용자";
   const { setCompany } = useSajuStore();
 
@@ -52,7 +54,7 @@ const CompanyPage = () => {
 
           {/* 이전 버튼 */}
           <button
-            onClick={handlePrev}
+            onClick={goBack}
             className="absolute top-1/2 left-[-190px] flex h-[114px] w-[114px] -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full transition-all"
           >
             <LeftArrow className="h-full w-full" />
