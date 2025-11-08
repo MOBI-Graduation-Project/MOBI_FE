@@ -14,6 +14,7 @@ interface PlayerProps {
   controlsRef?: React.MutableRefObject<OrbitControlsImpl | null>;
   visualScale?: number;
   moveSpeed?: number;
+  height?: number; //에셋들 크기 통일을 위해 높이변수 추가 
 }
 
 const MOVE_SPEED = 5;
@@ -23,8 +24,9 @@ const SPAWN: [number, number, number] = [5, 2, 0];
 
 const Player = ({
   controlsRef,
-  visualScale = 0.3,
+  visualScale = 0.5,
   moveSpeed = MOVE_SPEED,
+  height = 7,
 }: PlayerProps) => {
   const { characterType } = useCharacterStore();
   const bodyRef = useRef<RapierRigidBody>(null);
@@ -34,6 +36,27 @@ const Player = ({
     characterType ? `/models/${characterType}.glb` : "/models/default.glb",
   );
   const clonedScene = useMemo(() => scene.clone(), [scene]);
+ 
+  //에셋마다 실제 크기나 중심이 달라서 자동으로 균일하게 스케일 맞추고 발바닥을 바닥에 붙여주기
+  const { modelScale, modelOffset } = useMemo(() => {
+    clonedScene.updateMatrixWorld(true);
+    const box = new THREE.Box3().setFromObject(clonedScene);
+    const size = new THREE.Vector3();
+    const center = new THREE.Vector3();
+    box.getSize(size);
+    box.getCenter(center);
+
+    const safeHeight = Math.max(size.y, 1e-6);
+    const computedScale = (height / safeHeight) * visualScale;
+    const yOffset = -box.min.y * computedScale;
+    const xOffset = -center.x * computedScale;
+    const zOffset = -center.z * computedScale;
+
+    return {
+      modelScale: computedScale,
+      modelOffset: new THREE.Vector3(xOffset, yOffset, zOffset),
+    };
+  }, [clonedScene, height, visualScale]);
 
   const [, getKeys] = useKeyboardControls();
 
@@ -109,7 +132,9 @@ const Player = ({
       angularDamping={1}
     >
       <group ref={modelRef}>
-        <primitive object={clonedScene} scale={visualScale} />
+        <group position={modelOffset} scale={modelScale}>
+          <primitive object={clonedScene} scale={visualScale} />
+        </group>
       </group>
     </RigidBody>
   );
