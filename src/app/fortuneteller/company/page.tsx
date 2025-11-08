@@ -27,8 +27,6 @@ const CompanyPage = () => {
     router.push("/fortuneteller/result");
   };
 
-  const handlePrev = () => router.back();
-
   return (
     <div
       className="flex h-screen w-full flex-col bg-cover bg-center bg-no-repeat pt-[42.5px] pb-[99px]"
