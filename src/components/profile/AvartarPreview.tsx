@@ -52,7 +52,10 @@ const AvatarPreview = ({ height = 5 }: Props) => {
         target={[0, Math.max(1.6, height * 0.5) + previewLift, 0]}
       />
       <Suspense fallback={null}>
-        <group position={[offset.x, offset.y + previewLift, offset.z]} scale={scale}>
+        <group
+          position={[offset.x, offset.y + previewLift, offset.z]}
+          scale={scale}
+        >
           <primitive object={cloned} />
         </group>
       </Suspense>
@@ -61,4 +64,3 @@ const AvatarPreview = ({ height = 5 }: Props) => {
 };
 
 export default AvatarPreview;
-

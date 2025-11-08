@@ -1,11 +1,11 @@
-import { friend } from "@/mock/friendList.json";
+import friendData from "@/mock/friendList.json";
 
 import { User } from "@/types/user";
 
 export const getUserData = (
   userId: number,
 ): { user: User | null; isFriend: boolean } => {
-  const { friendList, friendRequestList } = friend[0];
+  const { friendList, friendRequestList } = friendData.friend[0];
 
   const foundFriend = friendList.find(u => u.memberId === userId);
   if (foundFriend) return { user: foundFriend, isFriend: true };
