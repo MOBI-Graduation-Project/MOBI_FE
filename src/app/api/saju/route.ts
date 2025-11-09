@@ -7,6 +7,24 @@ export async function POST(req: Request) {
     // 클라이언트에서 보낸 JSON 바디 파싱
     const body = (await req.json()) as SajuCompatibilityRequest;
 
+    // !!!추가!!!: 개발용 목 스위치 → /api/saju?mock=1 호출 시 가짜 응답 반환
+    const url = new URL(req.url); // 요청 주소를 객체 형태로 파싱
+    if (url.searchParams.get("mock") === "1") {
+    
+      // 임시 가짜 응답 (백엔드 연결 없이 테스트용)
+      return new Response(
+        JSON.stringify({
+          result:
+            "MOCK 결과: 금(金)·토(土) 기운의 상생 구조. 전반적으로 안정적이며, 단기 변동성에는 유연한 대응이 필요합니다.",
+        }),
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        },
+      );
+    }
+    // !!!추가 끝!!!
+
     // 가장 기본적인 필수값 체크 (런타임 안전장치)
     const { birthDate, stockName } = body ?? {};
     if (!birthDate || !stockName) {
