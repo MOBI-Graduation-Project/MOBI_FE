@@ -19,7 +19,7 @@ import {
 } from "@/utils/chatbot/handleChatInput";
 
 const USE_MOCK = true;     // 로그인 이전 테스트용 (실서버 붙일 땐 false)
-const USE_STREAMING = false; // 스트리밍 모드 on/off
+const USE_STREAMING = true; // 스트리밍 모드 on/off
 
 const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([]);
