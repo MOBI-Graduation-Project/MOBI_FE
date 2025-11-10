@@ -4,15 +4,28 @@ import React from "react";
 
 import GoogleIcon from "@/assets/googleIcon.svg";
 
-const Onboarding = () => {
-  const handleGoogleAuth = async (mode: "login" | "signup") => {
-    const redirectUri = process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI;
-    const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${
-      process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID
-    }&redirect_uri=${redirectUri}&response_type=code&scope=email profile openid&state=${mode}`;
+import {
+  generateCodeChallenge,
+  generateCodeVerifier,
+} from "@/utils/signup/generatePkce";
 
-    window.location.href = authUrl;
-    console.log(redirectUri);
+const Onboarding = () => {
+  const handleGoogleAuth = async () => {
+    const codeVerifier = generateCodeVerifier();
+    const codeChallenge = await generateCodeChallenge(codeVerifier);
+    localStorage.setItem("code_verifier", codeVerifier);
+
+    const params = new URLSearchParams({
+      client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
+      redirect_uri: process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI!,
+      response_type: "code",
+      scope: "openid email profile",
+      code_challenge: codeChallenge,
+      code_challenge_method: "S256",
+      access_type: "offline",
+    });
+
+    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
   };
 
   return (

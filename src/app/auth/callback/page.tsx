@@ -1,42 +1,51 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 import { useEffect } from "react";
 
 export default function GoogleCallback() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
 
   useEffect(() => {
-    if (!code) return;
+    const codeVerifier = localStorage.getItem("code_verifier");
+    console.log("Callback codeVerifier", codeVerifier);
+    if (!code || !codeVerifier) return;
 
-    const fetchGoogle = async () => {
+    const fetchBackend = async () => {
+      const requestUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/google`;
+      const requestBody = {
+        code,
+        redirectUri: process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI,
+        codeVerifier,
+      };
+
+      console.log("Request URL:", requestUrl);
+      console.log("Request Body:", requestBody);
+
       try {
-        const res = await fetch("/api/auth", {
+        const res = await fetch(requestUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ code }),
+          body: JSON.stringify(requestBody),
         });
 
-        if (!res.ok) throw new Error("서버 호출 실패");
+        if (!res.ok) {
+          const text = await res.text();
+          console.error("서버 호출 실패:", text);
+          throw new Error("서버 호출 실패");
+        }
 
         const data = await res.json();
-        console.log(data);
-
-        if (data.isNewUser) {
-          router.replace("/signup/nickname");
-        } else {
-          router.replace("/map");
-        }
-      } catch (error) {
-        console.error(error);
+        console.log("로그인 성공", data);
+      } catch (err) {
+        console.error("Google login error:", err);
       }
     };
 
-    fetchGoogle();
-  }, [code, router]);
+    fetchBackend();
+  }, [code]);
 
-  return <div>로그인 중...</div>;
+  return <div>로그인 처리 중...</div>;
 }
