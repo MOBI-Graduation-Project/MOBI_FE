@@ -44,13 +44,13 @@ const Onboarding = () => {
 
       <div className="flex gap-[61.5px]">
         <button
-          onClick={() => handleGoogleAuth()}
+          onClick={handleGoogleAuth}
           className="bg-yellow text-heading1 text-stroke-white button-shadow-yellow hover:bg-yellow-10t h-[87px] w-[199px] cursor-pointer rounded-[20px] font-[geekble]"
         >
           로그인
         </button>
         <button
-          onClick={() => handleGoogleAuth()}
+          onClick={handleGoogleAuth}
           className="bg-yellow text-heading1 text-stroke-white button-shadow-yellow hover:bg-yellow-10t flex h-[87px] w-[392px] cursor-pointer items-center justify-center rounded-[20px] font-[geekble]"
         >
           <GoogleIcon />
