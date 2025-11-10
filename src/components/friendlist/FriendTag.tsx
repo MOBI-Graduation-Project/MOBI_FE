@@ -4,21 +4,38 @@ import { useRouter } from "next/navigation";
 
 import React from "react";
 
+import { User } from "@/types/user";
+
 interface FriendTagProps {
-  friend: {
-    memberId: number;
-    nickname: string;
-    profileUrl: string;
-    profileDescribe: string;
-  };
-  showButtons?: boolean; // 요청일 때만 수락/거절 버튼 보이도록
+  friend: User;
+  showButtons?: boolean;
+
+  onAccept?: (friend: FriendTagProps["friend"]) => void;
+  onDecline?: (friend: FriendTagProps["friend"]) => void;
 }
 
-const FriendTag = ({ friend, showButtons }: FriendTagProps) => {
+const FriendTag = ({
+  friend,
+  showButtons,
+  onAccept,
+  onDecline,
+}: FriendTagProps) => {
   const router = useRouter();
+
   const handleClick = () => {
     router.push(`/profile/${friend.memberId}`);
   };
+
+  const handleAccept = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    onAccept?.(friend);
+  };
+
+  const handleDecline = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    onDecline?.(friend);
+  };
+
   return (
     <div
       className="bg-brown/80 relative flex h-[94px] w-full flex-row gap-[45px] px-10 py-[19px]"
@@ -46,10 +63,16 @@ const FriendTag = ({ friend, showButtons }: FriendTagProps) => {
       {/* 버튼 */}
       {showButtons && (
         <div className="absolute top-[25.5px] right-[52px] flex flex-row gap-[26px]">
-          <button className="bg-yellow text-body text-brown text-stroke-white hover:bg-yellow-10t button-shadow-yellow h-[45px] w-[130px] cursor-pointer rounded-[20px] font-[geekble] hover:scale-105">
+          <button
+            className="bg-yellow text-body text-brown text-stroke-white hover:bg-yellow-10t button-shadow-yellow h-[45px] w-[130px] cursor-pointer rounded-[20px] font-[geekble] hover:scale-105"
+            onClick={handleAccept}
+          >
             수락
           </button>
-          <button className="text-body text-stroke-white hover:bg-gray-60 button-shadow-gray h-[45px] w-[130px] cursor-pointer rounded-[20px] bg-gray-50 font-[geekble] text-gray-50 hover:scale-105">
+          <button
+            className="text-body text-stroke-white hover:bg-gray-60 button-shadow-gray h-[45px] w-[130px] cursor-pointer rounded-[20px] bg-gray-50 font-[geekble] text-gray-50 hover:scale-105"
+            onClick={handleDecline}
+          >
             거절
           </button>
         </div>
