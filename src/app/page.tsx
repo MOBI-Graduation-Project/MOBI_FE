@@ -4,24 +4,13 @@ import React from "react";
 
 import GoogleIcon from "@/assets/googleIcon.svg";
 
-import {
-  generateCodeChallenge,
-  generateCodeVerifier,
-} from "@/utils/signup/generatePkce";
-
 const Onboarding = () => {
   const handleGoogleAuth = async () => {
-    const codeVerifier = generateCodeVerifier();
-    const codeChallenge = await generateCodeChallenge(codeVerifier);
-    localStorage.setItem("code_verifier", codeVerifier);
-
     const params = new URLSearchParams({
       client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
       redirect_uri: process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI!,
       response_type: "code",
       scope: "openid email profile",
-      code_challenge: codeChallenge,
-      code_challenge_method: "S256",
       access_type: "offline",
     });
 

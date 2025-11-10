@@ -17,15 +17,13 @@ interface OAuthResponse {
 }
 
 export const handleOAuthCallback = async (code: string) => {
-  const codeVerifier = localStorage.getItem("code_verifier")!;
-  const redirectUri = process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI!;
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/google`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code, redirectUri, codeVerifier }),
+        body: JSON.stringify({ code }),
       },
     );
 
@@ -37,12 +35,9 @@ export const handleOAuthCallback = async (code: string) => {
 
     const data: OAuthResponse = await res.json();
 
-    // 토큰 저장
     localStorage.setItem("accessToken", data.result.accessToken);
     localStorage.setItem("refreshToken", data.result.refreshToken);
-    localStorage.removeItem("code_verifier");
 
-    // isNewMember에 따라 분기
     if (data.result.isNewMember) {
       window.location.href = "/signup/nickname";
     } else {
