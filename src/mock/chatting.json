@@ -5,7 +5,7 @@
       "senderId": 1,
       "senderNickname": "모비1",
       "profileUrl": "/svgs/profileImages/image1.jpeg",
-      "content": "ㅎㅇ?",
+      "content": "야, 오늘 주식 봤어?",
       "sentAt": "2025-10-14T00:15:00Z",
       "read": true
     },
@@ -14,7 +14,7 @@
       "senderId": 1,
       "senderNickname": "모비1",
       "profileUrl": "/svgs/profileImages/image1.jpeg",
-      "content": "오늘 주식 어때?",
+      "content": "삼전 또 올랐던데? 대박이지 않냐?",
       "sentAt": "2025-10-14T00:15:00Z",
       "read": true
     },
@@ -23,7 +23,7 @@
       "senderId": 2,
       "senderNickname": "모비2",
       "profileUrl": "/svgs/profileImages/image2.jpeg",
-      "content": "좋아요! 삼성전자 올라가고 있어요.좋아요! 삼성전자 올라가고 있어요.좋아요! 삼성전자 올라가고 있어요.좋아요! 삼성전자 올라가고 있어요.좋아요! 삼성전자 올라가고 있어요.좋아요! 삼성전자 올라가고 있어요.좋아요! 삼성전자 올라가고 있어요.좋아요! 삼성전자 올라가고 있어요.좋아요! 삼성전자 올라가고 있어요.",
+      "content": "봤지ㅋㅋ 요즘 반도체주 다시 불붙은 느낌이야. 이번엔 진짜 길게 갈 수도 있을 듯?",
       "sentAt": "2025-10-14T00:16:00Z",
       "read": true
     },
@@ -32,7 +32,7 @@
       "senderId": 1,
       "senderNickname": "모비1",
       "profileUrl": "/svgs/profileImages/image1.jpeg",
-      "content": "그럼 나는 카카오 조금 살까?",
+      "content": "그럼 카카오 좀 들어가볼까 고민중인데... 요즘 분위기 어때 보여?",
       "sentAt": "2025-10-14T00:17:00Z",
       "read": true
     },
@@ -40,8 +40,8 @@
       "roomId": 1,
       "senderId": 2,
       "senderNickname": "모비2",
-      "content": "카카오도 괜찮아요. 최근 실적이 좋더라구요.",
       "profileUrl": "/svgs/profileImages/image2.jpeg",
+      "content": "카카오는 요즘 실적 괜찮아졌대. 근데 단기보단 중장기로 보는 게 나을 듯?",
       "sentAt": "2025-10-14T00:18:00Z",
       "read": true
     },
@@ -49,8 +49,8 @@
       "roomId": 1,
       "senderId": 1,
       "senderNickname": "모비1",
-      "content": "그럼 오전에 조금 사고 오후에 더 살까 고민중이야.",
       "profileUrl": "/svgs/profileImages/image1.jpeg",
+      "content": "음... 그럼 오전에 조금 사고 오후에 분위기 봐서 더 들어갈까 싶다.",
       "sentAt": "2025-10-14T00:20:00Z",
       "read": false
     },
@@ -58,72 +58,36 @@
       "roomId": 1,
       "senderId": 2,
       "senderNickname": "모비2",
-      "content": "좋은 전략 같아요. 오전에 시장 흐름 보고 결정하세요.",
       "profileUrl": "/svgs/profileImages/image2.jpeg",
+      "content": "좋은 생각이네. 오전엔 거래량 보면서 천천히 들어가도 괜찮을 듯.",
       "sentAt": "2025-10-14T00:21:00Z",
       "read": false
     },
     {
-      "roomId": 2,
-      "senderId": 1,
-      "senderNickname": "모비1",
-      "content": "오늘 점심 뭐 먹을래?",
-      "profileUrl": "/svgs/profileImages/image1.jpeg",
-      "sentAt": "2025-10-14T02:30:00Z",
-      "read": true
-    },
-    {
-      "roomId": 2,
-      "senderId": 3,
-      "senderNickname": "모비3",
-      "content": "나는 샐러드가 좋을 듯!",
-      "profileUrl": "/svgs/profileImages/image3.jpeg",
-      "sentAt": "2025-10-14T02:31:00Z",
-      "read": true
-    },
-    {
-      "roomId": 2,
-      "senderId": 1,
-      "senderNickname": "모비1",
-      "content": "그럼 나는 샌드위치 먹을래. 근데 카페도 가고 싶어.",
-      "profileUrl": "/svgs/profileImages/image1.jpeg",
-      "sentAt": "2025-10-14T02:32:00Z",
-      "read": false
-    },
-    {
-      "roomId": 2,
-      "senderId": 3,
-      "senderNickname": "모비3",
-      "content": "좋아, 점심 먹고 카페에서 만나자.",
-      "profileUrl": "/svgs/profileImages/image3.jpeg",
-      "sentAt": "2025-10-14T02:33:00Z",
-      "read": false
-    },
-    {
-      "roomId": 2,
-      "senderId": 3,
-      "senderNickname": "모비3",
-      "content": "어디 카페가지??",
-      "profileUrl": "/svgs/profileImages/image3.jpeg",
-      "sentAt": "2025-10-14T02:33:00Z",
-      "read": false
-    },
-    {
-      "roomId": 2,
+      "roomId": 1,
       "senderId": 1,
       "senderNickname": "모비1",
       "profileUrl": "/svgs/profileImages/image1.jpeg",
-      "content": "그러게...",
-      "sentAt": "2025-10-14T02:34:00Z",
+      "content": "근데 요즘 왜 이렇게 피곤하냐ㅋㅋ 회사 가기 너무 싫어.",
+      "sentAt": "2025-10-14T00:22:00Z",
       "read": false
     },
     {
-      "roomId": 2,
-      "senderId": 3,
-      "senderNickname": "모비3",
-      "content": "일단, 홍문관 앞에서 보자",
-      "profileUrl": "/svgs/profileImages/image3.jpeg",
-      "sentAt": "2025-10-14T02:35:00Z",
+      "roomId": 1,
+      "senderId": 2,
+      "senderNickname": "모비2",
+      "profileUrl": "/svgs/profileImages/image2.jpeg",
+      "content": "나도ㅋㅋ 주식이 오르면 기분은 좋은데 현실은 그대로야...",
+      "sentAt": "2025-10-14T00:23:00Z",
+      "read": false
+    },
+    {
+      "roomId": 1,
+      "senderId": 1,
+      "senderNickname": "모비1",
+      "profileUrl": "/svgs/profileImages/image1.jpeg",
+      "content": "ㅋㅋㅋㅋ 진짜 그 말 인정. 이번 주말엔 그냥 푹 쉬자.",
+      "sentAt": "2025-10-14T00:24:00Z",
       "read": false
     }
   ]
