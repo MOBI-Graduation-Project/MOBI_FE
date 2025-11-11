@@ -6,16 +6,15 @@ import GoogleIcon from "@/assets/googleIcon.svg";
 
 const Onboarding = () => {
   const handleGoogleAuth = async () => {
-    // const params = new URLSearchParams({
-    //   client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
-    //   redirect_uri: process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI!,
-    //   response_type: "code",
-    //   scope: "openid email profile",
-    //   access_type: "offline",
-    // });
+    const params = new URLSearchParams({
+      client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
+      redirect_uri: process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI!,
+      response_type: "code",
+      scope: "openid email profile",
+      access_type: "offline",
+    });
 
-    // window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
-    window.location.href = `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/google`;
+    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
   };
   console.log(process.env.NEXT_PUBLIC_API_BASE_URL); // 배포 후 확인용 콘솔로그 제거할 것
 
