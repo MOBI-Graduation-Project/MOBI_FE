@@ -95,7 +95,7 @@ function MyRoomScene({
     const y = Math.max(desiredY, minYInside);
     const rotY = Math.PI / 2; // 방 안쪽을 바라보게
 
-    const onClick = () => router.push("/not-found");
+    const onClick = () => router.push("/investment");
     const onOver = (e: ThreeEvent<PointerEvent>) => {
       document.body.style.cursor = "pointer";
       e.stopPropagation();
@@ -175,7 +175,7 @@ export default function MyRoomPage() {
               <MyRoomScene controlsRef={controlsRef} />
               <Player
                 controlsRef={controlsRef}
-                visualScale={5}
+                visualScale={1.4}
                 moveSpeed={40}
               />
             </Physics>

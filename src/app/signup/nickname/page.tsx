@@ -54,12 +54,10 @@ const SignUp = () => {
       style={{ backgroundImage: "url('/svgs/backgroundImage.svg')" }}
     >
       <div className="relative flex h-[450px] w-[1000px] flex-col items-center justify-center rounded-[30px] bg-[#FFFAEA]">
-        {/* 닉네임 입력해주세요 텍스트 */}
         <h1 className="text-brown text-heading1 mb-[50px] font-[geekble]">
           닉네임을 입력해주세요
         </h1>
 
-        {/* 닉네임 입력 필드와 중복확인 버튼 */}
         <div className="mb-[40px] flex items-center gap-[20px]">
           <div className="relative">
             <input
@@ -78,7 +76,6 @@ const SignUp = () => {
           </button>
         </div>
 
-        {/* 이용약관 동의 */}
         <div className="flex items-start gap-[15px]">
           <button
             onClick={() => setIsAgreed(!isAgreed)}
@@ -95,7 +92,6 @@ const SignUp = () => {
           </a>
         </div>
 
-        {/* 다음 버튼 - 오른쪽 중간 */}
         <button
           onClick={handleNextClick}
           disabled={!isButtonEnabled}
