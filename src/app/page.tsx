@@ -16,7 +16,6 @@ const Onboarding = () => {
 
     window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
   };
-  console.log(process.env.NEXT_PUBLIC_API_BASE_URL); // 배포 후 확인용 콘솔로그 제거할 것
 
   return (
     <div
