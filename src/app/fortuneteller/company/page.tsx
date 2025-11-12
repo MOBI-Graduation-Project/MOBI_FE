@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import useGoBack from "@/hooks/useGoBack";
 
 import { useState } from "react";
 
@@ -11,9 +12,11 @@ import RightArrow from "@/assets/rightArrow.svg";
 
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
+import HeadingTitle from "@/components/common/HeadingTitle";
 
 const CompanyPage = () => {
   const router = useRouter();
+  const goBack = useGoBack();
   const nickname = "사용자";
   const { setCompany } = useSajuStore();
 
@@ -25,8 +28,6 @@ const CompanyPage = () => {
     router.push("/fortuneteller/result");
   };
 
-  const handlePrev = () => router.back();
-
   return (
     <div
       className="flex h-screen w-full flex-col bg-cover bg-center bg-no-repeat pt-[42.5px] pb-[99px]"
@@ -37,9 +38,10 @@ const CompanyPage = () => {
       <div className="flex flex-1 items-center justify-center px-4">
         <div className="relative flex w-full max-w-[980px] flex-col items-center gap-6">
           {/* 안내 문구 */}
-          <p className="text-heading1 text-brown text-stroke-white stroke-[4] text-center font-[geekble] leading-tight">
-            {nickname} 님, 주식 회사 이름을 입력해주세요.
-          </p>
+          <HeadingTitle
+            userName={nickname}
+            texts={["{userName} 님, 주식 회사 이름을 입력해주세요."]}
+          />
 
           {/* 입력창 */}
           <input
@@ -52,7 +54,7 @@ const CompanyPage = () => {
 
           {/* 이전 버튼 */}
           <button
-            onClick={handlePrev}
+            onClick={goBack}
             className="absolute top-1/2 left-[-190px] flex h-[114px] w-[114px] -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full transition-all"
           >
             <LeftArrow className="h-full w-full" />

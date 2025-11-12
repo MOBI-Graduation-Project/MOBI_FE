@@ -18,7 +18,7 @@ interface ProfileLayoutProps {
   isFriend?: boolean;
 }
 const AvatarPreview = dynamic(
-  () => import("@/components/profile/AvartarPreview"),
+  () => import("@/components/profile/AvatarPreview"),
   {
     ssr: false,
   },

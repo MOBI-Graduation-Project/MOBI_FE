@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { useSajuStore } from "@/stores/sajuStore";
 
@@ -10,42 +10,91 @@ import RetryIcon from "@/assets/fortuneteller/retryIcon.svg";
 
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
+import HeadingTitle from "@/components/common/HeadingTitle";
 
 const FortuneResult = () => {
   const router = useRouter();
-  const { company } = useSajuStore();
+  const { company, birthday } = useSajuStore();
   const nickname = "사용자";
   const listingDate = "1975년 6월 12일";
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [resultText, setResultText] = useState<string>("");
 
   const handleRetry = () => {
     router.push("/fortuneteller");
   };
 
+    // YYYY-MM-DD 포맷
+  const birthDate = useMemo(() => {
+    if (!birthday) return null;
+    const pad = (n: number) => n.toString().padStart(2, "0");
+    return `${birthday.year}-${pad(birthday.month)}-${pad(birthday.day)}`;
+  }, [birthday]);
+
+  // 로그인 api 연동 후 엑세스토큰 어쏘라이제이션 받기 전: mock=1로 테스트 호출
+  useEffect(() => {
+    const run = async () => {
+      if (!company || !birthDate) return;
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await fetch(`/api/saju?mock=1`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ birthDate, stockName: company }),
+        });
+        if (!res.ok) {
+          const raw = await res.text();
+          throw new Error(raw || `HTTP ${res.status}`);
+        }
+        const data: { result?: string } = await res.json();
+        setResultText(data.result ?? "(결과 문구 없음)");
+      } catch (e: any) {
+        setError(e?.message ?? "요청 중 오류가 발생했습니다.");
+      } finally {
+        setLoading(false);
+      }
+    };
+    run();
+  }, [company, birthDate]);
+
   return (
     <div
-      className="flex h-screen w-full flex-col justify-between bg-cover bg-center bg-no-repeat"
+      className="flex h-screen w-full flex-col justify-between bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{ backgroundImage: "url('/svgs/backgroundImage.svg')" }}
     >
       <Header />
 
-      <div className="flex flex-1 flex-col items-center justify-center">
+      <div className="flex flex-1 flex-col items-center justify-center overflow-hidden">
         <div className="flex flex-col items-center gap-4">
-          <p className="text-heading1 text-brown text-stroke-white pt-[213px] text-center font-[geekble] leading-tight">
-            {nickname}님과 {company}의 사주 궁합은?
-            <br />
-            {company}의 주식 상장일은 {listingDate}입니다.
-          </p>
+          <div className="pt-[153px] ">
+            <HeadingTitle
+              userName={nickname}
+              stockName={company ?? ""}
+              texts={[
+                "{userName}님과 {stockName}의 사주 궁합은?",
+                "{stockName}의 주식 상장일은 " + listingDate + "입니다.",
+              ]}
+            />
+          </div>
 
-          <div className="mr-[176px] ml-[176px] flex items-center justify-center rounded-[20px] border-[2px] border-black bg-[#FFEEBD] px-30 py-10 shadow-lg">
-            <p className="font-pretendard text-brown text-center text-[30px] leading-tight">
-              당신과 상대방의 사주를 종합해보면, 금(金)과 토(土)의 기운이 조화를
-              이루는 관계로 보입니다. 당신의 강한 금기운이 상대방의 토를
-              생조해주며, 이는 서로에게 안정감을 주는 구조입니다. 특히 상대방의
-              사주에 편관(偏官)이 강해 리더십이 뛰어난 반면, 당신의 비견(比肩)과
-              식신(食神)이 이를 부드럽게 조절해줄 수 있어요. 다만 상대방의
-              목(木) 기운이 다소 과할 수 있으니, 때로는 유연한 태도가 필요할 것
-              같습니다.
-            </p>
+          <div className="mr-[176px] ml-[176px] max-h-[360px] w-[calc(100%-352px)] overflow-y-auto rounded-[20px] border-[2px] border-black bg-[#FFEEBD] px-[30px] py-[20px] shadow-lg">
+            {loading && (
+              <p className="font-pretendard text-brown text-center text-[24px] leading-tight">
+                결과 생성 중...
+              </p>
+            )}
+            {error && (
+              <p className="font-pretendard text-red-700 text-center text-[20px] leading-tight">
+                {error}
+              </p>
+            )}
+            {!loading && !error && (
+              <p className="font-pretendard text-brown whitespace-pre-line text-center text-[30px] leading-tight">
+                {resultText}
+              </p>
+            )}
           </div>
 
           <button
