@@ -61,14 +61,14 @@ const FortuneResult = () => {
 
   return (
     <div
-      className="flex h-screen w-full flex-col justify-between bg-cover bg-center bg-no-repeat"
+      className="flex h-screen w-full flex-col justify-between bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{ backgroundImage: "url('/svgs/backgroundImage.svg')" }}
     >
       <Header />
 
-      <div className="flex flex-1 flex-col items-center justify-center">
+      <div className="flex flex-1 flex-col items-center justify-center overflow-hidden">
         <div className="flex flex-col items-center gap-4">
-          <div className="pt-[213px]">
+          <div className="pt-[153px] ">
             <HeadingTitle
               userName={nickname}
               stockName={company ?? ""}
