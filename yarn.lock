@@ -2797,6 +2797,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@use-funnel/browser@npm:^0.0.16":
+  version: 0.0.16
+  resolution: "@use-funnel/browser@npm:0.0.16"
+  dependencies:
+    "@use-funnel/core": "npm:^0.0.13"
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 10c0/76bb3ff3a16aca629bd2d4db8bb402b321494f07393e959390b071a9057f975dfc6ea75bf76f08936874f752743dc36084316e05aae71a63d94420e9bbe788fe
+  languageName: node
+  linkType: hard
+
+"@use-funnel/core@npm:^0.0.13":
+  version: 0.0.13
+  resolution: "@use-funnel/core@npm:0.0.13"
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 10c0/33ef85e11950ab64f19404508d53495b4f1514af1dc66c99eb60cd944be9522a84c14da9d92082902fa76b25b6d29ab216e89f1291a4d725cd25a65d444d79db
+  languageName: node
+  linkType: hard
+
 "@use-gesture/core@npm:10.3.1":
   version: 10.3.1
   resolution: "@use-gesture/core@npm:10.3.1"
@@ -5511,6 +5531,7 @@ __metadata:
     "@types/node": "npm:^20"
     "@types/react": "npm:^19"
     "@types/react-dom": "npm:^19"
+    "@use-funnel/browser": "npm:^0.0.16"
     autoprefixer: "npm:^10.4.21"
     eslint: "npm:^9"
     eslint-config-next: "npm:15.3.3"
