@@ -148,4 +148,18 @@
       var(--color-orange-dark)
     );
   }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    } /* 반복용 span 2개 */
+  }
+
+  .animate-marquee {
+    display: inline-flex;
+    animation: marquee 20s linear infinite;
+  }
 }

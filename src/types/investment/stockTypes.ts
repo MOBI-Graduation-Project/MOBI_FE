@@ -39,7 +39,7 @@ export interface MyData {
 
 export interface MarketPrediction {
   marketName: "KOSPI" | "KOSDAQ";
-  prediction: "상승" | "하락";
+  prediction_result: "상승" | "하락";
   lastUpdated: string;
   predictionDate: string;
 }
