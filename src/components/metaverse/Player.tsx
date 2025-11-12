@@ -10,6 +10,11 @@ import { RapierRigidBody, RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
+import {
+  MOVE_SPEED, JUMP_FORCE, KILL_Y, SPAWN,
+  DEFAULT_TARGET_HEIGHT, DEFAULT_VISUAL_SCALE,
+} from "@/constants/metaverse";
+
 interface PlayerProps {
   controlsRef?: React.MutableRefObject<OrbitControlsImpl | null>;
   visualScale?: number;
@@ -17,16 +22,11 @@ interface PlayerProps {
   height?: number; //에셋들 크기 통일을 위해 높이변수 추가
 }
 
-const MOVE_SPEED = 5;
-const JUMP_FORCE = 5;
-const KILL_Y = -2;
-const SPAWN: [number, number, number] = [5, 2, 0];
-
 const Player = ({
   controlsRef,
-  visualScale = 0.5,
+  visualScale = DEFAULT_VISUAL_SCALE,
   moveSpeed = MOVE_SPEED,
-  height = 7,
+  height = DEFAULT_TARGET_HEIGHT,
 }: PlayerProps) => {
   const { characterType } = useCharacterStore();
   const bodyRef = useRef<RapierRigidBody>(null);
