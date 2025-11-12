@@ -5,7 +5,7 @@ import React from "react";
 import GoogleIcon from "@/assets/googleIcon.svg";
 
 const Onboarding = () => {
-  const handleGoogleAuth = async () => {
+  const handleGoogleAuth = () => {
     const params = new URLSearchParams({
       client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
       redirect_uri: process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI!,
