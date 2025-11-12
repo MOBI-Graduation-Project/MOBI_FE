@@ -21,7 +21,7 @@ export const signupComplete = async (
   isPrivacyAgreed: boolean,
 ) => {
   const accessToken = localStorage.getItem("accessToken");
-  if (!accessToken) throw new Error("로그인 필요");
+  if (!accessToken) throw new Error("로그인 필요함");
 
   try {
     const res = await apiClient.post(
