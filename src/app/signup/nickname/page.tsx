@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 
 import React, { useState } from "react";
 
+import { useSignUpStore } from "@/stores/signupStore";
+
 import { checkNickname } from "@/apis/member";
 
 import RightArrow from "@/assets/rightArrow.svg";
@@ -11,9 +13,11 @@ import RightArrow from "@/assets/rightArrow.svg";
 const SignUp = () => {
   const router = useRouter();
   const [nickname, setNickname] = useState("");
-  const [isAgreed, setIsAgreed] = useState(false);
+  const [agreed, setAgreed] = useState(false);
   const [isDuplicateChecked, setIsDuplicateChecked] = useState(false);
   const [duplicateMessage, setDuplicateMessage] = useState("");
+
+  const setSignUpData = useSignUpStore(state => state.setSignUpData);
 
   const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -29,12 +33,11 @@ const SignUp = () => {
     if (!nickname.trim()) return;
     try {
       const res = await checkNickname(nickname);
-      const { duplicated } = res.result; // 서버에서 받은 duplicated 값
-      console.log(res);
-
+      const { duplicated } = res.result;
       if (!duplicated) {
         setIsDuplicateChecked(true);
         setDuplicateMessage("사용 가능한 닉네임입니다.");
+        setSignUpData({ nickname });
       } else {
         setIsDuplicateChecked(false);
         setDuplicateMessage("이미 사용 중인 닉네임입니다.");
@@ -46,11 +49,19 @@ const SignUp = () => {
     }
   };
 
+  const handleAgreeToggle = () => {
+    setAgreed(prev => {
+      const newAgreed = !prev;
+      setSignUpData({ isPrivacyAgreed: newAgreed });
+      return newAgreed;
+    });
+  };
+
   const handleNextClick = () => {
     if (
       nickname.trim().length >= 2 &&
       nickname.trim() &&
-      isAgreed &&
+      agreed &&
       isDuplicateChecked
     ) {
       router.push("/signup/purpose");
@@ -60,7 +71,7 @@ const SignUp = () => {
   const isButtonEnabled =
     nickname.trim().length >= 2 &&
     nickname.trim() &&
-    isAgreed &&
+    agreed &&
     isDuplicateChecked;
 
   return (
@@ -102,9 +113,9 @@ const SignUp = () => {
         </div>
         <div className="flex items-start gap-[15px] pt-[30px]">
           <button
-            onClick={() => setIsAgreed(!isAgreed)}
+            onClick={handleAgreeToggle}
             className={`mt-[3px] h-[30px] w-[30px] cursor-pointer rounded-full border border-black transition-all ${
-              isAgreed ? "bg-brown-20 button-shadow-yellow" : "bg-white/20"
+              agreed ? "bg-brown-20 button-shadow-yellow" : "bg-white/20"
             }`}
           />
           <a
