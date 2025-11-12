@@ -9,6 +9,8 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
 
+import { signupComplete } from "@/apis/member";
+
 import LeftArrow from "@/assets/leftArrow.svg";
 
 interface CharacterInfo {
@@ -83,9 +85,18 @@ const CharacterPage = () => {
     router.push("/signup/purpose");
   };
 
-  const handleSelect = () => {
-    if (characterType) {
+  const handleSelect = async () => {
+    if (!characterType) return;
+
+    const state = useSignUpStore.getState();
+    const { nickname, investmentAnswers, isPrivacyAgreed } = state;
+
+    try {
+      await signupComplete(nickname, investmentAnswers, isPrivacyAgreed);
       router.push("/map");
+    } catch (error) {
+      console.error("회원가입 완료 중 오류:", error);
+      alert("회원가입 완료 중 오류가 발생했습니다.");
     }
   };
 
