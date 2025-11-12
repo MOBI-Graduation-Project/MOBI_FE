@@ -17,13 +17,18 @@ interface OAuthResponse {
 }
 
 export const handleOAuthCallback = async (code: string) => {
+  console.log(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/google`);
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/google`,
       {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code }),
+        body: JSON.stringify({
+          code,
+          redirectUri: process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI,
+        }),
       },
     );
 
