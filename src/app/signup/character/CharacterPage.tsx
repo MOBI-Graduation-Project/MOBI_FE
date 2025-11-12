@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 import React, { useEffect, useMemo, useState } from "react";
 
-import { useCharacterStore } from "@/stores/characterStore";
+import { useSignUpStore } from "@/stores/signupStore";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
@@ -64,11 +64,13 @@ const CharacterModel = ({ path }: { path: string }) => {
 
 const CharacterPage = () => {
   const router = useRouter();
-  const nickname = "사용자";
+
+  const state = useSignUpStore.getState();
+  const nickname = state.nickname;
+
   const searchParams = useSearchParams();
   const [characterType, setCharacterType] = useState<string | null>(null);
   const [showNameInput] = useState(false);
-  const { setCharacterType: setCharacterStore } = useCharacterStore();
 
   useEffect(() => {
     const type = searchParams.get("type");
@@ -83,7 +85,6 @@ const CharacterPage = () => {
 
   const handleSelect = () => {
     if (characterType) {
-      setCharacterStore(characterType);
       router.push("/map");
     }
   };

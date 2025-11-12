@@ -23,7 +23,7 @@ export default function Step2({ onNext, onPrev }: StepProps) {
   const handleNext = () => {
     if (selected) onNext(selected);
   };
-  console.log(selected);
+
   return (
     <div className="relative flex h-screen w-full items-center justify-center overflow-hidden">
       <img
