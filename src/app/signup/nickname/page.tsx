@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 
 import React, { useState } from "react";
 
+import { checkNickname } from "@/apis/member";
+
 import RightArrow from "@/assets/rightArrow.svg";
 
 const SignUp = () => {
@@ -11,7 +13,7 @@ const SignUp = () => {
   const [nickname, setNickname] = useState("");
   const [isAgreed, setIsAgreed] = useState(false);
   const [isDuplicateChecked, setIsDuplicateChecked] = useState(false);
-  const [, setDuplicateMessage] = useState("");
+  const [duplicateMessage, setDuplicateMessage] = useState("");
 
   const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -23,11 +25,24 @@ const SignUp = () => {
     }
   };
 
-  const handleDuplicateCheck = () => {
-    // TODO: API 호출로 중복 확인
-    if (nickname.trim()) {
-      // 임시로 중복되지 않았다고 가정
-      setIsDuplicateChecked(true);
+  const handleDuplicateCheck = async () => {
+    if (!nickname.trim()) return;
+    try {
+      const res = await checkNickname(nickname);
+      const { duplicated } = res.result; // 서버에서 받은 duplicated 값
+      console.log(res);
+
+      if (!duplicated) {
+        setIsDuplicateChecked(true);
+        setDuplicateMessage("사용 가능한 닉네임입니다.");
+      } else {
+        setIsDuplicateChecked(false);
+        setDuplicateMessage("이미 사용 중인 닉네임입니다.");
+      }
+    } catch (error) {
+      console.error(error);
+      setIsDuplicateChecked(false);
+      setDuplicateMessage("닉네임 확인 중 오류가 발생했습니다.");
     }
   };
 
@@ -57,26 +72,35 @@ const SignUp = () => {
         <h1 className="text-brown text-heading1 mb-[50px] font-[geekble]">
           닉네임을 입력해주세요
         </h1>
-
-        <div className="mb-[40px] flex items-center gap-[20px]">
-          <div className="relative">
-            <input
-              type="text"
-              value={nickname}
-              onChange={handleNicknameChange}
-              placeholder="한글/영어/숫자만 2~10자 입력해주세요"
-              className="text-brown-20 placeholder:text-brown-20/70 text-lab2 h-[70px] w-[550px] rounded-[20px] border border-black bg-[#FFEEBD] px-[25px] font-[pretendard] focus:outline-none"
-            />
+        <div className="flex flex-col gap-[5px]">
+          <div className="flex items-center justify-center gap-[20px]">
+            <div className="relative">
+              <input
+                type="text"
+                value={nickname}
+                onChange={handleNicknameChange}
+                placeholder="한글/영어/숫자만 2~10자 입력해주세요"
+                className="text-brown-20 placeholder:text-brown-20/70 text-lab2 h-[70px] w-[550px] rounded-[20px] border border-black bg-[#FFEEBD] px-[25px] font-[pretendard] focus:outline-none"
+              />
+            </div>
+            <button
+              onClick={handleDuplicateCheck}
+              className="button-shadow-yellow text-stroke-white bg-yellow text-lab1 text-brown inline-flex h-[50px] shrink-0 cursor-pointer items-center justify-center gap-[10px] rounded-[20px] px-[18px] py-[10px] font-[geekble] hover:scale-110"
+            >
+              중복확인
+            </button>
           </div>
-          <button
-            onClick={handleDuplicateCheck}
-            className="button-shadow-yellow text-stroke-white bg-yellow text-lab1 text-brown inline-flex h-[50px] shrink-0 cursor-pointer items-center justify-center gap-[10px] rounded-[20px] px-[18px] py-[10px] font-[geekble] hover:scale-110"
-          >
-            중복확인
-          </button>
+          {duplicateMessage && (
+            <span
+              className={`text-cap1 font-[pretendard] ${
+                isDuplicateChecked ? "text-green-600" : "text-red-600"
+              }`}
+            >
+              {duplicateMessage}
+            </span>
+          )}
         </div>
-
-        <div className="flex items-start gap-[15px]">
+        <div className="flex items-start gap-[15px] pt-[30px]">
           <button
             onClick={() => setIsAgreed(!isAgreed)}
             className={`mt-[3px] h-[30px] w-[30px] cursor-pointer rounded-full border border-black transition-all ${
