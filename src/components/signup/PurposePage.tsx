@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
+import { useSignUpStore } from "@/stores/signupStore";
 import { SelectionValue, usePurposeStore } from "@/stores/usePurposeStore";
 import { useFunnel } from "@use-funnel/browser";
 
@@ -50,8 +51,11 @@ export default function PurposePage() {
         <Step3
           onNext={value => {
             usePurposeStore.getState().setSelection("step3", value);
-            const code = `${context.step1}${context.step2}${value}`;
-            router.push(`/signup/character?type=${code}`);
+            const investmentAnswers = `${context.step1}${context.step2}${value}`;
+            useSignUpStore.getState().setSignUpData({
+              investmentAnswers,
+            });
+            router.push(`/signup/character?type=${investmentAnswers}`);
           }}
           onPrev={() => history.back()}
         />

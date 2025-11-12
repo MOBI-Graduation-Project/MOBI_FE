@@ -17,7 +17,6 @@ interface OAuthResponse {
 }
 
 export const handleOAuthCallback = async (code: string) => {
-  console.log(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/google`);
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/google`,
