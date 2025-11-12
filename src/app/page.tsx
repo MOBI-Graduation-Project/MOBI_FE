@@ -5,7 +5,7 @@ import React from "react";
 import GoogleIcon from "@/assets/googleIcon.svg";
 
 const Onboarding = () => {
-  const handleGoogleAuth = async () => {
+  const handleGoogleAuth = () => {
     const params = new URLSearchParams({
       client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
       redirect_uri: process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI!,
@@ -16,7 +16,6 @@ const Onboarding = () => {
 
     window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
   };
-  console.log(process.env.NEXT_PUBLIC_API_BASE_URL); // 배포 후 확인용 콘솔로그 제거할 것
 
   return (
     <div

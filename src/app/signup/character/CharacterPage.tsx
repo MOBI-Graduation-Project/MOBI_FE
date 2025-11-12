@@ -4,10 +4,12 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 import React, { useEffect, useMemo, useState } from "react";
 
-import { useCharacterStore } from "@/stores/characterStore";
+import { useSignUpStore } from "@/stores/signupStore";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
+
+import { signupComplete } from "@/apis/member";
 
 import LeftArrow from "@/assets/leftArrow.svg";
 
@@ -64,11 +66,13 @@ const CharacterModel = ({ path }: { path: string }) => {
 
 const CharacterPage = () => {
   const router = useRouter();
-  const nickname = "사용자";
+
+  const state = useSignUpStore.getState();
+  const nickname = state.nickname;
+
   const searchParams = useSearchParams();
   const [characterType, setCharacterType] = useState<string | null>(null);
   const [showNameInput] = useState(false);
-  const { setCharacterType: setCharacterStore } = useCharacterStore();
 
   useEffect(() => {
     const type = searchParams.get("type");
@@ -81,10 +85,18 @@ const CharacterPage = () => {
     router.push("/signup/purpose");
   };
 
-  const handleSelect = () => {
-    if (characterType) {
-      setCharacterStore(characterType);
+  const handleSelect = async () => {
+    if (!characterType) return;
+
+    const state = useSignUpStore.getState();
+    const { nickname, investmentAnswers, isPrivacyAgreed } = state;
+
+    try {
+      await signupComplete(nickname, investmentAnswers, isPrivacyAgreed);
       router.push("/map");
+    } catch (error) {
+      console.error("회원가입 완료 중 오류:", error);
+      alert("회원가입 완료 중 오류가 발생했습니다.");
     }
   };
 
