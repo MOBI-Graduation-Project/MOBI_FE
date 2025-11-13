@@ -2,9 +2,12 @@
 
 import { useEffect, useState } from "react";
 
+import { notFound } from "next/navigation";
+
 import { getMyProfile } from "@/apis/profile";
 
 import ProfileLayout from "@/components/profile/ProfileLayout";
+import HeadingTitle from "@/components/common/HeadingTitle";
 
 import { ProfileData } from "@/types/user";
 
@@ -29,9 +32,20 @@ const MyProfile = () => {
     fetchProfile();
   }, []);
 
-  if (isLoading) return <div>로딩 중...</div>;
-  if (error) return <div>{error}</div>;
-  if (!profile) return <div>프로필 데이터가 없습니다.</div>;
+  if (isLoading) {
+  return (
+    <div
+      className="flex h-screen w-full flex-col items-center justify-center gap-[91.27px] bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
+    >
+      <HeadingTitle texts={["프로필 불러오는 중..."]} />
+    </div>
+  );
+}
+
+if (error || !profile) {
+  notFound();
+}
 
   return (
     <div>
