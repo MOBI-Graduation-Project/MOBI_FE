@@ -26,11 +26,8 @@ const toModelFile = (code?: string) =>
 const AvatarPreview = ({ height = 5, avatarCode }: Props) => {
   const { characterType } = useCharacterStore();
 
-  // 1순위: avatarCode(백엔드) -> 매핑, 2순위: 기존 store characterType, 3순위: default
   const modelPath = avatarCode
     ? toModelFile(avatarCode)
-    //: characterType
-    //? `/models/${characterType}.glb` // 콘솔확인 후 백엔드에서 가져오는 거 확인 했고 그래도 혹시몰라 남겨두고주석처리 
     : "/models/default.glb";
 
   const { scene } = useGLTF(modelPath);
