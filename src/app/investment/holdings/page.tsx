@@ -48,8 +48,18 @@ const HoldingStocks = () => {
             <DropdownMenu />
           </div>
           <div className="flex h-full w-full flex-col items-center justify-center gap-[20px] pt-[100px] pb-[120px]">
-            <HeadingTitle texts={["{userName}님의 보유 종목 비율입니다."]} />
-            <PieChart data={holdings} />
+            {holdings.length === 0 ? (
+              <HeadingTitle
+                texts={["보유한 종목이 없습니다.", "데이터를 추가해보세요"]}
+              />
+            ) : (
+              <>
+                <HeadingTitle
+                  texts={["{userName}님의 보유 종목 비율입니다."]}
+                />
+                <PieChart data={holdings} />
+              </>
+            )}
           </div>
           <BottomBar />
         </>
