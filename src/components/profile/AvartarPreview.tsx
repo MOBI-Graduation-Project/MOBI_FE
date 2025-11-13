@@ -1,5 +1,7 @@
 import { Suspense, useMemo } from "react";
 
+import { toModelFile } from "@/constants/AVATAR";
+
 import { useCharacterStore } from "@/stores/characterStore";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
@@ -9,19 +11,6 @@ type Props = {
   height?: number;
   avatarCode?: string;
 };
-
-const AVATAR_TO_MODEL: Record<string, string> = {
-  AVATAR_TYPE_1: "111",
-  AVATAR_TYPE_2: "112",
-  AVATAR_TYPE_3: "121",
-  AVATAR_TYPE_4: "122",
-  AVATAR_TYPE_5: "211",
-  AVATAR_TYPE_6: "212",
-  AVATAR_TYPE_7: "221",
-  AVATAR_TYPE_8: "222",
-};
-const toModelFile = (code?: string) =>
-  `/models/${(code && AVATAR_TO_MODEL[code]) || "111"}.glb`;
 
 const AvatarPreview = ({ height = 5, avatarCode }: Props) => {
   const { characterType } = useCharacterStore();
