@@ -37,7 +37,8 @@ const StateMessage = ({
       setCurrentMessage(tempMessage);
       setIsEditMode(false);
       setToastMsg("상태메시지가 업데이트되었습니다.");
-    } catch {
+    } catch (error) {
+      console.error("상태메시지 업데이트 실패:", error);
       setToastMsg("상태메시지 업데이트에 실패했습니다.");
     } finally {
       setIsSaving(false);
