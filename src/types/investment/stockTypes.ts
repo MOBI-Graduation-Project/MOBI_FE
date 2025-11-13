@@ -8,7 +8,7 @@ export interface StockPriceRecord {
   date: string; // YYYY-MM-DD
   closePrice?: number; // 실제 종가
   predictedPrice?: number; // 예측 종가
-  isPredicted: boolean;
+  predicted: boolean;
 }
 
 export interface StockPrediction {
