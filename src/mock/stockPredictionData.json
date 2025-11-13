@@ -1,16 +1,16 @@
 [
   {
     "stock": {
-      "stockCode": "A005930",
+      "stockCode": "005930",
       "stockName": "삼성전자"
     },
     "priceRecords": [
-      { "date": "2025-11-02", "closePrice": 74100, "isPredicted": false },
-      { "date": "2025-11-03", "closePrice": 73800, "isPredicted": false },
-      { "date": "2025-11-04", "closePrice": 74200, "isPredicted": false },
-      { "date": "2025-11-05", "predictedPrice": 74900, "isPredicted": true },
-      { "date": "2025-11-06", "predictedPrice": 75200, "isPredicted": true },
-      { "date": "2025-11-07", "predictedPrice": 75450, "isPredicted": true }
+      { "date": "2025-11-02", "closePrice": 74100, "predicted": false },
+      { "date": "2025-11-03", "closePrice": 73800, "predicted": false },
+      { "date": "2025-11-04", "closePrice": 74200, "predicted": false },
+      { "date": "2025-11-05", "predictedPrice": 74900, "predicted": true },
+      { "date": "2025-11-06", "predictedPrice": 75200, "predicted": true },
+      { "date": "2025-11-07", "predictedPrice": 75450, "predicted": true }
     ],
     "meta": {
       "predictionGeneratedAt": "2025-11-04T16:05:12.345678"
@@ -18,16 +18,16 @@
   },
   {
     "stock": {
-      "stockCode": "A035720",
+      "stockCode": "035720",
       "stockName": "카카오"
     },
     "priceRecords": [
-      { "date": "2025-11-02", "closePrice": 46000, "isPredicted": false },
-      { "date": "2025-11-03", "closePrice": 46500, "isPredicted": false },
-      { "date": "2025-11-04", "closePrice": 46200, "isPredicted": false },
-      { "date": "2025-11-05", "predictedPrice": 47000, "isPredicted": true },
-      { "date": "2025-11-06", "predictedPrice": 47500, "isPredicted": true },
-      { "date": "2025-11-07", "predictedPrice": 48000, "isPredicted": true }
+      { "date": "2025-11-02", "closePrice": 46000, "predicted": false },
+      { "date": "2025-11-03", "closePrice": 46500, "predicted": false },
+      { "date": "2025-11-04", "closePrice": 46200, "predicted": false },
+      { "date": "2025-11-05", "predictedPrice": 47000, "predicted": true },
+      { "date": "2025-11-06", "predictedPrice": 47500, "predicted": true },
+      { "date": "2025-11-07", "predictedPrice": 48000, "predicted": true }
     ],
     "meta": {
       "predictionGeneratedAt": "2025-11-04T16:10:22.123456"
