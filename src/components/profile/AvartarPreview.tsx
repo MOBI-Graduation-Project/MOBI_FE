@@ -1,11 +1,10 @@
 import { Suspense, useMemo } from "react";
 
-import { toModelFile } from "@/constants/AVATAR";
-
-import { useCharacterStore } from "@/stores/characterStore";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
+
+import { toModelFile } from "@/constants/AVATAR";
 
 type Props = {
   height?: number;
@@ -13,8 +12,6 @@ type Props = {
 };
 
 const AvatarPreview = ({ height = 5, avatarCode }: Props) => {
-  const { characterType } = useCharacterStore();
-
   const modelPath = avatarCode
     ? toModelFile(avatarCode)
     : "/models/default.glb";
