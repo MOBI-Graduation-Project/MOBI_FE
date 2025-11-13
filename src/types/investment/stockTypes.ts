@@ -8,7 +8,7 @@ export interface StockPriceRecord {
   date: string; // YYYY-MM-DD
   closePrice?: number; // 실제 종가
   predictedPrice?: number; // 예측 종가
-  isPredicted: boolean;
+  predicted: boolean;
 }
 
 export interface StockPrediction {
@@ -19,7 +19,6 @@ export interface StockPrediction {
   };
 }
 export interface MyDataRegister {
-  stockCode: string;
   stockName: string;
   purchaseAmount: number;
   avgPrice: number;
@@ -42,4 +41,10 @@ export interface MarketPrediction {
   prediction_result: "상승" | "하락";
   lastUpdated: string;
   predictionDate: string;
+}
+
+export interface PieData {
+  stockCode: string;
+  stockName: string;
+  holdingWeight: number;
 }
