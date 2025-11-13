@@ -2,40 +2,80 @@
 
 import { useState } from "react";
 
+import { postMyData } from "@/apis/investment";
+
 import EnterBtn from "@/assets/chatbot/enterbtn.svg";
+
+import { ToastMessage } from "@/components/common/ToastMessage";
+
+import { MyDataRegister } from "@/types/investment/stockTypes";
 
 import { InputField } from "./InputField";
 import { SearchField } from "./SearchField";
 
 export const InputStockField = () => {
+  const [stockName, setStockName] = useState("");
   const [purchaseAmount, setPurchaseAmount] = useState("");
   const [avgPrice, setAvgPrice] = useState("");
+  const [toastMsg, setToastMsg] = useState<string | null>(null);
 
+  const handleEnter = async () => {
+    if (!stockName || !purchaseAmount || !avgPrice) {
+      setToastMsg("모든 값을 입력해주세요.");
+      setTimeout(() => setToastMsg(""), 1000);
+      return;
+    }
+    const myDataRegister: MyDataRegister = {
+      stockName,
+      purchaseAmount: Number(purchaseAmount),
+      avgPrice: Number(avgPrice),
+    };
+
+    try {
+      const res = await postMyData(myDataRegister);
+      console.log("등록 성공:", res);
+      setToastMsg("데이터가 정상적으로 등록되었습니다");
+      setStockName("");
+      setPurchaseAmount("");
+      setAvgPrice("");
+    } catch (error) {
+      console.error(error);
+      setToastMsg("데이터 등록에 실패했습니다.");
+    } finally {
+      setTimeout(() => setToastMsg(""), 1000);
+    }
+  };
   return (
-    <section className="flex w-full items-center gap-4 bg-gray-50/50 px-8 py-5">
-      <div className="flex-1">
-        <SearchField />
-      </div>
+    <div className="flex w-full flex-col items-center justify-center gap-[5px]">
+      <section className="flex w-full items-center gap-4 bg-gray-50/50 px-8 py-5">
+        <div className="flex-1">
+          <SearchField
+            value={stockName}
+            onChange={e => setStockName(e.target.value)}
+          />
+        </div>
 
-      <InputField
-        type="number"
-        placeholder="수량"
-        value={purchaseAmount}
-        unit="주"
-        onChange={e => setPurchaseAmount(e.target.value)}
-      />
+        <InputField
+          type="number"
+          placeholder="수량"
+          value={purchaseAmount}
+          unit="주"
+          onChange={e => setPurchaseAmount(e.target.value)}
+        />
 
-      <InputField
-        type="number"
-        placeholder="평균가"
-        value={avgPrice}
-        unit="원"
-        onChange={e => setAvgPrice(e.target.value)}
-      />
+        <InputField
+          type="number"
+          placeholder="평균가"
+          value={avgPrice}
+          unit="원"
+          onChange={e => setAvgPrice(e.target.value)}
+        />
 
-      <button type="button">
-        <EnterBtn className="h-[32px] w-[32px]" />
-      </button>
-    </section>
+        <button type="button" onClick={handleEnter}>
+          <EnterBtn className="h-[32px] w-[32px]" />
+        </button>
+      </section>
+      {toastMsg && <ToastMessage message={toastMsg} />}
+    </div>
   );
 };
