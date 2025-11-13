@@ -7,6 +7,7 @@ import YellowButton from "@/components/common/YellowButton";
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
 import DropdownMenu from "@/components/investment/DropdownMenu";
+import MarketPredictField from "@/components/investment/MarketPredictField";
 import StockChart from "@/components/investment/StockLineChart";
 
 import { STOCK_NAME_MAP } from "@/constants/STOCK_NAME_MAP";
@@ -58,8 +59,8 @@ const StockChartPage = () => {
             />
           )}
         </>
+        <MarketPredictField />
       </div>
-
       <BottomBar />
     </div>
   );

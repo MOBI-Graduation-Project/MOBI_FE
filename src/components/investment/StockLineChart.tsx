@@ -25,8 +25,8 @@ export const StockChart = ({ data }: StockChartProps) => {
   }));
 
   return (
-    <div className="w-full max-w-[600px] rounded-2xl bg-white p-6 shadow-md">
-      <ResponsiveContainer width="100%" height={400}>
+    <div className="w-full max-w-[800px] rounded-2xl bg-white p-6 shadow-md">
+      <ResponsiveContainer width="100%" height={350}>
         <LineChart data={chartData}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" />
