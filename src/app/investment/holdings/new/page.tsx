@@ -23,10 +23,9 @@ const MyStock = () => {
           ]}
         />
         <InputStockField />
-        <div className="h-[252px] overflow-y-auto">
-          <StocksList />
-        </div>
+        <StocksList />
       </div>
+
       <BottomBar />
     </div>
   );

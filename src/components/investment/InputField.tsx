@@ -27,9 +27,11 @@ export const InputField = ({
         placeholder={placeholder}
         onChange={onChange}
         disabled={disabled}
-        className="w-[80px] bg-transparent text-center text-gray-900 placeholder-gray-400 outline-none"
+        className="text-brown text-lab2 flex-1 bg-transparent font-[pretendard] placeholder-gray-500 outline-none"
       />
-      {unit && <span className="font-[geekble] text-gray-700">{unit}</span>}
+      {unit && (
+        <span className="text-brown text-lab2 font-[geekble]">{unit}</span>
+      )}
     </div>
   );
 };
