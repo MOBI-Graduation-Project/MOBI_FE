@@ -22,8 +22,10 @@ const MyStock = () => {
             "차트보기를 통해 보유 주식 현황차트를 조회해 보세요.",
           ]}
         />
-        <InputStockField />
-        <StocksList />
+        <div className="flex w-full flex-col items-center justify-center gap-4">
+          <InputStockField />
+          <StocksList />
+        </div>
       </div>
 
       <BottomBar />
