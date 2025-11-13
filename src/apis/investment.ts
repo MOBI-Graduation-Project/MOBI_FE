@@ -1,12 +1,32 @@
+import { StockPriceRecord } from "@/types/investment/stockTypes";
+
 import { apiClient } from "./apiClient";
 
-// 코스피 코스닥 예측 가져오기
-export const getMarktetPredictions = async () => {
+// 코스피 코스닥 예측 정보 가져오기
+export const getMarketPredictions = async () => {
   const accessToken = localStorage.getItem("accessToken");
   if (!accessToken) throw new Error("로그인 필요");
   try {
-    await apiClient.get("/api/predicion");
+    const res = await apiClient.get("/api/prediction", {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    return res.data;
   } catch (error) {
+    console.error("getMarketPredictions Error:", error);
     throw error;
   }
+};
+
+// 개별 주식 예측 정보 가져오기
+export const getPriceRecords = async (
+  stockCode: string,
+): Promise<StockPriceRecord[]> => {
+  const accessToken = localStorage.getItem("accessToken");
+  if (!accessToken) throw new Error("로그인이 필요합니다.");
+
+  const res = await apiClient.get(`/api/predict/${stockCode}`, {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
+
+  return res.data[0]?.priceRecords ?? [];
 };
