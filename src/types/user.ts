@@ -4,3 +4,13 @@ export interface User {
   profileUrl?: string | null;
   profileDescribe?: string | null;
 }
+
+export interface ProfileData {
+  memberId: number;
+  email: string;
+  nickname: string;
+  profileImgUrl: string;
+  avatar: string;
+  profileDescribe: string | null;
+  relationStatus: string;
+}
