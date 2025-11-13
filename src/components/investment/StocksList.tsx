@@ -49,13 +49,13 @@ const StocksList = () => {
     : ["kakao", "samsung-electronic"];
 
   return (
-    <div className="h-[246px] overflow-hidden">
+    <div className="h-[246px] w-[1000px] overflow-hidden">
       {loading ? (
         <div className="flex h-full w-full items-center justify-center">
           <HeadingTitle texts={["로딩중 ..."]} />
         </div>
       ) : (
-        <div className="overflow-y-auto rounded-[10px]">
+        <div className="h-full overflow-y-auto rounded-[10px]">
           {myStocks.length === 0 && (
             <HeadingTitle
               texts={["보유한 종목이 없습니다.", "데이터를 추가해보세요"]}
@@ -63,7 +63,7 @@ const StocksList = () => {
           )}
           {myStocks.map((stock, index) => (
             <div key={stock}>
-              <div className="flex h-[61px] w-[795px] justify-between bg-white/70 px-[30px] py-[10px]">
+              <div className="flex h-[61px] w-full justify-between bg-white/70 px-[30px] py-[10px]">
                 <span className="text-brown-dark text-body font-[geekble]">
                   {STOCK_NAME_MAP[stock] ?? stock}
                 </span>
