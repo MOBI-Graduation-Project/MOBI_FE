@@ -44,18 +44,17 @@ export const patchMyStateMessage = async (stateMessage: string) => {
   }
 };
 
-export const patchMyProfileImage = async (imageFile: File) => {
+export const patchMyProfileImage = async (image: File) => {
   const accessToken = localStorage.getItem("accessToken");
   if (!accessToken) throw new Error("로그인 필요");
 
   const formData = new FormData();
-  formData.append("profileImage", imageFile);
-
+  formData.append("image", image);
+  console.log("Uploading to:", apiClient.getUri() + "/members/profile/image");
   try {
     const res = await apiClient.patch("/members/profile/image", formData, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "multipart/form-data",
       },
     });
     return res.data;
