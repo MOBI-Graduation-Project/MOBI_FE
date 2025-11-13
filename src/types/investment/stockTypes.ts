@@ -19,7 +19,6 @@ export interface StockPrediction {
   };
 }
 export interface MyDataRegister {
-  stockCode: string;
   stockName: string;
   purchaseAmount: number;
   avgPrice: number;
