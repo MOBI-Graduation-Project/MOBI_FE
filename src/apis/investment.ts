@@ -1,4 +1,4 @@
-import { StockPriceRecord } from "@/types/investment/stockTypes";
+import { StockPrediction } from "@/types/investment/stockTypes";
 
 import { apiClient } from "./apiClient";
 
@@ -20,7 +20,7 @@ export const getMarketPredictions = async () => {
 // 개별 주식 예측 정보 가져오기
 export const getPriceRecords = async (
   stockCode: string,
-): Promise<StockPriceRecord[]> => {
+): Promise<StockPrediction[]> => {
   const accessToken = localStorage.getItem("accessToken");
   if (!accessToken) throw new Error("로그인이 필요합니다.");
 
@@ -28,5 +28,5 @@ export const getPriceRecords = async (
     headers: { Authorization: `Bearer ${accessToken}` },
   });
 
-  return res.data[0]?.priceRecords ?? [];
+  return res.data;
 };
