@@ -2,7 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 
-import { PieData } from "@/types/investment/pieData";
+import { PieData } from "@/types/investment/stockTypes";
 
 import { getRandomPieColors } from "@/utils/investment/getRandomPieColors";
 

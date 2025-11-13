@@ -43,3 +43,9 @@ export interface MarketPrediction {
   lastUpdated: string;
   predictionDate: string;
 }
+
+export interface PieData {
+  stockCode: string;
+  stockName: string;
+  holdingWeight: number;
+}
