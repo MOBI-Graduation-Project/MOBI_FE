@@ -40,7 +40,6 @@ const MyProfile = () => {
         nickname={profile.nickname}
         stateMessage={profile.profileDescribe ?? ""}
         isMyProfile={true}
-        avatarCode={profile.avatar}
       />
     </div>
   );

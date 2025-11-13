@@ -16,7 +16,6 @@ interface ProfileLayoutProps {
   stateMessage?: string | null;
   isMyProfile?: boolean;
   isFriend?: boolean;
-  avatarCode?: string | null;
 }
 const AvatarPreview = dynamic(
   () => import("@/components/profile/AvartarPreview"),
@@ -30,7 +29,6 @@ const ProfileLayout = ({
   stateMessage = null,
   isMyProfile = false,
   isFriend = false,
-  avatarCode = null,
 }: ProfileLayoutProps) => {
   const goBack = useGoBack();
   return (
@@ -40,7 +38,7 @@ const ProfileLayout = ({
         onClick={goBack}
       />
       <div className="absolute inset-x-0 top-0 h-[60%]">
-        <AvatarPreview avatarCode={avatarCode ?? undefined} />
+        <AvatarPreview />
       </div>
 
       {/* 노란 영역 */}

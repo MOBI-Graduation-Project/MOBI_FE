@@ -7,33 +7,13 @@ import * as THREE from "three";
 
 type Props = {
   height?: number;
-  avatarCode?: string;
 };
 
-const AVATAR_TO_MODEL: Record<string, string> = {
-  AVATAR_TYPE_1: "111",
-  AVATAR_TYPE_2: "112",
-  AVATAR_TYPE_3: "121",
-  AVATAR_TYPE_4: "122",
-  AVATAR_TYPE_5: "211",
-  AVATAR_TYPE_6: "212",
-  AVATAR_TYPE_7: "221",
-  AVATAR_TYPE_8: "222",
-};
-const toModelFile = (code?: string) =>
-  `/models/${(code && AVATAR_TO_MODEL[code]) || "111"}.glb`;
-
-const AvatarPreview = ({ height = 5, avatarCode }: Props) => {
+const AvatarPreview = ({ height = 5 }: Props) => {
   const { characterType } = useCharacterStore();
-
-  // 1순위: avatarCode(백엔드) -> 매핑, 2순위: 기존 store characterType, 3순위: default
-  const modelPath = avatarCode
-    ? toModelFile(avatarCode)
-    //: characterType
-    //? `/models/${characterType}.glb` // 콘솔확인 후 백엔드에서 가져오는 거 확인 했고 그래도 혹시몰라 남겨두고주석처리 
-    : "/models/default.glb";
-
-  const { scene } = useGLTF(modelPath);
+  const { scene } = useGLTF(
+    characterType ? `/models/${characterType}.glb` : "/models/default.glb",
+  );
   const cloned = useMemo(() => scene.clone(true), [scene]);
 
   const previewLift = 2.0;
