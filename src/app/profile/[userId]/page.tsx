@@ -1,11 +1,13 @@
 "use client";
 
 import { useParams } from "next/navigation";
+import { notFound } from "next/navigation";   
 import { useEffect, useState } from "react";
 
 import { getUserProfile } from "@/apis/profile";
 
 import ProfileLayout from "@/components/profile/ProfileLayout";
+import HeadingTitle from "@/components/common/HeadingTitle"; 
 
 import type { ProfileData } from "@/types/user";  
 
@@ -44,9 +46,20 @@ const UserProfile = () => {
   }, [memberId]);
 
   // 로딩/에러 분기
-  if (isLoading) return <div>로딩 중...</div>;                     
-  if (error) return <div>{error}</div>;                             
-  if (!profile) return <div>유저를 찾을 수 없습니다.</div>;         
+  if (isLoading) {
+    return (
+      <div
+        className="flex h-screen w-full flex-col items-center justify-center gap-[91.27px] bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
+      >
+        <HeadingTitle texts={["프로필 불러오는 중..."]} />  
+      </div>
+    );
+  }
+
+  if (error || !profile) {
+    notFound(); 
+  }
 
   return (
     <ProfileLayout
