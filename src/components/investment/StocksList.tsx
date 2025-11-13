@@ -24,7 +24,7 @@ const StocksList = () => {
   };
 
   return (
-    <div>
+    <div className="oveflow-hidden h-[246px] overflow-y-auto rounded-[10px]">
       {myStocks.map((stock, index) => (
         <div key={stock}>
           <div className="flex h-[61px] w-[795px] justify-between bg-white/70 px-[30px] py-[10px]">

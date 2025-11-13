@@ -12,7 +12,7 @@ export const InputStockField = () => {
   const [avgPrice, setAvgPrice] = useState("");
 
   return (
-    <section className="bg-brown/80 flex w-full items-center gap-4 rounded-[20px] px-8 py-5">
+    <section className="flex w-full items-center gap-4 bg-gray-50/50 px-8 py-5">
       <div className="flex-1">
         <SearchField />
       </div>
@@ -33,11 +33,7 @@ export const InputStockField = () => {
         onChange={e => setAvgPrice(e.target.value)}
       />
 
-      {/* 🚀 전송 버튼 */}
-      <button
-        type="button"
-        className="bg-yellow-light flex items-center justify-center rounded-full p-2 transition-transform hover:scale-105"
-      >
+      <button type="button">
         <EnterBtn className="h-[32px] w-[32px]" />
       </button>
     </section>
