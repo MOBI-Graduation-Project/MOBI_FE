@@ -30,3 +30,9 @@ export const getPriceRecords = async (
 
   return res.data;
 };
+
+// 내가 보유한 주식 목록 가져오기
+
+// 내가 보유한 주식 데이터 등록하기
+
+// 내가 보유한 주식 현황 가져오기
