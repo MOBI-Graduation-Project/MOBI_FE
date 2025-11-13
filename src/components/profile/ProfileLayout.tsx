@@ -53,7 +53,7 @@ const ProfileLayout = ({
         </div>
 
         <div
-          className={`${isMyProfile ? "pt-[34.98px]" : "mb-[14.98px] pt-[14.98px]"}`}
+          className={`${isMyProfile ? "pt-[34.98px]" : "mb-[5px] pt-[14.98px]"}`}
         >
           <StateMessage stateMessage={stateMessage} isMyProfile={isMyProfile} />
         </div>

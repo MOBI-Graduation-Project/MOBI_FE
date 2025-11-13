@@ -55,7 +55,7 @@ const StateMessage = ({
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="mx-auto flex w-[800px] items-center justify-center px-[30px] py-[10px]">
-        <div className="flex items-center gap-[10px] rounded-[20px] bg-white px-[20px] py-[5px]">
+        <div className="flex min-h-[40px] items-center gap-[10px] rounded-[20px] bg-white px-[20px] py-[5px]">
           {isEditMode ? (
             <input
               type="text"
