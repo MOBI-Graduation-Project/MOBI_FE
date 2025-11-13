@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { patchMyStateMessage } from "@/apis/profile";
+
 import EnterButton from "@/assets/profile/enter.svg";
 import ProfileEdit from "@/assets/profile/profileEdit.svg";
 
@@ -15,17 +17,29 @@ const StateMessage = ({
   stateMessage,
 }: StateMessageProps) => {
   const [isEditMode, setIsEditMode] = useState(false);
-  const [currentMessage, setCurrentMessage] = useState(stateMessage);
-  const [tempMessage, setTempMessage] = useState(stateMessage);
+  const [currentMessage, setCurrentMessage] = useState(stateMessage ?? "");
+  const [tempMessage, setTempMessage] = useState(stateMessage ?? "");
+  const [isSaving, setIsSaving] = useState(false);
 
   const handleEditClick = () => {
     setTempMessage(currentMessage);
     setIsEditMode(true);
   };
 
-  const handleSave = () => {
-    setCurrentMessage(tempMessage);
-    setIsEditMode(false);
+  const handleSave = async () => {
+    if (isSaving) return;
+    setIsSaving(true);
+    try {
+      const res = await patchMyStateMessage(tempMessage);
+      console.log("상태메시지 업데이트 성공:", res);
+
+      setCurrentMessage(tempMessage);
+      setIsEditMode(false);
+    } catch (error) {
+      console.error("상태메시지 업데이트 실패:", error);
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
@@ -59,15 +73,17 @@ const StateMessage = ({
           />
         )}
         {isEditMode && (
-          <span className="text-cap3-med text-brown">
-            {tempMessage ? tempMessage.length : 0}/{MAX_MESSAGE_LENGTH}
-          </span>
-        )}
-        {isEditMode && (
-          <EnterButton
-            className="h-[30px] w-[30px] cursor-pointer"
-            onClick={handleSave}
-          />
+          <>
+            <span className="text-cap3-med text-brown">
+              {tempMessage.length}/{MAX_MESSAGE_LENGTH}
+            </span>
+            <EnterButton
+              className={`h-[30px] w-[30px] cursor-pointer ${
+                isSaving ? "cursor-not-allowed opacity-50" : ""
+              }`}
+              onClick={!isSaving ? handleSave : undefined}
+            />
+          </>
         )}
       </div>
     </div>
