@@ -6,63 +6,63 @@
           "memberId": 1,
           "nickname": "신수진",
           "profileUrl": "/svgs/profileImages/image1.jpeg",
-          "profileDescribe": "상태메세지1"
+          "profileDescribe": "요즘 바쁘지만 행복하게 ☺️"
         },
         {
           "memberId": 2,
           "nickname": "최희주",
           "profileUrl": "",
-          "profileDescribe": "상태메세지2"
+          "profileDescribe": "카페인 충전이 필요해…"
         },
         {
           "memberId": 3,
           "nickname": "김형준",
           "profileUrl": "/svgs/profileImages/image3.jpeg",
-          "profileDescribe": "상태메세지3"
+          "profileDescribe": "운동 시작! 꾸준히 가보자 💪"
         },
         {
           "memberId": 4,
           "nickname": "추정은",
           "profileUrl": "/svgs/profileImages/image4.jpeg",
-          "profileDescribe": "상태메세지4"
+          "profileDescribe": "주말 여행 준비 중 ✈️"
         },
         {
           "memberId": 5,
           "nickname": "김민서",
           "profileUrl": "/svgs/profileImages/image5.jpeg",
-          "profileDescribe": "상태메세지5"
+          "profileDescribe": "좋아하는 음악 듣는 중 🎧"
         }
       ],
       "friendRequestList": [
         {
           "memberId": 6,
-          "nickname": "수진",
+          "nickname": "박수진",
           "profileUrl": "/svgs/profileImages/image6.jpeg",
-          "profileDescribe": "상태메세지1"
+          "profileDescribe": "오늘도 파이팅!"
         },
         {
           "memberId": 7,
-          "nickname": "희주",
+          "nickname": "이희주",
           "profileUrl": "/svgs/profileImages/image7.jpeg",
-          "profileDescribe": "상태메세지2"
+          "profileDescribe": "따뜻한 커피 한 잔 ☕"
         },
         {
           "memberId": 8,
-          "nickname": "형준",
+          "nickname": "정형준",
           "profileUrl": "/svgs/profileImages/image8.jpeg",
-          "profileDescribe": "상태메세지3"
+          "profileDescribe": "일이 산더미…😵"
         },
         {
           "memberId": 9,
-          "nickname": "정은",
+          "nickname": "한정은",
           "profileUrl": "/svgs/profileImages/image9.jpg",
-          "profileDescribe": "상태메세지4"
+          "profileDescribe": "새 프로젝트 시작!"
         },
         {
           "memberId": 10,
-          "nickname": "민서",
+          "nickname": "윤민서",
           "profileUrl": "/svgs/profileImages/image10.jpeg",
-          "profileDescribe": "상태메세지5"
+          "profileDescribe": "요즘 드라마 너무 재밌음 📺"
         }
       ]
     }

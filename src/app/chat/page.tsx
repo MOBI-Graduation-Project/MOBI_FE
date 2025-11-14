@@ -22,7 +22,7 @@ const ChatList = () => {
       <Header />
       <div className="mt-[129px] mb-[99px]">
         <div className="flex flex-col gap-4 px-[10px] py-[4px]">
-          {rooms.map(room => (
+          {rooms.result.map(room => (
             <button
               key={room.roomId}
               onClick={() => handleRoomClick(room.roomId)}

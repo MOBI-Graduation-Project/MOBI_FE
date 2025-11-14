@@ -3,7 +3,7 @@
     {
       "roomId": 1,
       "senderId": 1,
-      "senderNickname": "모비1",
+      "senderNickname": "김수진",
       "profileUrl": "/svgs/profileImages/image1.jpeg",
       "content": "야, 오늘 주식 봤어?",
       "sentAt": "2025-10-14T00:15:00Z",
@@ -12,7 +12,7 @@
     {
       "roomId": 1,
       "senderId": 1,
-      "senderNickname": "모비1",
+      "senderNickname": "김수진",
       "profileUrl": "/svgs/profileImages/image1.jpeg",
       "content": "삼전 또 올랐던데? 대박이지 않냐?",
       "sentAt": "2025-10-14T00:15:00Z",
@@ -21,73 +21,203 @@
     {
       "roomId": 1,
       "senderId": 2,
-      "senderNickname": "모비2",
+      "senderNickname": "박희주",
       "profileUrl": "/svgs/profileImages/image2.jpeg",
-      "content": "봤지ㅋㅋ 요즘 반도체주 다시 불붙은 느낌이야. 이번엔 진짜 길게 갈 수도 있을 듯?",
+      "content": "봤지ㅋㅋ 요즘 반도체주 다시 살아나는 느낌이더라.",
       "sentAt": "2025-10-14T00:16:00Z",
       "read": true
     },
     {
       "roomId": 1,
       "senderId": 1,
-      "senderNickname": "모비1",
+      "senderNickname": "김수진",
       "profileUrl": "/svgs/profileImages/image1.jpeg",
-      "content": "그럼 카카오 좀 들어가볼까 고민중인데... 요즘 분위기 어때 보여?",
+      "content": "카카오 좀 들어가볼까 고민중인데 분위기 어때 보여?",
       "sentAt": "2025-10-14T00:17:00Z",
       "read": true
     },
     {
       "roomId": 1,
       "senderId": 2,
-      "senderNickname": "모비2",
+      "senderNickname": "박희주",
       "profileUrl": "/svgs/profileImages/image2.jpeg",
-      "content": "카카오는 요즘 실적 괜찮아졌대. 근데 단기보단 중장기로 보는 게 나을 듯?",
+      "content": "요즘 실적 괜찮대. 근데 단기보단 중장기로 보는 게 나을 듯!",
       "sentAt": "2025-10-14T00:18:00Z",
       "read": true
     },
     {
       "roomId": 1,
       "senderId": 1,
-      "senderNickname": "모비1",
+      "senderNickname": "김수진",
       "profileUrl": "/svgs/profileImages/image1.jpeg",
-      "content": "음... 그럼 오전에 조금 사고 오후에 분위기 봐서 더 들어갈까 싶다.",
+      "content": "그럼 오전에 조금 사볼까 한다.",
       "sentAt": "2025-10-14T00:20:00Z",
       "read": false
     },
     {
       "roomId": 1,
       "senderId": 2,
-      "senderNickname": "모비2",
+      "senderNickname": "박희주",
       "profileUrl": "/svgs/profileImages/image2.jpeg",
-      "content": "좋은 생각이네. 오전엔 거래량 보면서 천천히 들어가도 괜찮을 듯.",
+      "content": "좋아. 거래량 보고 천천히 들어가는 게 맞지.",
       "sentAt": "2025-10-14T00:21:00Z",
       "read": false
     },
     {
       "roomId": 1,
       "senderId": 1,
-      "senderNickname": "모비1",
+      "senderNickname": "김수진",
       "profileUrl": "/svgs/profileImages/image1.jpeg",
-      "content": "근데 요즘 왜 이렇게 피곤하냐ㅋㅋ 회사 가기 너무 싫어.",
+      "content": "근데 요즘 너무 피곤하다ㅋㅋ 과제도 쌓였어.",
       "sentAt": "2025-10-14T00:22:00Z",
       "read": false
     },
     {
       "roomId": 1,
       "senderId": 2,
-      "senderNickname": "모비2",
+      "senderNickname": "박희주",
       "profileUrl": "/svgs/profileImages/image2.jpeg",
-      "content": "나도ㅋㅋ 주식이 오르면 기분은 좋은데 현실은 그대로야...",
+      "content": "나도… 주식은 오르는데 내 학점은 그대로임ㅋㅋ",
       "sentAt": "2025-10-14T00:23:00Z",
       "read": false
     },
     {
       "roomId": 1,
       "senderId": 1,
-      "senderNickname": "모비1",
+      "senderNickname": "김수진",
       "profileUrl": "/svgs/profileImages/image1.jpeg",
-      "content": "ㅋㅋㅋㅋ 진짜 그 말 인정. 이번 주말엔 그냥 푹 쉬자.",
+      "content": "아 ㅠㅠ 이번 주말엔 과제 좀 하다가 쉬자.",
       "sentAt": "2025-10-14T00:24:00Z",
+      "read": false
+    },
+    {
+      "roomId": 1,
+      "senderId": 2,
+      "senderNickname": "박희주",
+      "profileUrl": "/svgs/profileImages/image2.jpeg",
+      "content": "그니까. 근데 조별과제 톡 아직 안 읽었지? 너 없으면 우리 조 망함ㅋㅋ",
+      "sentAt": "2025-10-14T00:25:30Z",
+      "read": false
+    },
+    {
+      "roomId": 1,
+      "senderId": 1,
+      "senderNickname": "김수진",
+      "profileUrl": "/svgs/profileImages/image1.jpeg",
+      "content": "헐 맞다;; 잠깐만 보고 올게",
+      "sentAt": "2025-10-14T00:26:50Z",
+      "read": false
+    },
+
+    {
+      "roomId": 2,
+      "senderId": 3,
+      "senderNickname": "이준호",
+      "profileUrl": "/svgs/profileImages/image3.jpeg",
+      "content": "오늘 점심 같이 먹을래요?",
+      "sentAt": "2025-10-14T03:45:00Z",
+      "read": false
+    },
+    {
+      "roomId": 2,
+      "senderId": 3,
+      "senderNickname": "이준호",
+      "profileUrl": "/svgs/profileImages/image3.jpeg",
+      "content": "학식 오늘 메뉴 괜찮던데!",
+      "sentAt": "2025-10-14T03:46:20Z",
+      "read": false
+    },
+    {
+      "roomId": 2,
+      "senderId": 3,
+      "senderNickname": "이준호",
+      "profileUrl": "/svgs/profileImages/image3.jpeg",
+      "content": "아님 근처 그 라멘집도 괜찮고!",
+      "sentAt": "2025-10-14T03:47:00Z",
+      "read": false
+    },
+
+    {
+      "roomId": 3,
+      "senderId": 4,
+      "senderNickname": "정민지",
+      "profileUrl": "/svgs/profileImages/image4.jpeg",
+      "content": "프로젝트 회의는 내일 오전이에요!",
+      "sentAt": "2025-10-13T23:18:00Z",
+      "read": false
+    },
+    {
+      "roomId": 3,
+      "senderId": 4,
+      "senderNickname": "정민지",
+      "profileUrl": "/svgs/profileImages/image4.jpeg",
+      "content": "준비하실 자료 있으면 미리 공유 부탁드려요 :)",
+      "sentAt": "2025-10-13T23:19:30Z",
+      "read": false
+    },
+    {
+      "roomId": 3,
+      "senderId": 4,
+      "senderNickname": "정민지",
+      "profileUrl": "/svgs/profileImages/image4.jpeg",
+      "content": "아 그리고 레포트 양식은 메일로 다시 보내드릴게요!",
+      "sentAt": "2025-10-13T23:20:40Z",
+      "read": false
+    },
+
+    {
+      "roomId": 4,
+      "senderId": 5,
+      "senderNickname": "박가영",
+      "profileUrl": "/svgs/profileImages/image5.jpeg",
+      "content": "파일 전달드렸어요. 확인 부탁드립니다 :)",
+      "sentAt": "2025-10-13T16:09:00Z",
+      "read": true
+    },
+    {
+      "roomId": 4,
+      "senderId": 5,
+      "senderNickname": "박가영",
+      "profileUrl": "/svgs/profileImages/image5.jpeg",
+      "content": "혹시 수정 필요한 부분 있으면 말해주세요!",
+      "sentAt": "2025-10-13T16:11:00Z",
+      "read": true
+    },
+
+    {
+      "roomId": 5,
+      "senderId": 6,
+      "senderNickname": "최도윤",
+      "profileUrl": "/svgs/profileImages/image6.jpeg",
+      "content": "이번 주말에 등산 어때요?",
+      "sentAt": "2025-10-12T09:42:00Z",
+      "read": false
+    },
+    {
+      "roomId": 5,
+      "senderId": 6,
+      "senderNickname": "최도윤",
+      "profileUrl": "/svgs/profileImages/image6.jpeg",
+      "content": "요새 날씨 좋던데 바람 쐬러 가요!",
+      "sentAt": "2025-10-12T09:44:00Z",
+      "read": false
+    },
+    {
+      "roomId": 5,
+      "senderId": 6,
+      "senderNickname": "최도윤",
+      "profileUrl": "/svgs/profileImages/image6.jpeg",
+      "content": "괜찮으면 답 주세요 :)",
+      "sentAt": "2025-10-12T09:47:00Z",
+      "read": false
+    },
+    {
+      "roomId": 5,
+      "senderId": 6,
+      "senderNickname": "최도윤",
+      "profileUrl": "/svgs/profileImages/image6.jpeg",
+      "content": "아님 다음 주도 괜찮아요 ㅎㅎ",
+      "sentAt": "2025-10-12T09:48:30Z",
       "read": false
     }
   ]
