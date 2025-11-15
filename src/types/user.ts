@@ -43,3 +43,17 @@ export interface FriendsResult {
   friendList: FriendListItem[];
   friendRequestList: FriendRequestItem[];
 }
+
+export interface SendFriendRequestResult {
+  friendId: number;
+  fromUserNickname: string;
+  toUserNickname: string;
+  status: "PENDING" | "ACCEPTED" 
+}
+
+export interface SendFriendRequestResponse {
+  isSuccess: boolean;
+  code: string;
+  message: string; 
+  result: SendFriendRequestResult;
+}
