@@ -1,5 +1,7 @@
 import { apiClient } from "./apiClient";
 
+import type { SendFriendRequestResponse } from "@/types/user";
+
 export const searchUserByNickname = async (nickname: string) => {
   const accessToken = localStorage.getItem("accessToken");
   if (!accessToken) throw new Error("로그인 필요");
@@ -30,4 +32,16 @@ export const getFriends = async () => {
     console.error("getFriends Error:", error);
     throw error;
   }
+};
+
+export const sendFriendRequest = async (toMemberId: number) => {
+  const res = await apiClient.post<SendFriendRequestResponse>(
+    "/friends/request",
+    null, 
+    {
+      params: { toMemberId }, // ?toMemberId=123 형식
+    },
+  );
+
+  return res.data;
 };
