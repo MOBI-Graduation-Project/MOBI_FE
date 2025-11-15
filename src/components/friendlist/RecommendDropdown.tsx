@@ -1,9 +1,9 @@
-import { User } from "@/types/user";
+import { SearchUser } from "@/types/user";
 
 interface RecommendDropdownProps {
   width?: number;
-  searchResult: User;
-  onSelect?: (user: User) => void;
+  searchResult: SearchUser;       
+  onSelect?: (user: SearchUser) => void; 
 }
 
 const RecommendDropdown = ({

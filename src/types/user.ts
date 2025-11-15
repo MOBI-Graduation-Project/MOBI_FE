@@ -14,3 +14,32 @@ export interface ProfileData {
   profileDescribe: string | null;
   relationStatus: string;
 }
+
+export interface SearchUser {
+  memberId: number;
+  email: string;
+  nickname: string;
+  profileImg: string;
+  loginType: string;
+  relationStatus: string;
+}
+
+export interface FriendListItem {
+  memberId: number;
+  nickname: string;
+  avatar: string;
+  profileImgUrl: string;
+  profileDescribe: string | null;
+}
+
+export interface FriendRequestItem {
+  fromMemberId: number;
+  fromMemberNickname: string;
+  fromMemberProfileImgUrl: string;
+  fromMemberProfileDescribe: string | null;
+}
+
+export interface FriendsResult {
+  friendList: FriendListItem[];
+  friendRequestList: FriendRequestItem[];
+}
