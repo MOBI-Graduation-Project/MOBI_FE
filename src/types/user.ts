@@ -18,7 +18,7 @@ export interface ProfileData {
 export interface SearchUser {
   memberId: number;
   email: string;
-  username: string;
+  nickname: string;
   profileImg: string;
   loginType: string;
 }
