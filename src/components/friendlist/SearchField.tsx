@@ -42,10 +42,13 @@ const SearchField = () => {
   };
 
   const handleSelect = (user: SearchUser) => {
-    router.push(`/profile/${user.memberId}`);
-    setSearchResult([]); // 드롭다운 닫기 
-    setInput(user.nickname);
-  };
+  const isSelf = user.relationStatus === "SELF";   
+
+  router.push(isSelf ? "/profile" : `/profile/${user.memberId}`); 
+
+  setSearchResult([]);
+  setInput(user.nickname);
+};
 
   // 컴포넌트 영역 밖 클릭 시 드롭다운 닫기
   useEffect(() => {

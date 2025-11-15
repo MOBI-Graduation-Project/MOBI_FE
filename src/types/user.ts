@@ -21,4 +21,5 @@ export interface SearchUser {
   nickname: string;
   profileImg: string;
   loginType: string;
+  relationStatus: string;
 }
