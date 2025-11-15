@@ -35,13 +35,26 @@ export const getFriends = async () => {
 };
 
 export const sendFriendRequest = async (toMemberId: number) => {
-  const res = await apiClient.post<SendFriendRequestResponse>(
-    "/friends/request",
-    null, 
-    {
-      params: { toMemberId }, // ?toMemberId=123 형식
-    },
-  );
+  const accessToken = localStorage.getItem("accessToken");
+  if (!accessToken) throw new Error("로그인 필요");
 
-  return res.data;
+  try {
+    const res = await apiClient.post<SendFriendRequestResponse>(
+      "/friends/request",
+      {
+        toMemberId, 
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json", 
+        },
+      },
+    );
+
+    return res.data;
+  } catch (error) {
+    console.error("sendFriendRequest Error:", error);
+    throw error;
+  }
 };
