@@ -14,3 +14,11 @@ export interface ProfileData {
   profileDescribe: string | null;
   relationStatus: string;
 }
+
+export interface SearchUser {
+  memberId: number;
+  email: string;
+  username: string;
+  profileImg: string;
+  loginType: string;
+}
