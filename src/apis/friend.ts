@@ -52,3 +52,43 @@ export const sendFriendRequest = async (toMemberId: number) => {
 
   return res.data;
 };
+
+//  친구요청 수락
+export const acceptFriendRequest = async (fromMemberId: number) => {
+  const accessToken = localStorage.getItem("accessToken");
+  if (!accessToken) throw new Error("로그인 필요");
+
+  const res = await apiClient.post(
+    "/friends/accept",
+    null, 
+    {
+      params: { fromMemberId }, 
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        Accept: "*/*",
+      },
+    },
+  );
+
+  return res.data; // { isSuccess, code, message, result: {...} }
+};
+
+//  친구요청 거절
+export const refuseFriendRequest = async (fromMemberId: number) => {
+  const accessToken = localStorage.getItem("accessToken");
+  if (!accessToken) throw new Error("로그인 필요");
+
+  const res = await apiClient.post(
+    "/friends/refuse",
+    null,
+    {
+      params: { fromMemberId }, 
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        Accept: "*/*",
+      },
+    },
+  );
+
+  return res.data;
+};
