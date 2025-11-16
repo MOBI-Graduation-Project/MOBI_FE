@@ -1,3 +1,5 @@
+import { useUserStore } from "@/stores/userStore";
+
 interface HeadingTitleProps {
   userName?: string;
   texts: string[];
@@ -5,19 +7,20 @@ interface HeadingTitleProps {
 }
 
 const HeadingTitle = ({
-  userName = "사용자",
+  userName,
   texts,
   stockName,
 }: HeadingTitleProps) => {
   // TBD 유저이름 zustand로 로그인연동시 가져오기
 
+  const nickname = useUserStore(state => state.nickname);
+
+  const finalUserName = userName ?? nickname ?? "사용자";
+
   const replacedTexts = texts.map(text => {
     let replaced = text;
-    if (userName) {
-      replaced = replaced.replace("{userName}", userName);
-    } else {
-      replaced = replaced.replace("{userName}", "사용자");
-    }
+
+    replaced = replaced.replace("{userName}", finalUserName);
     if (stockName) {
       replaced = replaced.replace("{stockName}", stockName);
     }

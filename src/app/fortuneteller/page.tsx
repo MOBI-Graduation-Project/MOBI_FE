@@ -11,13 +11,13 @@ import RightArrow from "@/assets/rightArrow.svg";
 
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
+import HeadingTitle from "@/components/common/HeadingTitle";
 import DateSelector from "@/components/fortuneteller/DateSelector";
 
 import { daysInMonth } from "@/utils/fortunteller/getDaysInMonth";
 
 const FortuneTellerPage = () => {
   const router = useRouter();
-  const nickname = "사용자";
   const { setBirthday } = useSajuStore();
 
   const today = new Date();
@@ -81,9 +81,9 @@ const FortuneTellerPage = () => {
           </button>
 
           {/* 안내문구 */}
-          <p className="text-heading1 text-brown text-stroke-white pt-[5px] text-center font-[geekble] leading-tight">
-            {nickname} 님, 사주 궁합을 위해 당신의 생년월일을 입력해주세요.
-          </p>
+          <HeadingTitle
+            texts={["{userName} 님, 사주 궁합을 위해 당신의 생년월일을 입력해주세요."]}
+          />
           <div className="border-cream bg-cream flex h-[135px] w-[948px] items-center justify-center gap-[90px] rounded-[30px] border-[30px] pl-[30px]">
             <DateSelector
               label="년"
