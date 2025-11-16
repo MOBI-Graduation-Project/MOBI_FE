@@ -28,7 +28,7 @@ const HeadingTitle = ({
   });
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col items-center gap-1">
       {replacedTexts.map((text, index) => (
         <p
           key={index}
