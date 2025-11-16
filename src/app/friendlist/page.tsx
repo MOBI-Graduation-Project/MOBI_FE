@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { getFriends } from "@/apis/friend";
+import { getFriends, acceptFriendRequest, refuseFriendRequest } from "@/apis/friend";
 
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
@@ -69,19 +69,47 @@ const FriendList = () => {
     return <div>{error}</div>;
   }
 
-  const handleAccept = (friend: User) => {
-    setFriendRequestList(prev =>
-      prev.filter(f => f.memberId !== friend.memberId),
-    );
-    setFriendList(prev =>
-      prev.some(f => f.memberId === friend.memberId) ? prev : [friend, ...prev],
-    );
+  // 친구 요청 수락
+  const handleAccept = async (friend: User) => {
+    try {
+      const res = await acceptFriendRequest(friend.memberId); // fromMemberId = friend.memberId
+
+      if (!res.isSuccess) {
+        alert(res.message || "친구 요청 수락에 실패했어요.");
+        return;
+      }
+
+      // 수락 성공 시: 요청 리스트에서 제거 + 친구 목록에 추가
+      setFriendRequestList(prev =>
+        prev.filter(f => f.memberId !== friend.memberId),
+      );
+      setFriendList(prev =>
+        prev.some(f => f.memberId === friend.memberId) ? prev : [friend, ...prev],
+      );
+    } catch (err) {
+      console.error("친구 요청 수락 실패:", err);
+      alert("친구 요청 수락 중 오류가 발생했어요.");
+    }
   };
 
-  const handleDecline = (friend: User) => {
-    setFriendRequestList(prev =>
-      prev.filter(f => f.memberId !== friend.memberId),
-    );
+  // 친구 요청 거절
+  const handleDecline = async (friend: User) => {
+    try {
+      const res = await refuseFriendRequest(friend.memberId);
+
+      if (!res.isSuccess) {
+        alert(res.message || "친구 요청 거절에 실패했어요.");
+        return;
+      }
+
+      // 거절 성공 시: 요청 리스트에서만 제거
+      setFriendRequestList(prev =>
+        prev.filter(f => f.memberId !== friend.memberId),
+      );
+    } catch (err) {
+      console.error("친구 요청 거절 실패:", err);
+      alert("친구 요청 거절 중 오류가 발생했어요.");
+    }
   };
   return (
     <div
