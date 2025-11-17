@@ -6,14 +6,9 @@ interface HeadingTitleProps {
   stockName?: string;
 }
 
-const HeadingTitle = ({
-  userName,
-  texts,
-  stockName,
-}: HeadingTitleProps) => {
-  // TBD 유저이름 zustand로 로그인연동시 가져오기
-
+const HeadingTitle = ({ userName, texts, stockName }: HeadingTitleProps) => {
   const nickname = useUserStore(state => state.nickname);
+  console.log(nickname);
 
   const finalUserName = userName ?? nickname ?? "사용자";
 
