@@ -11,10 +11,10 @@ import RightArrow from "@/assets/rightArrow.svg";
 
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
+import HeadingTitle from "@/components/common/HeadingTitle";
 
 const CompanyPage = () => {
   const router = useRouter();
-  const nickname = "사용자";
   const { setCompany } = useSajuStore();
 
   const [companyName, setCompanyName] = useState("");
@@ -37,10 +37,9 @@ const CompanyPage = () => {
       <div className="flex flex-1 items-center justify-center px-4">
         <div className="relative flex w-full max-w-[980px] flex-col items-center gap-6">
           {/* 안내 문구 */}
-          <p className="text-heading1 text-brown text-stroke-white stroke-[4] text-center font-[geekble] leading-tight">
-            {nickname} 님, 주식 회사 이름을 입력해주세요.
-          </p>
-
+          <HeadingTitle
+            texts={["{userName} 님, 주식 회사 이름을 입력해주세요."]}
+          />
           {/* 입력창 */}
           <input
             type="text"

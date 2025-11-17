@@ -1,38 +1,115 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
+
+import { getFriends, acceptFriendRequest, refuseFriendRequest } from "@/apis/friend";
 
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
 import FriendTag from "@/components/friendlist/FriendTag";
 import SearchField from "@/components/friendlist/SearchField";
+import HeadingTitle from "@/components/common/HeadingTitle"; 
 
-import friendData from "@/mock/friendList.json";
-
-import { User } from "@/types/user";
+import type { FriendsResult, User } from "@/types/user";
 
 const FriendList = () => {
-  const initial = useMemo(() => friendData.friend[0], []);
-  const [friendList, setFriendList] = useState<User[]>(
-    initial.friendList || [],
-  );
-  const [friendRequestList, setFriendRequestList] = useState<User[]>(
-    initial.friendRequestList || [],
-  );
+  const [friendList, setFriendList] = useState<User[]>([]);
+  const [friendRequestList, setFriendRequestList] = useState<User[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleAccept = (friend: User) => {
-    setFriendRequestList(prev =>
-      prev.filter(f => f.memberId !== friend.memberId),
+  // friends API 호출
+  useEffect(() => {
+    const fetchFriends = async () => {
+      try {
+        const data: { result: FriendsResult } = await getFriends();
+
+        const mappedFriends: User[] =
+          data.result.friendList?.map(friend => ({
+            memberId: friend.memberId,
+            nickname: friend.nickname,
+            profileUrl: friend.profileImgUrl,
+            profileDescribe: friend.profileDescribe,
+          })) ?? [];
+
+        const mappedRequests: User[] =
+          data.result.friendRequestList?.map(req => ({
+            memberId: req.fromMemberId,
+            nickname: req.fromMemberNickname,
+            profileUrl: req.fromMemberProfileImgUrl,
+            profileDescribe: req.fromMemberProfileDescribe,
+          })) ?? [];
+
+        setFriendList(mappedFriends);
+        setFriendRequestList(mappedRequests);
+      } catch (err) {
+        console.error("친구 목록 조회 실패:", err);
+        setError("친구 목록을 불러오지 못했습니다.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchFriends();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div
+        className="flex h-screen w-full flex-col items-center justify-center gap-[91.27px] bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
+      >
+        <HeadingTitle texts={["친구 목록 불러오는 중..."]} />
+      </div>
     );
-    setFriendList(prev =>
-      prev.some(f => f.memberId === friend.memberId) ? prev : [friend, ...prev],
-    );
+  }
+
+  // 에러 화면
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  // 친구 요청 수락
+  const handleAccept = async (friend: User) => {
+    try {
+      const res = await acceptFriendRequest(friend.memberId); // fromMemberId = friend.memberId
+
+      if (!res.isSuccess) {
+        alert(res.message || "친구 요청 수락에 실패했어요.");
+        return;
+      }
+
+      // 수락 성공 시: 요청 리스트에서 제거 + 친구 목록에 추가
+      setFriendRequestList(prev =>
+        prev.filter(f => f.memberId !== friend.memberId),
+      );
+      setFriendList(prev =>
+        prev.some(f => f.memberId === friend.memberId) ? prev : [friend, ...prev],
+      );
+    } catch (err) {
+      console.error("친구 요청 수락 실패:", err);
+      alert("친구 요청 수락 중 오류가 발생했어요.");
+    }
   };
 
-  const handleDecline = (friend: User) => {
-    setFriendRequestList(prev =>
-      prev.filter(f => f.memberId !== friend.memberId),
-    );
+  // 친구 요청 거절
+  const handleDecline = async (friend: User) => {
+    try {
+      const res = await refuseFriendRequest(friend.memberId);
+
+      if (!res.isSuccess) {
+        alert(res.message || "친구 요청 거절에 실패했어요.");
+        return;
+      }
+
+      // 거절 성공 시: 요청 리스트에서만 제거
+      setFriendRequestList(prev =>
+        prev.filter(f => f.memberId !== friend.memberId),
+      );
+    } catch (err) {
+      console.error("친구 요청 거절 실패:", err);
+      alert("친구 요청 거절 중 오류가 발생했어요.");
+    }
   };
   return (
     <div
