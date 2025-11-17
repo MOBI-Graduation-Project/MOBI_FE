@@ -2,13 +2,16 @@
 
 import { useMemo, useRef } from "react";
 
-import { useCharacterStore } from "@/stores/characterStore";
-import { useKeyboardControls } from "@react-three/drei";
-import { useGLTF } from "@react-three/drei";
+import { useKeyboardControls, useGLTF } from "@react-three/drei";
+
 import { useFrame } from "@react-three/fiber";
 import { RapierRigidBody, RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
+
+import { useUserStore } from "@/stores/userStore";    
+   
+import { toModelFile } from "@/constants/AVATAR";
 
 interface PlayerProps {
   controlsRef?: React.MutableRefObject<OrbitControlsImpl | null>;
@@ -28,13 +31,18 @@ const Player = ({
   moveSpeed = MOVE_SPEED,
   height = 7,
 }: PlayerProps) => {
-  const { characterType } = useCharacterStore();
   const bodyRef = useRef<RapierRigidBody>(null);
   const modelRef = useRef<THREE.Group>(null);
 
-  const { scene } = useGLTF(
-    characterType ? `/models/${characterType}.glb` : "/models/default.glb",
+  const { avatarCode } = useUserStore();
+
+  const modelPath = useMemo(
+    () => toModelFile(avatarCode ?? undefined),
+    [avatarCode],
   );
+
+  const { scene } = useGLTF(modelPath);
+  
   const clonedScene = useMemo(() => scene.clone(), [scene]);
 
   //에셋마다 실제 크기나 중심이 달라서 자동으로 균일하게 스케일 맞추고 발바닥을 바닥에 붙여주기
