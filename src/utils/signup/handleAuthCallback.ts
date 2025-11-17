@@ -62,9 +62,6 @@ export const handleOAuthCallback = async (
           nickname,
           avatarCode: avatar ?? null,
         });
-        const currentState = useUserStore.getState();
-        console.log(currentState.memberId);
-        console.log(currentState.nickname);
       } else {
         console.error("내 프로필 조회 실패:", profileRes?.message);
       }
