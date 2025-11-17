@@ -7,7 +7,7 @@ export const getMarketPredictions = async () => {
   const accessToken = localStorage.getItem("accessToken");
   if (!accessToken) throw new Error("로그인 필요합니다.");
   try {
-    const res = await apiClient.get("/prediction/market", {
+    const res = await apiClient.get("/prediction", {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
     return res.data;
