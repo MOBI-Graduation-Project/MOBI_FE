@@ -1,8 +1,13 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useState } from "react";
+
+import { sendFriendRequest } from "@/apis/friend";
 
 import CloseButton from "@/assets/closeButton.svg";
+
+import YellowButton from "@/components/common/YellowButton";
 
 import useGoBack from "@/hooks/useGoBack";
 
@@ -11,6 +16,7 @@ import ProfileImageCircle from "./ProfileImageCircle";
 import StateMessage from "./StateMessage";
 
 interface ProfileLayoutProps {
+  memberId: number;
   profileImg?: string | null;
   nickname: string;
   stateMessage?: string | null;
@@ -25,6 +31,7 @@ const AvatarPreview = dynamic(
   },
 );
 const ProfileLayout = ({
+  memberId,
   profileImg,
   nickname,
   stateMessage = null,
@@ -33,6 +40,33 @@ const ProfileLayout = ({
   avatarCode = null,
 }: ProfileLayoutProps) => {
   const goBack = useGoBack();
+
+  const [isRequesting, setIsRequesting] = useState(false); 
+  const [isRequestSent, setIsRequestSent] = useState(false); 
+
+  const handleAddFriend = async () => {
+    if (isRequesting || isRequestSent) return;
+
+    console.log("친구 추가 요청 target memberId:", memberId);
+
+    try {
+      setIsRequesting(true);
+      const data = await sendFriendRequest(memberId);
+
+      if (data.isSuccess) {
+        setIsRequestSent(true);
+      } else {
+        alert(data.message || "친구 요청에 실패했어요.");
+      }
+    } catch (error) {
+      console.error("친구 요청 실패:", error);
+      alert("친구 요청 중 오류가 발생했어요.");
+    } finally {
+      setIsRequesting(false);
+    }
+  };
+
+
   return (
     <div>
       <CloseButton
@@ -66,11 +100,31 @@ const ProfileLayout = ({
         )}
         {/*친구가 아닌 유저 프로필일 때 */}
         {!isMyProfile && !isFriend && (
-          <div>
-            <ProfileButtons
-              buttonNum={2}
-              text={["친구 추가하기", "채팅하기"]}
-            />
+          <div className="flex gap-[174px]">
+            {/* 친구 추가하기 버튼 */}
+            <div
+              onClick={
+                isRequesting || isRequestSent ? undefined : handleAddFriend
+              }
+              className={`transition-all ${
+                isRequestSent || isRequesting
+                  ? "opacity-50 cursor-not-allowed"
+                  : "cursor-pointer opacity-100"
+              }`}
+            >
+              <YellowButton
+                text={
+                  isRequestSent
+                    ? "요청 보냄"
+                    : isRequesting
+                    ? "요청 중..."
+                    : "친구 추가하기"
+                }
+              />
+            </div>
+
+            {/* 채팅하기 버튼 */}
+            <YellowButton text="채팅하기" />
           </div>
         )}
       </div>

@@ -1,3 +1,6 @@
+import { getMyProfile } from "@/apis/profile";
+import { useUserStore } from "@/stores/userStore";
+
 interface OAuthResponse {
   isSuccess: boolean;
   code: string;
@@ -41,6 +44,24 @@ export const handleOAuthCallback = async (code: string) => {
 
     localStorage.setItem("accessToken", data.result.accessToken);
     localStorage.setItem("refreshToken", data.result.refreshToken);
+
+    try {
+      const profileRes = await getMyProfile();
+      if (profileRes?.isSuccess && profileRes.result) {
+        const { memberId, nickname, avatar } = profileRes.result;
+        const { setUser } = useUserStore.getState();
+
+        setUser({
+          memberId,
+          nickname,
+          avatarCode: avatar ?? null,
+        });
+      } else {
+        console.error("내 프로필 조회 실패:", profileRes?.message);
+      }
+    } catch (e) {
+      console.error("내 프로필 조회 중 에러:", e);
+    }
 
     if (data.result.isNewMember) {
       window.location.href = "/signup/nickname";

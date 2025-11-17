@@ -63,6 +63,7 @@ const UserProfile = () => {
 
   return (
     <ProfileLayout
+      memberId={profile.memberId}
       profileImg={profile.profileImgUrl}                            
       nickname={profile.nickname}
       stateMessage={profile.profileDescribe ?? ""}
