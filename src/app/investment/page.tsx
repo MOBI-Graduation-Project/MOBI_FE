@@ -1,3 +1,5 @@
+"use client";
+
 import HeadingTitle from "@/components/common/HeadingTitle";
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
