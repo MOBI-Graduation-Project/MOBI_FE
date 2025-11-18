@@ -56,7 +56,7 @@ const ChattingRoom = () => {
     <div className="bg-yellow-10 h-screen w-full">
       <ChatHeader roomName={roomName} />
       <div className="bg-yellow-10 px-[10px] pt-[110px] pb-[150px]">
-        <ChatSection messages={messages} />
+        <ChatSection messages={messages} opponentNickname={roomName} />
       </div>
       <InputBottomBar onSend={handleSend} />
     </div>
