@@ -1,9 +1,11 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 
 import { useState } from "react";
 
+import { createChatRoom } from "@/apis/chat";
 import { sendFriendRequest } from "@/apis/friend";
 
 import CloseButton from "@/assets/closeButton.svg";
@@ -12,6 +14,7 @@ import YellowButton from "@/components/common/YellowButton";
 
 import useGoBack from "@/hooks/useGoBack";
 
+import { ToastMessage } from "../common/ToastMessage";
 import ProfileButtons from "./ProfileButtons";
 import ProfileImageCircle from "./ProfileImageCircle";
 import StateMessage from "./StateMessage";
@@ -31,6 +34,7 @@ const AvatarPreview = dynamic(
     ssr: false,
   },
 );
+
 const ProfileLayout = ({
   memberId,
   profileImg,
@@ -41,9 +45,27 @@ const ProfileLayout = ({
   avatarCode = null,
 }: ProfileLayoutProps) => {
   const goBack = useGoBack();
+  const router = useRouter();
 
   const [isRequesting, setIsRequesting] = useState(false);
   const [isRequestSent, setIsRequestSent] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const handleChatClick = async () => {
+    if (!memberId) return;
+    try {
+      const roomId = await createChatRoom(memberId);
+      setToastMessage("채팅방으로 이동중...");
+      router.push(`/chat/${roomId}`);
+    } catch (error) {
+      console.error("채팅방 생성 실패:", error);
+      setToastMessage("채팅방 생성에 실패했습니다. 다시 시도해주세요.");
+    } finally {
+      setTimeout(() => {
+        setToastMessage(null);
+      }, 1000);
+    }
+  };
 
   const handleAddFriend = async () => {
     if (isRequesting || isRequestSent) return;
@@ -57,13 +79,16 @@ const ProfileLayout = ({
       if (data.isSuccess) {
         setIsRequestSent(true);
       } else {
-        alert(data.message || "친구 요청에 실패했어요.");
+        setToastMessage(data.message || "친구 요청에 실패했어요.");
       }
     } catch (error) {
       console.error("친구 요청 실패:", error);
-      alert("친구 요청 중 오류가 발생했어요.");
+      setToastMessage("친구 요청 중 오류가 발생했어요.");
     } finally {
       setIsRequesting(false);
+      setTimeout(() => {
+        setToastMessage(null);
+      }, 1000);
     }
   };
 
@@ -98,7 +123,11 @@ const ProfileLayout = ({
         {/*친구 프로필일 때 */}
         {!isMyProfile && isFriend && (
           <div>
-            <ProfileButtons buttonNum={1} text="채팅하기" />
+            <ProfileButtons
+              buttonNum={1}
+              text="채팅하기"
+              onClick={handleChatClick}
+            />
           </div>
         )}
         {/*친구가 아닌 유저 프로필일 때 */}
@@ -127,7 +156,12 @@ const ProfileLayout = ({
             </div>
 
             {/* 채팅하기 버튼 */}
-            <YellowButton text="채팅하기" />
+            <YellowButton text="채팅하기" onClick={handleChatClick} />
+          </div>
+        )}
+        {toastMessage && (
+          <div className="pt-7">
+            <ToastMessage message={toastMessage} />
           </div>
         )}
       </div>
