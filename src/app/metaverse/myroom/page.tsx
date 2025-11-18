@@ -228,7 +228,7 @@ export default function MyRoomPage() {
         <Header />
         <Canvas camera={{ position: [0, 6, 10], fov: 60 }} shadows style={{ background: "var(--color-gray-20)"}}>
           {/* 조명 */}
-          <ambientLight intensity={0.6} />
+          <ambientLight intensity={1.2} />
           <directionalLight
             position={[8, 14, 6]}
             intensity={1}
