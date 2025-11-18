@@ -5,6 +5,7 @@ import SearchIcon from "@/assets/chatting/searchIcon.svg";
 interface SearchFieldProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export const SearchField = ({ value, onChange }: SearchFieldProps) => {
