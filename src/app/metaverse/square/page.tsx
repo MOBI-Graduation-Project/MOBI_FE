@@ -43,13 +43,13 @@ const SquarePage = () => {
             ref={controlsRef}
             makeDefault
             enablePan
-            enableZoom={false}
+            enableZoom={true}
             enableDamping
             dampingFactor={0.08}
             minPolarAngle={0}
             maxPolarAngle={0.99 * Math.PI}
-            minDistance={8}
-            maxDistance={8}
+            minDistance={7}
+            maxDistance={15}
           />
 
           <Suspense fallback={null}>
