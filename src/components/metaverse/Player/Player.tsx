@@ -84,14 +84,6 @@ export default function Player({
       modelRef.current.rotation.y = angle;
     }
 
-    // controlsRef가 있을 때만 target 보간 (없으면 스킵)
-    const p = bodyRef.current.translation();
-    if (controlsRef?.current) {
-      const target = new THREE.Vector3(p.x, p.y + 1.0, p.z);
-      controlsRef.current.target.lerp(target, 0.12);
-      controlsRef.current.update();
-    }
-
     const pos = bodyRef.current.translation();
     if (pos.y < KILL_Y) {
       bodyRef.current.setTranslation(
