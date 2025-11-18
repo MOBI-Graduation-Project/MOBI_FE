@@ -185,7 +185,8 @@ function DoorPlaced() {
         />
       {/* 문 안내 문구 (도어 위로 살짝) */} 
         <Html transform center position={[-0.1, 1.2, 0.05]}> 
-          <div className="font-[geekble] text-brown bg-[var(--color-yellow-10)] rounded-[10px] px-[2px] py-[2px] text-[3px] whitespace-nowrap select-none pointer-events-none shadow-md"> 
+          <div className="font-[geekble] text-brown bg-[var(--color-yellow-10)] rounded-[10px] px-[2px] py-[2px] text-[3px] whitespace-nowrap select-none font-[geekble]"
+            > 
             문을 클릭하여 광장으로 이동 
             </div> 
         </Html>
