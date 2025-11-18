@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { useEffect } from "react";
 
@@ -11,11 +11,12 @@ import HeadingTitle from "../common/HeadingTitle";
 export default function GoogleCallback() {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
+  const router = useRouter();
 
   useEffect(() => {
     if (!code) return;
-    handleOAuthCallback(code);
-  }, [code]);
+    handleOAuthCallback(code, router);
+  }, [code, router]);
 
   return (
     <div

@@ -39,7 +39,7 @@ const InputBottomBar = ({ onSend, isChatBot = false }: InputBottomBarProps) => {
 
         {input.trim() && (
           <button onClick={handleInputSend} className="cursor-pointer">
-            <EnterBtn size={48} />
+            <EnterBtn className="h-[38px] w-[38px]" />
           </button>
         )}
       </div>
