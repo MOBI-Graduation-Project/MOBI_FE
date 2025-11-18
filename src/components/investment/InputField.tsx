@@ -9,6 +9,7 @@ interface InputFieldProps {
   placeholder?: string;
   unit?: string;
   disabled?: boolean;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export const InputField = ({

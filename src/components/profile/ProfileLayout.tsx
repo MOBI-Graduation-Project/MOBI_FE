@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+
 import { useState } from "react";
 
 import { sendFriendRequest } from "@/apis/friend";
@@ -41,8 +42,8 @@ const ProfileLayout = ({
 }: ProfileLayoutProps) => {
   const goBack = useGoBack();
 
-  const [isRequesting, setIsRequesting] = useState(false); 
-  const [isRequestSent, setIsRequestSent] = useState(false); 
+  const [isRequesting, setIsRequesting] = useState(false);
+  const [isRequestSent, setIsRequestSent] = useState(false);
 
   const handleAddFriend = async () => {
     if (isRequesting || isRequestSent) return;
@@ -66,7 +67,6 @@ const ProfileLayout = ({
     }
   };
 
-
   return (
     <div>
       <CloseButton
@@ -80,7 +80,10 @@ const ProfileLayout = ({
       {/* 노란 영역 */}
       <div className="bg-yellow-10 fixed bottom-0 flex h-[40%] w-full flex-col items-center pt-[86px]">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <ProfileImageCircle profileImg={profileImg} />
+          <ProfileImageCircle
+            profileImg={profileImg}
+            isEditable={isMyProfile}
+          />
         </div>
         <div className="text-body text-brown text-stroke-white pt-[19.62px] font-[geekble]">
           {nickname}
@@ -108,7 +111,7 @@ const ProfileLayout = ({
               }
               className={`transition-all ${
                 isRequestSent || isRequesting
-                  ? "opacity-50 cursor-not-allowed"
+                  ? "cursor-not-allowed opacity-50"
                   : "cursor-pointer opacity-100"
               }`}
             >
@@ -117,8 +120,8 @@ const ProfileLayout = ({
                   isRequestSent
                     ? "요청 보냄"
                     : isRequesting
-                    ? "요청 중..."
-                    : "친구 추가하기"
+                      ? "요청 중..."
+                      : "친구 추가하기"
                 }
               />
             </div>

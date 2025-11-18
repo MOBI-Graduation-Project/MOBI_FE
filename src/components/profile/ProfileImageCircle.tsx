@@ -9,9 +9,13 @@ import { ToastMessage } from "@/components/common/ToastMessage";
 
 interface ProfileImageCircleProps {
   profileImg?: string | null;
+  isEditable?: boolean;
 }
 
-const ProfileImageCircle = ({ profileImg }: ProfileImageCircleProps) => {
+const ProfileImageCircle = ({
+  profileImg,
+  isEditable = true,
+}: ProfileImageCircleProps) => {
   const [currentImg, setCurrentImg] = useState(profileImg);
   const [isUploading, setIsUploading] = useState(false);
   const [toastMsg, setToastMsg] = useState<string>("");
@@ -65,11 +69,12 @@ const ProfileImageCircle = ({ profileImg }: ProfileImageCircleProps) => {
           )}
         </div>
 
-        {/* ProfileEdit 버튼 */}
-        <ProfileEdit
-          className="absolute right-2 bottom-2 z-10 h-[40px] w-[40px] cursor-pointer"
-          onClick={handleClick}
-        />
+        {isEditable && (
+          <ProfileEdit
+            className="absolute right-2 bottom-2 z-10 h-[40px] w-[40px] cursor-pointer"
+            onClick={handleClick}
+          />
+        )}
 
         {/* 숨겨진 파일 input */}
         <input

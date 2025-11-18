@@ -45,6 +45,15 @@ export const InputStockField = () => {
       setTimeout(() => setToastMsg(""), 1000);
     }
   };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.nativeEvent.isComposing) return;
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleEnter();
+    }
+  };
+
   return (
     <div className="flex w-full flex-col items-center justify-center gap-[5px]">
       <section className="flex w-full items-center gap-4 bg-gray-50/50 px-8 py-5">
@@ -52,6 +61,7 @@ export const InputStockField = () => {
           <SearchField
             value={stockName}
             onChange={e => setStockName(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
         </div>
 
@@ -61,6 +71,7 @@ export const InputStockField = () => {
           value={purchaseAmount}
           unit="주"
           onChange={e => setPurchaseAmount(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
 
         <InputField
@@ -69,6 +80,7 @@ export const InputStockField = () => {
           value={avgPrice}
           unit="원"
           onChange={e => setAvgPrice(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
 
         <button type="button" onClick={handleEnter}>
