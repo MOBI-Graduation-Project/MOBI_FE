@@ -38,7 +38,7 @@ const FriendTag = ({
 
   return (
     <div
-      className="bg-brown/80 relative flex h-[94px] w-full flex-row gap-[45px] px-10 py-[19px]"
+      className="bg-brown/80 relative flex h-[94px] w-full cursor-pointer flex-row gap-[45px] px-10 py-[19px]"
       onClick={handleClick}
     >
       {/* 프로필 */}

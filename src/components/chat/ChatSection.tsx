@@ -1,20 +1,17 @@
-import { useParams } from "next/navigation";
-
 import { useEffect, useRef } from "react";
+
+import { useUserStore } from "@/stores/userStore";
 
 import { Message } from "@/types/chatMessage";
 
 import { formatTime } from "@/utils/chat/formatTime";
-import { getOpponentNickname } from "@/utils/chat/getOpponentNickname";
 
 interface ChatSectionProps {
   messages?: Message[];
+  opponentNickname?: string; //채팅방에서만 사용
 }
-const ChatSection = ({ messages }: ChatSectionProps) => {
-  const MY_ID = 1;
-  const params = useParams();
-  const targetRoomId = Number(params.roomId);
-  const opponentNickname = getOpponentNickname({ roomId: targetRoomId });
+const ChatSection = ({ messages, opponentNickname }: ChatSectionProps) => {
+  const myId = useUserStore.getState().memberId;
 
   const chatEndRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -30,11 +27,11 @@ const ChatSection = ({ messages }: ChatSectionProps) => {
         return (
           <div
             key={key}
-            className={`flex w-full ${message.senderId === MY_ID || message.isBot === false ? "justify-end" : "justify-start"}`}
+            className={`flex w-full ${message.senderId === myId || message.isBot === false ? "justify-end" : "justify-start"}`}
           >
             <div className="flex items-end gap-2">
               {/* 내가 보낸 채팅 */}
-              {message.senderId === MY_ID || message.isBot === false ? (
+              {message.senderId === myId || message.isBot === false ? (
                 <>
                   <div className="flex flex-row items-end justify-end gap-2">
                     <div className="text-cap1 font-[pretendard] whitespace-nowrap text-gray-500">
