@@ -3,13 +3,18 @@ import { apiClient } from "./apiClient";
 export const createChatRoom = async (otherMemberId: number) => {
   const accessToken = localStorage.getItem("accessToken");
   if (!accessToken) throw new Error("로그인 필요");
+
   try {
-    const res = await apiClient.post("/chat/room", {
-      params: { otherMemberId },
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
+    const res = await apiClient.post(
+      "/chat/room",
+      {},
+      {
+        params: { otherMemberId },
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
       },
-    });
+    );
     return res.data.result; // roomId 반환
   } catch (error) {
     console.log("createChatRoom Error:", error);
