@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 import { Suspense, useEffect, useMemo, useRef } from "react";
 
-import { KeyboardControls, OrbitControls, useGLTF } from "@react-three/drei";
+import { KeyboardControls, OrbitControls, useGLTF, Html } from "@react-three/drei";
 import { Canvas, ThreeEvent, useThree } from "@react-three/fiber";
 import { Physics, RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
@@ -119,7 +119,15 @@ function MyRoomScene({
             onPointerOver={onOver}
             onPointerOut={onOut}
           />
-        </group>
+          {/* 화이트보드 안내 문구 */}
+          <Html transform center position={[0, 1.2, 0]}>
+            <div
+              className="bg-[rgba(0,0,0,0.6)] text-white rounded-[12px] px-[3px] py-[2px] text-[4px] whitespace-nowrap select-none font-[geekble]"
+            >
+              보드 클릭하여 보유현황 보기
+            </div>
+          </Html>
+        </group>  
       </RigidBody>
     );
   }
@@ -152,7 +160,7 @@ export default function MyRoomPage() {
         ]}
       >
         <Header />
-        <Canvas camera={{ position: [0, 6, 10], fov: 60 }} shadows>
+        <Canvas camera={{ position: [0, 6, 10], fov: 60 }} shadows style={{ background: "var(--color-gray-20)"}}>
           {/* 조명 */}
           <ambientLight intensity={0.6} />
           <directionalLight
