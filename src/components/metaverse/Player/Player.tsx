@@ -2,8 +2,6 @@
 
 import { useMemo, useRef } from "react";
 
-import { useKeyboardControls, useGLTF } from "@react-three/drei";
-
 import { useFrame } from "@react-three/fiber";
 import { RapierRigidBody, RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
@@ -13,10 +11,14 @@ import {
   MOVE_SPEED, JUMP_FORCE, KILL_Y, SPAWN,
   DEFAULT_TARGET_HEIGHT, DEFAULT_VISUAL_SCALE,
 } from "@/constants/METAVERSE";
+import PlayerModel from "./PlayerModel";
 
 import { useUserStore } from "@/stores/userStore";    
    
 import { toModelFile } from "@/constants/AVATAR";
+
+import { usePlayerInput } from "@/hooks/metaverse/usePlayerInput";
+import { useCameraTargetLerp } from "@/hooks/metaverse/useCameraTargetLerp"
 
 interface PlayerProps {
   controlsRef?: React.MutableRefObject<OrbitControlsImpl | null>;
@@ -25,48 +27,21 @@ interface PlayerProps {
   height?: number; //에셋들 크기 통일을 위해 높이변수 추가
 }
 
-const Player = ({
+export default function Player({
   controlsRef,
   visualScale = DEFAULT_VISUAL_SCALE,
   moveSpeed = MOVE_SPEED,
   height = DEFAULT_TARGET_HEIGHT,
-}: PlayerProps) => {
+}: PlayerProps) {
   const bodyRef = useRef<RapierRigidBody>(null);
   const modelRef = useRef<THREE.Group>(null);
+  useCameraTargetLerp(controlsRef, bodyRef, 1.0, 0.12);
 
-  const { avatarCode } = useUserStore();
+  const avatarCode = useUserStore(s => s.avatarCode);
 
-  const modelPath = useMemo(
-    () => toModelFile(avatarCode ?? undefined),
-    [avatarCode],
-  );
+  const modelPath = useMemo(() => toModelFile(avatarCode ?? undefined), [avatarCode]);
 
-  const { scene } = useGLTF(modelPath);
-  
-  const clonedScene = useMemo(() => scene.clone(), [scene]);
-
-  //에셋마다 실제 크기나 중심이 달라서 자동으로 균일하게 스케일 맞추고 발바닥을 바닥에 붙여주기
-  const { modelScale, modelOffset } = useMemo(() => {
-    clonedScene.updateMatrixWorld(true);
-    const box = new THREE.Box3().setFromObject(clonedScene);
-    const size = new THREE.Vector3();
-    const center = new THREE.Vector3();
-    box.getSize(size);
-    box.getCenter(center);
-
-    const safeHeight = Math.max(size.y, 1e-6);
-    const computedScale = (height / safeHeight) * visualScale;
-    const yOffset = -box.min.y * computedScale;
-    const xOffset = -center.x * computedScale;
-    const zOffset = -center.z * computedScale;
-
-    return {
-      modelScale: computedScale,
-      modelOffset: new THREE.Vector3(xOffset, yOffset, zOffset),
-    };
-  }, [clonedScene, height, visualScale]);
-
-  const [, getKeys] = useKeyboardControls();
+  const getKeys = usePlayerInput();
 
   useFrame(state => {
     if (!bodyRef.current) return;
@@ -139,14 +114,12 @@ const Player = ({
       linearDamping={4}
       angularDamping={1}
     >
-      <group ref={modelRef}>
-        <group position={modelOffset} scale={modelScale}>
-          <primitive object={clonedScene} scale={visualScale} />
-        </group>
-      </group>
+      <PlayerModel
+        ref={modelRef}                   
+        characterPath={modelPath}
+        visualScale={visualScale}
+        height={height}
+      />
     </RigidBody>
   );
 };
-
-useGLTF.preload("/models/default.glb");
-export default Player;
