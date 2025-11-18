@@ -1,3 +1,6 @@
+import { Message } from "@/types/chatMessage";
+import { ChatRoom } from "@/types/chatRoom";
+
 import { apiClient } from "./apiClient";
 
 export const createChatRoom = async (otherMemberId: number) => {
@@ -22,7 +25,7 @@ export const createChatRoom = async (otherMemberId: number) => {
   }
 };
 
-export const getChatRooms = async () => {
+export const getChatRooms = async (): Promise<ChatRoom[]> => {
   const accessToken = localStorage.getItem("accessToken");
   if (!accessToken) throw new Error("로그인 필요");
 
@@ -39,7 +42,7 @@ export const getChatRooms = async () => {
   }
 };
 
-export const getMessages = async (roomId: number) => {
+export const getMessages = async (roomId: number): Promise<Message[]> => {
   const accessToken = localStorage.getItem("accessToken");
   if (!accessToken) throw new Error("로그인 필요");
 
