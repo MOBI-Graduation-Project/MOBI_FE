@@ -2,13 +2,18 @@
 
 import { useEffect, useState } from "react";
 
-import { getFriends, acceptFriendRequest, refuseFriendRequest } from "@/apis/friend";
+import {
+  acceptFriendRequest,
+  getFriends,
+  refuseFriendRequest,
+} from "@/apis/friend";
 
+import HeadingTitle from "@/components/common/HeadingTitle";
+import { ToastMessage } from "@/components/common/ToastMessage";
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
 import FriendTag from "@/components/friendlist/FriendTag";
 import SearchField from "@/components/friendlist/SearchField";
-import HeadingTitle from "@/components/common/HeadingTitle"; 
 
 import type { FriendsResult, User } from "@/types/user";
 
@@ -17,6 +22,7 @@ const FriendList = () => {
   const [friendRequestList, setFriendRequestList] = useState<User[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [toastmessage, setToastMessage] = useState<string | null>(null);
 
   // friends API 호출
   useEffect(() => {
@@ -75,7 +81,6 @@ const FriendList = () => {
       const res = await acceptFriendRequest(friend.memberId); // fromMemberId = friend.memberId
 
       if (!res.isSuccess) {
-        alert(res.message || "친구 요청 수락에 실패했어요.");
         return;
       }
 
@@ -84,11 +89,17 @@ const FriendList = () => {
         prev.filter(f => f.memberId !== friend.memberId),
       );
       setFriendList(prev =>
-        prev.some(f => f.memberId === friend.memberId) ? prev : [friend, ...prev],
+        prev.some(f => f.memberId === friend.memberId)
+          ? prev
+          : [friend, ...prev],
       );
     } catch (err) {
       console.error("친구 요청 수락 실패:", err);
-      alert("친구 요청 수락 중 오류가 발생했어요.");
+      setToastMessage("친구 요청 수락 중 오류가 발생했어요.");
+    } finally {
+      setTimeout(() => {
+        setToastMessage(null);
+      }, 1000);
     }
   };
 
@@ -98,17 +109,18 @@ const FriendList = () => {
       const res = await refuseFriendRequest(friend.memberId);
 
       if (!res.isSuccess) {
-        alert(res.message || "친구 요청 거절에 실패했어요.");
         return;
       }
-
-      // 거절 성공 시: 요청 리스트에서만 제거
       setFriendRequestList(prev =>
         prev.filter(f => f.memberId !== friend.memberId),
       );
     } catch (err) {
       console.error("친구 요청 거절 실패:", err);
-      alert("친구 요청 거절 중 오류가 발생했어요.");
+      setToastMessage("친구 요청 거절 중 오류가 발생했어요.");
+    } finally {
+      setTimeout(() => {
+        setToastMessage(null);
+      }, 1000);
     }
   };
   return (
@@ -145,7 +157,7 @@ const FriendList = () => {
             </div>
           </section>
         )}
-
+        {toastmessage && <ToastMessage message={toastmessage} />}
         {/* 친구목록 */}
         <section className="flex flex-col gap-5">
           <div className="text-body flex h-25 w-[216px] rounded-r-[30px] bg-white/60 px-[40px] py-[10px] font-[geekble]">
