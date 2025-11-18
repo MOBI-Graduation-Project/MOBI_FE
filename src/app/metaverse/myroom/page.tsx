@@ -12,7 +12,8 @@ import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
-import Player from "@/components/metaverse/Player";
+import Player from "@/components/metaverse/Player/Player";
+
 
 function MyRoomScene({
   controlsRef,
