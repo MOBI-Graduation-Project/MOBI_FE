@@ -8,7 +8,7 @@ import { formatTime } from "@/utils/chat/formatTime";
 
 interface ChatSectionProps {
   messages?: Message[];
-  opponentNickname: string;
+  opponentNickname?: string; //채팅방에서만 사용
 }
 const ChatSection = ({ messages, opponentNickname }: ChatSectionProps) => {
   const myId = useUserStore.getState().memberId;

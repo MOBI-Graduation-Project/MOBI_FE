@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import Backbtn from "@/assets/chatbot/backbtn.svg";
 
 interface ChatHeaderProps {
-  roomName: string;
+  roomName?: string;
 }
 const ChatHeader = ({ roomName }: ChatHeaderProps) => {
   const router = useRouter();
