@@ -1,5 +1,3 @@
-import { useParams } from "next/navigation";
-
 import { useEffect, useRef } from "react";
 
 import { useUserStore } from "@/stores/userStore";
@@ -7,16 +5,13 @@ import { useUserStore } from "@/stores/userStore";
 import { Message } from "@/types/chatMessage";
 
 import { formatTime } from "@/utils/chat/formatTime";
-import { getOpponentNickname } from "@/utils/chat/getOpponentNickname";
 
 interface ChatSectionProps {
   messages?: Message[];
+  opponentNickname: string;
 }
-const ChatSection = ({ messages }: ChatSectionProps) => {
+const ChatSection = ({ messages, opponentNickname }: ChatSectionProps) => {
   const myId = useUserStore.getState().memberId;
-  const params = useParams();
-  const targetRoomId = Number(params.roomId);
-  const opponentNickname = getOpponentNickname({ roomId: targetRoomId });
 
   const chatEndRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
