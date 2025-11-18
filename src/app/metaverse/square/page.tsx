@@ -11,6 +11,7 @@ import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
 import Player from "@/components/metaverse/Player/Player";
 import World from "@/components/metaverse/World";
+import SquareDoor from "@/components/metaverse/Square/SquareDoor";
 
 const SquarePage = () => {
   const controlsRef = useRef<OrbitControlsImpl>(null);
@@ -54,6 +55,12 @@ const SquarePage = () => {
           <Suspense fallback={null}>
             <Physics gravity={[0, -9.81, 0]} debug={false}>
               <World />
+              <SquareDoor
+                position={[1.4, 0, -1.1]}     //월드에서 좌표
+                rotation={[0, Math.PI * 12/19, 0]}            //회전
+                scale={2.5}
+                label="문을 클릭하여 마이페이지로 이동" 
+              />
               {/* Player에 controlsRef 내려줘서 target만 보간 */}
               <Player controlsRef={controlsRef} />
             </Physics>
