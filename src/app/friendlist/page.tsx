@@ -144,7 +144,7 @@ const FriendList = () => {
             <div className="text-body flex h-25 w-[216px] rounded-r-[30px] bg-white/60 px-[40px] py-[10px] font-[geekble]">
               친구요청
             </div>
-            <div className="flex flex-col">
+            <div className="flex cursor-pointer flex-col">
               {friendRequestList.map(f => (
                 <FriendTag
                   key={f.memberId}
@@ -163,7 +163,7 @@ const FriendList = () => {
           <div className="text-body flex h-25 w-[216px] rounded-r-[30px] bg-white/60 px-[40px] py-[10px] font-[geekble]">
             친구목록
           </div>
-          <div className="flex flex-col">
+          <div className="flex cursor-pointer flex-col">
             {friendList.length > 0 &&
               friendList.map(f => <FriendTag key={f.memberId} friend={f} />)}
           </div>
