@@ -1,5 +1,8 @@
-import { getMyProfile } from "@/apis/profile";
+import { useRouter } from "next/navigation";
+
 import { useUserStore } from "@/stores/userStore";
+
+import { getMyProfile } from "@/apis/profile";
 
 interface OAuthResponse {
   isSuccess: boolean;
@@ -19,7 +22,10 @@ interface OAuthResponse {
   };
 }
 
-export const handleOAuthCallback = async (code: string) => {
+export const handleOAuthCallback = async (
+  code: string,
+  router: ReturnType<typeof useRouter>,
+) => {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/google`,
@@ -64,9 +70,9 @@ export const handleOAuthCallback = async (code: string) => {
     }
 
     if (data.result.isNewMember) {
-      window.location.href = "/signup/nickname";
+      router.push("/signup/nickname");
     } else {
-      window.location.href = "/map";
+      router.push("/map");
     }
   } catch (err) {
     console.error("OAuth 처리 중 에러:", err);
