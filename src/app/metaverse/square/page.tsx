@@ -12,6 +12,7 @@ import Header from "@/components/common/header";
 import Player from "@/components/metaverse/Player/Player";
 import World from "@/components/metaverse/World";
 import SquareDoor from "@/components/metaverse/Square/SquareDoor";
+import SetInitialView from "@/components/metaverse/Square/SetInitialView";
 
 const SquarePage = () => {
   const controlsRef = useRef<OrbitControlsImpl>(null);
@@ -61,13 +62,14 @@ const SquarePage = () => {
                 scale={2.5}
                 label="문을 클릭하여 마이페이지로 이동" 
               />
+              <SetInitialView controlsRef={controlsRef} doorPos={[1.4, 0, -5]} />
               {/* Player에 controlsRef 내려줘서 target만 보간 */}
               <Player controlsRef={controlsRef} />
             </Physics>
           </Suspense>
 
           {/* 안개 */}
-          <fog attach="fog" args={["#ffffff", 10, 50]} />
+         {/*<fog attach="fog" args={["#ffffff", 10, 50]} /> */}
         </Canvas>
         <BottomBar />
       </KeyboardControls>
