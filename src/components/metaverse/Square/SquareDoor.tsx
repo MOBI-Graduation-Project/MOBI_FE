@@ -58,7 +58,7 @@ export default function SquareDoor({
       <group position={position} rotation={rotation ?? [0, 0, 0]} scale={scale}>
         <primitive object={door} onClick={onClick} onPointerOver={onOver} onPointerOut={onOut} />
         <Html transform center position={[-0.2, 1.2, 0.05]} >
-          <div className="font-[geekble] text-brown bg-[var(--color-yellow-10)] rounded-[10px] px-[2px] py-[2px] text-[6px] whitespace-nowrap select-none">
+          <div className="font-[geekble] text-white bg-[rgba(0,0,0,0.6)] rounded-[10px] px-[2px] py-[2px] text-[6px] whitespace-nowrap select-none">
             {label}
           </div>
         </Html>

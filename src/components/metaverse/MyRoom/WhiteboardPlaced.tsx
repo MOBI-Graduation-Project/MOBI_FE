@@ -70,7 +70,7 @@ export default function WhiteboardPlaced({
           onPointerOut={onOut}
         />
         <Html transform center position={[0, 1.2, 0]}>
-          <div className="text-brown bg-[var(--color-yellow-10)] rounded-[12px] px-[3px] py-[2px] text-[4px] whitespace-nowrap select-none font-[geekble]">
+          <div className="text-white bg-[rgba(0,0,0,0.6)] rounded-[12px] px-[3px] py-[2px] text-[4px] whitespace-nowrap select-none font-[geekble]">
             보드 클릭하여 보유현황 보기
           </div>
         </Html>
