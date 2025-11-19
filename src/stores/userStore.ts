@@ -10,6 +10,7 @@ interface UserState {
   refreshTokenExpiry: number | null;
   setUser: (user: Partial<UserState>) => void;
   setTokens: (accessToken: string, refreshToken: string) => void;
+  logout: () => void;
 }
 
 export const useUserStore = create<UserState>(set => ({
@@ -26,6 +27,16 @@ export const useUserStore = create<UserState>(set => ({
       accessToken,
       refreshToken,
       accessTokenExpiry: Date.now() + 1209600 * 1000, // 14일 후
-      refreshTokenExpiry: Date.now() + 3600 * 1000, // 1시간 후 }),
+      refreshTokenExpiry: Date.now() + 3600 * 1000, // 1시간 후
+    }),
+  logout: () =>
+    set({
+      memberId: null,
+      nickname: null,
+      avatarCode: null,
+      accessToken: null,
+      refreshToken: null,
+      accessTokenExpiry: null,
+      refreshTokenExpiry: null,
     }),
 }));
