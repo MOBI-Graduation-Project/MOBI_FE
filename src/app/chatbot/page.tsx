@@ -2,6 +2,10 @@
 
 import { useEffect, useState } from "react";
 
+import { useUserStore } from "@/stores/userStore";
+
+import { sendChatbotMessage } from "@/apis/chatbot";
+
 import ChatHeader from "@/components/chat/ChatHeader";
 import ChatSection from "@/components/chat/ChatSection";
 import InputBottomBar from "@/components/chat/InputBottomBar";
@@ -9,14 +13,10 @@ import ChatbotButton from "@/components/chatbot/chatbotButton";
 
 import { Message } from "@/types/chatMessage";
 
-//import { getButtonLog } from "@/utils/chatbot/getButtonLog";
 import {
   createBotMessage,
   createUserMessage,
 } from "@/utils/chatbot/handleChatInput";
-
-import { sendChatbotMessage } from "@/apis/chatbot";
-import { useUserStore } from "@/stores/userStore";
 
 const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([]);
