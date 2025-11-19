@@ -1,10 +1,12 @@
+import { useUserStore } from "@/stores/userStore";
+
 import { MyDataRegister, StockPrediction } from "@/types/investment/stockTypes";
 
 import { apiClient } from "./apiClient";
 
 // 코스피 코스닥 예측 정보 가져오기
 export const getMarketPredictions = async () => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인 필요합니다.");
   try {
     const res = await apiClient.get("/prediction", {
@@ -21,7 +23,7 @@ export const getMarketPredictions = async () => {
 export const getPriceRecords = async (
   stockCode: string,
 ): Promise<StockPrediction[]> => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인이 필요합니다.");
 
   const res = await apiClient.get(`/prediction/${stockCode}`, {
@@ -33,7 +35,7 @@ export const getPriceRecords = async (
 
 // 내가 보유한 주식 데이터 등록하기
 export const postMyData = async (myDataRegister: MyDataRegister) => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인이 필요합니다.");
 
   const res = await apiClient.post("/mydata", myDataRegister, {
@@ -44,7 +46,7 @@ export const postMyData = async (myDataRegister: MyDataRegister) => {
 
 // 내가 보유한 주식 현황 가져오기
 export const getMyData = async () => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인이 필요합니다.");
 
   const res = await apiClient.get("/mydata/piechart", {
@@ -56,7 +58,7 @@ export const getMyData = async () => {
 
 // 내가 보유한 주식 목록 가져오기
 export const getMyDataList = async () => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인이 필요합니다.");
 
   const res = await apiClient.get("/mydata", {
