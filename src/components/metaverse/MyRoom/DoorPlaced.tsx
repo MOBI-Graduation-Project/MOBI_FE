@@ -78,7 +78,7 @@ export default function DoorPlaced({
 
         {/* 문 안내 문구 (네 좌표 그대로) */}
         <Html transform center position={[-0.1, 1.2, 0.05]}>
-          <div className="font-[geekble] text-brown bg-[var(--color-yellow-10)] rounded-[10px] px-[2px] py-[2px] text-[3px] whitespace-nowrap select-none">
+          <div className="font-[geekble] text-white bg-[rgba(0,0,0,0.6)] rounded-[10px] px-[2px] py-[2px] text-[3px] whitespace-nowrap select-none">
             문을 클릭하여 광장으로 이동
           </div>
         </Html>
