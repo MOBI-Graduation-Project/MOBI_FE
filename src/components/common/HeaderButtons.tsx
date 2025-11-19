@@ -27,7 +27,7 @@ const Topbar = () => {
   };
 
   const { logout, accessToken } = useUserStore();
-  console.log(useUserStore.getState().accessToken);
+
   const handleLogout = async () => {
     try {
       await apiClient.post("/auth/logout", null, {
