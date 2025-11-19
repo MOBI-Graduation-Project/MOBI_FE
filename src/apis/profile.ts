@@ -1,7 +1,9 @@
+import { useUserStore } from "@/stores/userStore";
+
 import { apiClient } from "./apiClient";
 
 export const getMyProfile = async () => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인 필요");
 
   try {
@@ -15,7 +17,7 @@ export const getMyProfile = async () => {
 };
 
 export const getUserProfile = async (memberId: number) => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인 필요");
 
   try {
@@ -29,7 +31,7 @@ export const getUserProfile = async (memberId: number) => {
 };
 
 export const patchMyStateMessage = async (stateMessage: string) => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인 필요");
 
   try {
@@ -45,7 +47,7 @@ export const patchMyStateMessage = async (stateMessage: string) => {
 };
 
 export const patchMyProfileImage = async (image: File) => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인 필요");
 
   const formData = new FormData();

@@ -1,10 +1,12 @@
+import { useUserStore } from "@/stores/userStore";
+
 import { Message } from "@/types/chatMessage";
 import { ChatRoom } from "@/types/chatRoom";
 
 import { apiClient } from "./apiClient";
 
 export const createChatRoom = async (otherMemberId: number) => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인 필요");
 
   try {
@@ -26,7 +28,7 @@ export const createChatRoom = async (otherMemberId: number) => {
 };
 
 export const getChatRooms = async (): Promise<ChatRoom[]> => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인 필요");
 
   try {
@@ -43,7 +45,7 @@ export const getChatRooms = async (): Promise<ChatRoom[]> => {
 };
 
 export const getMessages = async (roomId: number): Promise<Message[]> => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인 필요");
 
   try {
