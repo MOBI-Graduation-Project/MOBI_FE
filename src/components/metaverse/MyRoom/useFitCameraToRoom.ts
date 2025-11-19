@@ -1,13 +1,22 @@
 "use client";
+
 import { useEffect } from "react";
-import * as THREE from "three";
+
 import { useThree } from "@react-three/fiber";
+import * as THREE from "three";
+
+export interface OrbitControlsRef {
+  target: THREE.Vector3;
+  minDistance: number;
+  maxDistance: number;
+  update: () => void;
+}
 
 export default function useFitCameraToRoom(
   room: THREE.Object3D | null,
-  controlsRef: React.MutableRefObject<any>,
+  controlsRef: React.MutableRefObject<OrbitControlsRef | null>,
 ) {
-  const camera = useThree((s) => s.camera as THREE.PerspectiveCamera);
+  const camera = useThree(s => s.camera as THREE.PerspectiveCamera);
 
   useEffect(() => {
     if (!room) return;

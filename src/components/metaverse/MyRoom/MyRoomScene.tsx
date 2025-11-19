@@ -1,17 +1,26 @@
 "use client";
-import * as THREE from "three";
+
 import { useMemo } from "react";
+
 import { useGLTF } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
+import * as THREE from "three";
 
-import useFitCameraToRoom from "./useFitCameraToRoom";
-import WhiteboardPlaced from "./WhiteboardPlaced";
 import DoorPlaced from "./DoorPlaced";
+import WhiteboardPlaced from "./WhiteboardPlaced";
+import useFitCameraToRoom from "./useFitCameraToRoom";
+
+export interface OrbitControlsRef {
+  target: THREE.Vector3;
+  minDistance: number;
+  maxDistance: number;
+  update: () => void;
+}
 
 export default function MyRoomScene({
   controlsRef,
 }: {
-  controlsRef: React.MutableRefObject<any>;
+  controlsRef: React.MutableRefObject<OrbitControlsRef | null>;
 }) {
   const roomGltf = useGLTF("/models/myroom.glb");
   const whiteboardGltf = useGLTF("/models/whiteboard.glb");
