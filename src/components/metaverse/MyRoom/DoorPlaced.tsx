@@ -1,11 +1,13 @@
 "use client";
 
-import * as THREE from "three";
-import { useMemo } from "react";
-import { Html } from "@react-three/drei";
-import { RigidBody } from "@react-three/rapier";
 import { useRouter } from "next/navigation";
+
+import { useMemo } from "react";
+
+import { Html } from "@react-three/drei";
 import type { ThreeEvent } from "@react-three/fiber";
+import { RigidBody } from "@react-three/rapier";
+import * as THREE from "three";
 
 export default function DoorPlaced({
   room,
@@ -21,7 +23,6 @@ export default function DoorPlaced({
     const roomBox = new THREE.Box3().setFromObject(room);
     const roomSize = roomBox.getSize(new THREE.Vector3());
     const centerX = (roomBox.min.x + roomBox.max.x) / 2;
-    const centerZ = (roomBox.min.z + roomBox.max.z) / 2;
 
     // 문 원본 크기
     const dBox = new THREE.Box3().setFromObject(door);
@@ -40,7 +41,6 @@ export default function DoorPlaced({
     const doorMinYScaled = dBox.min.y * scale;
     const bottomToCenter = scaledH / 2 + doorMinYScaled;
 
-    const wallInset = Math.max(0.1, roomSize.z * 0.01);
     const xLeftOfTV = centerX - roomSize.x * 0.25;
     const zBackWall = roomBox.min.z + scaledD / 2 + epsilon; // 벽 파묻힘 방지
 
@@ -78,7 +78,7 @@ export default function DoorPlaced({
 
         {/* 문 안내 문구 (네 좌표 그대로) */}
         <Html transform center position={[-0.1, 1.2, 0.05]}>
-          <div className="font-[geekble] text-white bg-[rgba(0,0,0,0.6)] rounded-[10px] px-[2px] py-[2px] text-[3px] whitespace-nowrap select-none">
+          <div className="rounded-[10px] bg-[rgba(0,0,0,0.6)] px-[2px] py-[2px] font-[geekble] text-[3px] whitespace-nowrap text-white select-none">
             문을 클릭하여 광장으로 이동
           </div>
         </Html>
