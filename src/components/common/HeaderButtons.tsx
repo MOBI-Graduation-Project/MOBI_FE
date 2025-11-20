@@ -68,21 +68,21 @@ const Topbar = () => {
 
   return (
     <div className="relative" ref={dropdownRef}>
-      <div className="grid h-[110px] w-[357px] grid-cols-3 items-center justify-items-center overflow-visible rounded-b-[30px] bg-white/66">
+      <div className="grid h-[100px] w-[300px] grid-cols-3 items-center justify-items-center overflow-visible rounded-b-[30px] bg-white/66">
         <button className="cursor-pointer hover:scale-105">
-          <AlarmIcon />
+          <AlarmIcon className="h-[80px] w-[80px]" />
         </button>
         <button
           onClick={friendListClick}
           className="cursor-pointer hover:scale-105"
         >
-          <FriendListIcon />
+          <FriendListIcon className="h-[80px] w-[80px]" />
         </button>
         <button
           onClick={profileClick}
           className="cursor-pointer hover:scale-105"
         >
-          <ProfileIcon />
+          <ProfileIcon className="h-[80px] w-[80px]" />
         </button>
       </div>
 

@@ -129,7 +129,7 @@ const FriendList = () => {
       style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
     >
       <Header />
-      <main className="mt-[129px] mb-[110px] flex flex-1 flex-col gap-5">
+      <main className="mt-[100px] mb-[85px] flex flex-1 flex-col gap-5">
         {/* 친구 검색 */}
         <section className="flex flex-col gap-5">
           <div className="text-body flex h-25 w-[216px] rounded-r-[30px] bg-white/60 px-[40px] py-[10px] font-[geekble]">
