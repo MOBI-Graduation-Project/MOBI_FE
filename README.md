@@ -1,4 +1,4 @@
-# 모비(MOBI) – 혁신적인 주식 투자 플랫폼
+# 📈 모비(MOBI) – 혁신적인 주식 투자 플랫폼
 
 <img width="1920" height="1080" alt="1p" src="https://github.com/user-attachments/assets/ab1723ce-96bb-425a-80d9-554c50105821" />
 
