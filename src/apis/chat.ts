@@ -22,7 +22,7 @@ export const createChatRoom = async (otherMemberId: number) => {
     );
     return res.data.result; // roomId 반환
   } catch (error) {
-    console.log("createChatRoom Error:", error);
+    console.error("createChatRoom Error:", error);
     throw error;
   }
 };

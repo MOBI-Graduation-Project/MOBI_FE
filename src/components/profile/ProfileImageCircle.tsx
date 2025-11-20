@@ -38,7 +38,6 @@ const ProfileImageCircle = ({
     try {
       setIsUploading(true);
       const response = await patchMyProfileImage(file);
-      console.log("프로필 이미지 업로드 성공:", response);
 
       if (response.result?.profileImgUrl) {
         setCurrentImg(response.result.profileImgUrl);

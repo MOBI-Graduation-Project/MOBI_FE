@@ -52,7 +52,6 @@ export const patchMyProfileImage = async (image: File) => {
 
   const formData = new FormData();
   formData.append("image", image);
-  console.log("Uploading to:", apiClient.getUri() + "/members/profile/image");
   try {
     const res = await apiClient.patch("/members/profile/image", formData, {
       headers: {

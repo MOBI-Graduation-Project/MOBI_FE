@@ -52,7 +52,6 @@ export const getMyData = async () => {
   const res = await apiClient.get("/mydata/piechart", {
     headers: { Authorization: `Bearer ${accessToken}` },
   });
-  console.log("api mydata piechart:", res.data);
   return res.data;
 };
 

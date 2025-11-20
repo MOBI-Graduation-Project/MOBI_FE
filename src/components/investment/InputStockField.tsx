@@ -32,8 +32,7 @@ export const InputStockField = () => {
     };
 
     try {
-      const res = await postMyData(myDataRegister);
-      console.log("등록 성공:", res);
+      await postMyData(myDataRegister);
       setToastMsg("데이터가 정상적으로 등록되었습니다");
       setStockName("");
       setPurchaseAmount("");
