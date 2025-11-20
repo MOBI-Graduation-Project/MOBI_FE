@@ -4,6 +4,10 @@ import { useRouter } from "next/navigation";
 
 import { useEffect, useRef, useState } from "react";
 
+import { useUserStore } from "@/stores/userStore";
+
+import { apiClient } from "@/apis/apiClient";
+
 import AlarmIcon from "@/assets/header/alarmIcon.svg";
 import FriendListIcon from "@/assets/header/friendListIcon.svg";
 import LogoutIcon from "@/assets/header/logoutIcon.svg";
@@ -20,6 +24,30 @@ const Topbar = () => {
   const profileClick = () => setIsOpen(prev => !prev);
   const handleGoToMyProfile = () => {
     router.push("/profile");
+  };
+
+  const { logout, accessToken, refreshToken } = useUserStore();
+
+  const handleLogout = async () => {
+    try {
+      await apiClient.post(
+        "/auth/logout",
+        { refreshToken },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          withCredentials: true,
+        },
+      );
+
+      logout();
+      const redirectUrl =
+        process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+      router.push(redirectUrl);
+    } catch (err) {
+      console.error("로그아웃 중 에러:", err);
+    }
   };
 
   useEffect(() => {
@@ -68,7 +96,10 @@ const Topbar = () => {
               <LogoutIcon />
               <div className="text-lab1 font-[geekble]">내 프로필</div>
             </button>
-            <button className="orange-3d flex w-full flex-row items-center justify-items-start gap-[10px] rounded-b-[10px] pl-[20px] transition">
+            <button
+              className="orange-3d flex w-full flex-row items-center justify-items-start gap-[10px] rounded-b-[10px] pl-[20px] transition"
+              onClick={handleLogout}
+            >
               <LogoutIcon />
               <div className="text-lab1 font-[geekble]">로그아웃</div>
             </button>

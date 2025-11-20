@@ -1,7 +1,9 @@
+import { useUserStore } from "@/stores/userStore";
+
 import { apiClient } from "./apiClient";
 
 export const checkNickname = async (nickname: string) => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인 필요");
 
   try {
@@ -20,7 +22,7 @@ export const signupComplete = async (
   investmentAnswers: string,
   isPrivacyAgreed: boolean,
 ) => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인 필요함");
 
   try {
