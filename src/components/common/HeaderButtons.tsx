@@ -26,16 +26,20 @@ const Topbar = () => {
     router.push("/profile");
   };
 
-  const { logout, accessToken } = useUserStore();
+  const { logout, accessToken, refreshToken } = useUserStore();
 
   const handleLogout = async () => {
     try {
-      await apiClient.post("/auth/logout", null, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
+      await apiClient.post(
+        "/auth/logout",
+        { refreshToken },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          withCredentials: true,
         },
-        withCredentials: true,
-      });
+      );
 
       logout();
       const redirectUrl =
