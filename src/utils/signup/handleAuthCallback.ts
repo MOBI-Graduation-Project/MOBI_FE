@@ -48,9 +48,9 @@ export const handleOAuthCallback = async (
 
     const data: OAuthResponse = await res.json();
 
-    localStorage.setItem("accessToken", data.result.accessToken);
-    localStorage.setItem("refreshToken", data.result.refreshToken);
-
+    useUserStore
+      .getState()
+      .setTokens(data.result.accessToken, data.result.refreshToken);
     try {
       const profileRes = await getMyProfile();
       if (profileRes?.isSuccess && profileRes.result) {

@@ -1,9 +1,11 @@
-import { apiClient } from "./apiClient";
+import { useUserStore } from "@/stores/userStore";
 
 import type { SendFriendRequestResponse } from "@/types/user";
 
+import { apiClient } from "./apiClient";
+
 export const searchUserByNickname = async (nickname: string) => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인 필요");
 
   try {
@@ -20,7 +22,7 @@ export const searchUserByNickname = async (nickname: string) => {
 };
 
 export const getFriends = async () => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인 필요");
 
   try {
@@ -35,7 +37,7 @@ export const getFriends = async () => {
 };
 
 export const sendFriendRequest = async (toMemberId: number) => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인 필요");
 
   const res = await apiClient.post<SendFriendRequestResponse>(
@@ -55,40 +57,32 @@ export const sendFriendRequest = async (toMemberId: number) => {
 
 //  친구요청 수락
 export const acceptFriendRequest = async (fromMemberId: number) => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인 필요");
 
-  const res = await apiClient.post(
-    "/friends/accept",
-    null, 
-    {
-      params: { fromMemberId }, 
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        Accept: "*/*",
-      },
+  const res = await apiClient.post("/friends/accept", null, {
+    params: { fromMemberId },
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      Accept: "*/*",
     },
-  );
+  });
 
   return res.data; // { isSuccess, code, message, result: {...} }
 };
 
 //  친구요청 거절
 export const refuseFriendRequest = async (fromMemberId: number) => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인 필요");
 
-  const res = await apiClient.post(
-    "/friends/refuse",
-    null,
-    {
-      params: { fromMemberId }, 
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        Accept: "*/*",
-      },
+  const res = await apiClient.post("/friends/refuse", null, {
+    params: { fromMemberId },
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      Accept: "*/*",
     },
-  );
+  });
 
   return res.data;
 };
