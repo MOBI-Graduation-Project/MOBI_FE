@@ -2,53 +2,83 @@
 
 import { useRouter } from "next/navigation";
 
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { useSajuStore } from "@/stores/sajuStore";
 
+import { getSajuCompatibility } from "@/apis/saju";
+
 import RetryIcon from "@/assets/fortuneteller/retryIcon.svg";
 
+import HeadingTitle from "@/components/common/HeadingTitle";
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
-import HeadingTitle from "@/components/common/HeadingTitle";
 
 const FortuneResult = () => {
   const router = useRouter();
-  const { company } = useSajuStore();
-  const listingDate = "1975년 6월 12일";
+  const { company, birthday } = useSajuStore();
+
+  const birthDate = useMemo(() => {
+    if (!birthday) return null;
+    const { year, month, day } = birthday;
+    const pad = (n: number) => n.toString().padStart(2, "0");
+    return `${year}-${pad(month)}-${pad(day)}`;
+  }, [birthday]);
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [resultText, setResultText] = useState<string>("");
 
   const handleRetry = () => {
     router.push("/fortuneteller");
   };
 
+  useEffect(() => {
+    if (!birthDate || !company) {
+      router.push("/fortuneteller");
+      return;
+    }
+
+    const fetchSaju = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const result = await getSajuCompatibility(birthDate, company);
+        setResultText(result);
+      } catch (err) {
+        console.error("사주 API 오류:", err);
+        setError("사주 결과를 불러오지 못했습니다. 다시 시도해주세요.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSaju();
+  }, [birthDate, company, router]);
+
   return (
     <div
-      className="flex h-screen w-full flex-col justify-between bg-cover bg-center bg-no-repeat"
+      className="flex h-screen w-full flex-col justify-between overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/svgs/backgroundImage.svg')" }}
     >
       <Header />
 
-      <div className="flex flex-1 flex-col items-center justify-center">
+      <div className="flex flex-1 flex-col items-center justify-center overflow-hidden">
         <div className="flex flex-col items-center gap-4">
-          <div className="pt-[213px]">
+          <div className="pt-[153px]">
             <HeadingTitle
               stockName={company ?? ""}
-              texts={[
-                "{userName}님과 {stockName}의 사주 궁합은?",
-                "{stockName}의 주식 상장일은 " + listingDate + "입니다.",
-              ]}
+              texts={["{userName}님과 {stockName}의 사주 궁합은?"]}
             />
           </div>
 
-          <div className="mr-[176px] ml-[176px] flex items-center justify-center rounded-[20px] border-[2px] border-black bg-[#FFEEBD] px-30 py-10 shadow-lg">
-            <p className="font-pretendard text-brown text-center text-[30px] leading-tight">
-              당신과 상대방의 사주를 종합해보면, 금(金)과 토(土)의 기운이 조화를
-              이루는 관계로 보입니다. 당신의 강한 금기운이 상대방의 토를
-              생조해주며, 이는 서로에게 안정감을 주는 구조입니다. 특히 상대방의
-              사주에 편관(偏官)이 강해 리더십이 뛰어난 반면, 당신의 비견(比肩)과
-              식신(食神)이 이를 부드럽게 조절해줄 수 있어요. 다만 상대방의
-              목(木) 기운이 다소 과할 수 있으니, 때로는 유연한 태도가 필요할 것
-              같습니다.
+          <div className="mr-[176px] ml-[176px] max-h-[360px] w-[calc(100%-352px)] items-center justify-center overflow-y-auto rounded-[20px] border-[2px] border-black bg-[#FFEEBD] px-[30px] py-[20px] shadow-lg">
+            <p className="font-pretendard text-brown text-center text-[30px] leading-tight whitespace-pre-line">
+              {/* 내용 렌더링 */}
+              {loading && "사주를 분석하는 중입니다... "}
+              {!loading && error && error}
+              {!loading && !error && resultText}
             </p>
           </div>
 
