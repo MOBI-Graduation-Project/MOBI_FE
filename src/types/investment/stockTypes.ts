@@ -48,3 +48,11 @@ export interface PieData {
   stockName: string;
   holdingWeight: number;
 }
+
+export interface StockSummaryItem {
+  myDataId: number;
+  stockName: string;
+  returnRate: number;
+  returnAmount: number;
+  valuationAmount: number;
+}
