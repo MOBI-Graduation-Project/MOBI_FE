@@ -17,7 +17,6 @@ import Header from "@/components/common/header";
 const FortuneResult = () => {
   const router = useRouter();
   const { company, birthday } = useSajuStore();
-  const listingDate = "1975년 6월 12일";
 
   const birthDate = useMemo(() => {
     if (!birthday) return null;
@@ -60,24 +59,21 @@ const FortuneResult = () => {
 
   return (
     <div
-      className="flex h-screen w-full flex-col justify-between bg-cover bg-center bg-no-repeat"
+      className="flex h-screen w-full flex-col justify-between overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/svgs/backgroundImage.svg')" }}
     >
       <Header />
 
-      <div className="flex flex-1 flex-col items-center justify-center">
+      <div className="flex flex-1 flex-col items-center justify-center overflow-hidden">
         <div className="flex flex-col items-center gap-4">
-          <div className="pt-[213px]">
+          <div className="pt-[153px]">
             <HeadingTitle
               stockName={company ?? ""}
-              texts={[
-                "{userName}님과 {stockName}의 사주 궁합은?",
-                "{stockName}의 주식 상장일은 " + listingDate + "입니다.",
-              ]}
+              texts={["{userName}님과 {stockName}의 사주 궁합은?"]}
             />
           </div>
 
-          <div className="mr-[176px] ml-[176px] flex items-center justify-center rounded-[20px] border-[2px] border-black bg-[#FFEEBD] px-30 py-10 shadow-lg">
+          <div className="mr-[176px] ml-[176px] max-h-[360px] w-[calc(100%-352px)] items-center justify-center overflow-y-auto rounded-[20px] border-[2px] border-black bg-[#FFEEBD] px-[30px] py-[20px] shadow-lg">
             <p className="font-pretendard text-brown text-center text-[30px] leading-tight whitespace-pre-line">
               {/* 내용 렌더링 */}
               {loading && "사주를 분석하는 중입니다... "}
