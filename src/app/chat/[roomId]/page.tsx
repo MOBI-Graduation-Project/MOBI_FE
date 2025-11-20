@@ -10,48 +10,51 @@ import ChatHeader from "@/components/chat/ChatHeader";
 import ChatSection from "@/components/chat/ChatSection";
 import InputBottomBar from "@/components/chat/InputBottomBar";
 
-import { Message } from "@/types/chatMessage";
+import { useChatSocket } from "@/hooks/useChatSocket";
 
-import { createUserMessage } from "@/utils/chat/createUserMessages";
+import { Message } from "@/types/chatMessage";
 
 const ChattingRoom = () => {
   const params = useParams();
   const roomId = Number(params.roomId);
   const [messages, setMessages] = useState<Message[]>([]);
   const [roomName, setRoomName] = useState<string>("");
-  const [, setLoading] = useState(true);
 
-  const getRoomName = async () => {
-    try {
-      const chatRooms = await getChatRooms();
-      const room = chatRooms.find(r => r.roomId === roomId);
-      if (room) setRoomName(room.roomName);
-    } catch (error) {
-      console.error("roomName 불러오기 실패:", error);
+  const { sendMessage } = useChatSocket(roomId, msg => {
+    if (msg.type === "MESSAGES_READ") {
+      setMessages(prev =>
+        prev.map(m => {
+          if (m.senderId !== msg.readerId) {
+            return { ...m, isRead: true };
+          }
+          return m;
+        }),
+      );
+      return;
     }
-  };
 
-  const fetchMessages = async () => {
-    try {
-      const result = await getMessages(roomId); // 서버 API 호출
-      setMessages(result); // result: Message[]
-    } catch (error) {
-      console.error("메시지 불러오기 실패:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    // 일반 메시지 수신
+    setMessages(prev => [...prev, msg]);
+  });
 
+  //  기존 메시지 불러오기
   useEffect(() => {
-    getRoomName();
-    fetchMessages();
+    const fetchData = async () => {
+      const list = await getChatRooms();
+      const room = list.find(r => r.roomId === roomId);
+      setRoomName(room?.roomName ?? "");
+
+      const history = await getMessages(roomId);
+      setMessages(history);
+    };
+    fetchData();
   }, [roomId]);
 
+  //  메시지 전송
   const handleSend = (text: string) => {
-    const userMsg = createUserMessage(text, roomId);
-    setMessages(prev => [...prev, userMsg]);
+    sendMessage(text);
   };
-
+  console.log(messages);
   return (
     <div className="bg-yellow-10 h-screen w-full">
       <ChatHeader roomName={roomName} />

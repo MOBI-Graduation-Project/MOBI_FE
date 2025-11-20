@@ -11,5 +11,5 @@ export const createUserMessage = (text: string, roomId: number): Message => ({
   senderNickname: senderNickname,
   content: text,
   sentAt: new Date().toISOString(),
-  read: true,
+  isRead: true,
 });
