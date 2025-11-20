@@ -11,7 +11,7 @@ interface PieChartProps {
 }
 
 const PieChart = ({ data }: PieChartProps) => {
-  const SIZE = 450;
+  const SIZE = 380;
   const RADIUS = SIZE / 2;
   const CENTER = RADIUS;
   const colors = useMemo(() => getRandomPieColors(data.length), [data.length]);
