@@ -32,8 +32,6 @@ export function useChatSocket(
     });
 
     client.onConnect = () => {
-      console.log("WebSocket Connected");
-
       // 메시지 + 읽음 이벤트 구독
       client.subscribe(`/sub/chat/room/${roomId}`, frame => {
         const body = JSON.parse(frame.body);

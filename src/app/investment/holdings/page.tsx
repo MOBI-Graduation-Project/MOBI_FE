@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-import { useUserStore } from "@/stores/userStore";
-
 import { getMyData } from "@/apis/investment";
 
 import HeadingTitle from "@/components/common/HeadingTitle";
@@ -18,7 +16,6 @@ import { PieData } from "@/types/investment/stockTypes";
 const HoldingStocks = () => {
   const [loading, setLoading] = useState(true);
   const [holdings, setHoldings] = useState<PieData[]>([]);
-  console.log(useUserStore.getState().accessToken);
 
   useEffect(() => {
     const fetchHoldingsData = async () => {

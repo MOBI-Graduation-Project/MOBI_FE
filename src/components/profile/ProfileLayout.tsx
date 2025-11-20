@@ -70,8 +70,6 @@ const ProfileLayout = ({
   const handleAddFriend = async () => {
     if (isRequesting || isRequestSent) return;
 
-    console.log("친구 추가 요청 target memberId:", memberId);
-
     try {
       setIsRequesting(true);
       const data = await sendFriendRequest(memberId);

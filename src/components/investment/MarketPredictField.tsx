@@ -14,7 +14,6 @@ const MarketPredictField = () => {
     const fetchMarketPredictions = async () => {
       try {
         const data = await getMarketPredictions();
-        console.log("Market Predictions:", data);
         setPredictions(data.result);
       } catch (error) {
         console.error("Error fetching market predictions:", error);

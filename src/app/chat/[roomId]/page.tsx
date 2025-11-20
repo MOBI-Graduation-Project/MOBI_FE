@@ -54,7 +54,6 @@ const ChattingRoom = () => {
   const handleSend = (text: string) => {
     sendMessage(text);
   };
-  console.log(messages);
   return (
     <div className="bg-yellow-10 h-screen w-full">
       <ChatHeader roomName={roomName} />

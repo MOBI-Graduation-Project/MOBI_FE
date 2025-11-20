@@ -8,7 +8,6 @@ interface HeadingTitleProps {
 
 const HeadingTitle = ({ userName, texts, stockName }: HeadingTitleProps) => {
   const nickname = useUserStore(state => state.nickname);
-  console.log(nickname);
 
   const finalUserName = userName ?? nickname ?? "사용자";
 
