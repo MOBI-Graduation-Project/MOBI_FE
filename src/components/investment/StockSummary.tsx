@@ -35,7 +35,7 @@ export const StockSummary = () => {
       try {
         const data = await getMyDataList();
         if (data?.isSuccess) {
-          setMyDataList(data.result.myDataList);
+          setMyDataList(data.result);
         }
       } catch (e) {
         console.error("Error fetching my data:", e);
