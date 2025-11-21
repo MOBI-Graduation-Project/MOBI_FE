@@ -1,5 +1,7 @@
 "use client";
 
+import { useUserStore } from "@/stores/userStore";
+
 import HeadingTitle from "@/components/common/HeadingTitle";
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
@@ -7,6 +9,7 @@ import DropdownMenu from "@/components/investment/DropdownMenu";
 import StocksList from "@/components/investment/StocksList";
 
 const InvestmentPage = () => {
+  console.log(useUserStore.getState().accessToken);
   return (
     <div
       className="relative min-h-screen w-full overflow-y-auto bg-cover bg-center bg-repeat-y"
