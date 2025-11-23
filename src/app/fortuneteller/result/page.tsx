@@ -73,7 +73,7 @@ const FortuneResult = () => {
             />
           </div>
 
-          <div className="bg-yellow-10 mr-[176px] ml-[176px] max-h-[360px] items-center justify-center overflow-y-auto rounded-[20px] border-[2px] border-black px-[30px] py-[20px] shadow-lg">
+          <div className="bg-yellow-10 mr-[176px] ml-[176px] flex h-[360px] w-[980px] items-center justify-center overflow-y-auto rounded-[20px] border-[2px] border-black px-[30px] py-[20px] shadow-lg">
             <p className="text-brown text-lab1 p-[5px] text-center font-[pretendard] whitespace-pre-line">
               {/* 내용 렌더링 */}
               {loading && "사주를 분석하는 중입니다... "}
