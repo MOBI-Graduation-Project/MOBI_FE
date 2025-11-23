@@ -52,7 +52,7 @@ const CompanyPage = () => {
           {/* 이전 버튼 */}
           <button
             onClick={handlePrev}
-            className="absolute top-1/2 left-[-190px] flex h-[114px] w-[114px] -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full transition-all"
+            className="fixed top-1/2 left-[30px] flex h-[114px] w-[114px] -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full transition-all"
           >
             <LeftArrow className="h-full w-full" />
           </button>
@@ -61,7 +61,7 @@ const CompanyPage = () => {
           <button
             onClick={handleNext}
             disabled={!companyName.trim()}
-            className={`absolute top-1/2 right-[-190px] flex h-[114px] w-[114px] -translate-y-1/2 transform items-center justify-center rounded-full transition-all ${
+            className={`fixed top-1/2 right-[30px] flex h-[114px] w-[114px] -translate-y-1/2 transform items-center justify-center rounded-full transition-all ${
               companyName.trim()
                 ? "cursor-pointer"
                 : "cursor-not-allowed opacity-50"
