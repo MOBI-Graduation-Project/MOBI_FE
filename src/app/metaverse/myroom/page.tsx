@@ -1,6 +1,5 @@
 "use client";
 
-
 import { Suspense, useRef } from "react";
 
 import { KeyboardControls, OrbitControls, useGLTF } from "@react-three/drei";
@@ -10,9 +9,8 @@ import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
-import Player from "@/components/metaverse/Player/Player";
-
 import MyRoomScene from "@/components/metaverse/MyRoom/MyRoomScene";
+import Player from "@/components/metaverse/Player/Player";
 
 export default function MyRoomPage() {
   const controlsRef = useRef<OrbitControlsImpl>(null);
@@ -29,7 +27,11 @@ export default function MyRoomPage() {
         ]}
       >
         <Header />
-        <Canvas camera={{ position: [0, 6, 10], fov: 60 }} shadows style={{ background: "var(--color-gray-20)"}}>
+        <Canvas
+          camera={{ position: [0, 6, 10], fov: 60 }}
+          shadows
+          style={{ background: "var(--color-gray-20)" }}
+        >
           {/* 조명 */}
           <ambientLight intensity={1.2} />
           <directionalLight
@@ -74,4 +76,4 @@ export default function MyRoomPage() {
 
 useGLTF.preload("/models/myroom.glb");
 useGLTF.preload("/models/whiteboard.glb");
-useGLTF.preload("/models/doorway.glb");
+useGLTF.preload("/models/yellowDoor.glb");

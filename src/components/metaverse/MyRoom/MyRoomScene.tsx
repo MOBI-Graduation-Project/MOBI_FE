@@ -24,7 +24,7 @@ export default function MyRoomScene({
 }) {
   const roomGltf = useGLTF("/models/myroom.glb");
   const whiteboardGltf = useGLTF("/models/whiteboard.glb");
-  const doorGltf = useGLTF("/models/doorway.glb");
+  const doorGltf = useGLTF("/models/yellowDoor.glb");
 
   const room = useMemo(() => roomGltf.scene.clone(true), [roomGltf.scene]);
   const whiteboard = useMemo(
@@ -53,4 +53,4 @@ export default function MyRoomScene({
 
 useGLTF.preload("/models/myroom.glb");
 useGLTF.preload("/models/whiteboard.glb");
-useGLTF.preload("/models/doorway.glb");
+useGLTF.preload("/models/yellowDoor.glb");
