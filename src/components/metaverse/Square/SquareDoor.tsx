@@ -23,7 +23,7 @@ export default function SquareDoor({
   label = "문을 클릭하여 마이페이지로 이동",
 }: Props) {
   const router = useRouter();
-  const { scene } = useGLTF("/models/doorway.glb");
+  const { scene } = useGLTF("/models/yellowDoor.glb");
 
   const { door } = useMemo(() => {
     const door = scene.clone(true);
@@ -74,4 +74,4 @@ export default function SquareDoor({
   );
 }
 
-useGLTF.preload("/models/doorway.glb");
+useGLTF.preload("/models/yellowDoor.glb");
