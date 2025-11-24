@@ -1,3 +1,5 @@
+import { useUserStore } from "@/stores/userStore";
+
 import { apiClient } from "./apiClient";
 
 export interface ChatbotRequest {
@@ -6,12 +8,11 @@ export interface ChatbotRequest {
   type: "USER";
 }
 
-// 챗봇 응답 일단 스트리밍 말고 통으로
 export const sendChatbotMessage = async (
   content: string,
   userId: string,
 ): Promise<string> => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = useUserStore.getState().accessToken;
   if (!accessToken) throw new Error("로그인 필요");
 
   try {
@@ -27,11 +28,11 @@ export const sendChatbotMessage = async (
           Authorization: `Bearer ${accessToken}`,
           "Content-Type": "application/json",
         },
-        responseType: "text", // text/plain 받기
+        responseType: "text",
       },
     );
 
-    return res.data; // 챗봇응답 (스트링)
+    return res.data;
   } catch (error) {
     console.error("sendChatbotMessage Error:", error);
     throw error;
