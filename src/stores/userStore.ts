@@ -5,11 +5,9 @@ interface UserState {
   nickname: string | null;
   avatarCode: string | null;
   accessToken: string | null;
-  refreshToken: string | null;
-  accessTokenExpiry: number | null;
-  refreshTokenExpiry: number | null;
+
   setUser: (user: Partial<UserState>) => void;
-  setTokens: (accessToken: string, refreshToken: string) => void;
+  setAccessToken: (accessToken: string) => void;
   logout: () => void;
 }
 
@@ -18,25 +16,19 @@ export const useUserStore = create<UserState>(set => ({
   nickname: null,
   avatarCode: null,
   accessToken: null,
-  refreshToken: null,
-  accessTokenExpiry: null,
-  refreshTokenExpiry: null,
+
   setUser: user => set(state => ({ ...state, ...user })),
-  setTokens: (accessToken, refreshToken) =>
+
+  setAccessToken: accessToken =>
     set({
       accessToken,
-      refreshToken,
-      accessTokenExpiry: Date.now() + 1209600 * 1000, // 14일 후
-      refreshTokenExpiry: Date.now() + 3600 * 1000, // 1시간 후
     }),
+
   logout: () =>
     set({
       memberId: null,
       nickname: null,
       avatarCode: null,
       accessToken: null,
-      refreshToken: null,
-      accessTokenExpiry: null,
-      refreshTokenExpiry: null,
     }),
 }));

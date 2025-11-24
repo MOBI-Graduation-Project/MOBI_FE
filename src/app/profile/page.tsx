@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 import { notFound } from "next/navigation";
+
+import { useEffect, useState } from "react";
 
 import { getMyProfile } from "@/apis/profile";
 
-import ProfileLayout from "@/components/profile/ProfileLayout";
 import HeadingTitle from "@/components/common/HeadingTitle";
+import ProfileLayout from "@/components/profile/ProfileLayout";
 
 import { ProfileData } from "@/types/user";
 
@@ -33,19 +33,19 @@ const MyProfile = () => {
   }, []);
 
   if (isLoading) {
-  return (
-    <div
-      className="flex h-screen w-full flex-col items-center justify-center gap-[91.27px] bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
-    >
-      <HeadingTitle texts={["프로필 불러오는 중..."]} />
-    </div>
-  );
-}
+    return (
+      <div
+        className="flex h-screen w-full flex-col items-center justify-center gap-[91.27px] bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
+      >
+        <HeadingTitle texts={["프로필 불러오는 중..."]} />
+      </div>
+    );
+  }
 
-if (error || !profile) {
-  notFound();
-}
+  if (error || !profile) {
+    notFound();
+  }
 
   return (
     <div>

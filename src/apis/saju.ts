@@ -6,21 +6,12 @@ export const getSajuCompatibility = async (
   birthDate: string,
   stockName: string,
 ): Promise<string> => {
-  const accessToken = localStorage.getItem("accessToken");
-  if (!accessToken) throw new Error("로그인이 필요합니다.");
-
   try {
     const res = await apiClient.post<RawSajuCompatibilityResponse>(
       "/saju/compatibility",
       {
-        birthDate, // "YYYY-MM-DD"
-        stockName, // 회사 이름 문자열
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
+        birthDate,
+        stockName,
       },
     );
 
