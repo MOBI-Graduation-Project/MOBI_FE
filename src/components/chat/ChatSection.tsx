@@ -11,9 +11,9 @@ interface ChatSectionProps {
   opponentNickname?: string; //채팅방에서만 사용
 }
 const ChatSection = ({ messages, opponentNickname }: ChatSectionProps) => {
-  const myId = useUserStore.getState().memberId;
-
+  const myId = useUserStore(state => state.memberId);
   const chatEndRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);

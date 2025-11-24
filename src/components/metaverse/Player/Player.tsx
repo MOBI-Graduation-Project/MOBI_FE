@@ -2,23 +2,26 @@
 
 import { useMemo, useRef } from "react";
 
+import { useUserStore } from "@/stores/userStore";
 import { useFrame } from "@react-three/fiber";
 import { RapierRigidBody, RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
-import {
-  MOVE_SPEED, JUMP_FORCE, KILL_Y, SPAWN,
-  DEFAULT_TARGET_HEIGHT, DEFAULT_VISUAL_SCALE,
-} from "@/constants/METAVERSE";
-import PlayerModel from "./PlayerModel";
-
-import { useUserStore } from "@/stores/userStore";    
-   
 import { toModelFile } from "@/constants/AVATAR";
+import {
+  DEFAULT_TARGET_HEIGHT,
+  DEFAULT_VISUAL_SCALE,
+  JUMP_FORCE,
+  KILL_Y,
+  MOVE_SPEED,
+  SPAWN,
+} from "@/constants/METAVERSE";
 
+import { useCameraTargetLerp } from "@/hooks/metaverse/useCameraTargetLerp";
 import { usePlayerInput } from "@/hooks/metaverse/usePlayerInput";
-import { useCameraTargetLerp } from "@/hooks/metaverse/useCameraTargetLerp"
+
+import PlayerModel from "./PlayerModel";
 
 interface PlayerProps {
   controlsRef?: React.MutableRefObject<OrbitControlsImpl | null>;
@@ -37,9 +40,12 @@ export default function Player({
   const modelRef = useRef<THREE.Group>(null);
   useCameraTargetLerp(controlsRef, bodyRef, 1.0, 0.12);
 
-  const avatarCode = useUserStore(s => s.avatarCode);
+  const avatarCode = useUserStore(state => state.avatarCode);
 
-  const modelPath = useMemo(() => toModelFile(avatarCode ?? undefined), [avatarCode]);
+  const modelPath = useMemo(
+    () => toModelFile(avatarCode ?? undefined),
+    [avatarCode],
+  );
 
   const getKeys = usePlayerInput();
 
@@ -107,11 +113,11 @@ export default function Player({
       angularDamping={1}
     >
       <PlayerModel
-        ref={modelRef}                   
+        ref={modelRef}
         characterPath={modelPath}
         visualScale={visualScale}
         height={height}
       />
     </RigidBody>
   );
-};
+}
