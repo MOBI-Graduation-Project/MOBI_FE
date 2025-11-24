@@ -29,8 +29,13 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
           {},
           { withCredentials: true },
         );
-        setAccessToken(res.data.accessToken);
-        setUser(res.data.member);
+        const data = res.data.result;
+        setAccessToken(data.accessToken);
+        setUser({
+          memberId: data.member.memberId,
+          nickname: data.member.username,
+          avatarCode: data.member.avatar,
+        });
       } catch {
         router.replace("/");
       }
