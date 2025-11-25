@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -56,12 +58,13 @@ const ProfileImageCircle = ({
     <div>
       <div className="relative h-[173px] w-[173px]">
         {/* 이미지 영역만 overflow-hidden */}
-        <div className="border-brown h-full w-full overflow-hidden rounded-full border-[3px]">
+        <div className="border-brown relative h-full w-full overflow-hidden rounded-full border-[3px]">
           {currentImg ? (
-            <img
+            <Image
               src={currentImg}
               alt="profile"
-              className="h-full w-full object-cover"
+              fill
+              style={{ objectFit: "cover" }}
             />
           ) : (
             <div className="bg-brown-500 h-full w-full" />
