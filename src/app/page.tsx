@@ -18,12 +18,12 @@ const Onboarding = () => {
   };
 
   return (
-    <div className="flex h-screen w-full flex-col items-center justify-center gap-[30px] md:gap-[80px]">
-      <div>
-        <div className="text-title text-yellow text-stroke-brown flex justify-center font-[geekble]">
+    <div className="flex h-screen w-full flex-col items-center justify-center gap-[50px] md:gap-[80px]">
+      <div className="flex flex-col gap-[15px]">
+        <div className="md:text-title text-title2 text-yellow text-stroke-brown flex justify-center font-[geekble]">
           모비
         </div>
-        <div className="text-heading1 text-yellow text-stroke-brown-s font-[geekble]">
+        <div className="md:text-title2 text-heading1 text-yellow text-stroke-brown-m font-[geekble]">
           모두의 주식 비서
         </div>
       </div>
@@ -31,13 +31,13 @@ const Onboarding = () => {
       <div className="flex flex-row items-center justify-center gap-[20px] md:gap-[61.5px]">
         <button
           onClick={handleGoogleAuth}
-          className="bg-yellow md:text-heading1 text-lab1 text-stroke-white button-shadow-yellow hover:bg-yellow-10t cursor-pointer rounded-[20px] px-[20px] py-[10px] font-[geekble] md:px-[30px] md:py-[10px]"
+          className="bg-yellow md:text-heading1 text-lab1 text-stroke-white button-shadow-yellow hover:bg-yellow-10t cursor-pointer rounded-[20px] px-[20px] py-[10px] font-[geekble] md:px-[45px] md:py-[20px]"
         >
           로그인
         </button>
         <button
           onClick={handleGoogleAuth}
-          className="bg-yellow md:text-heading1 text-lab1 text-stroke-white button-shadow-yellow hover:bg-yellow-10t flex cursor-pointer items-center justify-center gap-[10px] rounded-[20px] px-[20px] py-[10px] font-[geekble] md:px-[30px] md:py-[10px]"
+          className="bg-yellow md:text-heading1 text-lab1 text-stroke-white button-shadow-yellow hover:bg-yellow-10t flex cursor-pointer items-center justify-center gap-[10px] rounded-[20px] px-[20px] py-[10px] font-[geekble] md:px-[45px] md:py-[20px]"
         >
           <GoogleIcon className="h-[30px] w-[30px] md:h-[40px] md:w-[40px]" />
           회원가입
