@@ -61,10 +61,7 @@ const FriendList = () => {
 
   if (isLoading) {
     return (
-      <div
-        className="flex h-screen w-full flex-col items-center justify-center gap-[91.27px] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
-      >
+      <div className="flex h-screen w-full flex-col items-center justify-center gap-[91.27px]">
         <HeadingTitle texts={["친구 목록 불러오는 중..."]} />
       </div>
     );
@@ -124,12 +121,9 @@ const FriendList = () => {
     }
   };
   return (
-    <div
-      className="scrollbar-hide min-h-screen w-full overflow-y-auto bg-cover bg-center bg-repeat-y"
-      style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
-    >
+    <div className="min-h-screen w-full">
       <Header />
-      <main className="mt-[100px] mb-[85px] flex flex-1 flex-col gap-5">
+      <main className="flex flex-col gap-5 pt-[100px] pb-[90px]">
         {/* 친구 검색 */}
         <section className="flex flex-col gap-5">
           <div className="text-body flex h-25 w-[216px] rounded-r-[30px] bg-white/60 px-[40px] py-[10px] font-[geekble]">

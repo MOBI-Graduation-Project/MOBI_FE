@@ -28,12 +28,8 @@ const CompanyPage = () => {
   const handlePrev = () => router.back();
 
   return (
-    <div
-      className="flex h-screen w-full flex-col bg-cover bg-center bg-no-repeat pt-[42.5px] pb-[99px]"
-      style={{ backgroundImage: "url('/svgs/backgroundImage.svg')" }}
-    >
+    <div className="flex h-screen w-full flex-col">
       <Header />
-
       <div className="flex flex-1 items-center justify-center px-4">
         <div className="relative flex w-full max-w-[980px] flex-col items-center gap-6">
           {/* 안내 문구 */}
@@ -71,7 +67,6 @@ const CompanyPage = () => {
           </button>
         </div>
       </div>
-
       <BottomBar />
     </div>
   );

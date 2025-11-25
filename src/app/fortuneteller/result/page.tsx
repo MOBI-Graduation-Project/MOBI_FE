@@ -58,10 +58,7 @@ const FortuneResult = () => {
   }, [birthDate, company, router]);
 
   return (
-    <div
-      className="flex h-screen w-full flex-col justify-between overflow-hidden bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/svgs/backgroundImage.svg')" }}
-    >
+    <div className="flex h-screen w-full flex-col justify-between">
       <Header />
 
       <div className="flex flex-1 flex-col items-center justify-center overflow-hidden">
@@ -74,7 +71,7 @@ const FortuneResult = () => {
           </div>
 
           <div className="bg-yellow-10 mr-[176px] ml-[176px] flex h-[360px] w-[980px] items-center justify-center overflow-y-auto rounded-[20px] border-[2px] border-black px-[30px] py-[20px] shadow-lg">
-            <p className="text-brown text-lab1 p-[5px] text-center font-[pretendard] whitespace-pre-line">
+            <p className="text-brown text-lab1 text-center font-[pretendard] whitespace-pre-line">
               {/* 내용 렌더링 */}
               {loading && "사주를 분석하는 중입니다... "}
               {!loading && error && error}

@@ -9,9 +9,9 @@ import { useSajuStore } from "@/stores/sajuStore";
 import LeftArrow from "@/assets/leftArrow.svg";
 import RightArrow from "@/assets/rightArrow.svg";
 
+import HeadingTitle from "@/components/common/HeadingTitle";
 import BottomBar from "@/components/common/bottomBar";
 import Header from "@/components/common/header";
-import HeadingTitle from "@/components/common/HeadingTitle";
 import DateSelector from "@/components/fortuneteller/DateSelector";
 
 import { daysInMonth } from "@/utils/fortunteller/getDaysInMonth";
@@ -54,12 +54,8 @@ const FortuneTellerPage = () => {
   };
 
   return (
-    <div
-      className="flex h-screen w-full flex-col bg-cover bg-center bg-no-repeat pt-[42.5px] pb-[99px]"
-      style={{ backgroundImage: "url('/svgs/backgroundImage.svg')" }}
-    >
+    <div className="flex h-screen w-full flex-col">
       <Header />
-
       <div className="flex flex-1 items-center justify-center p-4">
         <div className="relative flex w-full max-w-[980px] flex-col items-center gap-[31.71px]">
           {/* 이전버튼 */}
@@ -82,7 +78,9 @@ const FortuneTellerPage = () => {
 
           {/* 안내문구 */}
           <HeadingTitle
-            texts={["{userName} 님, 사주 궁합을 위해 당신의 생년월일을 입력해주세요."]}
+            texts={[
+              "{userName} 님, 사주 궁합을 위해 당신의 생년월일을 입력해주세요.",
+            ]}
           />
           <div className="border-cream bg-cream flex h-[135px] w-[948px] items-center justify-center gap-[90px] rounded-[30px] border-[30px] pl-[30px]">
             <DateSelector

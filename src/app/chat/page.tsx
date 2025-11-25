@@ -41,12 +41,9 @@ const ChatList = () => {
   }, []);
 
   return (
-    <div
-      className="min-h-screen w-full overflow-y-auto bg-cover bg-center bg-repeat-y"
-      style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
-    >
+    <div className="min-h-screen w-full">
       <Header />
-      <div className="mt-[129px] mb-[99px]">
+      <div className="mt-[115px] mb-[99px]">
         <div className="flex flex-col gap-4 px-[10px] py-[4px]">
           {rooms.map(room => (
             <button

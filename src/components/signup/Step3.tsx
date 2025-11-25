@@ -26,11 +26,6 @@ export default function Step3({ onNext, onPrev }: StepProps) {
 
   return (
     <div className="relative flex h-screen w-full items-center justify-center overflow-hidden">
-      <img
-        src="/svgs/backgroundImage.svg"
-        className="absolute inset-0 h-full w-full object-cover"
-      />
-
       <PurposeText
         leftText="나는 성격이 급한 편이다."
         rightText="나는 성격이 느긋하다."
