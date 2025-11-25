@@ -18,9 +18,9 @@ const Onboarding = () => {
   };
 
   return (
-    <div className="flex h-screen w-full flex-col items-center justify-center gap-[91.27px]">
+    <div className="flex h-screen w-full flex-col items-center justify-center gap-[30px] md:gap-[80px]">
       <div>
-        <div className="text-title text-yellow text-stroke-brown font-[geekble]">
+        <div className="md:text-title text-title2 text-yellow md:text-stroke-brown text-stroke-brown-s flex justify-center font-[geekble]">
           모비
         </div>
         <div className="text-body text-yellow text-stroke-brown-s font-[geekble]">
@@ -28,19 +28,19 @@ const Onboarding = () => {
         </div>
       </div>
 
-      <div className="flex gap-[61.5px]">
+      <div className="flex flex-row items-center justify-center gap-[20px] md:gap-[61.5px]">
         <button
           onClick={handleGoogleAuth}
-          className="bg-yellow text-heading1 text-stroke-white button-shadow-yellow hover:bg-yellow-10t h-[87px] w-[199px] cursor-pointer rounded-[20px] font-[geekble]"
+          className="bg-yellow md:text-heading1 text-lab1 text-stroke-white button-shadow-yellow hover:bg-yellow-10t cursor-pointer rounded-[20px] px-[20px] py-[10px] font-[geekble] md:px-[30px] md:py-[10px]"
         >
           로그인
         </button>
         <button
           onClick={handleGoogleAuth}
-          className="bg-yellow text-heading1 text-stroke-white button-shadow-yellow hover:bg-yellow-10t flex h-[87px] w-[392px] cursor-pointer items-center justify-center rounded-[20px] font-[geekble]"
+          className="bg-yellow md:text-heading1 text-lab1 text-stroke-white button-shadow-yellow hover:bg-yellow-10t flex cursor-pointer items-center justify-center gap-[10px] rounded-[20px] px-[20px] py-[10px] font-[geekble] md:px-[30px] md:py-[10px]"
         >
-          <GoogleIcon />
-          구글로 회원가입
+          <GoogleIcon className="h-[30px] w-[30px] md:h-[40px] md:w-[40px]" />
+          회원가입
         </button>
       </div>
     </div>
