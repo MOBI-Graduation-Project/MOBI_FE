@@ -26,11 +26,6 @@ export default function Step2({ onNext, onPrev }: StepProps) {
 
   return (
     <div className="relative flex h-screen w-full items-center justify-center overflow-hidden">
-      <img
-        src="/svgs/backgroundImage.svg"
-        className="absolute inset-0 h-full w-full object-cover"
-      />
-
       <PurposeText
         leftText="나는 평소에 손해가 나는 것은\n내 두 눈이 뜨고 있는 이상\n있을 수가 없다."
         rightText="나는 평소에 손해를 보더라도\n미래를 위해 투자를 하는 편이다."

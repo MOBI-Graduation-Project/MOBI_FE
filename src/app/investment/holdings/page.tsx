@@ -34,10 +34,7 @@ const HoldingStocks = () => {
   }, []);
 
   return (
-    <div
-      className="relative min-h-screen w-full overflow-y-auto bg-cover bg-center bg-repeat-y"
-      style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
-    >
+    <div className="min-h-screen w-full">
       {loading ? (
         <div className="flex h-screen w-full items-center justify-center">
           <HeadingTitle texts={["로딩중..."]} />

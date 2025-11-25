@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import React from "react";
@@ -44,13 +45,15 @@ const FriendTag = ({
       {/* 프로필 */}
       <div className="flex items-center gap-5">
         {friend.profileUrl?.trim() ? (
-          <img
+          <Image
             src={friend.profileUrl}
             alt={friend.nickname}
-            className="block h-[70px] w-[70px] flex-shrink-0 rounded-full object-cover"
+            width={65}
+            height={65}
+            className="block flex-shrink-0 rounded-full object-cover"
           />
         ) : (
-          <div className="bg-brown-dark h-[70px] w-[70px] flex-shrink-0 rounded-full" />
+          <div className="bg-brown-dark h-[65px] w-[65px] flex-shrink-0 rounded-full" />
         )}
         <div className="text-body text-stroke-white font-[geekble] whitespace-nowrap">
           {friend.nickname}

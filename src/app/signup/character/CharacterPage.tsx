@@ -101,10 +101,7 @@ const CharacterPage = () => {
   };
 
   return (
-    <div
-      className="flex h-screen w-full items-center justify-center bg-cover bg-center bg-no-repeat pt-[42.5px] pb-[99px]"
-      style={{ backgroundImage: "url('/svgs/backgroundImage.svg')" }}
-    >
+    <div className="flex h-screen w-full items-center justify-center">
       {/* 메인 콘텐츠 */}
       <div className="relative z-10 flex flex-col items-center">
         {/* 캐릭터 소개 텍스트 */}
