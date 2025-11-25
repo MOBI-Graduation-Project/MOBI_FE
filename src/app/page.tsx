@@ -20,10 +20,10 @@ const Onboarding = () => {
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center gap-[30px] md:gap-[80px]">
       <div>
-        <div className="md:text-title text-title2 text-yellow md:text-stroke-brown text-stroke-brown-s flex justify-center font-[geekble]">
+        <div className="text-title text-yellow text-stroke-brown flex justify-center font-[geekble]">
           모비
         </div>
-        <div className="text-body text-yellow text-stroke-brown-s font-[geekble]">
+        <div className="text-heading1 text-yellow text-stroke-brown-s font-[geekble]">
           모두의 주식 비서
         </div>
       </div>

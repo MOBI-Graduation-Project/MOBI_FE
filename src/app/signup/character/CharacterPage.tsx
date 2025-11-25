@@ -105,14 +105,25 @@ const CharacterPage = () => {
       {/* 메인 콘텐츠 */}
       <div className="relative z-10 flex flex-col items-center">
         {/* 캐릭터 소개 텍스트 */}
-        <h2 className="text-heading1 text-brown text-stroke-white mb-[40px] text-center font-[geekble]">
-          당신의 투자 유형에 맞는 캐릭터가 생성되었어요!
-          <br />
-          {nickname}님, 마음에 드시나요?
+        <h2 className="md:text-heading1 text-body text-brown text-stroke-white mb-[40px] text-center font-[geekble]">
+          <span className="hidden md:block">
+            당신의 투자 유형에 맞는 캐릭터가 생성되었어요!
+            <br />
+            {nickname}님, 마음에 드시나요?
+          </span>
+
+          <span className="block md:hidden">
+            당신의 투자 유형에 맞는
+            <br /> 캐릭터가 생성되었어요!
+            <br />
+            {nickname}님,
+            <br />
+            마음에 드시나요?
+          </span>
         </h2>
 
         {/* 캐릭터 애니메이션 */}
-        <div className="h-[400px] w-[400px] rounded-[20px] bg-white/80 p-[20px] shadow-lg">
+        <div className="h-[210px] w-[210px] rounded-[20px] bg-white/80 shadow-lg md:h-[400px] md:w-[400px]">
           {characterType ? (
             <Canvas camera={{ position: [0, 1.8, 5], fov: 45 }}>
               <ambientLight intensity={0.8} />
@@ -139,13 +150,13 @@ const CharacterPage = () => {
           <div className="mt-[40px] flex gap-[50px]">
             <button
               onClick={handleSelect}
-              className="button-shadow-yellow bg-yellow text-lab1 text-brown hover:bg-yellow-10t inline-flex h-[60px] cursor-pointer items-center justify-center rounded-[20px] px-[40px] font-[geekble] shadow-lg transition-all"
+              className="button-shadow-yellow bg-yellow text-lab1 text-brown hover:bg-yellow-10t h-[60px] cursor-pointer items-center justify-center rounded-[20px] px-[40px] font-[geekble] shadow-lg transition-all"
             >
               네, 마음에 들어요
             </button>
             <button
               onClick={handleSelect}
-              className="button-shadow-yellow bg-yellow text-lab1 text-brown hover:bg-yellow-10t inline-flex h-[60px] cursor-pointer items-center justify-center rounded-[20px] px-[40px] font-[geekble] shadow-lg transition-all"
+              className="button-shadow-yellow bg-yellow text-lab1 text-brown hover:bg-yellow-10t hidden h-[60px] cursor-pointer items-center justify-center rounded-[20px] px-[40px] font-[geekble] shadow-lg transition-all md:block"
             >
               저와 잘맞는 캐릭터인거 같아요
             </button>
@@ -158,9 +169,9 @@ const CharacterPage = () => {
       {/* 이전 버튼 */}
       <button
         onClick={handlePrev}
-        className="absolute top-1/2 left-[30px] flex h-[114px] w-[114px] -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full transition-all"
+        className="absolute top-1/2 left-[5px] flex -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full transition-all md:left-[30px]"
       >
-        <LeftArrow className="h-full w-full" />
+        <LeftArrow className="h-[70px] w-[70px] md:h-[114px] md:w-[114px]" />
       </button>
     </div>
   );

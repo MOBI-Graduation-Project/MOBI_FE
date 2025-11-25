@@ -11,7 +11,7 @@ const Header = () => {
       <div className="flex items-center justify-between px-[43.39px]">
         <button
           onClick={() => router.push("/map")}
-          className="text-title2 text-yellow text-stroke-brown-m cursor-pointer font-[geekble]"
+          className="md:text-title2 text-body text-yellow text-stroke-brown-m cursor-pointer font-[geekble]"
         >
           모비
         </button>
