@@ -21,12 +21,9 @@ const Map = () => {
     router.push("/fortuneteller");
   };
   return (
-    <div
-      className="flex h-screen w-full items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat pt-[42.5px] pb-[99px]"
-      style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
-    >
+    <>
       <Header />
-      <div className="flex w-full flex-row items-center justify-evenly p-[203.15px]">
+      <div className="flex h-full w-full flex-row items-center justify-evenly">
         {/*마이페이지*/}
         <button
           onClick={mypageClick}
@@ -61,7 +58,7 @@ const Map = () => {
         </button>
       </div>
       <BottomBar />
-    </div>
+    </>
   );
 };
 export default Map;

@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 
 import "@/styles/globals.css";
 
-import AuthProvider from "./providers/AuthProvider";
+import LayoutClient from "./layoutClient";
 
 const geekble = localFont({
   src: "../../public/fonts/GeekbleMalang2WOFF2.woff2",
@@ -45,9 +45,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${geekble.variable} ${pretendard.variable}`}>
       <body suppressHydrationWarning>
-        <AuthProvider>
-          <div className="flex h-screen w-screen">{children}</div>
-        </AuthProvider>
+        <LayoutClient>{children}</LayoutClient>
       </body>
     </html>
   );

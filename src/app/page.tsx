@@ -18,10 +18,7 @@ const Onboarding = () => {
   };
 
   return (
-    <div
-      className="flex h-screen w-full flex-col items-center justify-center gap-[91.27px] bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
-    >
+    <div className="flex h-screen w-full flex-col items-center justify-center gap-[91.27px]">
       <div>
         <div className="text-title text-yellow text-stroke-brown font-[geekble]">
           모비

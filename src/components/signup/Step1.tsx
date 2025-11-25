@@ -25,11 +25,6 @@ export default function Step1({ onNext }: StepProps) {
 
   return (
     <div className="relative flex h-screen w-full items-center justify-center overflow-hidden">
-      <img
-        src="/svgs/backgroundImage.svg"
-        className="absolute inset-0 h-full w-full object-cover"
-      />
-
       <PurposeText
         leftText="나는 지금 당장 눈앞에\n치킨 사먹을 돈이 떨어져도 행복하다."
         rightText="나는 기다려서라도\n건물 정도는 사야지 행복하다."
