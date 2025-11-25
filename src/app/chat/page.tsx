@@ -44,7 +44,7 @@ const ChatList = () => {
   return (
     <div className="min-h-screen w-full">
       <Header />
-      <div className="mt-[53px] mb-[72px] md:mt-[115px] md:mb-[99px]">
+      <div className="mt-[55px] mb-[72px] md:mt-[115px] md:mb-[99px]">
         <div className="flex flex-col gap-4 px-[7px] md:px-[10px]">
           {rooms.map(room => (
             <button
@@ -71,14 +71,14 @@ const ChatList = () => {
               </div>
 
               <div
-                className={`flex w-[150px] flex-row items-center ${room.unreadCount > 0 ? "justify-between" : "justify-end"}`}
+                className={`flex w-[150px] flex-row items-center ${room.unreadCount > 0 ? "justify-between" : "justify-end gap-[5px] md:justify-between"}`}
               >
                 {room.unreadCount > 0 && (
-                  <div className="bg-red-dark text-cap1 flex h-7 w-7 items-center justify-center rounded-full font-[pretendard] text-white">
+                  <div className="bg-red-dark md:text-cap1 text-cap3 flex h-5 w-5 items-center justify-center rounded-full font-[pretendard] text-white md:h-7 md:w-7">
                     {room.unreadCount}
                   </div>
                 )}
-                <div className="text-cap1 font-[pretendard] text-gray-500">
+                <div className="md:text-cap1 text-cap3 font-[pretendard] text-gray-500">
                   {formatTime(room.lastMessageSentAt)}
                 </div>
               </div>
