@@ -1,28 +1,28 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { notFound } from "next/navigation";   
+import { notFound } from "next/navigation";
+
 import { useEffect, useState } from "react";
 
 import { getUserProfile } from "@/apis/profile";
 
+import HeadingTitle from "@/components/common/HeadingTitle";
 import ProfileLayout from "@/components/profile/ProfileLayout";
-import HeadingTitle from "@/components/common/HeadingTitle"; 
 
-import type { ProfileData } from "@/types/user";  
-
+import type { ProfileData } from "@/types/user";
 
 // 상대방 프로필 조회
 const UserProfile = () => {
   const { userId } = useParams();
-  const [profile, setProfile] = useState<ProfileData | null>(null); 
-  const [isLoading, setIsLoading] = useState(true);                 
-  const [error, setError] = useState<string | null>(null);          
+  const [profile, setProfile] = useState<ProfileData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const memberId = Number(userId);                                  
+  const memberId = Number(userId);
 
   //relationStatus -> isFriend 판정
-  const isFriend = profile?.relationStatus === "FRIEND";            
+  const isFriend = profile?.relationStatus === "FRIEND";
 
   // 실제 API 호출
   useEffect(() => {
@@ -52,24 +52,24 @@ const UserProfile = () => {
         className="flex h-screen w-full flex-col items-center justify-center gap-[91.27px] bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
       >
-        <HeadingTitle texts={["프로필 불러오는 중..."]} />  
+        <HeadingTitle texts={["프로필 불러오는 중..."]} />
       </div>
     );
   }
 
   if (error || !profile) {
-    notFound(); 
+    notFound();
   }
 
   return (
     <ProfileLayout
       memberId={profile.memberId}
-      profileImg={profile.profileImgUrl}                            
+      profileImg={profile.profileImgUrl}
       nickname={profile.nickname}
       stateMessage={profile.profileDescribe ?? ""}
       isMyProfile={false}
-      isFriend={isFriend}                                          
-      avatarCode={profile.avatar} 
+      isFriend={isFriend}
+      avatarCode={profile.avatar}
     />
   );
 };

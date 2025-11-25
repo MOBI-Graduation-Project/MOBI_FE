@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { useEffect, useRef } from "react";
 
 import { useUserStore } from "@/stores/userStore";
@@ -60,10 +62,12 @@ const ChatSection = ({ messages, opponentNickname }: ChatSectionProps) => {
                 <div className="flex items-start gap-2">
                   <div className="flex shrink-0 items-center justify-center">
                     {message.profileUrl?.trim() ? (
-                      <img
+                      <Image
                         src={message.profileUrl}
-                        alt={opponentNickname}
-                        className="h-[50px] w-[50px] rounded-full object-cover"
+                        alt={opponentNickname as string}
+                        width={50}
+                        height={50}
+                        className="rounded-full object-cover"
                       />
                     ) : (
                       <div className="bg-brown-dark h-[50px] w-[50px] rounded-full" />

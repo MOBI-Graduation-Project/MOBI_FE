@@ -75,10 +75,7 @@ const SignUp = () => {
     isDuplicateChecked;
 
   return (
-    <div
-      className="relative flex h-screen w-full items-center justify-center overflow-visible bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/svgs/backgroundImage.svg')" }}
-    >
+    <div className="relative flex h-screen w-full items-center justify-center">
       <div className="relative flex h-[450px] w-[1000px] flex-col items-center justify-center rounded-[30px] bg-[#FFFAEA]">
         <h1 className="text-brown text-heading1 mb-[50px] font-[geekble]">
           닉네임을 입력해주세요

@@ -9,10 +9,7 @@ import StocksList from "@/components/investment/StocksList";
 
 const MyStock = () => {
   return (
-    <div
-      className="relative min-h-screen w-full overflow-y-auto bg-cover bg-center bg-repeat-y"
-      style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
-    >
+    <div className="min-h-screen w-full">
       <Header />
       <div className="fixed top-[120px] left-[30px]">
         <DropdownMenu />

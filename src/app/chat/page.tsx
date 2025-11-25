@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { useEffect, useState } from "react";
@@ -41,12 +42,9 @@ const ChatList = () => {
   }, []);
 
   return (
-    <div
-      className="min-h-screen w-full overflow-y-auto bg-cover bg-center bg-repeat-y"
-      style={{ backgroundImage: "url('/svgs/bgImage.jpg')" }}
-    >
+    <div className="min-h-screen w-full">
       <Header />
-      <div className="mt-[129px] mb-[99px]">
+      <div className="mt-[115px] mb-[99px]">
         <div className="flex flex-col gap-4 px-[10px] py-[4px]">
           {rooms.map(room => (
             <button
@@ -55,10 +53,12 @@ const ChatList = () => {
               className="flex items-center justify-between rounded-2xl bg-white/90 px-[20px] py-5 shadow-md transition-all hover:bg-yellow-50"
             >
               <div className="flex flex-row items-center gap-4">
-                <img
+                <Image
                   src={room.otherMemberProfileImage}
                   alt={room.roomName}
-                  className="h-14 w-14 rounded-full object-cover"
+                  width={40}
+                  height={40}
+                  className="rounded-full object-cover"
                 />
                 <div className="text-lab2 text-brown font-[geekble]">
                   {room.roomName}
