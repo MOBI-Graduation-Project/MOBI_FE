@@ -58,22 +58,22 @@ const Topbar = () => {
   }, []);
 
   return (
-    <div className="relative" ref={dropdownRef}>
-      <div className="grid h-[50px] w-[150px] grid-cols-3 items-center justify-items-center overflow-visible rounded-b-[30px] bg-white/66 md:h-[100px] md:w-[300px]">
+    <div className="fixed right-[5px] md:right-[30px]" ref={dropdownRef}>
+      <div className="flex w-[150px] items-center gap-[10px] rounded-b-[30px] bg-white/66 px-[10px] py-[5px] md:w-[300px] md:px-[20px] md:py-[10px]">
         <button className="cursor-pointer hover:scale-105">
-          <AlarmIcon className="h-[30px] w-[30px] md:h-[80px] md:w-[80px]" />
+          <AlarmIcon />
         </button>
         <button
           onClick={friendListClick}
           className="cursor-pointer hover:scale-105"
         >
-          <FriendListIcon className="h-[30px] w-[30px] md:h-[80px] md:w-[80px]" />
+          <FriendListIcon />
         </button>
         <button
           onClick={profileClick}
           className="cursor-pointer hover:scale-105"
         >
-          <ProfileIcon className="h-[30px] w-[30px] md:h-[80px] md:w-[80px]" />
+          <ProfileIcon />
         </button>
       </div>
 
