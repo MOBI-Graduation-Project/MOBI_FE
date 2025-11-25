@@ -56,7 +56,7 @@ const ProfileImageCircle = ({
 
   return (
     <div>
-      <div className="relative h-[173px] w-[173px]">
+      <div className="relative h-[100px] w-[100px] md:h-[173px] md:w-[173px]">
         {/* 이미지 영역만 overflow-hidden */}
         <div className="border-brown relative h-full w-full overflow-hidden rounded-full border-[3px]">
           {currentImg ? (

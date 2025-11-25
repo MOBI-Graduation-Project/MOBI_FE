@@ -44,26 +44,28 @@ const ChatList = () => {
   return (
     <div className="min-h-screen w-full">
       <Header />
-      <div className="mt-[115px] mb-[99px]">
-        <div className="flex flex-col gap-4 px-[10px] py-[4px]">
+      <div className="mt-[53px] mb-[72px] md:mt-[115px] md:mb-[99px]">
+        <div className="flex flex-col gap-4 px-[7px] md:px-[10px]">
           {rooms.map(room => (
             <button
               key={room.roomId}
               onClick={() => handleRoomClick(room.roomId)}
-              className="flex items-center justify-between rounded-2xl bg-white/90 px-[20px] py-5 shadow-md transition-all hover:bg-yellow-50"
+              className="flex items-center justify-between rounded-2xl bg-white/90 p-[10px] shadow-md transition-all hover:bg-yellow-50 md:px-[20px]"
             >
               <div className="flex flex-row items-center gap-4">
-                <Image
-                  src={room.otherMemberProfileImage}
-                  alt={room.roomName}
-                  width={40}
-                  height={40}
-                  className="rounded-full object-cover"
-                />
-                <div className="text-lab2 text-brown font-[geekble]">
+                <div className="h-[35px] w-[35px] md:h-[40px] md:w-[40px]">
+                  <Image
+                    src={room.otherMemberProfileImage}
+                    alt={room.roomName}
+                    width={40}
+                    height={40}
+                    className="h-full w-full rounded-full object-cover"
+                  />
+                </div>
+                <div className="text-lab2 text-brown font-[geekble] whitespace-nowrap">
                   {room.roomName}
                 </div>
-                <div className="text-cap1 font-[pretendard] text-gray-600">
+                <div className="text-cap1 overflow-hidden font-[pretendard] whitespace-nowrap text-gray-600">
                   {room.lastMessage}
                 </div>
               </div>
