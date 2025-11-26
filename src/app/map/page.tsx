@@ -27,10 +27,10 @@ const Map = () => {
         {/*마이페이지*/}
         <button
           onClick={mypageClick}
-          className="flex cursor-pointer flex-col items-center justify-center gap-[82px] hover:scale-110"
+          className="flex cursor-pointer flex-col items-center justify-center gap-[45px] hover:scale-110"
         >
           <MyPageIcon />
-          <div className="text-body color-brown text-stroke-white font-[geekble]">
+          <div className="md:text-body text-lab1 text-brown text-stroke-white font-[geekble]">
             마이페이지
           </div>
         </button>
@@ -38,10 +38,10 @@ const Map = () => {
         {/*광장*/}
         <button
           onClick={squareClick}
-          className="flex cursor-pointer flex-col items-center justify-center gap-[45.65px] hover:scale-110"
+          className="flex cursor-pointer flex-col items-center justify-center gap-[45px] hover:scale-110"
         >
           <SquareIcon />
-          <div className="text-body color-brown text-stroke-white font-[geekble]">
+          <div className="md:text-body text-lab1 text-brown text-stroke-white font-[geekble]">
             광장
           </div>
         </button>
@@ -49,10 +49,10 @@ const Map = () => {
         {/*점집*/}
         <button
           onClick={fortuneTellerClick}
-          className="flex cursor-pointer flex-col items-center justify-center gap-[40.68px] hover:scale-110"
+          className="flex cursor-pointer flex-col items-center justify-center gap-[45px] hover:scale-110"
         >
           <FortuneTellerIcon />
-          <div className="text-body color-brown text-stroke-white font-[geekble]">
+          <div className="md:text-body text-lab1 text-brown text-stroke-white font-[geekble]">
             점집
           </div>
         </button>

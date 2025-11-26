@@ -31,7 +31,7 @@ const CompanyPage = () => {
     <div className="flex h-screen w-full flex-col">
       <Header />
       <div className="flex flex-1 items-center justify-center px-4">
-        <div className="relative flex w-full max-w-[980px] flex-col items-center gap-6">
+        <div className="relative flex w-full max-w-[980px] flex-col items-center gap-[30px]">
           {/* 안내 문구 */}
           <HeadingTitle
             texts={["{userName} 님과 궁합을 볼 주식 이름을 입력해주세요."]}
@@ -42,13 +42,13 @@ const CompanyPage = () => {
             placeholder="당신의 주식 이름은?"
             value={companyName}
             onChange={e => setCompanyName(e.target.value)}
-            className="font-pretendard text-brown placeholde : [#4D270099] w-full max-w-[800px] rounded-[20px] border-[2px] border-[#000000] bg-[#FFEFBF] px-[30px] py-[10px] text-[32px] shadow-inner focus:outline-none"
+            className="md:text-body text-brown bg-yellow-10 text-lab1 w-full rounded-[20px] border-[2px] border-black px-[30px] py-[10px] font-[pretendard] shadow-inner focus:outline-none md:max-w-[800px]"
           />
 
           {/* 이전 버튼 */}
           <button
             onClick={handlePrev}
-            className="fixed top-1/2 left-[30px] flex h-[114px] w-[114px] -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full transition-all"
+            className="fixed top-1/2 left-[5px] flex h-[50px] w-[50px] -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full transition-all md:left-[30px] md:h-[114px] md:w-[114px]"
           >
             <LeftArrow className="h-full w-full" />
           </button>
@@ -57,7 +57,7 @@ const CompanyPage = () => {
           <button
             onClick={handleNext}
             disabled={!companyName.trim()}
-            className={`fixed top-1/2 right-[30px] flex h-[114px] w-[114px] -translate-y-1/2 transform items-center justify-center rounded-full transition-all ${
+            className={`fixed top-1/2 right-[5px] flex h-[50px] w-[50px] -translate-y-1/2 transform items-center justify-center rounded-full transition-all md:right-[30px] md:h-[114px] md:w-[114px] ${
               companyName.trim()
                 ? "cursor-pointer"
                 : "cursor-not-allowed opacity-50"
