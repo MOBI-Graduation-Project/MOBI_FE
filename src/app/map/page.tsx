@@ -29,7 +29,7 @@ const Map = () => {
           onClick={mypageClick}
           className="flex cursor-pointer flex-col items-center justify-center gap-[45px] hover:scale-110"
         >
-          <MyPageIcon />
+          <MyPageIcon className="w-[130px] md:w-[300px]" />
           <div className="md:text-body text-lab1 text-brown text-stroke-white font-[geekble]">
             마이페이지
           </div>
@@ -40,7 +40,7 @@ const Map = () => {
           onClick={squareClick}
           className="flex cursor-pointer flex-col items-center justify-center gap-[45px] hover:scale-110"
         >
-          <SquareIcon />
+          <SquareIcon className="w-[130px] md:w-[300px]" />
           <div className="md:text-body text-lab1 text-brown text-stroke-white font-[geekble]">
             광장
           </div>
@@ -51,7 +51,7 @@ const Map = () => {
           onClick={fortuneTellerClick}
           className="flex cursor-pointer flex-col items-center justify-center gap-[45px] hover:scale-110"
         >
-          <FortuneTellerIcon />
+          <FortuneTellerIcon className="w-[130px] md:w-[300px]" />
           <div className="md:text-body text-lab1 text-brown text-stroke-white font-[geekble]">
             점집
           </div>
