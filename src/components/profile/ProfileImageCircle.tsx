@@ -73,7 +73,7 @@ const ProfileImageCircle = ({
 
         {isEditable && (
           <ProfileEdit
-            className="absolute right-2 bottom-2 z-10 h-[40px] w-[40px] cursor-pointer"
+            className="absolute right-1 bottom-1 z-10 h-[30px] w-[30px] cursor-pointer md:right-2 md:bottom-2 md:h-[40px] md:w-[40px]"
             onClick={handleClick}
           />
         )}
