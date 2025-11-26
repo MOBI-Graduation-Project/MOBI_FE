@@ -2,8 +2,8 @@ import { SearchUser } from "@/types/user";
 
 interface RecommendDropdownProps {
   width?: number;
-  searchResult: SearchUser;       
-  onSelect?: (user: SearchUser) => void; 
+  searchResult: SearchUser;
+  onSelect?: (user: SearchUser) => void;
 }
 
 const RecommendDropdown = ({
@@ -24,7 +24,9 @@ const RecommendDropdown = ({
         if (e.key === "Enter" || e.key === " ") handleClick();
       }}
     >
-      <p className="text-lab1 font-[pretendard]">{searchResult.nickname}</p>
+      <p className="md:text-lab1 text-cap1 font-[pretendard]">
+        {searchResult.nickname}
+      </p>
     </div>
   );
 };

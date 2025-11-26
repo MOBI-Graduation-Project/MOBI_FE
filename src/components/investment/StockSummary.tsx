@@ -48,8 +48,8 @@ export const StockSummary = () => {
   }, []);
 
   return (
-    <div className="border-brown h-[355px] w-[650px] overflow-y-auto border-[2px] bg-white/80">
-      <div className="text-cap1-sb bg-yellow-light/80 text-brown grid w-full grid-cols-4 justify-items-center border-b px-4 py-3 font-[pretendard]">
+    <div className="border-brown overflow-y-auto border-[2px] bg-white/80 md:h-[355px] md:w-[650px]">
+      <div className="md:text-cap1-sb text-cap3 bg-yellow-light/80 text-brown grid w-full grid-cols-4 justify-items-center border-b px-4 py-3 font-[pretendard]">
         <div className="cursor-pointer" onClick={() => handleSort("stockName")}>
           종목명{" "}
           {sortField === "stockName" ? (sortOrder === "asc" ? "▲" : "▼") : ""}
@@ -87,7 +87,7 @@ export const StockSummary = () => {
 
       {myDataList.map(item => (
         <div
-          className="text-lab2 text-brown grid h-[45px] w-full grid-cols-4 justify-items-center border-b px-4 py-3 font-[pretendard]"
+          className="md:text-lab2 text-cap3 text-brown grid h-[25px] w-full grid-cols-4 justify-items-center border-b px-4 py-3 font-[pretendard] md:h-[45px]"
           key={item.myDataId}
         >
           {/* 종목명 */}

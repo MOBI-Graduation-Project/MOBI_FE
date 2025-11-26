@@ -123,10 +123,10 @@ const FriendList = () => {
   return (
     <div className="min-h-screen w-full">
       <Header />
-      <main className="flex flex-col gap-5 pt-[100px] pb-[90px]">
+      <main className="flex flex-col gap-5 pt-[55px] pb-[72px] md:pt-[100px] md:pb-[90px]">
         {/* 친구 검색 */}
         <section className="flex flex-col gap-5">
-          <div className="text-body flex h-25 w-[216px] rounded-r-[30px] bg-white/60 px-[40px] py-[10px] font-[geekble]">
+          <div className="md:text-body text-brown text-lab1 flex w-[100px] rounded-r-[30px] bg-white/60 px-[3px] py-[10px] font-[geekble] md:w-[216px] md:px-[40px]">
             친구신청
           </div>
           <SearchField />
@@ -135,7 +135,7 @@ const FriendList = () => {
         {/* 친구요청 */}
         {friendRequestList.length > 0 && (
           <section className="flex flex-col gap-5">
-            <div className="text-body flex h-25 w-[216px] rounded-r-[30px] bg-white/60 px-[40px] py-[10px] font-[geekble]">
+            <div className="md:text-body text-brown text-lab1 flex w-[100px] rounded-r-[30px] bg-white/60 px-[3px] py-[10px] font-[geekble] md:w-[216px] md:px-[40px]">
               친구요청
             </div>
             <div className="flex flex-col">
@@ -154,7 +154,7 @@ const FriendList = () => {
         {toastmessage && <ToastMessage message={toastmessage} />}
         {/* 친구목록 */}
         <section className="flex flex-col gap-5">
-          <div className="text-body flex h-25 w-[216px] rounded-r-[30px] bg-white/60 px-[40px] py-[10px] font-[geekble]">
+          <div className="md:text-body text-brown text-lab1 flex w-[100px] rounded-r-[30px] bg-white/60 px-[3px] py-[10px] font-[geekble] md:w-[216px] md:px-[40px]">
             친구목록
           </div>
           <div className="flex flex-col">

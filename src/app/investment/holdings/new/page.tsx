@@ -11,10 +11,10 @@ const MyStock = () => {
   return (
     <div className="min-h-screen w-full">
       <Header />
-      <div className="fixed top-[120px] left-[30px]">
+      <div className="fixed top-[100px] left-[30px] md:top-[120px]">
         <DropdownMenu />
       </div>
-      <div className="flex h-full flex-col items-center justify-center gap-[25px]">
+      <div className="flex h-full flex-col items-center justify-center gap-[25px] pt-[75px]">
         <HeadingTitle
           texts={[
             "{userName}님의 보유종목입니다.",

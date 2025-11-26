@@ -58,41 +58,45 @@ const Topbar = () => {
   }, []);
 
   return (
-    <div className="relative" ref={dropdownRef}>
-      <div className="grid h-[100px] w-[300px] grid-cols-3 items-center justify-items-center overflow-visible rounded-b-[30px] bg-white/66">
+    <div className="fixed right-[5px] md:right-[30px]" ref={dropdownRef}>
+      <div className="flex w-[150px] items-center gap-[10px] rounded-b-[30px] bg-white/66 px-[10px] py-[5px] md:w-[300px] md:px-[20px] md:py-[10px]">
         <button className="cursor-pointer hover:scale-105">
-          <AlarmIcon className="h-[80px] w-[80px]" />
+          <AlarmIcon />
         </button>
         <button
           onClick={friendListClick}
           className="cursor-pointer hover:scale-105"
         >
-          <FriendListIcon className="h-[80px] w-[80px]" />
+          <FriendListIcon />
         </button>
         <button
           onClick={profileClick}
           className="cursor-pointer hover:scale-105"
         >
-          <ProfileIcon className="h-[80px] w-[80px]" />
+          <ProfileIcon />
         </button>
       </div>
 
       {isOpen && (
         <div className="div absolute right-0 mt-2">
-          <div className="divide-brown from-yellow-10 via-yellow-30 to-yellow grid h-[113px] w-[185px] grid-rows-2 divide-y rounded-[10px] bg-gradient-to-b">
+          <div className="divide-brown from-yellow-10 via-yellow-30 to-yellow grid h-[80px] w-[110px] grid-rows-2 divide-y rounded-[10px] bg-gradient-to-b md:h-[113px] md:w-[185px]">
             <button
-              className="orange-3d flex w-full flex-row items-center justify-items-start gap-[10px] rounded-t-[10px] pl-[20px] transition"
+              className="orange-3d flex w-full flex-row items-center justify-items-start gap-[5px] rounded-t-[10px] pl-[20px] transition md:gap-[10px]"
               onClick={handleGoToMyProfile}
             >
-              <LogoutIcon />
-              <div className="text-lab1 font-[geekble]">내 프로필</div>
+              <LogoutIcon className="h-[25px] w-[25px] md:h-[31px] md:w-[31px]" />
+              <div className="md:text-lab1 text-cap1 font-[geekble]">
+                내 프로필
+              </div>
             </button>
             <button
-              className="orange-3d flex w-full flex-row items-center justify-items-start gap-[10px] rounded-b-[10px] pl-[20px] transition"
+              className="orange-3d flex w-full flex-row items-center justify-items-start gap-[5px] rounded-b-[10px] pl-[20px] transition md:gap-[10px]"
               onClick={handleLogout}
             >
-              <LogoutIcon />
-              <div className="text-lab1 font-[geekble]">로그아웃</div>
+              <LogoutIcon className="h-[25px] w-[25px] md:h-[31px] md:w-[31px]" />
+              <div className="md:text-lab1 text-cap1 font-[geekble]">
+                로그아웃
+              </div>
             </button>
           </div>
         </div>
