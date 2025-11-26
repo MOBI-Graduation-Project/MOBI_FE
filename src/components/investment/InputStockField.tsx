@@ -54,16 +54,15 @@ export const InputStockField = () => {
   };
 
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-[5px]">
-      <section className="flex w-full items-center gap-4 bg-gray-50/50 px-8 py-5">
-        <div className="flex-1">
+    <div className="flex w-full items-center justify-center gap-[5px]">
+      <section className="grid grid-cols-2 gap-4 bg-gray-50/50 px-[5px] py-5 md:flex md:w-full md:flex-row md:items-center md:gap-4 md:px-8">
+        <div className="flex-2">
           <SearchField
             value={stockName}
             onChange={e => setStockName(e.target.value)}
             onKeyDown={handleKeyDown}
           />
         </div>
-
         <InputField
           type="number"
           placeholder="수량"
@@ -72,7 +71,6 @@ export const InputStockField = () => {
           onChange={e => setPurchaseAmount(e.target.value)}
           onKeyDown={handleKeyDown}
         />
-
         <InputField
           type="number"
           placeholder="평균가"
@@ -81,7 +79,6 @@ export const InputStockField = () => {
           onChange={e => setAvgPrice(e.target.value)}
           onKeyDown={handleKeyDown}
         />
-
         <button type="button" onClick={handleEnter}>
           <EnterBtn className="h-[32px] w-[32px]" />
         </button>

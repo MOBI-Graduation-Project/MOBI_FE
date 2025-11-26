@@ -49,7 +49,7 @@ const StocksList = () => {
     : ["kakao", "samsung-electronic"];
 
   return (
-    <div className="h-[246px] w-[1000px] overflow-hidden">
+    <div className="h-[200px] w-[300px] overflow-hidden md:h-[246px] md:w-[1000px]">
       {loading ? (
         <div className="flex h-full w-full items-center justify-center">
           <HeadingTitle texts={["로딩중 ..."]} />
@@ -63,13 +63,13 @@ const StocksList = () => {
           )}
           {myStocks.map((stock, index) => (
             <div key={stock}>
-              <div className="flex h-[61px] w-full justify-between bg-white/70 px-[30px] py-[10px]">
-                <span className="text-brown-dark text-body font-[geekble]">
+              <div className="flex h-[40px] w-full items-center justify-between bg-white/70 px-[10px] py-[10px] md:h-[61px] md:px-[30px]">
+                <span className="text-brown-dark md:text-body text-lab1 font-[geekble]">
                   {STOCK_NAME_MAP[stock] ?? stock}
                 </span>
                 <YellowButton
                   text="차트보기"
-                  width="130"
+                  width="md:w-[130px] w-[80px]"
                   onClick={() => handleButtonClick(stock)}
                 />
               </div>
