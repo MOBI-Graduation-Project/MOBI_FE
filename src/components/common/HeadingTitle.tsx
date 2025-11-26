@@ -26,7 +26,7 @@ const HeadingTitle = ({ userName, texts, stockName }: HeadingTitleProps) => {
       {replacedTexts.map((lines, index) => (
         <p
           key={index}
-          className="text-body text-stroke-white text-brown text-center font-[geekble] md:text-[45px]"
+          className="text-body text-lab1 text-stroke-white text-brown text-center font-[geekble] md:text-[45px]"
         >
           {lines.map((line, idx) => (
             <span key={idx}>

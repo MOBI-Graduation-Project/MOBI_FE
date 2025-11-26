@@ -26,11 +26,11 @@ const MarketPredictField = () => {
   }, []);
 
   return (
-    <div className="text-lab1 text-brown flex h-[50px] w-full items-center justify-center bg-white/30 px-[10px] py-[20px] font-[geekble]">
+    <div className="md:text-lab1 text-cap3 text-brown flex h-[50px] w-full items-center justify-center bg-white/30 px-[10px] py-[20px] font-[geekble]">
       {toastMsg ? (
         <ToastMessage message={toastMsg} />
       ) : (
-        <div className="bg-yellow-10 flex rounded-[10px] px-6 py-4">
+        <div className="bg-yellow-10 flex flex-col rounded-[10px] px-6 py-4 md:flex-row">
           {predictions.map(p => (
             <span key={p.marketName} className="mx-4">
               오늘 {p.marketName} 시장은{" "}
