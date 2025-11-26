@@ -61,19 +61,19 @@ const Topbar = () => {
     <div className="fixed right-[5px] md:right-[30px]" ref={dropdownRef}>
       <div className="flex w-[150px] items-center gap-[10px] rounded-b-[30px] bg-white/66 px-[10px] py-[5px] md:w-[300px] md:px-[20px] md:py-[10px]">
         <button className="cursor-pointer hover:scale-105">
-          <AlarmIcon />
+          <AlarmIcon className="h-[35px] w-[35px] md:h-[80px] md:w-[80px]" />
         </button>
         <button
           onClick={friendListClick}
           className="cursor-pointer hover:scale-105"
         >
-          <FriendListIcon />
+          <FriendListIcon className="h-[35px] w-[35px] md:h-[80px] md:w-[80px]" />
         </button>
         <button
           onClick={profileClick}
           className="cursor-pointer hover:scale-105"
         >
-          <ProfileIcon />
+          <ProfileIcon className="h-[35px] w-[35px] md:h-[80px] md:w-[80px]" />
         </button>
       </div>
 
