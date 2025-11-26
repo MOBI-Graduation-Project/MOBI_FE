@@ -57,11 +57,11 @@ const FortuneTellerPage = () => {
     <div className="flex h-screen w-full flex-col">
       <Header />
       <div className="flex flex-1 items-center justify-center p-4">
-        <div className="relative flex w-full max-w-[980px] flex-col items-center gap-[31.71px]">
+        <div className="relative flex w-full max-w-[980px] flex-col items-center gap-[10px] md:gap-[31.71px]">
           {/* 이전버튼 */}
           <button
             onClick={handlePrev}
-            className="fixed top-1/2 left-[30px] flex h-[114px] w-[114px] -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full transition-all"
+            className="fixed top-1/2 left-[5px] flex h-[50px] w-[50px] -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full transition-all md:left-[30px] md:h-[114px] md:w-[114px]"
           >
             <LeftArrow className="h-full w-full" />
           </button>
@@ -69,7 +69,7 @@ const FortuneTellerPage = () => {
           <button
             onClick={handleNext}
             disabled={!isValid}
-            className={`fixed top-1/2 right-[30px] flex h-[114px] w-[114px] -translate-y-1/2 transform items-center justify-center rounded-full transition-all ${
+            className={`fixed top-1/2 right-[5px] flex h-[50px] w-[50px] -translate-y-1/2 transform items-center justify-center rounded-full transition-all md:right-[30px] md:h-[114px] md:w-[114px] ${
               isValid ? "cursor-pointer" : "cursor-not-allowed opacity-50"
             }`}
           >
@@ -79,29 +79,29 @@ const FortuneTellerPage = () => {
           {/* 안내문구 */}
           <HeadingTitle
             texts={[
-              "{userName} 님, 사주 궁합을 위해 당신의 생년월일을 입력해주세요.",
+              "{userName} 님, 사주 궁합을 위해 <br>생년월일을 입력해주세요.",
             ]}
           />
-          <div className="border-cream bg-cream flex h-[135px] w-[948px] items-center justify-center gap-[90px] rounded-[30px] border-[30px] pl-[30px]">
+          <div className="border-cream bg-cream flex flex-col items-start justify-center gap-[5px] rounded-[30px] border-[30px] pl-[30px] md:h-[135px] md:w-[948px] md:flex-row md:items-center md:gap-[90px]">
             <DateSelector
               label="년"
               value={year}
               options={years}
-              width={206}
+              width="md:w-[206px] w-[130px]"
               onChange={setYear}
             />
             <DateSelector
               label="월"
               value={month}
               options={months}
-              width={143}
+              width="md:w-[143px] w-[100px]"
               onChange={setMonth}
             />
             <DateSelector
               label="일"
               value={day}
               options={days}
-              width={143}
+              width="md:w-[143px] w-[100px]"
               onChange={setDay}
             />
           </div>
