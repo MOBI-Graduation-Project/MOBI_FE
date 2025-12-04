@@ -63,12 +63,12 @@ const Chatbot = () => {
       {/*상단바*/}
       <ChatHeader />
       {/*채팅영역 */}
-      <div className="px-[10px] pt-[110px] pb-[220px]">
+      <div className="px-[10px] pt-[70px] pb-[130px] md:pt-[110px] md:pb-[220px]">
         <ChatSection messages={messages} />
       </div>
 
       {/*단축버튼 */}
-      <div className="fixed bottom-[158px] left-1/2 -translate-x-1/2 transform">
+      <div className="fixed bottom-[100px] left-1/2 -translate-x-1/2 transform md:bottom-[158px]">
         <ChatbotButton onButtonClick={handleButtonClick} />
       </div>
       {/*하단바*/}

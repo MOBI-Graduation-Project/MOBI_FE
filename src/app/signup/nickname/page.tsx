@@ -76,62 +76,73 @@ const SignUp = () => {
 
   return (
     <div className="relative flex h-screen w-full items-center justify-center">
-      <div className="relative flex h-[450px] w-[1000px] flex-col items-center justify-center rounded-[30px] bg-[#FFFAEA]">
-        <h1 className="text-brown text-heading1 mb-[50px] font-[geekble]">
+      <div className="bg-cream relative flex flex-col items-center justify-center gap-[10px] rounded-[30px] px-[20px] py-[20px] md:h-[450px] md:w-[1000px] md:gap-[30px]">
+        <h1 className="text-brown md:text-heading1 text-lab1 rounded-[20px] px-[20px] py-[10px] font-[geekble]">
           닉네임을 입력해주세요
         </h1>
-        <div className="flex flex-col gap-[5px]">
-          <div className="flex items-center justify-center gap-[20px]">
+        <div className="flex flex-col gap-[20px] md:flex-row">
+          <div className="flex flex-col items-start justify-center gap-[10px]">
             <div className="relative">
               <input
                 type="text"
                 value={nickname}
                 onChange={handleNicknameChange}
                 placeholder="한글/영어/숫자만 2~10자 입력해주세요"
-                className="text-brown-20 placeholder:text-brown-20/70 text-lab2 h-[70px] w-[550px] rounded-[20px] border border-black bg-[#FFEEBD] px-[25px] font-[pretendard] focus:outline-none"
+                className="text-brown-20 placeholder:text-brown-20/70 md:text-lab2 text-cap1 bg-yellow-10 h-[50px] w-[240px] rounded-[20px] border border-black px-[10px] font-[pretendard] focus:outline-none md:h-[70px] md:w-[550px] md:px-[25px]"
               />
             </div>
-            <button
-              onClick={handleDuplicateCheck}
-              className="button-shadow-yellow text-stroke-white bg-yellow text-lab1 text-brown inline-flex h-[50px] shrink-0 cursor-pointer items-center justify-center gap-[10px] rounded-[20px] px-[18px] py-[10px] font-[geekble] hover:scale-110"
-            >
-              중복확인
-            </button>
+            {duplicateMessage && (
+              <span
+                className={`text-cap1 font-[pretendard] ${
+                  isDuplicateChecked ? "text-green-600" : "text-red-600"
+                }`}
+              >
+                {duplicateMessage}
+              </span>
+            )}
           </div>
-          {duplicateMessage && (
-            <span
-              className={`text-cap1 font-[pretendard] ${
-                isDuplicateChecked ? "text-green-600" : "text-red-600"
-              }`}
-            >
-              {duplicateMessage}
-            </span>
-          )}
+          <button
+            onClick={handleDuplicateCheck}
+            className="button-shadow-yellow text-stroke-white bg-yellow md:text-lab1 text-cap1-med text-brown h-[50px] cursor-pointer items-center justify-center gap-[10px] rounded-[20px] px-[5px] py-[3px] font-[geekble] hover:scale-110 md:mt-[10px] md:px-[18px] md:py-[10px]"
+          >
+            중복확인
+          </button>
         </div>
-        <div className="flex items-start gap-[15px] pt-[30px]">
+        <div className="mt-[25px] flex items-center justify-center gap-[15px] rounded-[20px]">
           <button
             onClick={handleAgreeToggle}
-            className={`mt-[3px] h-[30px] w-[30px] cursor-pointer rounded-full border border-black transition-all ${
+            className={`h-[20px] w-[20px] shrink-0 cursor-pointer rounded-full border border-black transition-all md:h-[30px] md:w-[30px] ${
               agreed ? "bg-brown-20 button-shadow-yellow" : "bg-white/20"
             }`}
           />
           <a
             href="https://fir-earl-dd1.notion.site/215c9deec31b804d9f67cc457878ec26?source=copy_link"
-            className="text-lab2 text-brown font-[geekble] whitespace-nowrap"
+            className="text-lab2 text-brown hidden font-[geekble] whitespace-nowrap md:block"
           >
             이용약관 동의 (투자는 본인의 책임이므로, 투자로 인한 손실은 투자자
             본인에게 책임이 있습니다)
           </a>
+          <a
+            href="https://fir-earl-dd1.notion.site/215c9deec31b804d9f67cc457878ec26?source=copy_link"
+            className="text-lab2 text-brown block flex flex-col font-[geekble] md:hidden"
+          >
+            이용약관 동의
+          </a>
         </div>
-
+        <div className="text-cap1 text-brown text-center font-[pretendard]">
+          (투자는 본인의 책임이므로, 투자로 인한 손실은 <br />
+          투자자 본인에게 책임이 있습니다)
+        </div>
         <button
           onClick={handleNextClick}
           disabled={!isButtonEnabled}
-          className={`absolute top-1/2 -right-[150px] flex h-[114px] w-[114px] -translate-y-1/2 transform items-center justify-center transition-opacity ${
-            isButtonEnabled ? "cursor-pointer" : "cursor-not-allowed opacity-50"
+          className={`fixed top-1/2 right-[5px] flex -translate-y-1/2 transform items-center justify-center rounded-full transition-all md:right-[30px] ${
+            !isButtonEnabled
+              ? "cursor-not-allowed opacity-50"
+              : "cursor-pointer"
           }`}
         >
-          <RightArrow className="h-full w-full" />
+          <RightArrow className="h-[70px] w-[70px] md:h-[114px] md:w-[114px]" />
         </button>
       </div>
     </div>

@@ -10,7 +10,7 @@
 
 ## 🎯 서비스 목표
 🔗 서비스 링크 : https://mobi.ai.kr/ </br>
-🔗 서비스 소개 영상: 
+🔗 서비스 소개 영상: https://www.youtube.com/watch?v=fK-NsPFCgXw&list=PLYIp_ptouZrkHoGXeDcxDBk_WoDy40f3y&index=8
 
 - 주식 투자 초보자도 쉽게 접근 가능한 플랫폼
 - 투자 정보와 실시간 소통을 통한 몰입감 있는 경험 제공

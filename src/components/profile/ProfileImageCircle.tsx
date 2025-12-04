@@ -56,7 +56,7 @@ const ProfileImageCircle = ({
 
   return (
     <div>
-      <div className="relative h-[173px] w-[173px]">
+      <div className="relative h-[100px] w-[100px] md:h-[173px] md:w-[173px]">
         {/* 이미지 영역만 overflow-hidden */}
         <div className="border-brown relative h-full w-full overflow-hidden rounded-full border-[3px]">
           {currentImg ? (
@@ -73,7 +73,7 @@ const ProfileImageCircle = ({
 
         {isEditable && (
           <ProfileEdit
-            className="absolute right-2 bottom-2 z-10 h-[40px] w-[40px] cursor-pointer"
+            className="absolute right-1 bottom-1 z-10 h-[30px] w-[30px] cursor-pointer md:right-2 md:bottom-2 md:h-[40px] md:w-[40px]"
             onClick={handleClick}
           />
         )}

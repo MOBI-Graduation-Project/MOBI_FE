@@ -21,17 +21,19 @@ export const InputField = ({
   disabled = false,
 }: InputFieldProps) => {
   return (
-    <div className="bg-yellow-light flex items-center gap-2 rounded-[30px] px-4 py-2">
+    <div className="bg-yellow-light flex items-center rounded-[30px] px-4 py-2 md:flex-1 md:gap-2">
       <input
         type={type}
         value={value}
         placeholder={placeholder}
         onChange={onChange}
         disabled={disabled}
-        className="text-brown text-lab2 flex-1 bg-transparent font-[pretendard] placeholder-gray-500 outline-none"
+        className="text-brown md:text-lab2 text-cap1 bg-transparent font-[pretendard] placeholder-gray-500 outline-none md:flex-1"
       />
       {unit && (
-        <span className="text-brown text-lab2 font-[geekble]">{unit}</span>
+        <span className="text-brown md:text-lab2 text-cap1 font-[geekble]">
+          {unit}
+        </span>
       )}
     </div>
   );

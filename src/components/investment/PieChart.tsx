@@ -31,7 +31,7 @@ const PieChart = ({ data }: PieChartProps) => {
   };
 
   return (
-    <div className="relative flex items-center justify-center">
+    <div className="relative flex h-[300px] w-[300px] items-center justify-center md:h-[380px] md:w-[380px]">
       <svg
         width={SIZE}
         height={SIZE}

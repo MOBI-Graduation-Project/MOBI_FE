@@ -70,8 +70,9 @@ const FortuneResult = () => {
             />
           </div>
 
-          <div className="bg-yellow-10 mr-[176px] ml-[176px] flex h-[360px] w-[980px] items-center justify-center overflow-y-auto rounded-[20px] border-[2px] border-black px-[30px] py-[20px] shadow-lg">
-            <p className="text-brown text-lab1 text-center font-[pretendard] whitespace-pre-line">
+          <div className="bg-yellow-10 mt-6 mr-[176px] ml-[176px] flex h-[360px] w-[350px] items-start justify-center overflow-y-auto rounded-[20px] border-[2px] border-black px-[10px] py-[5px] shadow-lg md:w-[980px] md:px-[30px] md:py-[20px]">
+            {" "}
+            <p className="text-brown md:text-lab1 text-lab2 text-center font-[pretendard] md:whitespace-pre-line">
               {/* 내용 렌더링 */}
               {loading && "사주를 분석하는 중입니다... "}
               {!loading && error && error}

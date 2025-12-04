@@ -54,7 +54,7 @@ const StateMessage = ({
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="mx-auto flex w-[800px] items-center justify-center px-[30px] py-[10px]">
+      <div className="mx-auto flex w-[300px] items-center justify-center px-[30px] py-[10px] md:w-[800px]">
         <div className="flex min-h-[40px] items-center gap-[10px] rounded-[20px] bg-white px-[20px] py-[5px]">
           {isEditMode ? (
             <input
@@ -63,11 +63,11 @@ const StateMessage = ({
               onChange={e => setTempMessage(e.target.value)}
               onKeyDown={handleKeyDown}
               autoFocus
-              className="text-cap1-med text-brown w-[800px] bg-transparent text-center font-[geekble] focus:outline-none"
+              className="text-cap1-med text-brown w-[300px] bg-transparent text-center font-[geekble] focus:outline-none md:w-[800px]"
               maxLength={MAX_MESSAGE_LENGTH}
             />
           ) : (
-            <span className="text-cap1-med text-brown w-[800px] text-center font-[geekble]">
+            <span className="text-cap1-med text-brown w-[300px] text-center font-[geekble] md:w-[800px]">
               {currentMessage}
             </span>
           )}

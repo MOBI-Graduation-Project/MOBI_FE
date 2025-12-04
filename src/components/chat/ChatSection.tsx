@@ -36,31 +36,31 @@ const ChatSection = ({ messages, opponentNickname }: ChatSectionProps) => {
               {message.senderId === myId || message.isBot === false ? (
                 <>
                   <div className="flex flex-row items-end justify-end gap-2">
-                    <div className="text-cap1 font-[pretendard] whitespace-nowrap text-gray-500">
+                    <div className="md:text-cap1 text-cap3 font-[pretendard] whitespace-nowrap text-gray-500">
                       {sendAt}
                     </div>
-                    <div className="text-cap1-med bg-yellow max-w-[80%] rounded-xl px-4 py-2 font-[pretendard] break-words">
+                    <div className="md:text-cap1-med text-cap1 bg-yellow max-w-[80%] rounded-xl px-4 py-2 font-[pretendard] break-words">
                       {message.content}
                     </div>
                   </div>
                 </>
               ) : message.isBot === true ? (
                 <div className="flex items-start gap-2">
-                  <div className="text-lab1 text-brown bg-gray-10 flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full font-[geekble]">
+                  <div className="md:text-lab1 text-cap1 text-brown bg-gray-10 flex h-[35px] w-[35px] shrink-0 items-center justify-center rounded-full font-[geekble] md:h-[50px] md:w-[50px]">
                     모비
                   </div>
                   <div className="flex flex-row items-end gap-2">
-                    <div className="text-cap1-med max-w-[80%] rounded-xl bg-white px-4 py-2 font-[pretendard] break-words">
+                    <div className="md:text-cap1-med text-cap1 max-w-[80%] rounded-xl bg-white px-4 py-2 font-[pretendard] break-words">
                       {message.content}
                     </div>
-                    <div className="text-cap1 font-[pretendard] whitespace-nowrap text-gray-500">
+                    <div className="md:text-cap1 text-cap3 font-[pretendard] whitespace-nowrap text-gray-500">
                       {sendAt}
                     </div>
                   </div>
                 </div>
               ) : (
                 <div className="flex items-start gap-2">
-                  <div className="flex shrink-0 items-center justify-center">
+                  <div className="flex h-[35px] w-[35px] shrink-0 items-center justify-center md:h-[50px] md:w-[50px]">
                     {message.profileUrl?.trim() ? (
                       <Image
                         src={message.profileUrl}
@@ -74,10 +74,10 @@ const ChatSection = ({ messages, opponentNickname }: ChatSectionProps) => {
                     )}
                   </div>
                   <div className="flex flex-row items-end gap-2">
-                    <div className="text-cap1-med max-w-[80%] rounded-xl bg-white px-4 py-2 font-[pretendard] break-words">
+                    <div className="md:text-cap1-med text-cap1 max-w-[80%] rounded-xl bg-white px-4 py-2 font-[pretendard] break-words">
                       {message.content}
                     </div>
-                    <div className="text-cap1 font-[pretendard] whitespace-nowrap text-gray-500">
+                    <div className="md:text-cap1 text-cap3 font-[pretendard] whitespace-nowrap text-gray-500">
                       {sendAt}
                     </div>
                   </div>

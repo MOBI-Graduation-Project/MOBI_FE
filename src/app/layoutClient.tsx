@@ -13,13 +13,14 @@ interface LayoutClientProps {
 export default function LayoutClient({ children }: LayoutClientProps) {
   const pathname = usePathname();
 
-  // 레이아웃 제외(상단바, 하단바, BG 모두 없음)
   const fullScreenRoutes = ["/chatbot", "/profile"];
 
   const isFullScreen =
     fullScreenRoutes.includes(pathname) ||
     (pathname
-      ? pathname.startsWith("/profile/") || pathname.startsWith("/chat/")
+      ? pathname.startsWith("/profile/") ||
+        pathname.startsWith("/chat/") ||
+        pathname.startsWith("/metaverse/")
       : false);
 
   return (

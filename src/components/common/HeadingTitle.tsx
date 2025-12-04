@@ -18,17 +18,22 @@ const HeadingTitle = ({ userName, texts, stockName }: HeadingTitleProps) => {
     if (stockName) {
       replaced = replaced.replace("{stockName}", stockName);
     }
-    return replaced;
+    return replaced.split("<br>");
   });
 
   return (
     <div className="flex flex-col items-center gap-1">
-      {replacedTexts.map((text, index) => (
+      {replacedTexts.map((lines, index) => (
         <p
           key={index}
-          className="text-heading1 text-stroke-white text-brown font-[geekble]"
+          className="text-body text-lab1 text-stroke-white text-brown text-center font-[geekble] md:text-[45px]"
         >
-          {text}
+          {lines.map((line, idx) => (
+            <span key={idx}>
+              {line}
+              {idx < lines.length - 1 && <br />}
+            </span>
+          ))}
         </p>
       ))}
     </div>

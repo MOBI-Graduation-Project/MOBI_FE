@@ -61,7 +61,7 @@ const StockChartPage = () => {
           <div className="fixed top-[120px] left-[30px] z-[100]">
             <DropdownMenu />
           </div>
-          <div className="fixed top-[200px] left-[30px] flex gap-[20px]">
+          <div className="fixed top-[120px] left-[160px] flex gap-[10px] md:top-[200px] md:left-[30px] md:gap-[20px]">
             <YellowButton
               text="삼성전자"
               width="w-[100px]"
@@ -73,11 +73,13 @@ const StockChartPage = () => {
               onClick={() => router.push("/investment/kakao")}
             />
           </div>
-          <div className="flex h-full w-full flex-col items-center justify-center gap-[20px] pt-[100px] pb-[120px]">
-            <HeadingTitle
-              texts={["{stockName} 주식 예측 차트입니다."]}
-              stockName={stockName as string}
-            />
+          <div className="flex h-full w-full flex-col items-center justify-center gap-[10px] pt-[100px] pb-[80px] md:gap-[20px] md:pb-[120px]">
+            <div className="pb-[35px] md:pb-0">
+              <HeadingTitle
+                texts={["{stockName} 주식 예측 차트입니다."]}
+                stockName={stockName as string}
+              />
+            </div>
             <>
               {stockData.length > 0 ? (
                 <StockChart data={stockData[0]} />

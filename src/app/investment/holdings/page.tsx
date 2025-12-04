@@ -42,7 +42,7 @@ const HoldingStocks = () => {
       ) : (
         <>
           <Header />
-          <div className="fixed top-[120px] left-[30px]">
+          <div className="fixed top-[80px] left-[30px] md:top-[120px]">
             <DropdownMenu />
           </div>
           {holdings.length === 0 ? (
@@ -52,14 +52,14 @@ const HoldingStocks = () => {
               />
             </div>
           ) : (
-            <div className="flex h-full w-full flex-col items-center justify-center gap-[25px] pt-[110px] pb-[100px]">
+            <div className="flex w-full flex-col items-center justify-center gap-[10px] pt-[115px] pb-[80px] md:gap-[25px] md:pt-[100px] md:pb-[100px]">
               <HeadingTitle
                 texts={[
                   "{userName}님의 보유 종목 비율입니다.",
                   "항목명을 클릭하면 원하는 순서로 정렬해볼 수 있어요",
                 ]}
               />
-              <div className="flex justify-center gap-30">
+              <div className="flex flex-col justify-center gap-[10px] md:flex-row md:gap-30">
                 <StockSummary />
                 <PieChart data={holdings} />
               </div>
