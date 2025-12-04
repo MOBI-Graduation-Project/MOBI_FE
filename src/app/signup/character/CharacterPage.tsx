@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useMemo, useState } from "react";
 
 import { useSignUpStore } from "@/stores/signupStore";
+import { useUserStore } from "@/stores/userStore";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
@@ -74,6 +75,8 @@ const CharacterPage = () => {
   const [characterType, setCharacterType] = useState<string | null>(null);
   const [showNameInput] = useState(false);
 
+  const setUser = useUserStore(state => state.setUser);
+
   useEffect(() => {
     const type = searchParams.get("type");
     if (type && characterMap[type]) {
@@ -92,7 +95,13 @@ const CharacterPage = () => {
     const { nickname, investmentAnswers, isPrivacyAgreed } = state;
 
     try {
-      await signupComplete(nickname, investmentAnswers, isPrivacyAgreed);
+      const res = await signupComplete(
+        nickname,
+        investmentAnswers,
+        isPrivacyAgreed,
+      );
+      const avatarCode = res.result?.avatar ?? null;
+      setUser({ avatarCode });
       router.push("/map");
     } catch (error) {
       console.error("회원가입 완료 중 오류:", error);
