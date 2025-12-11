@@ -10,7 +10,7 @@ const InvestmentPage = () => {
   return (
     <div className="min-h-screen w-full">
       <Header />
-      <div className="fixed top-[120px] left-[30px]">
+      <div className="fixed top-[100px] left-[30px] md:top-[120px]">
         <DropdownMenu />
       </div>
 

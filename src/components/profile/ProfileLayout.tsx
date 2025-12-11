@@ -93,7 +93,7 @@ const ProfileLayout = ({
   return (
     <div>
       <CloseButton
-        className="fixed top-[19px] right-[22px] z-10 cursor-pointer"
+        className="fixed top-[10px] right-[10px] z-10 h-[50px] w-[50px] cursor-pointer md:top-[19px] md:right-[22px] md:h-[70px] md:w-[70px]"
         onClick={goBack}
       />
       <div className="absolute inset-x-0 top-0 h-[60%]">
@@ -108,7 +108,7 @@ const ProfileLayout = ({
             isEditable={isMyProfile}
           />
         </div>
-        <div className="text-body text-brown text-stroke-white pt-[19.62px] font-[geekble]">
+        <div className="text-body text-brown text-stroke-white font-[geekble] md:pt-[19.62px]">
           {nickname}
         </div>
 
@@ -130,7 +130,7 @@ const ProfileLayout = ({
         )}
         {/*친구가 아닌 유저 프로필일 때 */}
         {!isMyProfile && !isFriend && (
-          <div className="flex gap-[174px]">
+          <div className="flex gap-[20px] md:gap-[174px]">
             {/* 친구 추가하기 버튼 */}
             <div
               onClick={
@@ -158,7 +158,7 @@ const ProfileLayout = ({
           </div>
         )}
         {toastMessage && (
-          <div className="pt-7">
+          <div className="pt-2 md:pt-7">
             <ToastMessage message={toastMessage} />
           </div>
         )}

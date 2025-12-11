@@ -8,10 +8,10 @@ const Header = () => {
   const router = useRouter();
   return (
     <div className="fixed top-0 z-[100] w-full">
-      <div className="flex items-center justify-between px-[43.39px]">
+      <div className="flex items-center justify-between px-[20px] md:px-[43.39px]">
         <button
           onClick={() => router.push("/map")}
-          className="text-title2 text-yellow text-stroke-brown-m cursor-pointer font-[geekble]"
+          className="md:text-title2 text-heading1 text-body text-yellow text-stroke-brown-m cursor-pointer font-[geekble]"
         >
           모비
         </button>

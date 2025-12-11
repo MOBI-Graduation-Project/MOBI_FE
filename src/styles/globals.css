@@ -82,7 +82,7 @@
     -webkit-text-stroke-color: var(--White, #fff);
   }
   .text-stroke-brown {
-    -webkit-text-stroke-width: 7px;
+    -webkit-text-stroke-width: 5px;
     -webkit-text-stroke-color: var(--Brown, #4d2700);
   }
   .text-stroke-brown-m {
