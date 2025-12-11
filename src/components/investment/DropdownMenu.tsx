@@ -45,17 +45,17 @@ const DropdownMenu = () => {
   };
 
   return (
-    <div className="relative w-[268px]">
+    <div className="relative w-[110px] md:w-[268px]">
       {/* 선택된 메뉴 */}
       <div
-        className="bg-yellow-10 border-brown-dark flex h-[65px] cursor-pointer items-center justify-between rounded-[12px] border-[2px] px-[20px] py-[10px]"
+        className="bg-yellow-10 border-brown-dark flex h-[30px] cursor-pointer items-center justify-between rounded-[12px] border-[2px] px-[10px] py-[10px] md:h-[65px] md:px-[20px]"
         onClick={() => setIsOpen(prev => !prev)}
       >
-        <span className="text-brown font-[geekble] text-[24px]">
+        <span className="text-brown md:text-lab1 text-cap1 font-[geekble]">
           {STOCK_MENU_MAP[selectedKey] ?? "관심 종목"}
         </span>
         <DownArrow
-          className={`custom-shadow absolute top-1/2 right-[-10px] h-[65px] w-[65px] -translate-y-1/2 ${
+          className={`custom-shadow absolute top-1/2 right-[-10px] h-[30px] w-[30px] -translate-y-1/2 md:h-[65px] md:w-[65px] ${
             isOpen ? "rotate-180" : "rotate-0"
           }`}
         />
@@ -68,7 +68,7 @@ const DropdownMenu = () => {
             <div key={key}>
               <div
                 onClick={() => handleSelect(key)}
-                className="hover:bg-yellow-light text-brown cursor-pointer px-[20px] py-[12px] font-[geekble] text-[20px] transition-colors duration-150"
+                className="hover:bg-yellow-light text-brown md:text-lab1 text-cap1 cursor-pointer px-[10px] py-[12px] font-[geekble] transition-colors duration-150 md:px-[20px]"
               >
                 {label}
               </div>

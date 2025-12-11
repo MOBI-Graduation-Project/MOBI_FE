@@ -15,19 +15,19 @@ export const ButtonLayout = ({
     <>
       <button
         onClick={handlePrev}
-        className="absolute top-1/2 left-[30px] flex h-[114px] w-[114px] -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full transition-all"
+        className="absolute top-1/2 left-[5px] flex -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full transition-all md:left-[30px]"
       >
-        <LeftArrow className="h-full w-full" />
+        <LeftArrow className="h-[70px] w-[70px] md:h-[114px] md:w-[114px]" />
       </button>
 
       <button
         onClick={handleNext}
         disabled={disabledNext}
-        className={`absolute top-1/2 right-[30px] flex h-[114px] w-[114px] -translate-y-1/2 transform items-center justify-center rounded-full transition-all ${
+        className={`absolute top-1/2 right-[5px] flex -translate-y-1/2 transform items-center justify-center rounded-full transition-all md:right-[30px] ${
           disabledNext ? "cursor-not-allowed opacity-50" : "cursor-pointer"
         }`}
       >
-        <RightArrow className="h-full w-full" />
+        <RightArrow className="h-[70px] w-[70px] md:h-[114px] md:w-[114px]" />
       </button>
     </>
   );
