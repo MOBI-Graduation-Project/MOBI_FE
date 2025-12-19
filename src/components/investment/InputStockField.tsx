@@ -54,7 +54,7 @@ export const InputStockField = () => {
   };
 
   return (
-    <div className="flex w-full items-center justify-center gap-[5px]">
+    <div className="flex w-full items-center justify-center gap-[5px] flex-col">
       <section className="grid grid-cols-2 gap-4 bg-gray-50/50 px-[5px] py-5 md:flex md:w-full md:flex-row md:items-center md:gap-4 md:px-8">
         <div className="flex-2">
           <SearchField
